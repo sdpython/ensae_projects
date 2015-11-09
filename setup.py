@@ -185,6 +185,5 @@ if not r:
         install_requires=[
             "pyquickhelper", "pyensae", "pymyinstall",
             "scikit-learn", "pyrsslocal", "pandas", "numpy",
-            "matplotlib", "ipython", "cvxopt",
-            "ensae_teachincs_cs", "actuariat_python", "code_beatrix"],
+            "matplotlib", "ipython", "cvxopt"],
     )

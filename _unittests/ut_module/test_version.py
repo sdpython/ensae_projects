@@ -21,7 +21,7 @@ except ImportError:
         sys.path.append(path)
     import src
 
-from src.actuariat_python import __version__
+from src.ensae_projects import __version__
 
 
 class TestVersion (unittest.TestCase):

@@ -58,7 +58,7 @@ from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
 from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook, unittest_raise_exception_notebook
 
 
-class TestNotebookExample (unittest.TestCase):
+class TestNotebookHackathon(unittest.TestCase):
 
     def test_notebook_hackathon(self):
         fLOG(
@@ -69,11 +69,13 @@ class TestNotebookExample (unittest.TestCase):
         temp = get_temp_folder(__file__, "temp_hackathon_2015")
         keepnote = ls_notebooks("hackathon_2015")
         assert len(keepnote) > 0
-        res = execute_notebooks(temp, keepnote,
-                                lambda i, n: "deviner" not in n,
-                                fLOG=fLOG,
-                                clean_function=clean_function_notebook)
-        unittest_raise_exception_notebook(res, fLOG)
+        keepnote = [_ for _ in keepnote if "upload" not in _]
+        if len(keepnote) > 0:
+            res = execute_notebooks(temp, keepnote,
+                                    lambda i, n: "deviner" not in n,
+                                    fLOG=fLOG,
+                                    clean_function=clean_function_notebook)
+            unittest_raise_exception_notebook(res, fLOG)
 
 if __name__ == "__main__":
     unittest.main()
