@@ -258,5 +258,8 @@ auto_*.sh
 auto_*.xml
 auto_*.db3
 .RData
-_doc/notebooks/hackathon_2015/readme.txt
+_doc/notebooks/hackathon_2015/*.txt
+_doc/notebooks/hackathon_2015/*.csv
+_doc/notebooks/hackathon_2015/*.xlsx
+_doc/notebooks/hackathon_2015/stojou
 
