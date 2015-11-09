@@ -36,7 +36,7 @@ README / Changes
 Description        
 -----------
 
-Outils pour des projets d'étudiants.
+Outils pour des projets d'Ã©tudiants.
 
 
 Contributions
