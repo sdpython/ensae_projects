@@ -2,6 +2,3 @@ pyensae
 pymyinstall
 pymmails
 pyrsslocal
-actuariat_python
-ensae_teaching_cs
-actuariat_python
