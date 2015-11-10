@@ -22,7 +22,7 @@ Contenu
 .. toctree::
     :maxdepth: 1
 
-    hackathon_2015
+    projects/hackathon_2015
 
 
 

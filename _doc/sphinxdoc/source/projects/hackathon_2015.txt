@@ -1,0 +1,11 @@
+
+
+Hackathon Microsoft / ENSAE 2015
+================================
+
+
+.. toctree::
+
+    ../notebooks/upload_donnees
+    ../notebooks/exploration
+
