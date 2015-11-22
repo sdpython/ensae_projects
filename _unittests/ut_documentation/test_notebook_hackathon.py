@@ -69,7 +69,8 @@ class TestNotebookHackathon(unittest.TestCase):
         temp = get_temp_folder(__file__, "temp_hackathon_2015")
         keepnote = ls_notebooks("hackathon_2015")
         assert len(keepnote) > 0
-        keepnote = [_ for _ in keepnote if "upload" not in _ and "exploration" not in _]
+        keepnote = [
+            _ for _ in keepnote if "upload" not in _ and "exploration" not in _]
         if len(keepnote) > 0:
             res = execute_notebooks(temp, keepnote,
                                     lambda i, n: "deviner" not in n,

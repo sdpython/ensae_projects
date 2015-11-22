@@ -6,10 +6,11 @@ import os
 import pandas
 from .data_exception import ProjectDataException
 
+
 def get_meaning(table="invoice"):
     """
     retrieve data related to the meaning of a table
-    
+
     @param      table       invoice or ...
     @return                      DataFrame
     """
@@ -22,6 +23,5 @@ def get_meaning(table="invoice"):
             df[c] = df[c].apply(lambda s: s.strip())
         return df
     else:
-        raise ProjectDataException("unable to find information about table {0}".format(table))
-        
-        
+        raise ProjectDataException(
+            "unable to find information about table {0}".format(table))

@@ -65,7 +65,7 @@ class TestNotebookHackathon(unittest.TestCase):
             __file__,
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
-            
+
         df = get_meaning("invoice")
         assert len(df) > 0
 
