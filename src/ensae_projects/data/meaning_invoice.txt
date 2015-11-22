@@ -1,0 +1,81 @@
+﻿Champ 	Description
+NUM 	Numéro de pièce
+BPR 	Tiers (identifiant du beneficiaire)
+FCY 	Site (code U2A)
+ACCDAT 	Date comptable
+ACCNUM 	Numéro interne de la transaction (ID unique pour chaque ligne). ~inutile
+BPRPAY 	Tiers Payeur (presque toujours egal a BPR ~ inutile )
+VAC 	Régime TVA (presque toujours vide ~ inutile)
+STA 	Etat (3 ou 1. presque toujours egal a 3 ~inutile)
+AMTATI 	Montant TTC de la transaction
+VATDAT 	Date taxe sur avoir
+NBRTAX 	Nombre taxes
+TAX 	Taxes (FR004 ou   ~ inutile)
+BPAINV 	Adresse (presque toujours egal a A01 ~ inutile)
+STARPT 	Impression (1 ou 2. signification pas claire ~ inutile)
+CREDAT 	Date création (presque toujours egal a a$CREDAT. ~ inutile)
+CREUSR 	Auteur creation (benevole auteur de la transaction  = benevole)
+YRESTEAV 	Reste à vivre du beneficiaire
+YNBR 	Nre membres foyer
+YTYPOFAM 	Typologie de famille
+YCSP 	CSP (= )
+YSITPAR 	Sit. particulière du beneficiaire
+YSITTRA 	Sit. travail du beneficiaire
+YSITLOG 	Sit. logement du beneficiaire
+YSSITLOG 	Sous Sit. logement du beneficiaire ( = )
+YCRY 	Pays de provenance du beneficiaire
+YT1 	Nb Nourrissons du 1e âge
+YT2 	Nb Nourrissons du 2e âge
+YT3 	Nb Nourrissons du 3e âge (comment est defini le 123 age )
+YT4 	Nb de Jeunes enfants
+YT5 	Nb d’Enfants
+YT6 	Nb de Jeunes adultes
+YT7 	Nb d’adultes
+YT8 	Nb de seniors
+YSEXMAL 	Nb Pers Sexe MAL
+YSEXFEM 	Nb Pers Sexe FEM
+YSOLDINITIAL 	Solde initial (solde de quoi )
+YSOLDEACTUAL 	Solde actualisé
+YMTSANSREDUC 	Montant total sans réduction
+YMTAVECREDUC 	Montant total avec réduction
+YMTREDUCTION 	Montant total de la réduction
+YMTVALMER 	Montant valeur mercuriale
+YORIG1 	Nb origine non précisée
+YORIG2 	NB origine France
+YORIG3 	Nb origine Europe de l'Est
+YORIG4 	Nb origine Europe autre
+YORIG5 	Nb origine Maghreb
+YORIG6 	Nb orig Afrique autr
+YORIG7 	Nb origine Asie
+YFREQPASS 	Fréquence passage du beneficiaire
+YCSPCHEF 	CSP du chef de foyer
+YTYPPROV 	Type de provenance (de quoi )
+YREVREF 	Revenu fiscal réf (de qui )
+YQUOTFAM 	Quotient familial
+YCNTTYP 	Type de fiche ()
+CPY 	Société (toujours egal a CRF)
+BPAADD 	Adresse livraison (a quoi correspondent les 5 categories )
+CNINAM 	Contact facture (le plus souvent vide. ~ inutile )
+BPDCRYNAM 	Nom pays livraison (la plupart du temps la France)
+SIVTYP 	Type facture vente utilisateur (toujours egal a DIS ~ inutile)
+INVTYP 	Catégorie facture (toujours egal a 1 ~ inutile)
+CUR 	Devise (toujours egal a EUR)
+STOMVTFLG 	Mvt stock (toujours egal a 2)
+PRITYP 	Prix HTTTC
+LAN 	Langue (toujours egal a FRA)
+ORIFCY 	Site origineémetteur
+LINNBR 	Nombre lignes (de quoi )
+INVDTAAMT 	% ou Montant Element de facturation ()
+TRSCOD 	Code mouvement ()
+ENTCOD 	Pièce auto stock (presque toujours egal a STKSI. -- )
+EECNAT 	Nature transaction (~inutile)
+EECSCH 	Régime CEE () ~ inutile
+EECSCHR 	Régime CEE régularisation ~ inutile
+EECLOC 	Lieu transport CEE (0 ou 1 ~ inutile)
+DSPTOTQTY 	Cumul quantité (de quoi exactement )
+DSPTOTWEI 	Cumul poids (de quoi exactement )
+DSPTOTVOL 	Cumul volume (de quoi exactement )
+DSPWEU 	Unité poids (KG)
+DSPVOU 	Unité Volume (L)
+YCODTR 	Code transaction Distribution ()
+ZBATCHFLG 	Flag batch ()
