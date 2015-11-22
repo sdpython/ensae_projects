@@ -85,3 +85,6 @@ colormap
 easydev
 qgrid
 bokeh
+mpld3
+pygal
+vincent
