@@ -25,7 +25,7 @@ en construction
     :maxdepth: 1
 
     projects/hackathon_2015
-
+    cheat_sheets
 
 
     
