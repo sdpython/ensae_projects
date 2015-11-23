@@ -54,48 +54,33 @@ except ImportError:
     import pyensae
 
 from pyquickhelper import fLOG, get_temp_folder
-from src.ensae_projects.data.croix_rouge import get_meaning, merge_schema, df2rsthtml
-from src.ensae_projects.data import PasswordException
+from src.ensae_projects.data.croix_rouge import get_meaning, encrypt_file, decrypt_dataframe
 
 
-class TestNotebookHackathon(unittest.TestCase):
+class TestNotebookHackathonEncrypt(unittest.TestCase):
 
-    def _test_meaning_table(self):
+    def test_encrypt(self):
         fLOG(
             __file__,
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
 
-        try:
-            df = get_meaning("invoice")
-        except PasswordException:
-            # the password is not available on this machine, set PWDCROIXROUGE
-            return
+        pwd = ("example" * 3)[:16]
+        temp = get_temp_folder(__file__, "temp_encrypt")
+        infile = os.path.join(temp, "..", "data", "ITMMASTER.schema.txt")
+        outfile = os.path.join(temp, "ITMMASTER.schema.enc")
+        encrypt_file(infile, outfile, password=pwd)
+        assert os.path.exists(outfile)
+
+        df = decrypt_dataframe(outfile, password=pwd)
+        fLOG(df.shape)
+        fLOG(df)
         assert len(df) > 0
 
-    def test_joined_schemas(self):
-        fLOG(
-            __file__,
-            self._testMethodName,
-            OutputPrint=__name__ == "__main__")
-        temp = get_temp_folder(__file__, "temp_joined_schemas")
-
-        try:
-            df = merge_schema()
-        except PasswordException:
-            # the password is not available on this machine, set PWDCROIXROUGE
-            return
-        assert len(df) > 0
-        outexc = os.path.join(temp, "schemas.xlsx")
-        df.to_excel(outexc, index=False)
-        fLOG(df.columns)
-        txt = df2rsthtml(df, format="rst")
-        assert "nan\t" not in txt
-        fLOG("\n" + txt)
-
-        outfile = os.path.join(temp, "schemas.rst")
-        with open(outfile, "w", encoding="utf-8") as f:
-            f.write(txt)
+        if True:
+            for infile in ["meaning_invoice.txt", "SINVOICE.schema.txt", "SINVOICEV.schema.txt", "stojou.schema.txt"]:
+                if os.path.exists(infile):
+                    encrypt_file(infile, infile.replace(".txt", ".enc"))
 
 
 if __name__ == "__main__":

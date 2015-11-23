@@ -1,0 +1,8 @@
+Intitulé long	Options	Table liée	Expression de lien	Copie législation	Annulation	Vérification	Obligatoire	RAZ	Mot-clé d'aide
+Clé recherche							Non	Non	
+Désignation 1							Non	Non	
+Désignation 2							Non	Non	
+Désignation 3							Non	Non	
+Désignation 1							Non	Non	
+Désignation 2							Non	Non	
+Désignation 3							Non	Non	

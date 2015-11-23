@@ -13,13 +13,9 @@ ENSAE Projects
 :ref:`blog <ap-main-0>`
 
 
-en développement
-
 
 Contenu
 -------
-
-en construction
 
 .. toctree::
     :maxdepth: 1

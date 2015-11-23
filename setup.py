@@ -34,7 +34,7 @@ packages = find_packages('src', exclude='src')
 package_dir = {k: "src/" + k.replace(".", "/") for k in packages}
 package_data = {
     project_var_name: ["*.xml"],
-    project_var_name + ".data": ["*.txt"],
+    project_var_name + ".data.hackathon_2015_croix_rouge": ["*.enc"],
     project_var_name + ".automation": ["*.r", "*.ico"]}
 
 ############
@@ -156,7 +156,9 @@ if is_local():
         requirements=["pyquickhelper", "pyensae", "pyrsslocal", "pymyinstall"],
         additional_notebook_path=["pyquickhelper",
                                   "pyensae", "pyrsslocal", "pymyinstall"],
-        additional_local_path=["pyquickhelper", "pyensae", "pyrsslocal", "pymyinstall"])
+        additional_local_path=["pyquickhelper",
+                               "pyensae", "pyrsslocal", "pymyinstall"],
+        copy_add_ext=["enc"])
     if not r and not ({"bdist_msi", "sdist",
                        "bdist_wheel", "publish", "publish_doc", "register",
                        "upload_docs", "bdist_wininst"} & set(sys.argv)):
