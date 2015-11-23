@@ -60,7 +60,7 @@ from src.ensae_projects.data import PasswordException
 
 class TestNotebookHackathon(unittest.TestCase):
 
-    def _test_meaning_table(self):
+    def test_meaning_table(self):
         fLOG(
             __file__,
             self._testMethodName,
