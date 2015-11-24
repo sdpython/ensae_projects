@@ -65,10 +65,13 @@ class TestNotebookHackathon(unittest.TestCase):
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
 
-        filename = os.path.join(os.path.abspath(os.path.dirname(__file__)), "data", "data_qutoes.txt")
+        filename = os.path.join(os.path.abspath(
+            os.path.dirname(__file__)), "data", "data_qutoes.txt")
+
         def clean_column_name(s):
             return s.replace("_0", "")
-        l = list(enumerate_text_lines(filename, encoding="utf-8", quotes_as_str=True, clean_column_name=clean_column_name))
+        l = list(enumerate_text_lines(filename, encoding="utf-8",
+                                      quotes_as_str=True, clean_column_name=clean_column_name))
         fLOG(l)
         assert len(l) == 1
 
