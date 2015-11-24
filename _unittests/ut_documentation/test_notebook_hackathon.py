@@ -70,7 +70,10 @@ class TestNotebookHackathon(unittest.TestCase):
         keepnote = ls_notebooks("hackathon_2015")
         assert len(keepnote) > 0
         keepnote = [
-            _ for _ in keepnote if "upload" not in _ and "schemas" not in _ and "download" not in _]
+            _ for _ in keepnote if "upload" not in _ \
+                                and "schemas" not in _ \
+                                and "download" not in _\
+                                and "times_series" not in _]
         if len(keepnote) > 0:
             res = execute_notebooks(temp, keepnote,
                                     lambda i, n: "deviner" not in n,
