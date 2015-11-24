@@ -35,7 +35,8 @@ def enumerate_text_lines(filename, sep="\t", encoding="utf-8",
                          quotes_as_str=False, header=True,
                          clean_column_name=None,
                          skip=0,
-                         take=-1):
+                         take=-1,
+                         fLOG=noLOG):
     """
     enumerate all lines from a text file,
     considers it as column
@@ -47,6 +48,7 @@ def enumerate_text_lines(filename, sep="\t", encoding="utf-8",
     @param          clean_column_name   function to clean column name
     @param          skip                number of rows to skip
     @param          take                number of rows to consider (-1 for all)
+    @param          fLOG                logging function
     @return                             iterator on dictionary
     """
     def get_schema(row, header, clean_column_name):
@@ -93,4 +95,6 @@ def enumerate_text_lines(filename, sep="\t", encoding="utf-8",
             val = { k:convert(v, quotes_as_str) for k,v in zip(schema, spl) }
             yield val
             nb += 1
+            if nb % 100000 == 0:
+                fLOG(filename, "-", nb, "lines")
         
