@@ -39,6 +39,21 @@ Description
 Outils pour des projets d'étudiants.
 
 
+Installation
+------------
+
+Linux ::
+
+    pip install pyensae
+    pip install ensae_projects
+    
+Windows::
+
+    pip install pymyinstall
+    pymy_install3 --set=pyensae
+    pip install ensae_projects
+
+
 Contributions
 -------------
 
