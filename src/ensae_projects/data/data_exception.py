@@ -16,3 +16,10 @@ class PasswordException(Exception):
     raised when password is missing
     """
     pass
+
+
+class FileFormatException(Exception):
+    """
+    raised when unable to parse a file
+    """
+    pass

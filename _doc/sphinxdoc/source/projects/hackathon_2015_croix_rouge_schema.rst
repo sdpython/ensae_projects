@@ -21,6 +21,15 @@ Following sections do not show the entire schema but the code to get it
 assuming you have the necessary credentials to access the data or to
 decrypt them (see :ref:`l-cr-pwd`).
 
+
+**Format**
+
+* column separator: tab ``\t``
+* line separator: either ``;`` or ``\n`` (files ending with ``_.txt``)
+* encoding: ``latin-1``
+* string: surrounded by double quotes ``"``
+
+
 ITMMASTER
 ^^^^^^^^
 
@@ -40,7 +49,11 @@ This table describes items The Red Cross distributes to people in need, their fe
 SINVOICE
 ^^^^^^^^
 
-Distribution: what people in need receive from the Red Cross. 
+* Description of people who receive from the Red Cross. 
+* number or rows: ~1.4M
+
+Use ``SINVOICE_.txt`` to get a flat file with regular line separator, not ';'.
+
 
 Important fields:
 
