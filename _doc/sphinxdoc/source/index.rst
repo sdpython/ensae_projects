@@ -26,17 +26,25 @@ Contenu
 Installation
 ------------
 
-Sous Linux ::
+Linux, Mac, Windows
+^^^^^^^^^^^^^^^^^^^
 
-    pip install pyensae
-    pip install ensae_projects
-    
-Sous Windows, le module a des dépendances qui doivent être installées
-précompilées (elles incluent du code C++) ::
+Installation de Python avec la distribution `Anaconda <https://www.continuum.io/downloads>`_.
+Puis ::
 
     pip install pymyinstall
     pymy_install3 --set=pyensae
+    pip install pyensae
     pip install ensae_projects
+    
+Windows
+^^^^^^^
+
+Installation de Python avec le setup `ENSAE, Python Setup <http://www.xavierdupre.fr/enseignement/>`_.
+Puis ::
+    
+    pip install ensae_projects
+
 
     
 
