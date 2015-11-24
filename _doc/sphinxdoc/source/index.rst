@@ -23,6 +23,20 @@ Contenu
     projects/hackathon_2015
     cheat_sheets
 
+Installation
+------------
+
+Sous Linux ::
+
+    pip install pyensae
+    pip install ensae_projects
+    
+Sous Windows, le module a des dépendances qui doivent être installées
+précompilées (elles incluent du code C++) ::
+
+    pip install pymyinstall
+    pymy_install3 --set=pyensae
+    pip install ensae_projects
 
     
 
