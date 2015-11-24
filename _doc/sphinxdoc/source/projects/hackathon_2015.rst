@@ -50,7 +50,7 @@ environment variable ``PWDCROIXROUGE`` with with password.
 
     ../notebooks/upload_donnees
     ../notebooks/database_schemas
-    ../notebooks/upload_donnees
+    ../notebooks/download_data_azure
     
     
 Cheat Sheets
