@@ -2,8 +2,8 @@
 
 .. index:: Croix-Rouge, DataForGood
 
-La Croix-Rouge, Data and Challenges
-===================================
+La Croix-Rouge, Données et défis
+================================
 
 .. contents::
     :local:

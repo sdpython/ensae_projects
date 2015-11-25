@@ -2,38 +2,36 @@
 
 .. index:: Croix-Rouge, DataForGood
 
-Data from La Croix-Rouge
-========================
+Données de la Croix-Rouge
+=========================
 
-* todo
-    * compléter la liste des variables intéressantes
-    * formules entre les variables
-    * comment lier la table ITMMASTER avec les autres (pas de nom de variables)
-    
 .. contents::
     :local:
 
 
-Available tables
-++++++++++++++++
+Tables disponibles
+++++++++++++++++++
 
-Following sections do not show the entire schema but the code to get it
-assuming you have the necessary credentials to access the data or to
-decrypt them (see :ref:`l-cr-pwd`).
+Les paragraphes suivants ne donnent pas les schémas des tables mais
+donne seulement un moyen d'y accéder. Les données incluses dans ce module
+sont cryptées et nécessitent un mot de passe pour y accéder.
+(voir :ref:`l-cr-pwd`).
 
 
 **Format**
 
-* column separator: tab ``\t``
-* line separator: either ``;`` or ``\n`` (files ending with ``_.txt``)
+* séparateur de colonnes : tab ``\t``
+* séparateur de lignes : ``;`` ou ``\n`` (en particulier les fichiers se terminant par ``_.txt``)
 * encoding: ``latin-1``
-* string: surrounded by double quotes ``"``
+* string: entourées de guillemets ``"``
 
 
 ITMMASTER
-^^^^^^^^
+^^^^^^^^^
 
-This table describes items The Red Cross distributes to people in need, their features.
+Cette table décrit les produits distribués par la Croix-Rouge.
+
+*This table describes items The Red Cross distributes to people in need, their features.*
 
 
 .. runpython::
@@ -49,15 +47,10 @@ This table describes items The Red Cross distributes to people in need, their fe
 SINVOICE
 ^^^^^^^^
 
-* Description of people who receive from the Red Cross. 
-* number or rows: ~1.4M
+Cette table décrit les bénéficiaires de la Croix-Rouge (nmbre de lignes ~1.4M).
+Utiliser ``SINVOICE_.txt`` pour avoir un fichier plat avec un séparateur de ligne ``\n`` et non ``;``.
 
-Use ``SINVOICE_.txt`` to get a flat file with regular line separator, not ';'.
-
-
-Important fields:
-
-* **BPR**: identifier for a people in need
+*Description of people who receive from the Red Cross. *
 
 .. runpython::
     :showcode:
@@ -67,11 +60,17 @@ Important fields:
     df = get_meaning("SINVOICE")
     print(df2rsthtml(df.head(n=2), format='rst'))
 
+Variables importantes :
+
+* **BPR**: identifiant des bénéficiaires
+
 
 INVOICE_V
 ^^^^^^^^^
 
-Table about free workers.
+Cette table décrit les bénévoles.
+
+*This table describes the volunteers.*
 
 .. runpython::
     :showcode:
@@ -80,11 +79,17 @@ Table about free workers.
     from ensae_projects.data.croix_rouge import get_meaning, df2rsthtml
     df = get_meaning("SINVOICE_V")
     print(df2rsthtml(df.head(n=2), format='rst'))
+    
+Variables importantes :
+
+
 
 stojou
 ^^^^^^
 
-Daily stocks.
+Cette table décrit les dons et les réceptions de produits.
+
+*This table describes donations and receptions of products.*
 
 .. runpython::
     :showcode:
@@ -95,11 +100,16 @@ Daily stocks.
     print(df2rsthtml(df.head(n=2), format='rst'))
 
 
-Quantities in column ``QTYSTU`` can be negative for a donation, positive for a refill.
+Variables importantes :
+
+* QTYSTU : quantités (négative pour un don, positive pour une réception)
+
     
 
-Common columns accross tables
-+++++++++++++++++++++++++++++
+Colonnes communes à toutes les tables
++++++++++++++++++++++++++++++++++++++
+
+*Common columns accross tables*
 
 .. runpython::
     :showcode:

@@ -32,6 +32,22 @@ Others data
 
 .. _l-cr-pwd:
 
+Comment démarrer ?
+^^^^^^^^^^^^^^^^^^
+
+Les tables sont grandes, plus de 10 Go, il est quasiment impossible de les charger en mémoire.
+Votre ordinateur n'est pas assez puissant mais ce n'est pas un problème,
+il suffit de démarrer une machine virtuelle sur Azure, assez puissante,
+pour commencer à regarder les données.
+Vous pouvez regarder la section suivante pour voir comment faire.
+
+.. toctree::
+    :maxdepth: 2
+
+    hackathon_2015_startup
+
+
+
 Helpers, notebooks and passwords
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -60,4 +76,5 @@ Cheat Sheets
     :maxdepth: 2
 
     ../notebooks/chsh_graphs
+    ../notebooks/chsh_files
 

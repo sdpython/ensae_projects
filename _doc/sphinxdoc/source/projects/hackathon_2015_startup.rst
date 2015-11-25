@@ -1,0 +1,164 @@
+
+
+.. index:: Microsoft, ENSAE, Hackathon, Croix-Rouge, DataForGood, 2015
+
+Getting started
+===============
+
+.. contents::
+    :local:
+    
+
+Démarrer une machine virtuelle
+++++++++++++++++++++++++++++++
+
+Azure propose toute une série de machine virtuelle préconfigurées.
+Celles qui nous intéresse doit avoir un serveur SQL qui va recevoir les données
+et nous permettre de rapidement les consulter.
+
+Il suffit de suivre les étapes suivantes.
+L'ensemble prend environ 20 minutes.
+
+.. image:: hack_2015_startup1.png
+
+.. image:: hack_2015_startup2.png
+
+.. image:: hack_2015_startup3.png
+
+.. image:: hack_2015_startup4.png
+
+.. image:: hack_2015_startup5.png
+
+Une fois ce dernier fichier téléchargé, il faut l'ouvrir pour avoir accès à sa machine virtuelle,
+de rentrer son mot de passe.
+
+.. image:: hack_2015_startup6.png
+
+Raccourci utile : ``Window + s`` pour faire apparaître la recherche sur le côté droit de l'écran.
+
+
+**Pensez à éteindre la machine virtuelle à la fin du hackathon.**
+
+
+Installer Python sur la machine virtuelle
++++++++++++++++++++++++++++++++++++++++++
+
+Ce n'est pas une étape obligatoire mais cela pourra vous aider
+à utiliser les exemples disponibles pour cet événement.
+
+* `ENSAE Python Setup <http://www.xavierdupre.fr/enseignement/>`_
+
+
+.. image:: hack_2015_python1.png
+
+Cela prend environ 20 minutes. Ce setup inclut également `R <https://www.r-project.org/>`_.
+Pour les notebooks, je vous recommande également d'installer `Firefox <https://www.mozilla.org/fr/firefox/new/>`_.
+Une fois l'installer terminer, il suffit d'aller dans le répetoire ``c:\PythonENSAE`` et
+de cliquer sur l'icône *Notebook*.
+
+.. image:: hack_2015_python2.png
+
+
+Il reste à installer le module `ensae_projects <http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/index.html>`_.
+On ouvre une fenêtre en ligne de commande :
+
+.. image:: hack_2015_python3.png
+
+On se place dans le répertoire ``c:\PythonENSAE\python\Scripts``, puis on écrit ::
+
+    pip install ensae_projects
+    
+.. image:: hack_2015_python4.png
+    
+    
+
+Mettre ses mots de passes dans les variables d'environnement
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Il est risqué de laisser un mot de passe dans un code Python ou un notebook.
+Pour cela on le met dans une variable d'environnement afin qu'il n'apparaissent jamais
+de façon explicite. Pour ce hackathon, il faut deux variables d'environnement :
+
+* ``CRCREDENTIALS`` : pour accéder aux données de la Croix-Rouge, il doit contenir la chaîne
+  ``<blobname>**<blob key>``.
+* ``PWDCROIXROUGE`` : mot de passe pour accéder aux données cryptées du module 
+  `ensae_projects <http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/index.html>`_.
+  
+Ces informations vous seront transmises au début du hackathon.
+Pour mettre en place ces variables d'environnement : 
+
+.. image:: hack_2015_env1.png
+
+Puis :
+
+.. image:: hack_2015_env2.png
+
+Il faut penser à faire cette opération en premier afin ces modifications soient prises en compte 
+par les applications comme Python.
+
+Je vous conseille également d'effacer ces mots de passes à la fin du hackathon.
+
+
+
+Téléchargement des données
+++++++++++++++++++++++++++
+
+Il suffit de télécharger le notebook suivant : 
+`Download data from Azure <http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/notebooks/download_data_azure.html>`_
+puis de suivre les instructions pour télécharger les fichiers.
+
+Petite astuce, pour voir les extensions de fichiers, il faut :
+
+.. image:: hack_2015_ext1.png
+
+Puis :
+
+.. image:: hack_2015_ext2.png
+
+
+Ouvrir une session sur le serveur SQL
++++++++++++++++++++++++++++++++++++++
+
+On ouvre SQL Studio :
+
+.. image:: hack_2015_sql1.png
+
+On se connecte :
+
+.. image:: hack_2015_sql2.png
+
+Et on obtient un serveur vide :
+
+.. image:: hack_2015_sql3.png
+
+
+Import des données dans le serveur SQL
+++++++++++++++++++++++++++++++++++++++
+
+On ouvre l'outil dédié à cette tâche :
+
+.. image:: hack_2015_sql4.png
+
+On tombe sur :
+
+.. image:: hack_2015_sql5.png
+
+
+On choisit la source ``Flat File Source`` et le fichier à importer :
+
+.. image:: hack_2015_sql6.png
+
+On choisit la destination :
+
+.. image:: hack_2015_sql7.png
+
+Vosu pouvez changer le type de chaque colonne :
+
+.. image:: hack_2015_sql8.png
+
+Et ça tourne :
+
+.. image:: hack_2015_sql9.png
+
+Pendant quelques dizaines de minutes selon la taille des données.
+
