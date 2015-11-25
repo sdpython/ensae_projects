@@ -13,11 +13,15 @@ Démarrer une machine virtuelle
 ++++++++++++++++++++++++++++++
 
 Azure propose toute une série de machine virtuelle préconfigurées.
-Celles qui nous intéresse doit avoir un serveur SQL qui va recevoir les données
+Celle qui nous intéresse doit avoir un serveur SQL qui va recevoir les données
 et nous permettre de rapidement les consulter.
 
 Il suffit de suivre les étapes suivantes.
 L'ensemble prend environ 20 minutes.
+
+**Retenez bien le nom et le mot de passe 
+que vous enregistrez à cette étape, ils vous seront demandé 
+lors de votre connexion à la machine virtuelle.**
 
 .. image:: hack_2015_startup1.png
 
@@ -29,15 +33,18 @@ L'ensemble prend environ 20 minutes.
 
 .. image:: hack_2015_startup5.png
 
-Une fois ce dernier fichier téléchargé, il faut l'ouvrir pour avoir accès à sa machine virtuelle,
-de rentrer son mot de passe.
+A la fin de la dernière étape, le fichier ``<nom de la machine>.rdp`` 
+sera téléchargé. Il faut l'ouvrir pour avoir accès à sa machine virtuelle.
+Vous vous connectez en entrant votre nom et votre mot de passe.
 
 .. image:: hack_2015_startup6.png
 
 Raccourci utile : ``Window + s`` pour faire apparaître la recherche sur le côté droit de l'écran.
 
 
-**Pensez à éteindre la machine virtuelle à la fin du hackathon.**
+**Pensez à éteindre la machine virtuelle à la fin du hackathon. 
+Pour cela : clic droit sur l'icone Windows en bas à gauche choisir 
+« Arrêter ou se déconnecter ».**
 
 
 Installer Python sur la machine virtuelle
@@ -53,7 +60,7 @@ Ce n'est pas une étape obligatoire mais cela pourra vous aider
 
 Cela prend environ 20 minutes. Ce setup inclut également `R <https://www.r-project.org/>`_.
 Pour les notebooks, je vous recommande également d'installer `Firefox <https://www.mozilla.org/fr/firefox/new/>`_.
-Une fois l'installer terminer, il suffit d'aller dans le répetoire ``c:\PythonENSAE`` et
+Une fois l'installation terminée, il suffit d'aller dans le répetoire ``c:\PythonENSAE`` et
 de cliquer sur l'icône *Notebook*.
 
 .. image:: hack_2015_python2.png
@@ -72,11 +79,11 @@ On se place dans le répertoire ``c:\PythonENSAE\python\Scripts``, puis on écri
     
     
 
-Mettre ses mots de passes dans les variables d'environnement
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Mettre ses mots de passe dans les variables d'environnement
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Il est risqué de laisser un mot de passe dans un code Python ou un notebook.
-Pour cela on le met dans une variable d'environnement afin qu'il n'apparaissent jamais
+Pour cela on le met dans une variable d'environnement afin qu'ils n'apparaissent jamais
 de façon explicite. Pour ce hackathon, il faut deux variables d'environnement :
 
 * ``CRCREDENTIALS`` : pour accéder aux données de la Croix-Rouge, il doit contenir la chaîne
@@ -93,10 +100,10 @@ Puis :
 
 .. image:: hack_2015_env2.png
 
-Il faut penser à faire cette opération en premier afin ces modifications soient prises en compte 
+Il faut penser à faire cette opération en premier afin que ces modifications soient prises en compte 
 par les applications comme Python.
 
-Je vous conseille également d'effacer ces mots de passes à la fin du hackathon.
+Je vous conseille également d'effacer ces mots de passe à la fin du hackathon.
 
 
 
@@ -105,6 +112,7 @@ Téléchargement des données
 
 Il suffit de télécharger le notebook suivant : 
 `Download data from Azure <http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/notebooks/download_data_azure.html>`_
+(en cliquant sur le lien notebook de la première ligne)
 puis de suivre les instructions pour télécharger les fichiers.
 
 Petite astuce, pour voir les extensions de fichiers, il faut :
@@ -123,7 +131,7 @@ On ouvre SQL Studio :
 
 .. image:: hack_2015_sql1.png
 
-On se connecte :
+On se connecte en choisissant l'option *Windows Authentification** :
 
 .. image:: hack_2015_sql2.png
 

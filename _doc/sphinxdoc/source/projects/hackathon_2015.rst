@@ -62,7 +62,7 @@ environment variable ``PWDCROIXROUGE`` with with password.
 
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     ../notebooks/upload_donnees
     ../notebooks/database_schemas
@@ -73,7 +73,7 @@ Cheat Sheets
 ^^^^^^^^^^^^
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     ../notebooks/chsh_graphs
     ../notebooks/chsh_files
