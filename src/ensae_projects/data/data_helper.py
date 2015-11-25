@@ -2,21 +2,54 @@
 @file
 @brief Exception raised when data is not available
 """
+import datetime
 from pyquickhelper import noLOG
 from .data_exception import FileFormatException
 
 
-def change_encoding(infile, outfile, enc1, enc2="utf-8", process=None, fLOG=noLOG):
+def convert_dates(sd, option=None, exc=False):
     """
-    change the encoding of a text file
+    Convert dates
+    
+    @param      sd          string
+    @param      option      see below
+    @param      exc         raise an exception
+    @return                 string
+    
+    * ``'F'``: dates must contain ``/`` and format is ``DD/MM/YY``    
+    """
+    if option == "F":
+        if "/" in sd:
+            try:
+                v2 = datetime.datetime.strptime(sd, "%d/%m/%y")
+                return v2.strftime("%Y-%m-%d")
+            except:
+                pass
+    return sd
+
+
+def change_encoding(infile, 
+                    outfile, 
+                    enc1, 
+                    enc2="utf-8", 
+                    process=None, 
+                    fLOG=noLOG):
+    """
+    change the encoding of a text file and does others stuff
 
     @param      infile      input file
     @param      outfile     output file
     @param      enc1        encoding of the input file
     @param      enc2        encoding of the output file
-    @param      process     function which processes a line
+    @param      process     function which processes a line, see below
     @param      fLOG        logging function
     @return                 number of processed lines
+    
+    function ``process`` ::
+    
+        def process(line_number, line):
+            # ...
+            return line
     """
     if process is None:
         def process_line(s):
@@ -25,9 +58,9 @@ def change_encoding(infile, outfile, enc1, enc2="utf-8", process=None, fLOG=noLO
     with open(infile, "r", encoding=enc1) as f:
         with open(outfile, "w", encoding=enc2) as g:
             for i, line in enumerate(f):
-                if (i + 1) % 1000000 == 0:
-                    fLOG(infile, "-", i, "lines")
-                g.write(process(line))
+                if (i + 1) % 10000 == 0:
+                    fLOG(infile, "-", i+1, "lines")
+                g.write(process(i, line))
             return i
 
 
@@ -37,6 +70,7 @@ def enumerate_text_lines(filename, sep="\t",
                          header=True,
                          clean_column_name=None,
                          convert_float=False,
+                         clean_dates=None,
                          skip=0,
                          take=-1,
                          fLOG=noLOG):
@@ -50,10 +84,15 @@ def enumerate_text_lines(filename, sep="\t",
     @param          encoding            encoding
     @param          clean_column_name   function to clean column name
     @param          convert_float       convert number into float wherever possible
+    @param          clean_dates         several option to clean dates, see below
     @param          skip                number of rows to skip
     @param          take                number of rows to consider (-1 for all)
     @param          fLOG                logging function
     @return                             iterator on dictionary
+    
+    Cleaning dates:
+    
+    * ``'F'``: dates must contain ``/`` and format is ``DD/MM/YY``
     """
     def get_schema(row, header, clean_column_name):
         if header:
@@ -78,6 +117,21 @@ def enumerate_text_lines(filename, sep="\t",
             if s and len(s) > 1 and s[0] == s[-1] == '"':
                 return s[1:-1]
         return s
+        
+    def clean_dates(fields, option):
+        if option:
+            if option == "F":
+                update = {}
+                for k, v in fields.items():
+                    if "/" in v:
+                        try:
+                            v2 = datetime.datetime.strptime(v, "%d/%m/%y")
+                            update[k] = v2.strftime("%Y-%m-%d")
+                        except:
+                            continue
+                if update:
+                    fields.update(update)
+        return fields
 
     with open(filename, "r", encoding=encoding) as f:
         d = 0
@@ -102,6 +156,7 @@ def enumerate_text_lines(filename, sep="\t",
                         len(schema), len(spl), i + 1))
             val = {k: convert(clean_quotes(v, quotes_as_str), convert_float)
                    for k, v in zip(schema, spl)}
+            val = clean_dates(val)
             yield val
             nb += 1
             if nb % 100000 == 0:
