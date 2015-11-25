@@ -67,6 +67,7 @@ environment variable ``PWDCROIXROUGE`` with with password.
     ../notebooks/upload_donnees
     ../notebooks/database_schemas
     ../notebooks/download_data_azure
+    ../notebooks/process_clean_files
     
     
 Cheat Sheets
@@ -77,4 +78,5 @@ Cheat Sheets
 
     ../notebooks/chsh_graphs
     ../notebooks/chsh_files
+    ../notebooks/chsh_dates
 

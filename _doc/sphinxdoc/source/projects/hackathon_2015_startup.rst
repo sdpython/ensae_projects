@@ -140,9 +140,26 @@ Et on obtient un serveur vide :
 .. image:: hack_2015_sql3.png
 
 
+Nettoyage des données
++++++++++++++++++++++
+
+Il est toujours préférable de nettoyer les données avant de les importer
+dans la base de données car elles viennent parfois avec des formats différents, 
+des guillemets...
+
+Par exemple, il est préférable de stocker une date au format ``AAAA-MM-JJ`` plutôt
+que ``JJ-MM-AAAA`` car cela permet de trier facilement les données par ordre chronologique.
+
+* :func:`convert_dates <ensae_projects.data.convert_dates>`
+* :func:`change_encoding <ensae_projects.data.change_encoding>`
+* :ref:`processcleanfilesrst`
+
+
 Import des données dans le serveur SQL
 ++++++++++++++++++++++++++++++++++++++
 
+Les exemples qui suivent n'utilisent pas les données nettoyées
+mais ils le devraient.
 On ouvre l'outil dédié à cette tâche :
 
 .. image:: hack_2015_sql4.png

@@ -73,6 +73,7 @@ class TestNotebookHackathon(unittest.TestCase):
             _ for _ in keepnote if "upload" not in _
             and "schemas" not in _
             and "download" not in _
+            and "process_clean" not in _
             and "times_series" not in _]
         if len(keepnote) > 0:
             res = execute_notebooks(temp, keepnote,

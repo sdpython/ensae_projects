@@ -9,4 +9,5 @@ Cheat sheets
 
     ../notebooks/chsh_graphs
     ../notebooks/chsh_files
+    ../notebooks/chsh_dates
 
