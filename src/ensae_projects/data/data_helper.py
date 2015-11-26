@@ -52,7 +52,7 @@ def change_encoding(infile,
             return line
     """
     if process is None:
-        def process_line(s):
+        def process_line(i, s):
             return s
         process = process_line
     with open(infile, "r", encoding=enc1) as f:
