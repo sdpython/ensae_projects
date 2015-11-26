@@ -8,10 +8,11 @@ Hackathon Microsoft / ENSAE / Croix-Rouge / DataForGood - 2015
 .. contents::
     :local:
 
+Hackathon
++++++++++
 
-
-Data and challenges
-^^^^^^^^^^^^^^^^^^^
+Données et challenge
+^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     :maxdepth: 2
@@ -21,14 +22,17 @@ Data and challenges
     
 
     
-Others data
-^^^^^^^^^^^
+Autres données
+^^^^^^^^^^^^^^
 
 .. toctree::
     :maxdepth: 2
 
     hackathon_2015_croix_rouge_other_data
 
+
+Documentation
++++++++++++++
 
 .. _l-cr-pwd:
 
@@ -79,4 +83,9 @@ Cheat Sheets
     ../notebooks/chsh_graphs
     ../notebooks/chsh_files
     ../notebooks/chsh_dates
+    
+Un peu plus sur Azure
+^^^^^^^^^^^^^^^^^^^^^
+
+`La bible du hackatonien sur Azure <https://github.com/benjguin/UnlockLuxury/tree/master/doc>`_
 

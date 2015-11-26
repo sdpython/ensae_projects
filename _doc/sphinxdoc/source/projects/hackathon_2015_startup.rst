@@ -187,3 +187,49 @@ Et ça tourne :
 
 Pendant quelques dizaines de minutes selon la taille des données.
 
+Exécuter une requête
+++++++++++++++++++++
+
+Le langage utilisé est le langage `SQL <https://fr.wikipedia.org/wiki/Structured_Query_Language>`_.
+Les méthodes de `pandas <http://pandas.pydata.org/>`_ 
+telles que `groupby <http://pandas.pydata.org/pandas-docs/stable/groupby.html>`_, 
+`join <http://pandas.pydata.org/pandas-docs/stable/merging.html>`_ 
+sont inspirées de ce langage. Un exemple ::
+
+    SELECT t.[CREDAT], t.[FCY], COUNT(*) AS nb_beneficiaire FROM (
+        SELECT DISTINCT [CREDAT], [FCY], [BPR]
+        FROM [master].[dbo].[SINVOICE_clean]
+    ) AS t
+    GROUP BY t.[CREDAT], t.[FCY]
+    ORDER BY t.[FCY], t.[CREDAT]
+    
+Cette requête retourne le nombre de bénéficiaires par jour et par centre.
+
+
+Executer la même requête depuis Python
+++++++++++++++++++++++++++++++++++++++
+
+On peut faire la même requête depuis un notebook à l'aide du
+code suivant qui se découpe en deux parties. Celle qu'on exécute qu'une seule fois ::
+
+    import pyodbc
+    import pandas
+    server = 'localhost'
+    db = 'master'
+
+    # Create the connection
+    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=' + server + ';DATABASE=' + db + ';Trusted_Connection=yes')
+
+Celle qu'on exécute pour chaque requête ::
+
+    sql = """
+        SELECT t.[CREDAT], t.[FCY], COUNT(*) AS nb_beneficiaire FROM (
+            SELECT DISTINCT [CREDAT], [FCY], [BPR]
+            FROM [master].[dbo].[SINVOICE_clean]
+        ) AS t
+        GROUP BY t.[CREDAT], t.[FCY]
+        ORDER BY t.[FCY], t.[CREDAT]
+    """
+    df = pandas.io.sql.read_sql(sql, conn)
+    df.head()
+

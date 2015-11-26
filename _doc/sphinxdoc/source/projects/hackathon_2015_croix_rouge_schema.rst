@@ -25,6 +25,9 @@ sont cryptées et nécessitent un mot de passe pour y accéder.
 * encoding: ``latin-1``
 * string: entourées de guillemets ``"``
 
+Le paragraphe :ref:`l-sec-com-sch` décrit l'information contenue 
+dans la plupart des colonnes de ces tables.
+
 
 ITMMASTER
 ^^^^^^^^^
@@ -42,15 +45,22 @@ Cette table décrit les produits distribués par la Croix-Rouge.
     df = get_meaning("ITMMASTER")
     print(df2rsthtml(df.head(n=2), format='rst'))
 
+**Remarque**
+
+Cette table a été mal exportée : le nombre de colonne n'est pas fixe
+à cause d'une colonne dont le contenu contient parfois des tabulations.
 
 
 SINVOICE
 ^^^^^^^^
 
-Cette table décrit les bénéficiaires de la Croix-Rouge (nmbre de lignes ~1.4M).
-Utiliser ``SINVOICE_.txt`` pour avoir un fichier plat avec un séparateur de ligne ``\n`` et non ``;``.
+Cette table décrit les bénéficiaires de la Croix-Rouge et ce qu'il reçoivent (nombre de lignes ~1.4M).
+C'est la table utilisée pour comptabiliser le nombre de bénéficiaires par centre et par jour 
+(champ ``CREDAT``, ``FCY``, ``BPR``).
+Utiliser ``SINVOICE_.txt`` pour avoir un fichier plat avec un séparateur de ligne ``\n`` et non ``;``,
+et ``SINVOICE_.clean.txt`` pour un fichier plat sans guillemets.
 
-*Description of people who receive from the Red Cross. *
+*Description of people who receive from the Red Cross.*
 
 .. runpython::
     :showcode:
@@ -60,15 +70,13 @@ Utiliser ``SINVOICE_.txt`` pour avoir un fichier plat avec un séparateur de lig
     df = get_meaning("SINVOICE")
     print(df2rsthtml(df.head(n=2), format='rst'))
 
-Variables importantes :
 
-* **BPR**: identifiant des bénéficiaires
-
-
-INVOICE_V
+SINVOICEV
 ^^^^^^^^^
 
-Cette table décrit les bénévoles.
+Cette table est plus axée sur sur les bénévoles.
+Utiliser ``SINVOICEV_.txt`` pour avoir un fichier plat avec un séparateur de ligne ``\n`` et non ``;``,
+et ``SINVOICEV_.clean.txt`` pour un fichier plat sans guillemets.
 
 *This table describes the volunteers.*
 
@@ -79,15 +87,14 @@ Cette table décrit les bénévoles.
     from ensae_projects.data.croix_rouge import get_meaning, df2rsthtml
     df = get_meaning("SINVOICE_V")
     print(df2rsthtml(df.head(n=2), format='rst'))
-    
-Variables importantes :
+
 
 
 
 stojou
 ^^^^^^
 
-Cette table décrit les dons et les réceptions de produits.
+Cette table décrit de façon très détaillée les dons et les réceptions de produits.
 
 *This table describes donations and receptions of products.*
 
@@ -100,11 +107,12 @@ Cette table décrit les dons et les réceptions de produits.
     print(df2rsthtml(df.head(n=2), format='rst'))
 
 
-Variables importantes :
+Remarques :
 
 * QTYSTU : quantités (négative pour un don, positive pour une réception)
 
-    
+
+.. _l-sec-com-sch:
 
 Colonnes communes à toutes les tables
 +++++++++++++++++++++++++++++++++++++
