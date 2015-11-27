@@ -83,6 +83,7 @@ Cheat Sheets
     ../notebooks/chsh_graphs
     ../notebooks/chsh_files
     ../notebooks/chsh_dates
+    ../notebooks/chsh_pip_install
     
 Un peu plus sur Azure
 ^^^^^^^^^^^^^^^^^^^^^
