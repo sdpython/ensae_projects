@@ -56,7 +56,7 @@ SINVOICE
 
 Cette table décrit les bénéficiaires de la Croix-Rouge et ce qu'il reçoivent (nombre de lignes ~1.4M).
 C'est la table utilisée pour comptabiliser le nombre de bénéficiaires par centre et par jour 
-(champ ``CREDAT``, ``FCY``, ``BPR``).
+(champ ``CREDAT``, ``FCY``, ``BPR``). C'est la table des distributions.
 Utiliser ``SINVOICE_.txt`` pour avoir un fichier plat avec un séparateur de ligne ``\n`` et non ``;``,
 et ``SINVOICE_.clean.txt`` pour un fichier plat sans guillemets.
 
@@ -69,6 +69,8 @@ et ``SINVOICE_.clean.txt`` pour un fichier plat sans guillemets.
     from ensae_projects.data.croix_rouge import get_meaning, df2rsthtml
     df = get_meaning("SINVOICE")
     print(df2rsthtml(df.head(n=2), format='rst'))
+    
+C'est cette table qui est utilisée pour les séries temporelles du premier défi.
 
 
 SINVOICEV

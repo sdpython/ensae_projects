@@ -87,5 +87,6 @@ Cheat Sheets
 Un peu plus sur Azure
 ^^^^^^^^^^^^^^^^^^^^^
 
-`La bible du hackatonien sur Azure <https://github.com/benjguin/UnlockLuxury/tree/master/doc>`_
+* `La bible du hackatonien sur Azure <https://github.com/benjguin/UnlockLuxury/tree/master/doc>`_
+* `Provision the Microsoft Data Science Virtual Machine <https://azure.microsoft.com/en-us/documentation/articles/machine-learning-data-science-provision-vm/>`_
 

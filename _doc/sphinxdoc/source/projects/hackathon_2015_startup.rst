@@ -23,6 +23,9 @@ L'ensemble prend environ 20 minutes.
 que vous enregistrez à cette étape, ils vous seront demandé 
 lors de votre connexion à la machine virtuelle.**
 
+**Il est préférable de choisir une machine virtuelle avec plus de 10 Go de mémoire
+pour ce hackathon.**
+
 .. image:: hack_2015_startup1.png
 
 .. image:: hack_2015_startup2.png
