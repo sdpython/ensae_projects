@@ -9,6 +9,26 @@ Données de la Croix-Rouge
     :local:
 
 
+Format des fichiers texte
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* séparateur de colonnes : tab ``\t``
+* séparateur de lignes : ``;`` ou ``\n`` (en particulier les fichiers se terminant par ``_.txt``)
+* encoding: ``latin-1``
+* string: entourées de guillemets ``"``
+* les fichiers incluant le suffix 2015 contiennent les mêmes données plus l'année 2015 jusqu'au 24 novembre.
+
+Les fichiers initiaux utilise ``;`` comme séparateur et celui-ci est parfois présent dans les adresses::
+
+    RESIDENCE LE PARC";";1 RUE DU DOC; LAISNEY";" ";"14110";
+    
+Ce cas n'a pas été bien traité dans les données nettoyées qui vous sont proposées (répertoire ``clean``).
+
+Le paragraphe :ref:`l-sec-com-sch` décrit l'information contenue 
+dans la plupart des colonnes de ces tables.
+
+
+
 Tables disponibles
 ++++++++++++++++++
 
@@ -17,17 +37,6 @@ donne seulement un moyen d'y accéder. Les données incluses dans ce module
 sont cryptées et nécessitent un mot de passe pour y accéder.
 (voir :ref:`l-cr-pwd`).
 
-
-**Format**
-
-* séparateur de colonnes : tab ``\t``
-* séparateur de lignes : ``;`` ou ``\n`` (en particulier les fichiers se terminant par ``_.txt``)
-* encoding: ``latin-1``
-* string: entourées de guillemets ``"``
-* les fichiers incluant le suffix 2015 contiennent les mêmes données plus l'année 2015 jusqu'au 24 novembre.
-
-Le paragraphe :ref:`l-sec-com-sch` décrit l'information contenue 
-dans la plupart des colonnes de ces tables.
 
 
 ITMMASTER
