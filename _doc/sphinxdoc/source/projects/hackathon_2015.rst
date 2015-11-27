@@ -92,3 +92,11 @@ Un peu plus sur Azure
 * `Provision the Microsoft Data Science Virtual Machine <https://azure.microsoft.com/en-us/documentation/articles/machine-learning-data-science-provision-vm/>`_
 * `SQL DataWarehouse, Azure Machine Learning, Jupyter, Power BI <http://blog.3-4.fr/2015/11/27a/sqldw-azureml-jupyter-powerbi.html>`_
 
+
+Fusion des données de la La Croix Rouge avec d'autres
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+* `geocoder <https://pypi.python.org/pypi/geocoder>`_
+* `dataforgoodfr/croixrouge <https://github.com/dataforgoodfr/croixrouge/tree/master/data>`_
+* `Description des tables INSEE <https://github.com/dataforgoodfr/croixrouge/wiki/Description-des-tables-INSEE>`_        		
+* Geocoding using Bing Maps : `python-omgeo <https://pypi.python.org/pypi/python-omgeo>`_ (fonction uniquement en Python 2.7)
