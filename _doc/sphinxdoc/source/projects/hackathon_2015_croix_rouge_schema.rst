@@ -73,13 +73,16 @@ et ``SINVOICE_.clean.txt`` pour un fichier plat sans guillemets.
     
 C'est cette table qui est utilisée pour les séries temporelles du premier défi ::
 
-    SELECT tt.FCY, tt.CREDAT, SUM(tt.nb_distribution) AS nb_beneficiaire_jour FROM (
-        SELECT CREDAT, FCY, BPR, COUNT(*) AS nb_distribution
-        FROM [croixrouge].[dbo].[SINVOICE_.clean.2015]
+    SELECT tt.FCY, tt.CREDAT, SUM(tt.nb_foyer) AS nb_foyer_jour FROM (
+        SELECT CREDAT, FCY, BPR, COUNT(*) AS nb_foyer
+        FROM [SINVOICE_.clean.2015]
         GROUP BY CREDAT, FCY, BPR
     ) AS tt
     GROUP BY tt.FCY, tt.CREDAT
     ORDER BY tt.FCY, tt.CREDAT
+
+Les identifiants ``BPR`` sont uniques excepté pour les personnes anonymes qui reçoivent
+le même identifiant. Le nombre de personnes par foyer est environ de 2.5.
 
 
 SINVOICEV
