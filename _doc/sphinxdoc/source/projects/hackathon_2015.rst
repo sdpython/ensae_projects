@@ -90,4 +90,5 @@ Un peu plus sur Azure
 
 * `La bible du hackatonien sur Azure <https://github.com/benjguin/UnlockLuxury/tree/master/doc>`_
 * `Provision the Microsoft Data Science Virtual Machine <https://azure.microsoft.com/en-us/documentation/articles/machine-learning-data-science-provision-vm/>`_
+* `SQL DataWarehouse, Azure Machine Learning, Jupyter, Power BI <http://blog.3-4.fr/2015/11/27a/sqldw-azureml-jupyter-powerbi.html>`_
 
