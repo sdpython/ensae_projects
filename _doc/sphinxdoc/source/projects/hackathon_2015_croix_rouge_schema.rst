@@ -24,6 +24,7 @@ sont cryptées et nécessitent un mot de passe pour y accéder.
 * séparateur de lignes : ``;`` ou ``\n`` (en particulier les fichiers se terminant par ``_.txt``)
 * encoding: ``latin-1``
 * string: entourées de guillemets ``"``
+* les fichiers incluant le suffix 2015 contiennent les mêmes données plus l'année 2015 jusqu'au 24 novembre.
 
 Le paragraphe :ref:`l-sec-com-sch` décrit l'information contenue 
 dans la plupart des colonnes de ces tables.
@@ -70,7 +71,15 @@ et ``SINVOICE_.clean.txt`` pour un fichier plat sans guillemets.
     df = get_meaning("SINVOICE")
     print(df2rsthtml(df.head(n=2), format='rst'))
     
-C'est cette table qui est utilisée pour les séries temporelles du premier défi.
+C'est cette table qui est utilisée pour les séries temporelles du premier défi ::
+
+    SELECT tt.FCY, tt.CREDAT, SUM(tt.nb_distribution) AS nb_beneficiaire_jour FROM (
+        SELECT CREDAT, FCY, BPR, COUNT(*) AS nb_distribution
+        FROM [croixrouge].[dbo].[SINVOICE_.clean.2015]
+        GROUP BY CREDAT, FCY, BPR
+    ) AS tt
+    GROUP BY tt.FCY, tt.CREDAT
+    ORDER BY tt.FCY, tt.CREDAT
 
 
 SINVOICEV
