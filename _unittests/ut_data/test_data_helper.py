@@ -85,7 +85,7 @@ class TestNotebookHackathon(unittest.TestCase):
         filename = os.path.join(os.path.abspath(
             os.path.dirname(__file__)), "data", "wrong_columns.txt")
         temp = get_temp_folder(__file__, "temp_clean_file")
-
+            
         reg = re.compile(';"(.*?)"')
 
         def clean_column_name(i, line, hist):
@@ -95,11 +95,10 @@ class TestNotebookHackathon(unittest.TestCase):
                 spl = [_.replace(";", ",") for _ in reg.findall(";" + line)]
             s = ";".join(spl)
             return s.replace("_0", ""), len(spl)
-
+            
         out = os.path.join(temp, "clean.txt")
-        change_encoding_improve(filename, out, "ascii",
-                                "ascii", clean_column_name)
-
+        change_encoding_improve(filename, out, "ascii", "ascii", clean_column_name)
+        
         df = pandas.read_csv(out, sep=";")
         fLOG(df.shape)
         fLOG(df)
