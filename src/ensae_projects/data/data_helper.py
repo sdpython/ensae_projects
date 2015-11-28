@@ -64,6 +64,45 @@ def change_encoding(infile,
             return i
 
 
+def change_encoding_improve(infile,
+                            outfile,
+                            enc1,
+                            enc2="utf-8",
+                            process=None,
+                            fLOG=noLOG):
+    """
+    change the encoding of a text file and does others stuff
+
+    @param      infile      input file
+    @param      outfile     output file
+    @param      enc1        encoding of the input file
+    @param      enc2        encoding of the output file
+    @param      process     function which processes a line, see below
+    @param      fLOG        logging function
+    @return                 number of processed lines
+
+    function ``process`` ::
+
+        def process(line_number, line, histo_nb_columns):
+            # ...
+            return line, number_of_columns
+    """
+    if process is None:
+        def process_line(i, s, hist):
+            return s, 0
+        process = process_line
+    hist = {}
+    with open(infile, "r", encoding=enc1) as f:
+        with open(outfile, "w", encoding=enc2) as g:
+            for i, line in enumerate(f):
+                if (i + 1) % 10000 == 0:
+                    fLOG(infile, "-", i + 1, "lines")
+                line, nb_col = process(i, line, hist)
+                hist[nb_col] = hist.get(nb_col, 0) + 1
+                g.write(line)
+            return i
+
+
 def enumerate_text_lines(filename, sep="\t",
                          encoding="utf-8",
                          quotes_as_str=False,
