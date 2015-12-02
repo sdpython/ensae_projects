@@ -28,6 +28,44 @@ def convert_dates(sd, option=None, exc=False):
     return sd
 
 
+def clean_column_name_sql_dump(i, line, hist, sep=";"):
+    """
+    process a line which looks like::
+
+        0; "a"; 'j"'; "r;"
+
+    @param      i       line number
+    @param      line    line to process
+    @param      hist    distribution of the number of columns
+    @param      sep     line separator
+    @return             text line, number of columns
+    """
+    vals = []
+    beg = -1
+    ending = ""
+    for i, c in enumerate(line):
+        if beg == -1:
+            beg = i
+            if c in ('"', "'"):
+                next = c
+            else:
+                next = sep
+        elif c == next:
+            if c == sep:
+                vals.append(line[beg:i].strip())
+                beg = -1
+            else:
+                next = sep
+        elif c == "\n":
+            ending = c
+    if beg != -1:
+        vals.append(line[beg:].strip())
+    if ending:
+        return sep.join(vals) + ending, len(vals)
+    else:
+        return sep.join(vals), len(vals)
+
+
 def change_encoding(infile,
                     outfile,
                     enc1,
@@ -50,6 +88,8 @@ def change_encoding(infile,
         def process(line_number, line):
             # ...
             return line
+
+    See @see fn clean_column_name_sql_dump for an example.
     """
     if process is None:
         def process_line(i, s):
@@ -153,7 +193,7 @@ def enumerate_text_lines(filename, sep="\t",
 
     def clean_quotes(s, quotes_as_str):
         if quotes_as_str:
-            if s and len(s) > 1 and s[0] == s[-1] == '"':
+            if s and len(s) > 1 and s[0] == s[-1] and s[0] in ('"', "'"):
                 return s[1:-1]
         return s
 
@@ -188,7 +228,7 @@ def enumerate_text_lines(filename, sep="\t",
                 continue
             if len(spl) != len(schema):
                 if len(spl) == 1:
-                    # probably the last file
+                    # probably the last line
                     continue
                 else:
                     raise FileFormatException("different number of columns: schema {0} != {1} for line {2}".format(
