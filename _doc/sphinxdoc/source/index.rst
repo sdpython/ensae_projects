@@ -22,6 +22,7 @@ Contenu
 
     projects/hackathon_2015
     cheat_sheets
+    mlexamples
 
 Installation
 ------------
