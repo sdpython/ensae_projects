@@ -90,7 +90,6 @@ class TestNotebookHackathon(unittest.TestCase):
 
         def clean_column_name(i, line, hist):
             a, b = clean_column_name_sql_dump(i, line, hist)
-            print([a, line])
             return a.replace("_0", ""), b
 
         out = os.path.join(temp, "clean.txt")
