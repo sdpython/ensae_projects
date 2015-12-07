@@ -8,5 +8,5 @@ Quick samples on machine learning
     :maxdepth: 2
 
     ../notebooks/PCA
-
+    ../notebooks/online_news_popylarity
 
