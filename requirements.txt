@@ -90,5 +90,3 @@ pygal
 vincent
 pycrypto
 cryptography
-scipy
-scikit-learn
