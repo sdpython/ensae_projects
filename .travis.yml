@@ -5,9 +5,9 @@ python:
 addons:
   apt:
     packages:
-      - libatlas3gf-base
-      - libatlas-dev
-      - python-scipy    
+    - libblas-dev
+    - liblapack-dev
+    - gfortran 
 install: 
     - pip install -r requirements.txt
     - pip freeze
