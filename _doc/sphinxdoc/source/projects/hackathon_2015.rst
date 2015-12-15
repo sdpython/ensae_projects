@@ -25,10 +25,11 @@ Données et challenge
 Autres données
 ^^^^^^^^^^^^^^
 
-.. toctree::
-    :maxdepth: 2
 
-    hackathon_2015_croix_rouge_other_data
+* `dataforgoodfr/croixrouge <https://github.com/dataforgoodfr/croixrouge/tree/master/data>`_
+* `Description des tables INSEE <https://github.com/dataforgoodfr/croixrouge/wiki/Description-des-tables-INSEE>`_        		
+* Geocoding using Bing Maps : `python-omgeo <https://pypi.python.org/pypi/python-omgeo>`_
+* Geocoding using Google Maps : `google-maps-services-python <https://github.com/googlemaps/google-maps-services-python>`_ 
 
 
 Documentation
