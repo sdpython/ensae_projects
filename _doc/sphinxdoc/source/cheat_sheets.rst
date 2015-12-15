@@ -11,4 +11,4 @@ Cheat sheets
     ../notebooks/chsh_files
     ../notebooks/chsh_dates
     ../notebooks/chsh_pip_install
-
+    ../notebooks/chsh_chsh_pandas
