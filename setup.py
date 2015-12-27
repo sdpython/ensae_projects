@@ -150,6 +150,8 @@ if "--verbose" in sys.argv:
 
 if is_local():
     pyquickhelper = import_pyquickhelper()
+    logging_function = pyquickhelper.fLOG
+    logging_function(OutputPrint=True)
     r = pyquickhelper.process_standard_options_for_setup(
         sys.argv, __file__, project_var_name,
         unittest_modules=["pyquickhelper"],
@@ -158,7 +160,7 @@ if is_local():
                                   "pyensae", "pyrsslocal", "pymyinstall"],
         additional_local_path=["pyquickhelper",
                                "pyensae", "pyrsslocal", "pymyinstall"],
-        copy_add_ext=["enc"])
+        copy_add_ext=["enc"], fLOG=logging_function)
     if not r and not ({"bdist_msi", "sdist",
                        "bdist_wheel", "publish", "publish_doc", "register",
                        "upload_docs", "bdist_wininst"} & set(sys.argv)):
