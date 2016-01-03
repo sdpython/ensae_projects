@@ -23,6 +23,10 @@ README / Changes
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
     :alt: MIT License
     :target: http://opensource.org/licenses/MIT    
+    
+.. image:: https://codecov.io/github/sdpython/ensae_projects/coverage.svg?branch=master
+    :target: https://codecov.io/github/sdpython/ensae_projects?branch=master
+        
    
 **Links:**
     * `pypi/ensae_projects <https://pypi.python.org/pypi/ensae_projects/>`_
