@@ -9,6 +9,10 @@ README / Changes
     :target: https://travis-ci.org/sdpython/ensae_projects
     :alt: Build status
 
+.. image:: https://ci.appveyor.com/api/projects/status/66db8wa3a566u6b7?svg=true
+    :target: https://ci.appveyor.com/project/sdpython/ensae_projects
+    :alt: Build Status Windows    
+
 .. image:: https://badge.fury.io/py/ensae_projects.svg
     :target: http://badge.fury.io/py/ensae_projects
       
