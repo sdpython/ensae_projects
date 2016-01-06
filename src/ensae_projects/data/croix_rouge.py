@@ -22,7 +22,7 @@ def get_password_from_env(pwd):
         if "PWDCROIXROUGE" not in os.environ:
             raise PasswordException(
                 "password not found in environment variables: PWDCROIXROUGE is not set")
-        return os.environ["PWDCROIXROUGE"]
+        return bytes(os.environ["PWDCROIXROUGE"], encoding="ascii")
     else:
         return pwd
 
