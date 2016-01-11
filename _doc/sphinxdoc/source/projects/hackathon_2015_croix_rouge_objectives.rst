@@ -14,7 +14,7 @@ Défi performance
 ++++++++++++++++
 
 Les centres de la Croix-Rouge ouvrent en semaine presque tous les jours. 
-Afin de prévoir au mieux la distribution de ses besoins en terme de dons, 
+Afin de prévoir au mieux la distribution de ses besoins en termes de dons, 
 la Croix-Rouge souhaiterait prévoir le nombre de bénéficiaires selon le scénario suivant :
 
 * Le 7 septembre 2014 est un dimanche, un centre de la Croix-Rouge décide de ses jours 
