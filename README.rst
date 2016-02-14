@@ -33,12 +33,10 @@ README / Changes
         
    
 **Links:**
-    * `pypi/ensae_projects <https://pypi.python.org/pypi/ensae_projects/>`_
-    * `GitHub/ensae_projects <https://github.com/sdpython/ensae_projects/>`_
-    * `documentation <http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/index.html>`_
-    * `Windows Setup <http://www.xavierdupre.fr/site2013/index_code.html#ensae_projects>`_
-    * `Travis <https://travis-ci.org/sdpython/ensae_projects>`_
-    * `Blog <http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/blog/main_0000.html#ap-main-0>`_
+
+* `GitHub/ensae_projects <https://github.com/sdpython/ensae_projects/>`_
+* `documentation <http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/index.html>`_
+* `Blog <http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/blog/main_0000.html#ap-main-0>`_
 
 
 Description        
@@ -71,5 +69,5 @@ Started in 2015/11.
 Versions
 --------
 
-* **0.1 - 2015/??/??**
+* **0.1 - 2016/??/??**
     * **new:** first version
