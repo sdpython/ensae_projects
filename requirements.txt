@@ -83,7 +83,6 @@ pyquickhelper
 pymyinstall
 colormap
 easydev
-qgrid
 bokeh
 mpld3
 pygal
