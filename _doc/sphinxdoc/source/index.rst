@@ -8,7 +8,7 @@ ENSAE Projects
 `github <https://github.com/sdpython/ensae_projects/>`_,
 `documentation <http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/index.html>`_,
 `wheel <http://www.xavierdupre.fr/site2013/index_code.html#ensae_projects>`_,
-`travis <https://travis-ci.org/sdpython/ensae_projects>`_,
+`travis <https://travis-ci.org/sdpython/ensae-projects>`_,
 :ref:`l-README`,
 :ref:`blog <ap-main-0>`
 
