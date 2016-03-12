@@ -38,6 +38,7 @@ install:
   - "%PYTHON%\\Scripts\\pip install pyensae"
   - "%PYTHON%\\Scripts\\pip install pyrsslocal"
   - "%PYTHON%\\Scripts\\pymy_install3 xgboost"
+  - "%PYTHON%\\Scripts\\pymy_install3 PyYAML"
 
 build: off
 

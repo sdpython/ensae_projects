@@ -89,3 +89,4 @@ pygal
 vincent
 pycrypto
 cryptography
+pyyaml
