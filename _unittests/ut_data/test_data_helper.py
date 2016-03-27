@@ -6,7 +6,6 @@
 import sys
 import os
 import unittest
-import re
 import pandas
 
 try:
@@ -23,7 +22,7 @@ except ImportError:
     import src
 
 try:
-    import pyquickhelper
+    import pyquickhelper as skip_
 except ImportError:
     path = os.path.normpath(
         os.path.abspath(
@@ -36,25 +35,10 @@ except ImportError:
                 "src")))
     if path not in sys.path:
         sys.path.append(path)
-    import pyquickhelper
+    import pyquickhelper as skip_
 
-try:
-    import pyensae
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..",
-                "..",
-                "pyensae",
-                "src")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import pyensae
-
-from pyquickhelper import fLOG, get_temp_folder
+from pyquickhelper.loghelper import fLOG
+from pyquickhelper.pycode import get_temp_folder
 from src.ensae_projects.data import enumerate_text_lines, change_encoding_improve, clean_column_name_sql_dump
 
 
@@ -85,8 +69,6 @@ class TestNotebookHackathon(unittest.TestCase):
         filename = os.path.join(os.path.abspath(
             os.path.dirname(__file__)), "data", "wrong_columns.txt")
         temp = get_temp_folder(__file__, "temp_clean_file")
-
-        reg = re.compile(';"(.*?)"')
 
         def clean_column_name(i, line, hist):
             a, b = clean_column_name_sql_dump(i, line, hist)

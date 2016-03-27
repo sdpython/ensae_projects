@@ -6,7 +6,7 @@
 import sys
 import os
 import unittest
-import re
+
 
 try:
     import src
@@ -22,7 +22,7 @@ except ImportError:
     import src
 
 try:
-    import pyquickhelper
+    import pyquickhelper as skip_
 except ImportError:
     path = os.path.normpath(
         os.path.abspath(
@@ -35,25 +35,11 @@ except ImportError:
                 "src")))
     if path not in sys.path:
         sys.path.append(path)
-    import pyquickhelper
+    import pyquickhelper as skip_
 
-try:
-    import pyensae
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..",
-                "..",
-                "pyensae",
-                "src")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import pyensae
 
-from pyquickhelper import fLOG, get_temp_folder
+from pyquickhelper.loghelper import fLOG
+from pyquickhelper.pycode import get_temp_folder
 from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
 from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook, unittest_raise_exception_notebook
 
@@ -70,11 +56,11 @@ class TestNotebookHackathon(unittest.TestCase):
         keepnote = ls_notebooks("hackathon_2015")
         assert len(keepnote) > 0
         keepnote = [
-            _ for _ in keepnote if "upload" not in _
-            and "schemas" not in _
-            and "download" not in _
-            and "process_clean" not in _
-            and "times_series" not in _]
+            _ for _ in keepnote if "upload" not in _ and
+            "schemas" not in _ and
+            "download" not in _ and
+            "process_clean" not in _ and
+            "times_series" not in _]
         if len(keepnote) > 0:
             res = execute_notebooks(temp, keepnote,
                                     lambda i, n: "deviner" not in n,

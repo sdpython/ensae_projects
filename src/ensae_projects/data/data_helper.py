@@ -3,7 +3,7 @@
 @brief Simple functions to process text files.
 """
 import datetime
-from pyquickhelper import noLOG
+from pyquickhelper.loghelper import noLOG
 from .data_exception import FileFormatException
 
 
