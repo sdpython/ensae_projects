@@ -4,7 +4,7 @@ set pythonexe="%1"
 goto custom_python:
 
 :default_value_python:
-set pythonexe="C:\PythonENSAE11\python\python"
+set pythonexe="C:\Python35_x64\python"
 :custom_python:
 %pythonexe% -u setup.py build_script
 if %errorlevel% neq 0 exit /b %errorlevel%
