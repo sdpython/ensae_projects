@@ -24,7 +24,7 @@ from pyquickhelper.helpgen.default_conf import set_sphinx_variables
 set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2016,
                      "sphinx_py3doc_enhanced_theme", None,
                      locals(), add_extensions=None,
-                     extlinks=dict(issue=('https://github.com/sdpython/ensae_projects/issues/%d', 'issue')))
+                     extlinks=dict(issue=('https://github.com/sdpython/ensae_projects/issues/%s', 'issue')))
 
 html_theme = 'sphinx_py3doc_enhanced_theme'
 html_theme_path = [sphinx_py3doc_enhanced_theme.get_html_theme_path()]
