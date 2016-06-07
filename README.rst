@@ -2,8 +2,8 @@
 
 .. _l-README:
 
-README / Changes
-================
+README
+======
 
 .. image:: https://travis-ci.org/sdpython/ensae_projects.svg?branch=master
     :target: https://travis-ci.org/sdpython/ensae_projects
@@ -64,10 +64,3 @@ Contributions
 -------------
 
 Started in 2015/11.
-
-
-Versions
---------
-
-* **0.1 - 2016/??/??**
-    * **new:** first version
