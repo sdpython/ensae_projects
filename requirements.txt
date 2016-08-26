@@ -80,7 +80,6 @@ dbfread
 goslate
 python-linkedin
 pyquickhelper
-pymyinstall
 colormap
 easydev
 bokeh
