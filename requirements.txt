@@ -29,6 +29,7 @@ jsonschema
 jupyter
 jupyter_client
 jupyter_core
+jyquickhelper
 lxml
 matplotlib
 mechanize
