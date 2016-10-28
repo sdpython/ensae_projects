@@ -282,3 +282,6 @@ _doc/notebooks/mlexamples/Bike-Sharing*
 _doc/notebooks/mlexamples/day.csv
 _doc/notebooks/mlexamples/hour.csv
 _doc/notebooks/mlexamples/Readme.txt
+_doc/notebooks/mlexamples/Readme.txt
+_doc/notebooks/challenges/city_tour/Street_Network_Database/*
+.ipynb_checkpoints
