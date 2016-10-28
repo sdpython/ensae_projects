@@ -15,56 +15,52 @@ ENSAE Projects
 
 
 
-Contenu
--------
+Events
+------
 
 .. toctree::
     :maxdepth: 1
 
     projects/hackathon_2015
-    cheat_sheets
-    mlexamples
 
-Installation
+Challenges
+----------
+
+
+    
+Cheat sheets
 ------------
 
-Linux, Mac, Windows
-^^^^^^^^^^^^^^^^^^^
-
-Installation de Python avec la distribution `Anaconda <https://www.continuum.io/downloads>`_.
-Puis ::
-
-    pip install pymyinstall
-    pymy_install3 --set=pyensae
-    pip install pyensae
-    pip install ensae_projects
-    
-Windows
-^^^^^^^
-
-Installation de Python avec le setup `ENSAE, Python Setup <http://www.xavierdupre.fr/enseignement/>`_.
-Puis ::
-    
-    pip install ensae_projects
-
-
-    
-
-Table des matières
-------------------
 
 .. toctree::
     :maxdepth: 1
 
-    blog/main_0000
+    cheat_sheets
+    mlexamples
     all_notebooks
-    all_example
-    README
+    
+FAQ
+---
+
+.. toctree::
+    :maxdepth: 1
+
+    i_faq
     glossary
-    azFAQ
+    blog/main_0000
+    README
     license
     filechanges
     
+
+Installation
+------------
+
+pip ::
+
+    pip install ensae_projects
+    
+        
 
 +----------------------+---------------------+---------------------+--------------------+------------------------+------------------------------------------------+
 | :ref:`l-modules`     |  :ref:`l-functions` | :ref:`l-classes`    | :ref:`l-methods`   | :ref:`l-staticmethods` | :ref:`l-properties`                            |

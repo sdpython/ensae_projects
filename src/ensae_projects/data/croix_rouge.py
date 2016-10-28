@@ -13,24 +13,33 @@ from .data_exception import ProjectDataException, PasswordException
 
 def get_password_from_env(pwd):
     """
-    get the password from the environment variables
+    Get the password from `keyring <https://pypi.python.org/pypi/keyring>`_ first,
+    then from the environment variables.
 
     @param      pwd     password to use or None to get it as ``os.environ["PWDCROIXROUGE"]``
+                        or from `keyring <https://pypi.python.org/pypi/keyring>`_.
     @return             password
+
+    To set the password for `keyring <https://pypi.python.org/pypi/keyring>`_:
+
+    ::
+
+        keyring.set_password("HACKATHON2015", "PWDCROIXROUGE", "value")
     """
+    import keyring
+    pwd = keyring.get_password("HACKATHON2015", "PWDCROIXROUGE")
     if pwd is None:
         if "PWDCROIXROUGE" not in os.environ:
             raise PasswordException(
                 "password not found in environment variables: PWDCROIXROUGE is not set")
         return bytes(os.environ["PWDCROIXROUGE"], encoding="ascii")
     else:
-        return pwd
+        return bytes(pwd, encoding="ascii")
 
 
 def encrypt_file(infile, outfile, password=None):
     """
-    encrypt a file with a specific password, this password can be stored in
-    environment v ariablePWD
+    Encrypt a file with a specific password.
 
     @param      password        password for the hackathon, if None, look into
                                 ``os.environ["PWDCROIXROUGE"]``
@@ -42,25 +51,27 @@ def encrypt_file(infile, outfile, password=None):
     return encrypt_stream(password, infile, outfile)
 
 
-def decrypt_dataframe(infile, password=None, sep="\t"):
+def decrypt_dataframe(infile, password=None, sep="\t", encoding="utf8", **kwargs):
     """
-    read an encrypted dataframe
+    Read an encrypted dataframe.
 
     @param      infile      filename
     @param      password    password
     @param      sep         separator
+    @param      encoding    encoding
+    @param      kwargs      others options for `read_csv <>`_
     @return                 dataframe
     """
     password = get_password_from_env(password)
     data = decrypt_stream(password, infile)
     st = io.BytesIO(data)
-    df = pandas.read_csv(st, sep=sep, encoding="utf8")
+    df = pandas.read_csv(st, sep=sep, encoding="utf8", **kwargs)
     return df
 
 
 def get_meaning(table="invoice", password=None):
     """
-    retrieve data related to the meaning of a table
+    Retrieve data related to the meaning of a table.
 
     @param      table           SINVOICE or SINVOICE_V, ITTMASTER or stojou
     @param      password        password, see @see fn get_password_from_env
@@ -95,7 +106,7 @@ def get_meaning(table="invoice", password=None):
 
 def merge_schema(tables=None, password=None):
     """
-    merges schemas of various databases
+    Merges schemas of various databases.
 
     @param      tables      list of tables or None for all
     @param      password    password
@@ -144,7 +155,7 @@ def merge_schema(tables=None, password=None):
 
 def df2rsthtml(df, format="html", fillna=""):
     """
-    writes a table into RST or HTML format
+    Writes a table into RST or HTML format.
 
     @param      df          dataframe
     @param      format      format

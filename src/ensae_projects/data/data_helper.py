@@ -9,7 +9,7 @@ from .data_exception import FileFormatException
 
 def convert_dates(sd, option=None, exc=False):
     """
-    Convert dates
+    Convert a string into a date.
 
     @param      sd          string
     @param      option      see below
@@ -30,7 +30,9 @@ def convert_dates(sd, option=None, exc=False):
 
 def clean_column_name_sql_dump(i, line, hist, sep=";"):
     """
-    process a line which looks like::
+    Remove quotes in a line which looks like:
+
+    ::
 
         0; "a"; 'j"'; "r;"
 
@@ -73,7 +75,8 @@ def change_encoding(infile,
                     process=None,
                     fLOG=noLOG):
     """
-    change the encoding of a text file and does others stuff
+    Change the encoding of a text file and removes quotes.
+    By default *process* is @see fn process_line.
 
     @param      infile      input file
     @param      outfile     output file
@@ -111,7 +114,10 @@ def change_encoding_improve(infile,
                             process=None,
                             fLOG=noLOG):
     """
-    change the encoding of a text file and does others stuff
+    Change the encoding of a text file, removes quotes.
+    By default *process* is @see fn process_line
+    but the function has access to the distribution of the number of columns
+    in the previous lines.
 
     @param      infile      input file
     @param      outfile     output file
@@ -143,19 +149,11 @@ def change_encoding_improve(infile,
             return i
 
 
-def enumerate_text_lines(filename, sep="\t",
-                         encoding="utf-8",
-                         quotes_as_str=False,
-                         header=True,
-                         clean_column_name=None,
-                         convert_float=False,
-                         option=None,
-                         skip=0,
-                         take=-1,
+def enumerate_text_lines(filename, sep="\t", encoding="utf-8", quotes_as_str=False, header=True,
+                         clean_column_name=None, convert_float=False, option=None, skip=0, take=-1,
                          fLOG=noLOG):
     """
-    enumerate all lines from a text file,
-    considers it as column
+    Enumerate all lines from a text file and does some cleaning (see the list of parameters).
 
     @param          filename            filename
     @param          sep                 column separator

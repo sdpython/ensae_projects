@@ -16,7 +16,7 @@ readme = 'README.rst'
 requirements = None
 
 KEYWORDS = project_var_name + ', ENSAE, hackathon'
-DESCRIPTION = """Helpers for teaching purposes, projects..."""
+DESCRIPTION = """Helpers for projects, teachings, events."""
 CLASSIFIERS = [
     'Programming Language :: Python :: %d' % sys.version_info[0],
     'Intended Audience :: Developers',
@@ -175,10 +175,11 @@ if is_local():
     r = process_standard_options_for_setup(
         sys.argv, __file__, project_var_name,
         unittest_modules=["pyquickhelper"],
-        requirements=["pyquickhelper", "pyensae", "pyrsslocal", "pymyinstall"],
-        additional_notebook_path=["pyquickhelper",
+        requirements=["pyquickhelper", "jyquickhelper",
+                      "pyensae", "pyrsslocal", "pymyinstall"],
+        additional_notebook_path=["pyquickhelper", "jyquickhelper",
                                   "pyensae", "pyrsslocal", "pymyinstall"],
-        additional_local_path=["pyquickhelper",
+        additional_local_path=["pyquickhelper", "jyquickhelper",
                                "pyensae", "pyrsslocal", "pymyinstall"],
         copy_add_ext=["enc"], fLOG=logging_function,
         covtoken=("ad448134-a962-480b-85c6-a899999575d5", "'_UT_35_std' in outfile"))
