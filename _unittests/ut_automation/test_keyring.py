@@ -37,6 +37,7 @@ except ImportError:
     import pyquickhelper as skip_
 
 from pyquickhelper.loghelper import fLOG
+from pyquickhelper.pycode import is_travis_or_appveyor
 from src.ensae_projects.automation import get_password, set_password
 
 

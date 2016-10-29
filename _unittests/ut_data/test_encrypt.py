@@ -50,6 +50,8 @@ class TestNotebookHackathonEncrypt(unittest.TestCase):
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
 
+        if "PWDCROIXROUGE" not in os.environ:
+            os.environ["PWDCROIXROUGE"] = "dummypwd" * 2
         pwd = (b"example" * 3)[:16]
         temp = get_temp_folder(__file__, "temp_encrypt")
         infile = os.path.join(temp, "..", "data", "ITMMASTER.schema.txt")
