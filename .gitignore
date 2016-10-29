@@ -286,3 +286,7 @@ _doc/notebooks/mlexamples/Readme.txt
 _doc/notebooks/challenges/city_tour/Street_Network_Database/*
 .ipynb_checkpoints
 _doc/sphinxdoc/source/phdoc_static/require.js
+_doc/notebooks/challenges/city_tour/WGS84_seattle_street.zip
+_doc/notebooks/challenges/city_tour/Street_Network_Database.shx
+_doc/notebooks/challenges/city_tour/Street_Network_Database.dbf
+_doc/notebooks/challenges/city_tour/Street_Network_Database.shp
