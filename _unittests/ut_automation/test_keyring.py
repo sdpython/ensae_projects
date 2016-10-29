@@ -48,6 +48,9 @@ class TestKeyring(unittest.TestCase):
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
 
+        if is_travis_or_appveyor() == "travis":
+            # it does not end on travis.
+            return
         set_password("k1", "k2", "kk")
         v = get_password("k1", "k2")
         self.assertEqual(v, "kk")
