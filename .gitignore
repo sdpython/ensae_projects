@@ -285,3 +285,4 @@ _doc/notebooks/mlexamples/Readme.txt
 _doc/notebooks/mlexamples/Readme.txt
 _doc/notebooks/challenges/city_tour/Street_Network_Database/*
 .ipynb_checkpoints
+_doc/sphinxdoc/source/phdoc_static/require.js
