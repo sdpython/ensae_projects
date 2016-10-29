@@ -33,6 +33,7 @@ jupyter_client
 jupyter_core
 jyquickhelper
 keyring
+keyring.alt
 lxml
 Markdown
 MarkupSafe
