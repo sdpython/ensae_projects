@@ -69,6 +69,7 @@ pyzmq
 qtconsole
 requests
 requests-oauthlib
+shapely
 simplegeneric
 simplejson
 six
