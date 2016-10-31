@@ -4,6 +4,7 @@ antlr4-python3-runtime
 argparse
 autopep8
 azure
+basemap
 bokeh
 brewer2mpl
 cloud-sptheme
