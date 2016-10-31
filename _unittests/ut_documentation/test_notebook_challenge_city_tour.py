@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 """
-@brief      test log(time=60s)
+@brief      test log(time=160s)
 """
 
 import sys
@@ -37,6 +37,37 @@ except ImportError:
         sys.path.append(path)
     import pyquickhelper as skip_
 
+try:
+    import jyquickhelper as skip___
+except ImportError:
+    path = os.path.normpath(
+        os.path.abspath(
+            os.path.join(
+                os.path.split(__file__)[0],
+                "..",
+                "..",
+                "..",
+                "jyquickhelper",
+                "src")))
+    if path not in sys.path:
+        sys.path.append(path)
+    import jyquickhelper as skip___
+
+try:
+    import pyensae as skip__
+except ImportError:
+    path = os.path.normpath(
+        os.path.abspath(
+            os.path.join(
+                os.path.split(__file__)[0],
+                "..",
+                "..",
+                "..",
+                "pyensae",
+                "src")))
+    if path not in sys.path:
+        sys.path.append(path)
+    import pyensae as skip__
 
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder
@@ -44,26 +75,21 @@ from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
 from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook, unittest_raise_exception_notebook
 
 
-class TestNotebookHackathon(unittest.TestCase):
+class TestNotebookChallengeCityTour(unittest.TestCase):
 
-    def test_notebook_hackathon(self):
+    def test_notebook_challenge_city_tour(self):
         fLOG(
             __file__,
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
         fix_tkinter_issues_virtualenv()
-        temp = get_temp_folder(__file__, "temp_hackathon_2015")
-        keepnote = ls_notebooks("hackathon_2015")
+        temp = get_temp_folder(__file__, "temp_challenge_city_tour")
+        keepnote = ls_notebooks(os.path.join("challenges", "city_tour"))
         assert len(keepnote) > 0
-        keepnote = [
-            _ for _ in keepnote if "upload" not in _ and
-            "schemas" not in _ and
-            "download" not in _ and
-            "process_clean" not in _ and
-            "times_series" not in _]
+        keepnote = [_ for _ in keepnote]
         if len(keepnote) > 0:
             res = execute_notebooks(temp, keepnote,
-                                    lambda i, n: "deviner" not in n,
+                                    lambda i, n: True,
                                     fLOG=fLOG,
                                     clean_function=clean_function_notebook)
             unittest_raise_exception_notebook(res, fLOG)

@@ -50,8 +50,10 @@ def get_additional_paths():
     @return             list of paths
     """
     import pyquickhelper
+    import jyquickhelper
     addpath = [os.path.dirname(pyquickhelper.__file__),
                os.path.dirname(pyensae.__file__),
+               os.path.dirname(jyquickhelper.__file__),
                os.path.join(os.path.abspath(os.path.dirname(__file__)), ".."),
                ]
     addpath = [os.path.normpath(os.path.join(_, "..")) for _ in addpath]
@@ -140,7 +142,7 @@ def execute_notebooks(folder, notebooks, filter,
         return True
 
     kernel_name = None if "travis" in sys.executable else install_python_kernel_for_unittest(
-        "actuariat_python")
+        "ensae_projects")
     addpath = get_additional_paths()
     results = {}
     for i, note in enumerate(notebooks):

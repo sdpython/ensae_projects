@@ -26,7 +26,10 @@ Events
 Challenges
 ----------
 
+.. toctree::
+    :maxdepth: 2
 
+    i_challenges
     
 Cheat sheets
 ------------
