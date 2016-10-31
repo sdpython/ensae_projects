@@ -59,6 +59,7 @@ Pygments
 pyparsing
 pyquickhelper
 pyreadline
+pyshp
 python-dateutil
 python-jenkins
 python-linkedin
