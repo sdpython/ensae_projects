@@ -37,6 +37,7 @@ package_dir = {k: "src/" + k.replace(".", "/") for k in packages}
 package_data = {
     project_var_name: ["*.xml"],
     project_var_name + ".data.hackathon_2015_croix_rouge": ["*.enc"],
+    project_var_name + ".data.seattle_streets": ["*.xlsx"],
     project_var_name + ".automation": ["*.r", "*.ico"]}
 
 ############

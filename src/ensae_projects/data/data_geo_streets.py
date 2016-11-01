@@ -8,6 +8,18 @@ from pyensae.datasource import download_data
 from pyensae.notebook_helper import folium_html_map
 
 
+def get_fields_description():
+    """
+    Retreives a dataframe which describes the meaning of the metadata.
+
+    @return         dataframe
+    """
+    from .seattle_streets import __file__ as local_dir
+    this = os.path.join(os.path.dirname(local_dir), "street_seattle.desc.xlsx")
+    import pandas
+    return pandas.read_excel(this)
+
+
 def get_seattle_streets(filename=None, folder="."):
     """
     Retrieve processed data from
@@ -87,20 +99,35 @@ def shapely_records(filename):
     return shapes, records, rshp.fields
 
 
-def folium_html_street_map(subset, shapes, html_width=None, html_height=None, **kwargs):
+def folium_html_street_map(subset, shapes, html_width=None, html_height=None, color_vertices=None, **kwargs):
     """
     Returns a folium map which represents the streets.
 
-    @param      subset      list of streets index
-    @param      shapes      list of shapes
-    @param      kwargs      extra parameters for `Map <https://github.com/python-visualization/folium/blob/master/folium/folium.py#L19>`_
-    @param      html_width  sent to function
-                            `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html#pyensae.notebook_helper.folium_helper.folium_html_map>`_
-    @param      html_height sent to function
-                            `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html#pyensae.notebook_helper.folium_helper.folium_html_map>`_
-    @return                 see function
-                            `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html#pyensae.notebook_helper.folium_helper.folium_html_map>`_
+    @param      subset          list of streets index
+    @param      shapes          list of shapes
+    @param      kwargs          extra parameters for `Map <https://github.com/python-visualization/folium/blob/master/folium/folium.py#L19>`_
+    @param      html_width      sent to function
+                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html#pyensae.notebook_helper.folium_helper.folium_html_map>`_
+    @param      html_height     sent to function
+                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html#pyensae.notebook_helper.folium_helper.folium_html_map>`_
+    @param      color_vertices  see below
+    @return                     see function
+                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html#pyensae.notebook_helper.folium_helper.folium_html_map>`_
+
+    if *color_vertices* is equal to `'odd'`, the function computes the degree
+    of each vertex and choose a different color for odd (yellow)
+    and even degrees (black).
     """
+    if color_vertices == "odd":
+        count = {}
+        for edge in subset:
+            shape = shapes[edge]
+            a = (shape.points[0][0], shape.points[0][1])
+            b = (shape.points[-1][0], shape.points[-1][1])
+            count[a] = count.get(a, 0) + 1
+            count[b] = count.get(b, 0) + 1
+        color_vertices = {k: ('yellow' if v % 2 == 1 else 'black')
+                          for k, v in count.items()}
     import folium
     map_osm = None
     for i, index in enumerate(subset):
@@ -113,10 +140,20 @@ def folium_html_street_map(subset, shapes, html_width=None, html_height=None, **
                 map_osm = folium.Map(kwargs["location"], **kwargs)
         map_osm.add_child(folium.PolyLine(
             locations=shape.points, latlon=False, weight=10))
-        map_osm.add_child(folium.CircleMarker(
-            [shape.points[0][1], shape.points[0][0]], popup=str((i, index)), radius=1))
-        map_osm.add_child(folium.CircleMarker(
-            [shape.points[-1][1], shape.points[-1][0]], popup=str((i, index)), radius=3))
+        if color_vertices:
+            a = (shape.points[0][0], shape.points[0][1])
+            b = (shape.points[-1][0], shape.points[-1][1])
+            c1 = color_vertices[a]
+            c2 = color_vertices[b]
+            map_osm.add_child(folium.CircleMarker(
+                [shape.points[0][1], shape.points[0][0]], popup=str((i, index)), radius=3, fill_color=c1))
+            map_osm.add_child(folium.CircleMarker(
+                [shape.points[-1][1], shape.points[-1][0]], popup=str((i, index)), radius=3, fill_color=c2))
+        else:
+            map_osm.add_child(folium.CircleMarker(
+                [shape.points[0][1], shape.points[0][0]], popup=str((i, index)), radius=3))
+            map_osm.add_child(folium.CircleMarker(
+                [shape.points[-1][1], shape.points[-1][0]], popup=str((i, index)), radius=3))
     return folium_html_map(map_osm, width=html_width, height=html_height)
 
 
@@ -304,21 +341,53 @@ def _enumerate_close(lon, lat, shapes, th=None):
             yield d, i
 
 
-def seattle_streets_set_small(shapes, size=20):
+def seattle_streets_set_level(shapes, records,
+                              pos=(-122.3521425, 47.6219965),
+                              size=120):
+    """
+    Returns a graph of streets.
+
+    @param      shapes      list of streets
+    @param      records     description of each street
+    @param      center      center of the graphs
+    @param      size        number of elements
+    @return                 indices of edges, edges, vertices, distances
+
+    SEGMENT_TY
+    """
+    from shapely.geometry import LineString
+    lon, lat = pos
+    x, y = shapes[0].points[0]
+    closes = list(_enumerate_close(lon, lat, shapes))
+    closes.sort()
+    subset = [index for dist, index in closes[:size]]
+    newset = list(set(subset + _complete_subset_streets(subset, shapes)))
+    # we remove trains lines
+    newset = [n for n in newset if records[n][8] <= 7]
+    vertices, edges = build_streets_vertices(newset, shapes)
+    distances = [LineString(shapes[i].points).length for i in newset]
+    return newset, edges, vertices, distances
+
+
+def seattle_streets_set_small(shapes, records, size=20):
     """
     Returns a small graph of streets.
 
     @param      shapes      list of streets
+    @param      records     description of each street
     @param      size        number of elements
     @return                 indices of edges, edges, vertices, distances
     """
-    from shapely.geometry import LineString
-    lon, lat = -122.34651954599997, 47.46947199700003
-    x, y = shapes[0].points[0]
-    closes = list(_enumerate_close(lon, lat, shapes))
-    closes.sort()
-    subset = [index for dist, index in closes[:20]]
-    newset = list(set(subset + _complete_subset_streets(subset, shapes)))
-    vertices, edges = build_streets_vertices(newset, shapes)
-    distances = [LineString(shapes[i].points).length for i in newset]
-    return newset, edges, vertices, distances
+    return seattle_streets_set_level(shapes, records, pos=(-122.34651954599997, 47.46947199700003), size=size)
+
+
+def seattle_streets_set_level2(shapes, records, size=120):
+    """
+    Returns a small graph of streets.
+
+    @param      shapes      list of streets
+    @param      records     description of each street
+    @param      size        number of elements
+    @return                 indices of edges, edges, vertices, distances
+    """
+    return seattle_streets_set_level(shapes, records, pos=(-122.3521425, 47.6219965), size=size)

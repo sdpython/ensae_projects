@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 """
-@brief      test log(time=15s)
+@brief      test log(time=50s)
 """
 
 import sys
@@ -58,20 +58,22 @@ except ImportError:
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder
 from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
-from src.ensae_projects.data.data_geo_streets import get_seattle_streets, shapely_records, folium_html_street_map
-from src.ensae_projects.data.data_geo_streets import build_streets_vertices, plot_streets_network, seattle_streets_set_small
+from src.ensae_projects.data.data_geo_streets import get_seattle_streets, shapely_records, folium_html_street_map, get_fields_description
+from src.ensae_projects.data.data_geo_streets import build_streets_vertices, plot_streets_network
+from src.ensae_projects.data.data_geo_streets import seattle_streets_set_level2, seattle_streets_set_small
 
 
 class TestStreetsSeattle(unittest.TestCase):
 
-    def setUp(self):
-        fLOG("loading the shapes")
+    @classmethod
+    def setUpClass(cls):
+        fLOG("download and load the shapes")
         temp = get_temp_folder(__file__, "temp_seattle_shapes_records")
         name = get_seattle_streets(folder=temp)
         shapes, records, fields = shapely_records(name)
-        self.shapes = shapes
-        self.records = records
-        self.fields = fields
+        cls._shapes = shapes
+        cls._records = records
+        cls._fields = fields
 
     def test_seattle_shapes_records(self):
         fLOG(
@@ -79,29 +81,13 @@ class TestStreetsSeattle(unittest.TestCase):
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
 
-        shapes = self.shapes
-        records = self.records
-        fields = self.fields
+        shapes = self._shapes
+        records = self._records
+        fields = self._fields
         assert shapes
         assert records
         d = {k[0]: v for k, v in zip(fields[1:], records[0])}
         assert len(d) > 0
-
-    def test_seattle_streets_set_small(self):
-        fLOG(
-            __file__,
-            self._testMethodName,
-            OutputPrint=__name__ == "__main__")
-
-        shapes = self.shapes
-        edges_index, edges, vertices, distances = seattle_streets_set_small(
-            shapes)
-        assert vertices
-        assert edges
-        assert edges_index
-        assert distances
-        self.assertEqual(len(edges_index), len(edges))
-        self.assertEqual(len(edges_index), len(distances))
 
     def test_folium_html_street_map(self):
         fLOG(
@@ -109,9 +95,20 @@ class TestStreetsSeattle(unittest.TestCase):
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
 
-        shapes = self.shapes
+        shapes = self._shapes
         subset = list(range(0, 10))
         map_osm = folium_html_street_map(subset, shapes)
+        assert map_osm
+
+    def test_folium_html_street_map_odd(self):
+        fLOG(
+            __file__,
+            self._testMethodName,
+            OutputPrint=__name__ == "__main__")
+
+        shapes = self._shapes
+        subset = list(range(0, 10))
+        map_osm = folium_html_street_map(subset, shapes, color_vertices="odd")
         assert map_osm
 
     def test_build_streets_vertices(self):
@@ -120,7 +117,7 @@ class TestStreetsSeattle(unittest.TestCase):
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
 
-        shapes = self.shapes
+        shapes = self._shapes
         subset = list(range(0, 10))
         vertices, edges = build_streets_vertices(subset, shapes)
         fLOG(vertices)
@@ -136,7 +133,7 @@ class TestStreetsSeattle(unittest.TestCase):
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
 
-        shapes = self.shapes
+        shapes = self._shapes
         fix_tkinter_issues_virtualenv()
         import matplotlib.pyplot as plt
         fig, ax = plt.subplots()
@@ -155,7 +152,7 @@ class TestStreetsSeattle(unittest.TestCase):
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
 
-        shapes = self.shapes
+        shapes = self._shapes
         fix_tkinter_issues_virtualenv()
         import matplotlib.pyplot as plt
         fig, ax = plt.subplots()
@@ -168,6 +165,48 @@ class TestStreetsSeattle(unittest.TestCase):
         fig.savefig(img)
         plt.close('all')
         assert os.path.exists(img)
+
+    def test_seattle_description(self):
+        fLOG(
+            __file__,
+            self._testMethodName,
+            OutputPrint=__name__ == "__main__")
+
+        df = get_fields_description()
+        assert df.shape[0] > 0
+        assert df.shape[1] > 0
+
+    def test_seattle_streets_set_small(self):
+        fLOG(
+            __file__,
+            self._testMethodName,
+            OutputPrint=__name__ == "__main__")
+
+        edges_index, edges, vertices, distances = seattle_streets_set_small(
+            self._shapes, self._records)
+        assert vertices
+        assert edges
+        assert edges_index
+        assert distances
+        self.assertEqual(len(edges_index), len(edges))
+        self.assertEqual(len(edges_index), len(distances))
+
+    def test_seattle_streets_set_level2(self):
+        fLOG(
+            __file__,
+            self._testMethodName,
+            OutputPrint=__name__ == "__main__")
+
+        shapes = self._shapes
+        records = self._records
+        edges_index, edges, vertices, distances = seattle_streets_set_level2(
+            shapes, records)
+        assert vertices
+        assert edges
+        assert edges_index
+        assert distances
+        self.assertEqual(len(edges_index), len(edges))
+        self.assertEqual(len(edges_index), len(distances))
 
 
 if __name__ == "__main__":
