@@ -33,3 +33,7 @@ html_theme_path = [alabaster.get_path()]
 
 blog_root = "http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/"
 blog_background = False
+
+html_context = {
+    'css_files': ['_static/my-styles.css'],
+}
