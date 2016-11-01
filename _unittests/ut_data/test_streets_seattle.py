@@ -149,6 +149,26 @@ class TestStreetsSeattle(unittest.TestCase):
         plt.close('all')
         assert os.path.exists(img)
 
+    def test_plot_streets_network_odd(self):
+        fLOG(
+            __file__,
+            self._testMethodName,
+            OutputPrint=__name__ == "__main__")
+
+        shapes = self.shapes
+        fix_tkinter_issues_virtualenv()
+        import matplotlib.pyplot as plt
+        fig, ax = plt.subplots()
+        subset = list(range(0, 10))
+        vertices, edges = build_streets_vertices(subset, shapes)
+        plot_streets_network(subset, edges, vertices,
+                             shapes, ax=ax, color_vertices='odd')
+        temp = get_temp_folder(__file__, "temp_plot_streets_network")
+        img = os.path.join(temp, "out_img.png")
+        fig.savefig(img)
+        plt.close('all')
+        assert os.path.exists(img)
+
 
 if __name__ == "__main__":
     unittest.main()

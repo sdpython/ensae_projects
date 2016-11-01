@@ -6,6 +6,7 @@
 import sys
 import os
 import unittest
+import warnings
 
 try:
     import src
@@ -49,8 +50,8 @@ class TestKeyring(unittest.TestCase):
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
 
-        if is_travis_or_appveyor() == "travis":
-            # it does not end on travis.
+        if is_travis_or_appveyor():
+            warnings.warn("keyring on tested on travis and appveyor")
             return
         set_password("k1", "k2", "kk")
         v = get_password("k1", "k2")

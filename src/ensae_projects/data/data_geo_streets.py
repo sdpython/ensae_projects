@@ -148,7 +148,8 @@ def build_streets_vertices(edges, shapes):
     return vertices, new_edges
 
 
-def plot_streets_network(edges_index, edges, vertices, shapes, order=None, ax=None, **kwargs):
+def plot_streets_network(edges_index, edges, vertices, shapes, order=None,
+                         color_vertices=None, ax=None, **kwargs):
     """
     Plot the network based on `basemap <http://matplotlib.org/basemap/>`_.
 
@@ -156,8 +157,10 @@ def plot_streets_network(edges_index, edges, vertices, shapes, order=None, ax=No
     @param      edges           list of tuple(v1, v2) in array of vertices
     @param      vertices        list of vertices coordinates
     @param      shapes          streets
-    @param      ax              axis or None
     @param      order           list of edges composing a path (eulerian path)
+    @param      color_vertices  dictionary ``{ vertex_index: color }``,
+                                changes the color associated to each vertex (black by default)
+    @param      ax              axis or None
     @param      kwargs          parameter used to create the plot is ax is None
     @return                     ax
 
@@ -165,6 +168,10 @@ def plot_streets_network(edges_index, edges, vertices, shapes, order=None, ax=No
     *color_v*, *color_e*, *size_v*, *size_e*, *size_c*.
 
     If *order* is not None, the function replaces the edge index by its position in this array.
+
+    if *color_vertices* is equal to `'odd'`, the function computes the degree
+    of each vertex and choose a different color for odd (yellow)
+    and even degrees (black).
     """
     from mpl_toolkits.basemap import Basemap
     import numpy
@@ -206,9 +213,17 @@ def plot_streets_network(edges_index, edges, vertices, shapes, order=None, ax=No
                 pos = [str(_) for _ in pos]
                 ax.text(gx, gy, ",".join(pos),
                         color=kwargs.get('color_e', "blue"))
+    if color_vertices == "odd":
+        count = {}
+        for a, b in edges:
+            count[a] = count.get(a, 0) + 1
+            count[b] = count.get(b, 0) + 1
+        color_vertices = {k: ('yellow' if v % 2 == 1 else 'black')
+                          for k, v in count.items()}
     for n, (a, b) in enumerate(vertices):
         gx, gy = m(a, b)
-        c = plt.Circle((gx, gy), kwargs.get('size_c', 5), color='black')
+        color = color_vertices.get(n, 'black') if color_vertices else 'black'
+        c = plt.Circle((gx, gy), kwargs.get('size_c', 5), color=color)
         ax.add_artist(c)
         ax.text(gx, gy, "v%d" % n, size=kwargs.get('size_v', 12),
                 color=kwargs.get('color_v', "red"))
