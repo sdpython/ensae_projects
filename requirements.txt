@@ -9,3 +9,4 @@ pyensae
 pyquickhelper
 pyshp
 xgboost
+xlrd
