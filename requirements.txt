@@ -1,7 +1,10 @@
+azure
+cryptography
 folium
 jyquickhelper
 keyring
 keyrings.alt
+pycryptodomex
 pyensae
 pyquickhelper
 pyshp
