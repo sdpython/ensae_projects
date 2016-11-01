@@ -4,3 +4,4 @@ keyring
 keyrings.alt
 pyensae
 pyquickhelper
+pyshp

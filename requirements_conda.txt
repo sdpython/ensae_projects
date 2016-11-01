@@ -14,7 +14,6 @@ networkx
 numpy
 openpyxl
 pandas
-pyshp
 pyzmq
 requests
 scikit-learn
