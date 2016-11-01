@@ -391,3 +391,15 @@ def seattle_streets_set_level2(shapes, records, size=120):
     @return                 indices of edges, edges, vertices, distances
     """
     return seattle_streets_set_level(shapes, records, pos=(-122.3521425, 47.6219965), size=size)
+
+
+def seattle_streets_set_level3(shapes, records, size=1200):
+    """
+    Returns a small graph of streets.
+
+    @param      shapes      list of streets
+    @param      records     description of each street
+    @param      size        number of elements
+    @return                 indices of edges, edges, vertices, distances
+    """
+    return seattle_streets_set_level(shapes, records, pos=(-122.400931, 47.648435), size=size)
