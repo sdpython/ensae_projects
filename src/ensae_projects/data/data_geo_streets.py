@@ -10,7 +10,7 @@ from pyensae.notebook_helper import folium_html_map
 
 def get_fields_description():
     """
-    Retreives a dataframe which describes the meaning of the metadata.
+    Retrieves a dataframe which describes the meaning of the metadata.
 
     @return         dataframe
     """
@@ -353,7 +353,7 @@ def seattle_streets_set_level(shapes, records,
     @param      size        number of elements
     @return                 indices of edges, edges, vertices, distances
 
-    SEGMENT_TY
+    The function uses the fields ``SEGMENT_TY`` to filter out train, rail ways.
     """
     from shapely.geometry import LineString
     lon, lat = pos

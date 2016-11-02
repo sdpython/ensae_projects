@@ -12,3 +12,4 @@ Cheat sheets
     ../notebooks/chsh_dates
     ../notebooks/chsh_pip_install
     ../notebooks/chsh_pandas
+    ../notebooks/chsh_geo
