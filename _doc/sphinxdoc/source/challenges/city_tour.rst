@@ -7,7 +7,7 @@ City Tour
 Problem definition
 ++++++++++++++++++
 
-The first notebooks described the problem with a small example.
+The first notebooks describes the problem with a small example.
 The second notebook introduces two bigger ones.
 
 
@@ -22,7 +22,7 @@ The second notebook introduces two bigger ones.
 Data preparation
 ++++++++++++++++
 
-The following notebook described how the data was obtained
+The following notebook describes how the data was obtained
 and preprocessed to build the examples introduced above.
 
 
