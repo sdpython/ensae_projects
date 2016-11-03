@@ -6,6 +6,7 @@
 import sys
 import os
 import unittest
+import shutil
 
 
 try:
@@ -37,6 +38,39 @@ except ImportError:
         sys.path.append(path)
     import pyquickhelper as skip_
 
+try:
+    import jyquickhelper as skip___
+except ImportError:
+    path = os.path.normpath(
+        os.path.abspath(
+            os.path.join(
+                os.path.split(__file__)[0],
+                "..",
+                "..",
+                "..",
+                "jyquickhelper",
+                "src")))
+    if path not in sys.path:
+        sys.path.append(path)
+    import jyquickhelper as skip___
+
+try:
+    import pyensae as skip__
+except ImportError:
+    path = os.path.normpath(
+        os.path.abspath(
+            os.path.join(
+                os.path.split(__file__)[0],
+                "..",
+                "..",
+                "..",
+                "pyensae",
+                "src")))
+    if path not in sys.path:
+        sys.path.append(path)
+    import pyensae as skip__
+
+
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder
 from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
@@ -56,6 +90,11 @@ class TestNotebookCheatSheet(unittest.TestCase):
         assert len(keepnote) > 0
         keepnote = [_ for _ in keepnote if "chsh_files" not in _]
         if len(keepnote) > 0:
+            fold = os.path.dirname(keepnote[0])
+            copy = [os.path.join(fold, "geo_data.zip")]
+            for c in copy:
+                shutil.copy(c, temp)
+
             res = execute_notebooks(temp, keepnote,
                                     lambda i, n: "deviner" not in n,
                                     fLOG=fLOG,
