@@ -31,8 +31,8 @@ Challenges
 
     i_challenges
     
-Cheat sheets
-------------
+Short and useful examples
+-------------------------
 
 
 .. toctree::

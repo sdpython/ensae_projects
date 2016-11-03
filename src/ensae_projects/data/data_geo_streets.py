@@ -186,7 +186,7 @@ def build_streets_vertices(edges, shapes):
 
 
 def plot_streets_network(edges_index, edges, vertices, shapes, order=None,
-                         color_vertices=None, ax=None, **kwargs):
+                         color_vertices=None, color_edges=None, ax=None, **kwargs):
     """
     Plot the network based on `basemap <http://matplotlib.org/basemap/>`_.
 
@@ -197,12 +197,14 @@ def plot_streets_network(edges_index, edges, vertices, shapes, order=None,
     @param      order           list of edges composing a path (eulerian path)
     @param      color_vertices  dictionary ``{ vertex_index: color }``,
                                 changes the color associated to each vertex (black by default)
+    @param      color_edges     dictionary ``{ edges_index: color }``,
+                                changes the color associated to each edge (black by default)
     @param      ax              axis or None
     @param      kwargs          parameter used to create the plot is ax is None
     @return                     ax
 
     *kwargs* may contain parameters:
-    *color_v*, *color_e*, *size_v*, *size_e*, *size_c*.
+    *color_v*, *color_e*, *size_v*, *size_e*, *size_c*, *size_et*.
 
     If *order* is not None, the function replaces the edge index by its position in this array.
 
@@ -214,7 +216,7 @@ def plot_streets_network(edges_index, edges, vertices, shapes, order=None,
     import numpy
     from matplotlib.collections import LineCollection
     import matplotlib.pyplot as plt
-    params = ["color_v", "color_e", "size_v", "size_e"]
+    params = ["color_v", "color_e", "size_v", "size_e", "size_c", "size_et"]
     if ax is None:
         options = {k: v for k, v in kwargs.items() if k not in params}
         fig, ax = plt.subplots(**options)
@@ -237,7 +239,11 @@ def plot_streets_network(edges_index, edges, vertices, shapes, order=None,
         data = numpy.array(m(lons, lats)).T
         segs = [data, ]
         lines = LineCollection(segs, antialiaseds=(1,))
-        lines.set_edgecolors("black")
+        if color_edges is not None:
+            ecolor = color_edges.get(n, "black")
+        else:
+            ecolor = "black"
+        lines.set_edgecolors(ecolor)
         lines.set_linewidth(kwargs.get('size_e', 2))
         ax.add_collection(lines)
         mx, my = (lons[0] + lons[-1]) / 2, (lats[0] + lats[-1]) / 2
@@ -249,6 +255,7 @@ def plot_streets_network(edges_index, edges, vertices, shapes, order=None,
             if len(pos) > 0:
                 pos = [str(_) for _ in pos]
                 ax.text(gx, gy, ",".join(pos),
+                        size=kwargs.get("size_et", 12),
                         color=kwargs.get('color_e', "blue"))
     if color_vertices == "odd":
         count = {}
