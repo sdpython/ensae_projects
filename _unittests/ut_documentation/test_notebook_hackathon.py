@@ -110,5 +110,6 @@ class TestNotebookHackathon(unittest.TestCase):
         else:
             warnings.warn("No notebook was tested for the hackathon 2015")
 
+
 if __name__ == "__main__":
     unittest.main()

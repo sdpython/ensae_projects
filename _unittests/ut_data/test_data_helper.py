@@ -55,10 +55,10 @@ class TestNotebookHackathon(unittest.TestCase):
 
         def clean_column_name(s):
             return s.replace("_0", "")
-        l = list(enumerate_text_lines(filename, encoding="utf-8",
-                                      quotes_as_str=True, clean_column_name=clean_column_name))
-        fLOG(l)
-        assert len(l) == 1
+        ls = list(enumerate_text_lines(filename, encoding="utf-8",
+                                       quotes_as_str=True, clean_column_name=clean_column_name))
+        fLOG(ls)
+        assert len(ls) == 1
 
     def test_clean_file(self):
         fLOG(

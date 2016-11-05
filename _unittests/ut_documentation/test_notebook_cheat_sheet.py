@@ -103,5 +103,6 @@ class TestNotebookCheatSheet(unittest.TestCase):
         else:
             raise Exception("no notebook")
 
+
 if __name__ == "__main__":
     unittest.main()
