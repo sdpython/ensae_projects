@@ -74,7 +74,7 @@ except ImportError:
 
 
 from pyquickhelper.loghelper import fLOG
-from pyquickhelper.pycode import get_temp_folder
+from pyquickhelper.pycode import get_temp_folder, is_travis_or_appveyor
 from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
 from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook, unittest_raise_exception_notebook
 
@@ -86,6 +86,8 @@ class TestNotebookHackathon(unittest.TestCase):
             __file__,
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
+        if is_travis_or_appveyor() == "appveyor":
+            return
         fix_tkinter_issues_virtualenv()
         temp = get_temp_folder(__file__, "temp_hackathon_2015")
         keepnote = ls_notebooks("hackathon_2015")
@@ -104,6 +106,8 @@ class TestNotebookHackathon(unittest.TestCase):
             return True
 
         if len(keepnote) > 0:
+            for _ in keepnote:
+                fLOG(_)
             res = execute_notebooks(temp, keepnote, filter=lambda i, n: True, valid_cell=valid_cell,
                                     fLOG=fLOG, clean_function=clean_function_notebook)
             unittest_raise_exception_notebook(res, fLOG)
