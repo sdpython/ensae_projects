@@ -7,7 +7,6 @@ import sys
 import os
 import unittest
 import warnings
-import keyring
 import pandas
 
 
@@ -76,6 +75,7 @@ class TestCresus2016(unittest.TestCase):
             warnings.warn("disabled on appveyor and travis")
             return
         temp = get_temp_folder(__file__, "temp_process_data_cresus_2016")
+        import keyring
         pwd = keyring.get_password(
             "cresus", os.environ["COMPUTERNAME"] + "ensae")
         assert pwd
