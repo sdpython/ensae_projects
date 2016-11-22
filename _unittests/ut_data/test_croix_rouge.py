@@ -52,7 +52,7 @@ class TestNotebookHackathon(unittest.TestCase):
             __file__,
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
-        if is_travis_or_appveyor() == "appveypr":
+        if is_travis_or_appveyor() == "appveyor":
             warnings.warn("disabled on appveyor")
             return
         try:
