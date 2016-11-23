@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 @file
 @brief Script to process the date from Cresus for the hackathon 2016
@@ -7,6 +8,28 @@ import sqlite3
 import pandas
 from pyquickhelper.loghelper import fLOG
 from pyensae.sql import Database
+
+
+def process_cresus_whole_process(infile, outfold, ratio=0.33, fLOG=fLOG):
+    """
+    process the database from Cresus until it splits the data into two
+    two sets of files
+    """
+    if not os.path.exists(outfold):
+        os.mkdir(outfold)
+    out_clean_sql = os.path.join(
+        outfold, os.path.split(infile)[-1] + ".clean.sql")
+    outdb = os.path.join(outfold, os.path.split(infile)[-1] + ".db3")
+    process_cresus_sql(infile, out_clean_sql=out_clean_sql,
+                       outdb=outdb, fLOG=fLOG)
+    tables = prepare_cresus_data(outdb, outfold=outfold, fLOG=fLOG)
+    train, test = split_train_test_cresus_data(
+        tables, outfold, ratio=ratio, fLOG=fLOG)
+    nf = split_XY_bind_dataset_cresus_data(test["dossier"], fLOG)
+    test.update(nf)
+    nf = split_XY_bind_dataset_cresus_data(train["dossier"], fLOG)
+    train.update(nf)
+    return train, test
 
 
 def cresus_dummy_file():
@@ -125,7 +148,7 @@ def prepare_cresus_data(dbfile, outfold=None, fLOG=fLOG):
     @param      dbfile      database file
     @param      outfold     output folder
     @param      fLOG        logging function
-    @return                 list of table files
+    @return                 dictionary of table files
     """
     db = Database(dbfile)
     db.connect()
@@ -147,7 +170,7 @@ def prepare_cresus_data(dbfile, outfold=None, fLOG=fLOG):
     new_mapping = {'': 'nul1', None: 'nul2',
                    'Sur-endettement': 'Surendettement', '0': 'nul'}
 
-    res = []
+    res = {}
     tables = db.get_table_list()
     for table in tables:
         fLOG("[prepare_cresus_data] exporting", table)
@@ -157,11 +180,98 @@ def prepare_cresus_data(dbfile, outfold=None, fLOG=fLOG):
         if "orientation" in cols:
             cols = [_ for _ in cols if _ not in ("orientation", "nature")]
             cols += ["orientation", "nature"]
-            df["nature"] = df.nature.apply(lambda x: new_mapping.get(x, x))
+            df["nature"] = df.nature.apply(
+                lambda x: new_mapping.get(x, x).replace("Ã©", "e").lower())
             fLOG(set(df["nature"]))
         df = df[cols]
         name = os.path.join(outfold, "tbl_" + table + ".txt")
         df.to_csv(name, sep="\t", encoding="utf-8", index=False)
-        res.append(name)
+        res[table] = name
     db.close()
     return res
+
+
+def split_train_test_cresus_data(tables, outfold, ratio=0.33, fLOG=fLOG):
+    """
+    splits the tables into two sets for tables (based on users)
+
+    @param          tables      dictionary of tables,
+                                @see fn prepare_cresus_data
+    @param          outfold     if not None, output all tables in this folder
+    @param          fLOG        logging function
+    @return                     couple of dictionaries of table files
+    """
+    splits = ["user", "agenda", "dossier", "budget"]
+    df = pandas.read_csv(tables["dossier"], sep="\t", encoding="utf-8")
+    short = df[["id", "id_user", "date_ouverture"]
+               ].sort_values("date_ouverture")
+    nb = len(short)
+    train = int(nb * (1 - ratio))
+    test = nb - train
+    dossiers = set(short.ix[:train, "id"])
+    users = set(short.ix[:train, "id_user"])
+
+    train_tables = {}
+    test_tables = {}
+    for k, v in tables.items():
+        if k not in splits:
+            fLOG("[split_train_test_cresus_data] no split for", k)
+            data = pandas.read_csv(v, sep="\t", encoding="utf-8")
+            train_tables[k] = data
+            test_tables[k] = data
+        else:
+            if k == "dossier":
+                train_tables[k] = df[:train].copy()
+                test_tables[k] = df[train:].copy()
+            else:
+                data = pandas.read_csv(v, sep="\t", encoding="utf-8")
+                if "id_dossier" in data.columns:
+                    key = "id_dossier"
+                    select = dossiers
+                elif k == "user":
+                    key = "id"
+                    select = users
+                else:
+                    raise Exception("unexpected: {0}".format(k))
+                try:
+                    spl = data[key].apply(lambda x: x in select)
+                except KeyError as e:
+                    raise Exception("issue for table '{0}' and columns={1}".format(
+                        k, data.columns)) from e
+                train_tables[k] = data[spl].copy()
+                test_tables[k] = data[~spl].copy()
+            fLOG("[split_train_test_cresus_data] split for", k,
+                 train_tables[k].shape, test_tables[k].shape)
+
+    rtrain = {}
+    for k, v in train_tables.items():
+        name = os.path.join(outfold, "tbl_train_" + k + ".txt")
+        v.to_csv(name, index=False, sep="\t", encoding="utf-8")
+        rtrain[k] = name
+    rtest = {}
+    for k, v in test_tables.items():
+        name = os.path.join(outfold, "tbl_test_" + k + ".txt")
+        v.to_csv(name, index=False, sep="\t", encoding="utf-8")
+        rtest[k] = name
+    return rtrain, rtest
+
+
+def split_XY_bind_dataset_cresus_data(filename, fLOG=fLOG):
+    """
+    split XY for the blind set
+
+    @param      filename        table to split
+    @return                     dictionary of created files
+
+    We assume the targets are columns *orientation*, *nature*.
+    """
+    df = pandas.read_csv(filename, sep="\t", encoding="utf-8")
+    isnull = df["orientation"].isnull() | df["nature"].isnull()
+    df = df[~isnull]
+    X = df.drop(["orientation", "nature"], axis=1)
+    Y = df[["orientation", "nature"]]
+    xname = os.path.splitext(filename)[0] + ".X.txt"
+    yname = os.path.splitext(filename)[0] + ".Y.txt"
+    X.to_csv(xname, sep="\t", index=False, encoding="utf-8")
+    Y.to_csv(yname, sep="\t", index=False, encoding="utf-8")
+    return {"dossier.X": xname, "dossier.Y": yname}

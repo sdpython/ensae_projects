@@ -60,7 +60,7 @@ except ImportError:
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder, is_travis_or_appveyor
 from pyquickhelper.filehelper.encryption import decrypt_stream
-from src.ensae_projects.data.data_cresus import process_cresus_sql, cresus_dummy_file, prepare_cresus_data
+from src.ensae_projects.data.data_cresus import process_cresus_whole_process, cresus_dummy_file
 from pyquickhelper.filehelper.compression_helper import unzip_files
 
 
@@ -88,11 +88,9 @@ class TestCresus2016(unittest.TestCase):
         res = unzip_files(zipname, temp)
         fLOG(res)
         infile = res[0]
-        outsql = os.path.join(temp, "cleaned_sql.sql")
-        outdb = os.path.join(temp, "cresus.db3")
-        process_cresus_sql(infile, outsql, outdb, fLOG=fLOG)
-        res = prepare_cresus_data(outdb, temp, fLOG)
-        for r in res:
+        train, test = process_cresus_whole_process(
+            infile, outfold=temp, fLOG=fLOG)
+        for r in train.values():
             df = pandas.read_csv(r, sep="\t", encoding="utf-8")
             fLOG(df.columns)
 
