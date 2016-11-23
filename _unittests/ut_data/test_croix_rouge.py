@@ -58,7 +58,7 @@ class TestNotebookHackathon(unittest.TestCase):
         try:
             df = get_meaning("invoice")
         except PasswordException:
-            # the password is not available on this machine, set PWDCROIXROUGE
+            # the password is not available on this machine
             return
         assert len(df) > 0
 
@@ -67,14 +67,14 @@ class TestNotebookHackathon(unittest.TestCase):
             __file__,
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
-        if is_travis_or_appveyor() == "appveypr":
+        if is_travis_or_appveyor() == "appveyor":
             warnings.warn("disabled on appveyor")
             return
         temp = get_temp_folder(__file__, "temp_joined_schemas")
         try:
             df = merge_schema()
         except PasswordException:
-            # the password is not available on this machine, set PWDCROIXROUGE
+            # the password is not available on this machine
             return
         assert len(df) > 0
         outexc = os.path.join(temp, "schemas.xlsx")
