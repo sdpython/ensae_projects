@@ -13,6 +13,8 @@ Les données seront fournies au début de l'événement et doivent être détrui
 Elles sont accompagnés de documents qui permettent d'interpréter certains variables
 au regard des activités de chaque association.
 
+Site : `hackathon-geniusensae.fr <http://hackathon-geniusensae.fr/>`_.
+
 
 Challenge créatif - La Croix-Rouge
 ++++++++++++++++++++++++++++++++++
