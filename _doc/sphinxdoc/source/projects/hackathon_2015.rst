@@ -101,4 +101,4 @@ Fusion des données de la La Croix Rouge avec d'autres
 * `geocoder <https://pypi.python.org/pypi/geocoder>`_
 * `dataforgoodfr/croixrouge <https://github.com/dataforgoodfr/croixrouge/tree/master/data>`_
 * `Description des tables INSEE <https://github.com/dataforgoodfr/croixrouge/wiki/Description-des-tables-INSEE>`_        		
-* Geocoding using Bing Maps : `python-omgeo <https://pypi.python.org/pypi/python-omgeo>`_ (fonction uniquement en Python 2.7)
+* Geocoding using Bing Maps : `geopy <https://pypi.python.org/pypi/geopy/>`_ (fonction uniquement en Python 2.7)

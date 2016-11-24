@@ -22,6 +22,7 @@ Events
     :maxdepth: 1
 
     projects/hackathon_2015
+    projects/hackathon_2016
 
 Challenges
 ----------
