@@ -20,12 +20,14 @@ Challenge créatif - La Croix-Rouge
 ++++++++++++++++++++++++++++++++++
 
 La `Croix-Rouge <http://www.croix-rouge.fr/>`_
-souhaite comprendre un peu mieux la population de bénévole
-qu'elle emploie et plus particulièrement :
+souhaite comprendre un peu mieux la population de bénévoles
+qu'elle emploie.
 
 * Qui est un bénévole fidèle ?
 * Qui est un futur responsable bénévole ?
 * Comment réagit un bénévole face à des évéments de société imprévus (tels que des attentats) ?
+
+**Je veux être bénévole, que me recommandez-vous ?**
 
 Les données incluent une vue globale sur 40 ans et une vue détaillée
 pour un secteur de La Croix-Rouge sur les deux dernières années.
