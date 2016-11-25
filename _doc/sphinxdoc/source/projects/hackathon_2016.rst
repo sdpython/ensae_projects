@@ -25,12 +25,21 @@ qu'elle emploie.
 
 * Qui est un bénévole fidèle ?
 * Qui est un futur responsable bénévole ?
-* Comment réagit un bénévole face à des évéments de société imprévus (tels que des attentats) ?
+* Comment réagit un bénévole face à des événements de société imprévus (tels que des attentats) ?
 
-**Je veux être bénévole, que me recommandez-vous ?**
+L'objectif est de déterminer ce qui motive les bénévoles selon trois axes principaux
+afin de proposer le meilleur parcours :
+
+* **L'activité :** dans quelle activité un bénévole s'épanouira-t-il le plus ?
+* **L'implication :** quel pourcentage de son temps doit-il y consacrer ?
+* **Le niveau de responsabilité :** quel niveau de responsabilité lui conviendrait le mieux ?
+
 
 Les données incluent une vue globale sur 40 ans et une vue détaillée
 pour un secteur de La Croix-Rouge sur les deux dernières années.
+
+*Je veux être bénévole, que me recommandez-vous ?*
+
 
 Challenge prédictif - Crésus
 ++++++++++++++++++++++++++++
@@ -46,6 +55,25 @@ Pour ce faire, les tables sont été divisés en apprentissage et test
 selon deux ensembles disjoints dans le temps de dossiers.
 La base de dossier ne contient pas d'historique.
 C'est une vue de la situation au moment où le dossier est orienté.
+
+*Mode d'emploi*
+
+Les différents fichiers sont un dump des différentes tables du système
+d'information de l'association. Elles sont liées par des identifiants.
+L'identifiant dossier est celui qui permet de lier les données
+de la table principale *dossier* aux autres.
+
+La table *dossier* est scindée en deux parties :
+
+* *X* : ensemble des colonnes saisies à la réception d'un dossier
+* *Y* : ensemble des informations renseignées manuellement après l'étude d'un dossier.
+
+La partie *Y* contient deux colonnes :
+
+* *nature* : un diagnostique, une raison qui explique le surendettement
+* *orientation* : la suite donnée au dossier par l'association *Crésus*
+
+Il faut prédire ces deux colonnes.
 
     
 Autres données
