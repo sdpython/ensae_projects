@@ -38,7 +38,7 @@ except ImportError:
     import pyquickhelper as skip_
 
 from pyquickhelper.loghelper import fLOG
-from pyquickhelper.pycode import get_temp_folder
+from pyquickhelper.pycode import get_temp_folder, is_travis_or_appveyor
 from src.ensae_projects.data.croix_rouge import encrypt_file, decrypt_dataframe
 
 
@@ -50,8 +50,6 @@ class TestNotebookHackathonEncrypt(unittest.TestCase):
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
 
-        if "PWDCROIXROUGE" not in os.environ:
-            os.environ["PWDCROIXROUGE"] = "dummypwd" * 2
         pwd = (b"example" * 3)[:16]
         temp = get_temp_folder(__file__, "temp_encrypt")
         infile = os.path.join(temp, "..", "data", "ITMMASTER.schema.txt")
@@ -64,7 +62,7 @@ class TestNotebookHackathonEncrypt(unittest.TestCase):
         fLOG(df)
         assert len(df) > 0
 
-        if True:
+        if not is_travis_or_appveyor():
             for infile in ["meaning_invoice.txt", "SINVOICE.schema.txt", "SINVOICEV.schema.txt", "stojou.schema.txt"]:
                 if os.path.exists(infile):
                     encrypt_file(infile, infile.replace(".txt", ".enc"))
