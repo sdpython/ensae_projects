@@ -1,5 +1,5 @@
 """
-@brief      test log(time=2s)
+@brief      test log(time=8s)
 """
 
 import sys
@@ -151,7 +151,7 @@ class TestCompetitions(unittest.TestCase):
             code = f.read()
 
         self.assertEqual(
-            code, "orientation_ERR:0.0 orientation_AUC:1.0 nature_ERR:0.0 nature_AUC:1.0")
+            code, "orientation_ERR:0.0\norientation_AUC:1.0\nnature_ERR:0.0\nnature_AUC:1.0")
 
         # dummy
         fLOG("------------ dummy")
@@ -165,7 +165,7 @@ class TestCompetitions(unittest.TestCase):
         fLOG("**", code)
 
         self.assertEqual(
-            code, "orientation_ERR:0.7183754333828628 orientation_AUC:0.5862428771453444 nature_ERR:0.8236750866765725 nature_AUC:0.5160556240766593")
+            code, "orientation_ERR:0.7183754333828628\norientation_AUC:0.5862428771453444\nnature_ERR:0.8236750866765725\nnature_AUC:0.5160556240766593")
 
 
 if __name__ == "__main__":
