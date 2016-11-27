@@ -1,13 +1,13 @@
 # Build an example competition
 ---
 # The title of the competition
-title: Hackathon ENSAE - EY - Challenge Crésus
+title: Hackathon ENSAE - EY - Challenge Crésus - 2
 # A description of the competition
-description: Evaluation et orientation d'un dossier
+description: Evaluation et orientation d'un dossier d'une personne en difficulté financière
 # Does this competition require participant approval by the organizer
 has_registration: True
 # When is this competition finished. It is valid to not include an end_date, which means the competition remains open perpetually.
-end_date: 2016-11-26
+end_date: 2016-11-27
 # You can specify admins here, use their codalab username (CaSe sensitive!) they will automatically be added as participants
 #Don't remove the comments here, codalab is bugged, change the value from the website
 # admin_names: ds-anne,xavierdupre
@@ -70,14 +70,14 @@ leaderboard:
     # Actual scores in the leaderboard
     columns:
         # The internal key for this score
-        nature_AUC:
+        orientation_ERR:
             # This is a member of the results group
             leaderboard: *RESULTS
             # The column label for this score
-            label: nature_AUC
+            label: orientation_ERR
             # Order of the scores
-            rank: 1
-            numeric_format: 1
+            rank: 2
+            numeric_format: 4
         # The internal key for this score
         orientation_AUC:
             # This is a member of the results group
@@ -86,4 +86,22 @@ leaderboard:
             label: orientation_AUC
             # Order of the scores
             rank: 1
-            numeric_format: 1
+            numeric_format: 4
+        # The internal key for this score
+        nature_ERR:
+            # This is a member of the results group
+            leaderboard: *RESULTS
+            # The column label for this score
+            label: nature_ERR
+            # Order of the scores
+            rank: 2
+            numeric_format: 4
+        # The internal key for this score
+        nature_AUC:
+            # This is a member of the results group
+            leaderboard: *RESULTS
+            # The column label for this score
+            label: nature_AUC
+            # Order of the scores
+            rank: 1
+            numeric_format: 4

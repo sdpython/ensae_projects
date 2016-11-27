@@ -161,14 +161,16 @@ def AUC_multi_multi(nb, answers, scores, ignored=None):
     """
     res = []
     for i in range(0, nb):
-        a = [a[i] for a in answers]
-        s = [(a[i], a[nb + i]) for a in scores]
-        auc = AUC_multi(a, s, ignored)
+        ta = [a[i] for a in answers]
+        ts = [(a[i], a[nb + i]) for a in scores]
+        auc = AUC_multi(ta, ts, ignored)
+        err = sum(1 if a != s[0] else 0 for (a, s) in zip(ta, ts))
+        res.append(err * 1.0 / len(ta))
         res.append(auc)
     return res
 
 
-def private_codalab_wrapper_multi_classification(fct, metric_name, fold1, fold2, f1="answer.txt", f2="answer.txt",
+def private_codalab_wrapper_multi_classification(fct, variables_name, fold1, fold2, f1="answer.txt", f2="answer.txt",
                                                  output="scores.txt", use_print=False, ignored=None):
     """
     Wraps the function following the guidelines
@@ -177,7 +179,7 @@ def private_codalab_wrapper_multi_classification(fct, metric_name, fold1, fold2,
     `competition-examples/hello_world <https://github.com/Tivix/competition-examples/tree/master/hello_world/competition>`_.
 
     @param      fct             function to wrap
-    @param      metric_name     metric name
+    @param      variables_name  variables names
     @param      fold1           folder which contains the data for folder containing the truth
     @param      fold2           folder which contains the data for folder containing the data
     @param      f1              filename for the truth
@@ -218,9 +220,14 @@ def private_codalab_wrapper_multi_classification(fct, metric_name, fold1, fold2,
         print("Reading scores:", f1, len(scores), "rows")
         print("First scores:", scores[:10])
 
-    metric = fct(len(metric_name), answers, scores, ignored=ignored)
-    res = " ".join(["{0}:{1}".format(mn, m)
-                    for (mn, m) in zip(metric_name, metric)])
+    metric = fct(len(variables_name), answers, scores, ignored=ignored)
+    all_names = []
+    for v in variables_name:
+        all_names.append("%s_ERR" % v)
+        all_names.append("%s_AUC" % v)
+
+    res = "\n".join(["{0}:{1}".format(mn, m)
+                     for (mn, m) in zip(all_names, metric)])
     if use_print:
         print("Results=", res)
     with open(output, "w") as f:
@@ -230,7 +237,7 @@ def private_codalab_wrapper_multi_classification(fct, metric_name, fold1, fold2,
     return metric
 
 
-def main_codalab_wrapper_multi_classification(fct, metric_name, argv, truth_file="truth.txt",
+def main_codalab_wrapper_multi_classification(fct, variables_name, argv, truth_file="truth.txt",
                                               submission_file="answer.txt", output_file="scores.txt"):
     """
     adapt the tempate available at
@@ -249,7 +256,7 @@ def main_codalab_wrapper_multi_classification(fct, metric_name, argv, truth_file
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
 
-        private_codalab_wrapper_multi_classification(fct, metric_name,
+        private_codalab_wrapper_multi_classification(fct, variables_name,
                                                      fold1=truth_dir, f1=truth_file,
                                                      fold2=submit_dir, f2=submission_file,
                                                      output=os.path.join(
@@ -264,4 +271,4 @@ if __name__ == "__main__":
     if len(sys.argv) < 3:
         raise Exception("bad arguments: {0}".format(sys.argv))
     main_codalab_wrapper_multi_classification(AUC_multi_multi,
-                                              ["nature_AUC", "orientation_AUC"], sys.argv)
+                                              ["orientation", "nature"], sys.argv)
