@@ -74,6 +74,8 @@ La partie *Y* contient deux colonnes :
 * *orientation* : la suite donnée au dossier par l'association *Crésus*
 
 Il faut prédire ces deux colonnes.
+**Il ne faut pas uiliser la colonne etat** qui est renseignée
+manuellement après *nature* et *orientation*.
 
 Compétition
 +++++++++++
@@ -182,6 +184,8 @@ Cheat Sheets
 Retour sur la compétition
 +++++++++++++++++++++++++
 
+**événements**
+
 La qualité des données a un gros impact sur la performance et 
 on découvre les données trop souvent sous la forme de tableau de bord
 alors que ceux-ci sont la conséquence d'une succession d'événements.
@@ -196,5 +200,26 @@ qui enregistre des événements, des mises à jour. Il est facile de reconstruir
 du système à partir de cette séquence. Cela permet pour un datascientist
 de comprendre l'évolution des données, de déterminer quelles données étaient 
 les données disponibles à chaque instant surtout si elles ont servi de base
-à une décision.
+à une décision. Ce procédé notamment de repérer qu'une variable est renseignée
+après une autre et qu'elle en dépend.
+
+**id_dossier**
+
+Certains participants ont noté que la variable 
+*id_dossier* avait un impact positif sur la qualité de la prédiction.
+Faut-il s'en passer sachant qu'elle n'a pas de sens particulier ?
+Dans l'idéal, oui ! Mais avant de prendre une décision hâtive,
+il faut s'interroger sur le fait que cette variable ait un impact.
+Tout d'abord, le numéro de dossier est croissant. Il est donc plus ou moins
+corrélé avec la date à laquelle le dossier est ouvert.
+On peut remplacer *id_dossier* par la date et mesurer la 
+différence de prédiction. Toutefois, on peut se demander pourquoi
+la date aurait un impact sur la prédiction. Cela signifie probablement
+que la distribution de la variable *orientation* évolue avec le temps
+et que la base de test n'est probablement pas tout à fait homogène
+avec la base d'apprentissage puisque le découpage a eu lieu par rapport au temps.
+On peut utiliser une astuce pour vérifier :
+`Les bases de train et test sont-elles homogènes ? <http://www.xavierdupre.fr/app/jupytalk/helpsphinx/2016/ensae201611.html#faq>`_.
+
+
 
