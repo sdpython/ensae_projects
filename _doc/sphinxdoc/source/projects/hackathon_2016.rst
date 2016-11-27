@@ -75,6 +75,87 @@ La partie *Y* contient deux colonnes :
 
 Il faut prédire ces deux colonnes.
 
+Compétition
++++++++++++
+
+La compétition est accessible dur codalab : 
+`Hackathon ENSAE - EY - Challenge Crésus - 1.5 <https://competitions.codalab.org/competitions/15490>`_.
+C'est un problème de classification **multi-classes**.
+
+* `données du challenge <https://github.com/sdpython/ensae_projects/blob/master/_doc/competitions/2016_ENSAE_hackathon/competition/data_cresus.zip>`_
+
+Les réponses doivent être données dans le même ordre que les lignes de la table 
+``tbl_dossier.test.X.txt`` dans un fichier texte sans en-tête **answer.txt**.
+Soumettre une solution consiste à envoyer à fichier **answer.zip** qui contient un
+fichier **answer.txt** au format suivant :
+
+::
+
+    4.0  endettement  0.9144635693307518  0.7446166038448464
+    2.0  endettement  0.9058230082126213  0.5672372371792938
+    1.0  credits renouvelables recurrents  0.963522847810654  0.4201954811133858
+    2.0  difficultes de gestion  0.6700924948192609  0.5024330719247078
+    5.0  microcredit social  0.33637962518435127  0.5765688167949408
+    1.0  impayes  0.2746943724528652  0.16503183971336655
+    5.0  microcredit personnel  0.695436159178639  0.7331150383369753
+
+Avec quatre colonnes :
+
+#. prédiction pour l'**orientation**
+#. prédiction la **nature**
+#. **score orientation** pour la prédiction de l'orientation
+#. **score nature** pour la prédiction de la nature
+
+Un exemple de soumission est disponible (réponse aléatoire)
+
+#. `answer.txt <https://github.com/sdpython/ensae_projects/blob/master/_doc/competitions/2016_ENSAE_hackathon/competition/answer.txt>`_
+#. `answer.zip <https://github.com/sdpython/ensae_projects/blob/master/_doc/competitions/2016_ENSAE_hackathon/competition/answer.zip>`_
+
+Les métriques produites pour chaque colonne :
+
+* **ERR - taux d'erreur** : c'est la proportion de mauvaises prédictions, 
+  la classe prédite n'est pas la classe attendue.
+* **AUC - aire sous la courbe ROC** : ce chiffre correspond à la probabilité
+  pour le score d'une bonne prédiction d'être supérieur au score d'une mauvaise
+  prédiction - `Courbe ROC <http://www.xavierdupre.fr/app/mlstatpy/helpsphinx/c_metric/roc.html>`_.
+  
+Une bonne *AUC* indique que le score de la prédiction est fiable.
+Autrement dit, même si le taux d'erreur est élevé, cela signifie que celui qui utilise
+le modèle de prédiction peut plus facilement croire la prédiction quand celle-ci est élevée.
+Cette métrique a été choisie pour permettre à l'utilisateur d'automatiser
+une partie du traitement avec fiabilité et de continuer à gérer les autres
+dossiers manuellement lorsque la prédiction n'est pas assez fiable.
+La fonction de calcul *AUC*
+est implémentée : :func:`AUC_multi <ensae_projects.ml.competitions.AUC_multi>`
+et le fichier d'évaluation fonctionne en Python 2 ou 3 :
+`evaluate.py <https://github.com/sdpython/ensae_projects/blob/master/_doc/competitions/2016_ENSAE_hackathon/competition/program/evaluate.py>`_.
+
+Résultats du challenge prédiction
++++++++++++++++++++++++++++++++++
+
+
++-----------+-----------------+-----------------+------------+------------+
+| Team Name | orientation_ERR | orientation_AUC | nature_ERR | nature_AUC |
++-----------+-----------------+-----------------+------------+------------+
+| 3         | 0.7503          | 0.7125          | 0.8707     | 0.4744     |
++-----------+-----------------+-----------------+------------+------------+
+| 7         | 0.5272          | 0.6403          | 0.6936     | 0.4902     |
++-----------+-----------------+-----------------+------------+------------+
+| 7         | 0.5245          | 0.6750          | 0.9270     | 0.5339     |
++-----------+-----------------+-----------------+------------+------------+
+| 5         | 0.5202          | 0.6349          | 0.7084     | 0.5330     |
++-----------+-----------------+-----------------+------------+------------+
+| 10        | 0.5146          | 0.6109          | 0.7138     | 0.5459     |
++-----------+-----------------+-----------------+------------+------------+
+| 11        | 0.4797          | 0.6652          | 0.7282     | 0.5000     |
++-----------+-----------------+-----------------+------------+------------+
+| 1         | 0.4058          | 0.6499          | 0.6455     | 0.5544     |
++-----------+-----------------+-----------------+------------+------------+
+
+La compétation est terminée. Les prédictions attendues sont disponibles
+zippées : `reference.zip <https://github.com/sdpython/ensae_projects/blob/master/_doc/competitions/2016_ENSAE_hackathon/competition/reference.zip>`_.
+
+
     
 Autres données
 ++++++++++++++
@@ -98,3 +179,22 @@ Cheat Sheets
     
 `Rappel de ce que vous savez déjà mais avez peut-être oublié <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx3/notebooks/td2_eco_rappels_1a.html>`_
     
+Retour sur la compétition
++++++++++++++++++++++++++
+
+La qualité des données a un gros impact sur la performance et 
+on découvre les données trop souvent sous la forme de tableau de bord
+alors que ceux-ci sont la conséquence d'une succession d'événements.
+
+Si un système d'information ne conserve que l'état d'une situation,
+d'une association, il ne représente que le présent, perd toute notion
+d'historique et met côté à côté des informations qui n'ont pas 
+été renseignées à la même date.
+
+C'est pourquoi il est beaucoup plus intéressant de construire un système
+qui enregistre des événements, des mises à jour. Il est facile de reconstruire l'état
+du système à partir de cette séquence. Cela permet pour un datascientist
+de comprendre l'évolution des données, de déterminer quelles données étaient 
+les données disponibles à chaque instant surtout si elles ont servi de base
+à une décision.
+
