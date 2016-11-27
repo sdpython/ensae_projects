@@ -11,7 +11,7 @@ from pyquickhelper.pandashelper import df2rst, df2html
 from .data_exception import ProjectDataException, PasswordException
 
 
-def get_password_from_env(pwd):
+def get_password_from_keyring_or_env(pwd):
     """
     Get the password from `keyring <https://pypi.python.org/pypi/keyring>`_ first,
     then from the environment variables.
@@ -26,15 +26,17 @@ def get_password_from_env(pwd):
 
         keyring.set_password("HACKATHON2015", "PWDCROIXROUGE", "value")
     """
-    import keyring
-    pwd = keyring.get_password("HACKATHON2015", "PWDCROIXROUGE")
     if pwd is None:
-        if "PWDCROIXROUGE" not in os.environ:
+        import keyring
+        pwd = keyring.get_password("HACKATHON2015", "PWDCROIXROUGE")
+        if pwd is None and "PWDCROIXROUGE" not in os.environ:
             raise PasswordException(
                 "password not found in environment variables: PWDCROIXROUGE is not set")
         return bytes(os.environ["PWDCROIXROUGE"], encoding="ascii")
-    else:
+    elif not isinstance(pwd, bytes):
         return bytes(pwd, encoding="ascii")
+    else:
+        return pwd
 
 
 def encrypt_file(infile, outfile, password=None):
@@ -47,7 +49,7 @@ def encrypt_file(infile, outfile, password=None):
     @param      outfile         output file
     @return                     outfile
     """
-    password = get_password_from_env(password)
+    password = get_password_from_keyring_or_env(password)
     return encrypt_stream(password, infile, outfile)
 
 
@@ -62,7 +64,7 @@ def decrypt_dataframe(infile, password=None, sep="\t", encoding="utf8", **kwargs
     @param      kwargs      others options for `read_csv <>`_
     @return                 dataframe
     """
-    password = get_password_from_env(password)
+    password = get_password_from_keyring_or_env(password)
     data = decrypt_stream(password, infile)
     st = io.BytesIO(data)
     df = pandas.read_csv(st, sep=sep, encoding="utf8", **kwargs)
@@ -74,7 +76,7 @@ def get_meaning(table="invoice", password=None):
     Retrieve data related to the meaning of a table.
 
     @param      table           SINVOICE or SINVOICE_V, ITTMASTER or stojou
-    @param      password        password, see @see fn get_password_from_env
+    @param      password        password, see @see fn get_password_from_keyring_or_env
     @return                     DataFrame
     """
     fold = os.path.abspath(os.path.dirname(__file__))

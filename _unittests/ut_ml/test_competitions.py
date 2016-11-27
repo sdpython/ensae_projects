@@ -143,18 +143,21 @@ class TestCompetitions(unittest.TestCase):
 
         # =
         out = os.path.join(temp, "outpute.txt")
-        private_codalab_wrapper_multi_classification(AUC_multi_multi, ["nature_AUC", "orientation_AUC"],
+        private_codalab_wrapper_multi_classification(AUC_multi_multi,
+                                                     ["orientation", "nature"],
                                                      t1, t3, output=out)
         assert os.path.exists(out)
         with open(out, "r") as f:
             code = f.read()
 
-        self.assertEqual(code, "nature_AUC:1.0 orientation_AUC:1.0")
+        self.assertEqual(
+            code, "orientation_ERR:0.0 orientation_AUC:1.0 nature_ERR:0.0 nature_AUC:1.0")
 
         # dummy
         fLOG("------------ dummy")
         out = os.path.join(temp, "outputd.txt")
-        private_codalab_wrapper_multi_classification(AUC_multi_multi, ["nature_AUC", "orientation_AUC"],
+        private_codalab_wrapper_multi_classification(AUC_multi_multi,
+                                                     ["orientation", "nature"],
                                                      t1, t2, output=out, ignored=["nul"])
         assert os.path.exists(out)
         with open(out, "r") as f:
@@ -162,7 +165,7 @@ class TestCompetitions(unittest.TestCase):
         fLOG("**", code)
 
         self.assertEqual(
-            code, "nature_AUC:0.5862428771453444 orientation_AUC:0.5160556240766593")
+            code, "orientation_ERR:0.7183754333828628 orientation_AUC:0.5862428771453444 nature_ERR:0.8236750866765725 nature_AUC:0.5160556240766593")
 
 
 if __name__ == "__main__":

@@ -10,7 +10,7 @@ from pyquickhelper.loghelper import fLOG
 from pyensae.sql import Database
 
 
-def process_cresus_whole_process(infile, outfold, ratio=0.33, fLOG=fLOG):
+def process_cresus_whole_process(infile, outfold, ratio=0.20, fLOG=fLOG):
     """
     process the database from Cresus until it splits the data into two
     two sets of files
@@ -162,7 +162,7 @@ def prepare_cresus_data(dbfile, outfold=None, fLOG=fLOG):
                      'fichier_suivi', 'fichier_suivi2', 'media',
                      'indicateur_suivi', 'memo', 'num_dossier',
                      'etat_old', 'orientation_old', 'indicateur_suivi_old',
-                     'transfert', 'plan_bdf', 'effacement_dett',
+                     'transfert', 'plan_bdf', 'effacement_dett', "etat",
                      #
                      'tel_fixe', 'tel_port',
                      ]
@@ -191,7 +191,7 @@ def prepare_cresus_data(dbfile, outfold=None, fLOG=fLOG):
     return res
 
 
-def split_train_test_cresus_data(tables, outfold, ratio=0.33, fLOG=fLOG):
+def split_train_test_cresus_data(tables, outfold, ratio=0.20, fLOG=fLOG):
     """
     splits the tables into two sets for tables (based on users)
 
