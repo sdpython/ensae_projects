@@ -74,7 +74,7 @@ La partie *Y* contient deux colonnes :
 * *orientation* : la suite donnée au dossier par l'association *Crésus*
 
 Il faut prédire ces deux colonnes.
-**Il ne faut pas uiliser la colonne etat** qui est renseignée
+**Il ne faut pas utiliser la colonne etat** qui est renseignée
 manuellement après *nature* et *orientation*.
 
 Compétition
@@ -192,14 +192,14 @@ alors que ceux-ci sont la conséquence d'une succession d'événements.
 
 Si un système d'information ne conserve que l'état d'une situation,
 d'une association, il ne représente que le présent, perd toute notion
-d'historique et met côté à côté des informations qui n'ont pas 
+d'historique et met côte à côte des informations qui n'ont pas 
 été renseignées à la même date.
 
 C'est pourquoi il est beaucoup plus intéressant de construire un système
 qui enregistre des événements, des mises à jour. Il est facile de reconstruire l'état
 du système à partir de cette séquence. Cela permet pour un datascientist
 de comprendre l'évolution des données, de déterminer quelles données étaient 
-les données disponibles à chaque instant surtout si elles ont servi de base
+disponibles à chaque instant surtout si elles ont servi de base
 à une décision. Ce procédé notamment de repérer qu'une variable est renseignée
 après une autre et qu'elle en dépend.
 
@@ -221,5 +221,13 @@ avec la base d'apprentissage puisque le découpage a eu lieu par rapport au temp
 On peut utiliser une astuce pour vérifier :
 `Les bases de train et test sont-elles homogènes ? <http://www.xavierdupre.fr/app/jupytalk/helpsphinx/2016/ensae201611.html#faq>`_.
 
+**données aberrantes**
+
+Il n'existe pas toujours de mode d'emploi. Lorsqu'on voit une 
+valeur *2010-2110* avec une colonne qui porte la mention *début-fin*,
+cela signifie sans doute que le début est bien 2010 mais que la fin n'est
+pas déterminée. Mais comme le système d'information la demande, 
+la personne qui a renseigné l'information en donne une plus ou moins aberrante.
+Plus les gens se servent d'une base de données, meilleure elle est.
 
 
