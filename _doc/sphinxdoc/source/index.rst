@@ -89,10 +89,6 @@ pip ::
 .. image:: https://badge.fury.io/py/ensae_projects.svg
     :target: http://badge.fury.io/py/ensae_projects
       
-.. image:: http://img.shields.io/pypi/dm/ensae_projects.png
-    :alt: PYPI Package
-    :target: https://pypi.python.org/pypi/ensae_projects
-
 .. image:: http://img.shields.io/github/issues/sdpython/ensae_projects.png
     :alt: GitHub Issues
     :target: https://github.com/sdpython/ensae_projects/issues
