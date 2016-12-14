@@ -344,6 +344,9 @@ def bellman_distances(edges, distances):
     @param      edges           list of tuple (vertex A, vertex B)
     @param      distances       distances (list of floats)
     @return                     dictionary of distances
+
+    This function could be implemented based on
+    `shortest_path <https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csgraph.shortest_path.html>`_.
     """
     dist = {(a, b): d for d, (a, b) in zip(distances, edges)}
     dist.update({(b, a): d for d, (a, b) in zip(distances, edges)})
@@ -375,6 +378,9 @@ def dikstra_path(edges, distances, va, vb):
     @ppara      va          first vertex
     @param      vb          last vertex
     @return                 list of edges
+
+    This function could be implemented based on
+    `shortest_path <https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csgraph.shortest_path.html>`_.
     """
     dist = {va: 0}
     prev = {va: None}
