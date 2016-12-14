@@ -39,7 +39,7 @@ def distance_solution(edges_index, edges, distances, solution, exc=True):
     Checks if a solution is a solution and returns the distance of it,
     None if it is not a solution. The function does not case about the order.
 
-    @param      edges_index     list if indices of edges (if None --> range(len(edges))
+    @param      edges_index     list of indices of edges (if None --> range(len(edges))
     @param      edges           list of tuple (vertex A, vertex B)
     @param      distance        list of distances of each edge
     @param      solution        proposed solutions (list of edge indices)
@@ -119,7 +119,7 @@ def euler_path(edges_index, edges, solution):
     """
     Compute an eulerian path.
 
-    @param      edges_index     list if indices of edges (if None --> range(len(edges))
+    @param      edges_index     list of indices of edges (if None --> range(len(edges))
     @param      edges           list of tuple (vertex A, vertex B)
     @param      solution        proposed solutions (list of edge indices)
     @return                     path, list of edges indices
@@ -310,3 +310,96 @@ def _explore_path(edges_from, begin):
         path.append((to, keep))
 
     return path[1:]
+
+
+def distance_vertices(edges, vertices, distances):
+    """
+    Computes the length of edges if distances is None
+
+    @param      edges           list of tuple (vertex A, vertex B)
+    @param      vertices        locations of the vertices
+    @param      distances       distances (None or list of floats)
+    @return                     distances (list of float)
+    """
+    if distances is None:
+        distances = []
+    while len(distances) < len(edges):
+        distances.append(None)
+    for i, edge in enumerate(edges):
+        if distances[i] is not None:
+            continue
+        a, b = edge
+        va = vertices[a]
+        vb = vertices[b]
+        d = haversine_distance(va[0], va[1], vb[0], vb[1])
+        distances[i] = d
+    return distances
+
+
+def bellman_distances(edges, distances):
+    """
+    Computes shortest distances between all vertices.
+    We assume edges are symmetric.
+
+    @param      edges           list of tuple (vertex A, vertex B)
+    @param      distances       distances (list of floats)
+    @return                     dictionary of distances
+    """
+    dist = {(a, b): d for d, (a, b) in zip(distances, edges)}
+    dist.update({(b, a): d for d, (a, b) in zip(distances, edges)})
+
+    modif = 1
+    while modif > 0:
+        up = {}
+        for (a, b), d1 in dist.items():
+            for (aa, bb), d2 in dist.items():
+                # not the most efficient
+                if b == aa and a != bb:
+                    d = d1 + d2
+                    if (a, bb) not in dist or dist[a, bb] > d:
+                        up[a, bb] = d
+                        up[bb, a] = d
+        modif = len(up)
+        dist.update(up)
+
+    return dist
+
+
+def dikstra_path(edges, distances, va, vb):
+    """
+    Returns the best path between two vertices.
+    Uses Dikjstra algorithm.
+
+    @param      edges       list of edges.
+    @param      distances   list of distances
+    @ppara      va          first vertex
+    @param      vb          last vertex
+    @return                 list of edges
+    """
+    dist = {va: 0}
+    prev = {va: None}
+    modif = 1
+    while modif > 0:
+        modif = 0
+        for (a, b), d in zip(edges, distances):
+            if a in dist:
+                d2 = dist[a] + d
+                if b not in dist or dist[b] > d2:
+                    dist[b] = d2
+                    prev[b] = a
+                    modif += 1
+            if b in dist:
+                d2 = dist[b] + d
+                if a not in dist or dist[a] > d2:
+                    dist[a] = d2
+                    prev[a] = b
+                    modif += 1
+    rev = {(a, b): i for i, (a, b) in enumerate(edges)}
+    rev.update({(b, a): i for i, (a, b) in enumerate(edges)})
+    path = []
+    v = vb
+    while v is not None:
+        path.append(v)
+        v = prev[v]
+    path.reverse()
+    return [rev[a, b] for a, b in zip(path[:-1], path[1:])]
