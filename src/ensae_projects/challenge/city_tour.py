@@ -5,6 +5,7 @@
 """
 import math
 import random
+import fractions
 
 
 class SolutionException(Exception):
@@ -368,7 +369,7 @@ def bellman_distances(edges, distances):
     return dist
 
 
-def dikstra_path(edges, distances, va, vb):
+def dijkstra_path(edges, distances, va, vb):
     """
     Returns the best path between two vertices.
     Uses Dikjstra algorithm.
@@ -409,3 +410,123 @@ def dikstra_path(edges, distances, va, vb):
         v = prev[v]
     path.reverse()
     return [rev[a, b] for a, b in zip(path[:-1], path[1:])]
+
+
+def matching_vertices(distances, algo="hungarian"):
+    """
+    Find the best match between vertices.
+
+    @param      distances       result of function @bellman_distances but only for odd vertices (odd = odd degree),
+                                dictionary { (vi,vj) : distance}
+    @param      algo            algorithm
+    @return                     sequences of best matches.
+
+    The function relies on `linear_sum_assignment <https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.linear_sum_assignment.html>`_
+    from `scipy <https://docs.scipy.org/doc/scipy-0.18.1/>`_ which uses the
+    `Hungarian Algorithm <https://en.wikipedia.org/wiki/Hungarian_algorithm>`_.
+    Vertix index do not have to start from zero and be continuous.
+    The function will handle that particular case.
+
+    If we use the algorithm as it is, it produces asymmetric matching
+    because the Hungarian method is meant to be used in a bipartite matching which
+    is not the case for the current problem.
+    """
+    if not isinstance(distances, dict):
+        raise TypeError(
+            "Unexpected type for distances, this should be a dictionary.")
+    from numpy import empty
+    from scipy.optimize import linear_sum_assignment
+    unique = set(_[0] for _ in distances) | set(_[1] for _ in distances)
+    mapping = {}
+    rev = {}
+    for s in unique:
+        n = len(mapping)
+        mapping[s] = n
+        rev[n] = s
+    mx = len(mapping)
+
+    # Hungarian algorithm
+    if algo == "hungarian":
+        cost = empty((mx, mx))
+        mx = abs(max(distances.values())) * len(mapping) * 10
+        cost[:] = mx
+        for (i, j), v in distances.items():
+            if i == j:
+                raise ValueError(
+                    "Unreasonable case: {0} == {1}, v={2}".format(i, j, v))
+            cost[mapping[i], mapping[j]] = v
+
+        row_ind, col_ind = linear_sum_assignment(cost)
+        pairs = [(rev[i], rev[j]) for i, j in zip(row_ind, col_ind)]
+        for a, b in pairs:
+            if a == b:
+                raise ValueError("Issue with one pair a == b.\n{0}".format(
+                    "\n".join(str(_) for _ in pairs)))
+
+        # we remove duplicates
+        done = set()
+        final = []
+        for a, b in pairs:
+            if (a, b) not in done:
+                final.append((a, b))
+                done.add((b, a))
+        if len(final) * 2 != len(pairs):
+            mes = "final={0}\{3}={1}\ncost\n{2}".format(final, pairs, cost, algo)
+            raise ValueError(
+                "Did you use the tweak? The matching should be symmetric.\n" + mes)
+        return final
+    elif algo == "basic":
+        # we sort pair by increasing order
+        raise NotImplemented()
+
+    elif algo == "blossom":
+        from .blossom import Vertex, StructureUpToDate, TreeStructureChanged, MaximumDualReached, INF
+
+        vertices = {}
+        for v in mapping:
+            vertices[v] = Vertex(v)
+        for (i, j), v in distances.items():
+            f = fractions.Fraction(v)
+            vertices[i].add_edge_to(vertices[j], f)
+
+        def update_tree_structures(roots):
+            try:
+                while True:
+                    try:
+                        for root in roots:
+                            root.alter_tree(roots)
+                        raise StructureUpToDate()
+                    except TreeStructureChanged:
+                        pass
+            except StructureUpToDate:
+                pass
+
+        def get_max_delta(roots):
+            if len(roots) == 0:
+                raise MaximumDualReached()
+            delta = INF
+            for root in roots:
+                delta = min(delta, root.get_max_delta())
+            assert delta >= 0
+            return delta
+
+        roots = set(vertices.values())
+
+        try:
+            while True:
+                delta = get_max_delta(roots)
+                for root in roots:
+                    root.adjust_charge(delta)
+                update_tree_structures(roots)
+        except MaximumDualReached:
+            # done
+            pass
+
+        M = set()
+        for v in vertices.values():
+            M.update(e for e in v.edges if e.selected)
+
+        pairs = [e.extremities for e in M]
+        return pairs
+    else:
+        raise NotImplementedError("Not recognized: {0}".format(algo))

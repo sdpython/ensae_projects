@@ -40,7 +40,8 @@ except ImportError:
 
 from pyquickhelper.loghelper import fLOG
 from src.ensae_projects.challenge.city_tour import distance_solution, SolutionException, haversine_distance, euler_path
-from src.ensae_projects.challenge.city_tour import distance_vertices, bellman_distances, compute_degrees, dikstra_path
+from src.ensae_projects.challenge.city_tour import distance_vertices, bellman_distances, compute_degrees, dijkstra_path
+from src.ensae_projects.challenge.city_tour import matching_vertices
 
 
 class TestCityTour(unittest.TestCase):
@@ -213,13 +214,13 @@ class TestCityTour(unittest.TestCase):
         degrees = compute_degrees(edges)
         expected = len(degrees) ** 2 - len(degrees)
         self.assertEqual(len(dist), expected)
-        deg = {k: v for k, v in degrees.items() if v % 2 != 0}
-        self.assertEqual(deg, {16: 3, 1: 3, 3: 1, 6: 1, 7: 3, 13: 3})
-        for va in deg:
-            for vb in deg:
+        odd = {k: v for k, v in degrees.items() if v % 2 != 0}
+        self.assertEqual(odd, {16: 3, 1: 3, 3: 1, 6: 1, 7: 3, 13: 3})
+        for va in odd:
+            for vb in odd:
                 if va != vb:
-                    dij = dikstra_path(edges, distances, va, vb)
-                    jid = dikstra_path(edges, distances, vb, va)
+                    dij = dijkstra_path(edges, distances, va, vb)
+                    jid = dijkstra_path(edges, distances, vb, va)
                     jid2 = list(reversed(jid))
                     self.assertEqual(dij, jid2)
                     d1 = sum(distances[i] for i in dij)
@@ -229,6 +230,30 @@ class TestCityTour(unittest.TestCase):
                     delta = abs(m - max(d1, d2, d3))
                     r = delta / m
                     assert r < 1e-5
+
+        odd_dist = {k: v for k, v in dist.items() if k[0] in odd and k[
+            1] in odd}
+
+        res = matching_vertices(odd_dist)
+        res.sort()
+        exp = [(1, 6), (3, 13), (7, 16)]
+        self.assertEqual(res, exp)
+        d1 = [odd_dist[p] for p in res]
+        fLOG(sum(d1), "details", d1)
+
+        res = matching_vertices(odd_dist, algo="blossom")
+        res.sort()
+        exp = [(1, 7), (3, 16), (6, 13)]
+        # unstable, should look into it
+        # self.assertEqual(res, exp)
+        d2 = [odd_dist[p] for p in res]
+        fLOG(sum(d2), "details", d2)
+        assert sum(d2) <= sum(d1)
+
+        exp = [(0, 1), (2, 7), (3, 9), (4, 6), (5, 10), (8, 12), (11, 14), (13, 17), (15, 16)]
+        res = matching_vertices(dist, algo="blossom")
+        res.sort()
+        self.assertEqual(res, exp)
 
 
 if __name__ == "__main__":
