@@ -128,6 +128,8 @@ def euler_path(edges_index, edges, solution):
     The function assumes every vertex in the graph defined by *edges*
     has an even degree.
     """
+    if edges_index is None:
+        edges_index = range(len(edges))
     pos = {k: i for i, k in enumerate(edges_index)}
     indices = [pos[s] for s in solution]
     edges = [edges[i] for i in indices]
@@ -337,13 +339,14 @@ def distance_vertices(edges, vertices, distances):
     return distances
 
 
-def bellman_distances(edges, distances):
+def bellman_distances(edges, distances, fLOG=None):
     """
     Computes shortest distances between all vertices.
     We assume edges are symmetric.
 
     @param      edges           list of tuple (vertex A, vertex B)
     @param      distances       distances (list of floats)
+    @param      fLOG            logging function
     @return                     dictionary of distances
 
     This function could be implemented based on
@@ -351,11 +354,17 @@ def bellman_distances(edges, distances):
     """
     dist = {(a, b): d for d, (a, b) in zip(distances, edges)}
     dist.update({(b, a): d for d, (a, b) in zip(distances, edges)})
+    dist0 = dist.copy()
 
-    modif = 1
-    while modif > 0:
+    iter = 0
+    up = dist
+    while len(up) > 0:
+        iter += 1
         up = {}
         for (a, b), d1 in dist.items():
+            if (a, b) not in dist0 and (a, b) not in up:
+                # no need to continue as no update during the last iteration
+                continue
             for (aa, bb), d2 in dist.items():
                 # not the most efficient
                 if b == aa and a != bb:
@@ -363,8 +372,12 @@ def bellman_distances(edges, distances):
                     if (a, bb) not in dist or dist[a, bb] > d:
                         up[a, bb] = d
                         up[bb, a] = d
-        modif = len(up)
         dist.update(up)
+        if fLOG:
+            sum_values = sum(dist.values())
+            mes = "iteration={0} modif={1} #dist={2} sum_values={3} avg={4}".format(
+                iter, len(up), len(dist), sum_values, sum_values / len(dist))
+            fLOG("[bellman_distances] " + mes)
 
     return dist
 
@@ -412,24 +425,32 @@ def dijkstra_path(edges, distances, va, vb):
     return [rev[a, b] for a, b in zip(path[:-1], path[1:])]
 
 
-def matching_vertices(distances, algo="hungarian"):
+def matching_vertices(distances, algo="blossom"):
     """
     Find the best match between vertices.
 
     @param      distances       result of function @bellman_distances but only for odd vertices (odd = odd degree),
                                 dictionary { (vi,vj) : distance}
-    @param      algo            algorithm
+    @param      algo            algorithm (see below)
     @return                     sequences of best matches.
 
-    The function relies on `linear_sum_assignment <https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.linear_sum_assignment.html>`_
+    If ``algo=='hungarian'``,
+    the function relies on `linear_sum_assignment <https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.linear_sum_assignment.html>`_
     from `scipy <https://docs.scipy.org/doc/scipy-0.18.1/>`_ which uses the
     `Hungarian Algorithm <https://en.wikipedia.org/wiki/Hungarian_algorithm>`_.
-    Vertix index do not have to start from zero and be continuous.
-    The function will handle that particular case.
+    Vertex index do not have to start from zero and be continuous.
+    The function will handle that particular case. However, the method
+    works for a bi-partite matching and is not suitable here unless
+    the algorithm is modified. Not done (yet?).
 
-    If we use the algorithm as it is, it produces asymmetric matching
-    because the Hungarian method is meant to be used in a bipartite matching which
-    is not the case for the current problem.
+    If ``algo=='blossom'``, it uses the
+    `Blossom algorithm <https://en.wikipedia.org/wiki/Blossom_algorithm>`_
+    which is known to be in :math:`O(n^3)` and finds the optimal matching.
+
+    If ``algo=='basic'``, the function sorts the distances
+    by increasing order and builds new edges as they come in this list.
+    It does not return an optimal solution but is much faster
+    when the graph is big.
     """
     if not isinstance(distances, dict):
         raise TypeError(
@@ -471,13 +492,26 @@ def matching_vertices(distances, algo="hungarian"):
                 final.append((a, b))
                 done.add((b, a))
         if len(final) * 2 != len(pairs):
-            mes = "final={0}\{3}={1}\ncost\n{2}".format(final, pairs, cost, algo)
+            mes = "final={0}\{3}={1}\ncost\n{2}".format(
+                final, pairs, cost, algo)
             raise ValueError(
                 "Did you use the tweak? The matching should be symmetric.\n" + mes)
         return final
     elif algo == "basic":
         # we sort pair by increasing order
-        raise NotImplemented()
+        dists = [(v, i, j) for (i, j), v in distances.items()]
+        dists.sort()
+
+        # the graph is fully connected so we don't need to check
+        # if selecting an edge leads to an impossible solution
+        vdone = set()
+        pairs = []
+        for v, i, j in dists:
+            if i not in vdone and j not in vdone:
+                pairs.append((i, j))
+                vdone.add(i)
+                vdone.add(j)
+        return pairs
 
     elif algo == "blossom":
         from .blossom import Vertex, StructureUpToDate, TreeStructureChanged, MaximumDualReached, INF
@@ -530,3 +564,57 @@ def matching_vertices(distances, algo="hungarian"):
         return pairs
     else:
         raise NotImplementedError("Not recognized: {0}".format(algo))
+
+
+def best_euler_path(edges, vertices, distances, edges_index=None, algo="blossom", fLOG=None):
+    """
+    Computes the final solution for the Eulerian path
+
+    @param      edges           edges (list of tuple)
+    @param      vertices        location of the vertices (not needed if distances are filled)
+    @param      distances       distances for each edge (list of distance)
+    @param      edges_index     list of indices of edges (if None --> range(len(edges))
+    @param      algo            algorithm to use to computes the matching
+                                (see @see fn matching_vertices)
+
+    @return                     list of edges as tuple, list of edges as indices, distance
+    """
+    if fLOG:
+        fLOG("[best_euler_path] distance_vertices #edges={0}".format(
+            len(edges)))
+    distances = distance_vertices(edges, vertices, distances)
+    if fLOG:
+        fLOG("[best_euler_path] bellman_distances")
+    dist = bellman_distances(edges, distances, fLOG=fLOG)
+    if fLOG:
+        fLOG("[best_euler_path] degrees and distances between odd vertices")
+    degrees = compute_degrees(edges)
+    odd = {k: v for k, v in degrees.items() if v % 2 != 0}
+    odd_dist = {k: v for k, v in dist.items() if k[0] in odd and k[1] in odd}
+    if fLOG:
+        fLOG("[best_euler_path] matching #odd={0}, #odd_dist={1}".format(
+            len(odd), len(odd_dist)))
+    pairs = matching_vertices(odd_dist, algo=algo)
+    if fLOG:
+        fLOG("[best_euler_path] build solution")
+    solution = list(edges)
+    for va, vb in pairs:
+        dij = dijkstra_path(edges, distances, va, vb)
+        solution.extend([edges[e] for e in dij])
+    if fLOG:
+        fLOG("[best_euler_path] order edges to get the path #edges={0}".format(
+            len(solution)))
+    if edges_index is None:
+        edges_index = list(range(len(edges)))
+    mapping = {}
+    rev = {}
+    for edge, index in zip(edges, edges_index):
+        mapping[edge] = index
+        rev[index] = edge
+    sol_index = [mapping[e] for e in solution]
+    euler_index = euler_path(edges_index, edges, sol_index)
+    euler = [rev[i] for i in euler_index]
+    if fLOG:
+        fLOG("[best_euler_path] done.")
+    d = distance_solution(edges_index, edges, distances, sol_index)
+    return euler, euler_index, d

@@ -31,3 +31,12 @@ and preprocessed to build the examples introduced above.
     
     ../notebooks/city_tour_data_preparation
 
+
+Solutions
++++++++++
+
+.. toctree::
+    :maxdepth: 2
+
+    ../notebooks/city_tour_1_solution
+    ../notebooks/city_tour_long_solution

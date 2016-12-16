@@ -295,3 +295,9 @@ _doc/notebooks/cheat_sheets/Centerline.prj
 _doc/notebooks/cheat_sheets/Centerline.shp
 _doc/notebooks/cheat_sheets/Centerline.shx
 _doc/notebooks/cheat_sheets/cancer.txt
+_unittests/ut_challenge/*.prj
+_unittests/ut_challenge/*.shp
+_unittests/ut_challenge/*.shx
+_unittests/ut_challenge/*.dbf
+_unittests/ut_challenge/*.zip
+

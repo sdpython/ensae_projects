@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 """
-@brief      test log(time=1s)
+@brief      test log(time=2s)
 """
 
 import sys
@@ -41,7 +41,7 @@ except ImportError:
 from pyquickhelper.loghelper import fLOG
 from src.ensae_projects.challenge.city_tour import distance_solution, SolutionException, haversine_distance, euler_path
 from src.ensae_projects.challenge.city_tour import distance_vertices, bellman_distances, compute_degrees, dijkstra_path
-from src.ensae_projects.challenge.city_tour import matching_vertices
+from src.ensae_projects.challenge.city_tour import matching_vertices, best_euler_path
 
 
 class TestCityTour(unittest.TestCase):
@@ -239,21 +239,77 @@ class TestCityTour(unittest.TestCase):
         exp = [(1, 6), (3, 13), (7, 16)]
         self.assertEqual(res, exp)
         d1 = [odd_dist[p] for p in res]
-        fLOG(sum(d1), "details", d1)
+        # fLOG(sum(d1), "details", d1)
 
         res = matching_vertices(odd_dist, algo="blossom")
         res.sort()
-        exp = [(1, 7), (3, 16), (6, 13)]
-        # unstable, should look into it
-        # self.assertEqual(res, exp)
+        exp = [(1, 6), (3, 13), (7, 16)]
+        self.assertEqual(res, exp)
         d2 = [odd_dist[p] for p in res]
-        fLOG(sum(d2), "details", d2)
+        # fLOG(sum(d2), "details", d2)
         assert sum(d2) <= sum(d1)
 
-        exp = [(0, 1), (2, 7), (3, 9), (4, 6), (5, 10), (8, 12), (11, 14), (13, 17), (15, 16)]
+        res = matching_vertices(odd_dist, algo="basic")
+        res.sort()
+        exp = [(1, 3), (6, 7), (13, 16)]
+        d3 = [odd_dist[p] for p in res]
+        # fLOG(sum(d3), "details", d3)
+        assert sum(d3) >= sum(d2)
+        self.assertEqual(res, exp)
+
+        exp = [(0, 1), (2, 7), (3, 9), (4, 6), (5, 10),
+               (8, 12), (11, 14), (13, 17), (15, 16)]
         res = matching_vertices(dist, algo="blossom")
         res.sort()
         self.assertEqual(res, exp)
+
+    def test_best_euler_path(self):
+        fLOG(
+            __file__,
+            self._testMethodName,
+            OutputPrint=__name__ == "__main__")
+
+        vertices = [(-122.34991548199997, 47.46763155800005), (-122.34991155699998, 47.468532819000075),
+                    (-122.349907514, 47.469446668000046), (-122.34855159499995,
+                                                           47.47036031400006),
+                    (-122.34722154299999,
+                     47.46765986400004), (-122.34721743899996, 47.46856001400005),
+                    (-122.34721337199994,
+                     47.466759281000066), (-122.34721334599999, 47.46946425100003),
+                    (-122.34717558599999,
+                     47.47218021800006), (-122.34695634299999, 47.47037913100007),
+                    (-122.34651954599997,
+                     47.46947199700003), (-122.34602084699998, 47.46857181000007),
+                    (-122.34577976599996,
+                     47.47219822000005), (-122.34577761299994, 47.470393184000045),
+                    (-122.34552556999995,
+                     47.46767758400006), (-122.34451462099997, 47.46858890800007),
+                    (-122.34451260399999, 47.46949338600007), (-122.34451061099998, 47.47040481700003)]
+        edges = [(10, 7), (5, 4), (4, 0), (10, 11), (9, 10), (7, 2), (17, 16), (5, 1),
+                 (11, 5), (17, 13), (16, 15), (14, 4), (15, 11), (1, 0), (4, 6),
+                 (8, 9), (13, 9), (7, 5), (11, 14), (16, 10), (2, 1), (12, 8),
+                 (9, 3), (12, 13)]
+        distances = [0.0006938432391730961, 0.0009001593555190061, 0.0026940877056109824, 0.0010290953928001187,
+                     0.0010111922517731158, 0.0026942253755745885, 0.0009114331789785205, 0.002694255252624058, 0.001196650141037562,
+                     0.0012670554031294153, 0.000904480248963228, 0.001696065569270049, 0.0015063230412799549,
+                     0.0009012695466891699, 0.0009006200670015617, 0.0018143819538848289, 0.0011788137680839225,
+                     0.0009042462633556375, 0.0010222227965844966, 0.0020070559761853316, 0.0009138579433356185, 0.001395936081803295,
+                     0.0015953629752697774, 0.0018050372840282547]
+        edges_index = [0, 4994, 11394, 9989, 1670, 11274, 17680, 3353, 9118, 30370, 15023,
+                       6712, 8378, 29114, 4553, 1101, 6488, 107, 1003, 12783, 2418, 2803,
+                       2808, 6265]
+        co, ind, d = best_euler_path(edges_index=edges_index, edges=edges,
+                                     distances=distances, vertices=vertices, fLOG=fLOG)
+        fLOG(co)
+        fLOG("distance", d)
+        co.sort()
+        ind.sort()
+        exp_ind = [0, 0, 107, 1003, 1101, 1670, 2418, 2803, 2808, 2808, 3353, 3353, 4553, 4553, 4994, 4994,
+                   6265, 6488, 6488, 6712, 8378, 9118, 9989, 11274, 11394, 12783, 12783, 15023, 17680, 29114, 30370]
+        self.assertEqual(ind, exp_ind)
+        exp_co = [(1, 0), (2, 1), (4, 0), (4, 6), (4, 6), (5, 1), (5, 1), (5, 4), (5, 4), (7, 2), (7, 5), (8, 9), (9, 3), (9, 3), (9, 10), (10, 7),
+                  (10, 7), (10, 11), (11, 5), (11, 14), (12, 8), (12, 13), (13, 9), (13, 9), (14, 4), (15, 11), (16, 10), (16, 10), (16, 15), (17, 13), (17, 16)]
+        self.assertEqual(co, exp_co)
 
 
 if __name__ == "__main__":
