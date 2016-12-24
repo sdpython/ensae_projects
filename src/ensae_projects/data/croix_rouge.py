@@ -29,10 +29,13 @@ def get_password_from_keyring_or_env(pwd):
     if pwd is None:
         import keyring
         pwd = keyring.get_password("HACKATHON2015", "PWDCROIXROUGE")
-        if pwd is None and "PWDCROIXROUGE" not in os.environ:
-            raise PasswordException(
-                "password not found in environment variables: PWDCROIXROUGE is not set")
-        return bytes(os.environ["PWDCROIXROUGE"], encoding="ascii")
+        if pwd is None:
+            if "PWDCROIXROUGE" not in os.environ:
+                raise PasswordException(
+                    "password not found in environment variables: PWDCROIXROUGE is not set")
+            else:
+                pwd = os.environ["PWDCROIXROUGE"]
+        return bytes(pwd, encoding="ascii")
     elif not isinstance(pwd, bytes):
         return bytes(pwd, encoding="ascii")
     else:

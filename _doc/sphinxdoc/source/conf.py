@@ -20,7 +20,7 @@ sys.path.insert(
             "pyquickhelper",
             "src")))
 
-from pyquickhelper.helpgen.default_conf import set_sphinx_variables
+from pyquickhelper.helpgen.default_conf import set_sphinx_variables, get_default_stylesheet
 
 set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2016,
                      "alabaster",  # "sphinx_py3doc_enhanced_theme",
@@ -35,5 +35,5 @@ blog_root = "http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/"
 blog_background = False
 
 html_context = {
-    'css_files': ['_static/my-styles.css'],
+    'css_files': get_default_stylesheet() + ['_static/my-styles.css'],
 }
