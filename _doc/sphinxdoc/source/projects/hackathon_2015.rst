@@ -1,5 +1,4 @@
 
-
 .. index:: Microsoft, ENSAE, Hackathon, Croix-Rouge, DataForGood, 2015
 
 Hackathon Microsoft / ENSAE / Croix-Rouge / DataForGood - 2015
@@ -19,18 +18,14 @@ Données et challenge
 
     hackathon_2015_croix_rouge_schema
     hackathon_2015_croix_rouge_objectives
-    
 
-    
 Autres données
 ^^^^^^^^^^^^^^
-
 
 * `dataforgoodfr/croixrouge <https://github.com/dataforgoodfr/croixrouge/tree/master/data>`_
 * `Description des tables INSEE <https://github.com/dataforgoodfr/croixrouge/wiki/Description-des-tables-INSEE>`_        		
 * Geocoding using Bing Maps : `python-omgeo <https://pypi.python.org/pypi/python-omgeo>`_
-* Geocoding using Google Maps : `google-maps-services-python <https://github.com/googlemaps/google-maps-services-python>`_ 
-
+* Geocoding using Google Maps : `google-maps-services-python <https://github.com/googlemaps/google-maps-services-python>`_
 
 Documentation
 +++++++++++++
@@ -51,8 +46,6 @@ Vous pouvez regarder la section suivante pour voir comment faire.
 
     hackathon_2015_startup
 
-
-
 Helpers, notebooks and passwords
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -61,10 +54,9 @@ The credentials to access it can be stored in environment variable ``CRCREDENTIA
 with following format::
 
     <blob storage name>**<access key>
-    
+
 Encrypted data available in this module can be accessed setting up
 environment variable ``PWDCROIXROUGE`` with with password.
-
 
 .. toctree::
     :maxdepth: 1
@@ -73,8 +65,7 @@ environment variable ``PWDCROIXROUGE`` with with password.
     ../notebooks/database_schemas
     ../notebooks/download_data_azure
     ../notebooks/process_clean_files
-    
-    
+
 Cheat Sheets
 ^^^^^^^^^^^^
 
@@ -85,7 +76,7 @@ Cheat Sheets
     ../notebooks/chsh_files
     ../notebooks/chsh_dates
     ../notebooks/chsh_pip_install
-    
+
 Un peu plus sur Azure
 ^^^^^^^^^^^^^^^^^^^^^
 

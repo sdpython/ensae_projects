@@ -6,8 +6,5 @@ Challenges
 
 .. toctree::
     :maxdepth: 2
-    
-    challenges/city_tour
-    
 
-    
+    challenges/city_tour

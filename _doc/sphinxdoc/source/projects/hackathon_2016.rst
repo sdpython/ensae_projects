@@ -1,5 +1,4 @@
 
-
 .. index:: Ernst & Young, ENSAE, Hackathon, Croix-Rouge, Crésus, 2016
 
 Hackathon Ernst & Young / ENSAE / Croix-Rouge / Crésus - 2016
@@ -8,13 +7,11 @@ Hackathon Ernst & Young / ENSAE / Croix-Rouge / Crésus - 2016
 .. contents::
     :local:
 
-
 Les données seront fournies au début de l'événement et doivent être détruites à la fin de l'événement.
 Elles sont accompagnés de documents qui permettent d'interpréter certains variables
 au regard des activités de chaque association.
 
 Site : `hackathon-geniusensae.fr <http://hackathon-geniusensae.fr/>`_.
-
 
 Challenge créatif - La Croix-Rouge
 ++++++++++++++++++++++++++++++++++
@@ -34,20 +31,18 @@ afin de proposer le meilleur parcours :
 * **L'implication :** quel pourcentage de son temps doit-il y consacrer ?
 * **Le niveau de responsabilité :** quel niveau de responsabilité lui conviendrait le mieux ?
 
-
 Les données incluent une vue globale sur 40 ans et une vue détaillée
 pour un secteur de La Croix-Rouge sur les deux dernières années.
 
 *Je veux être bénévole, que me recommandez-vous ?*
 
-
 Challenge prédictif - Crésus
 ++++++++++++++++++++++++++++
 
-`Crésus <http://www.cresus-iledefrance.org/>`_ accompagne les personnes en situation de 
+`Crésus <http://www.cresus-iledefrance.org/>`_ accompagne les personnes en situation de
 surendettement. Les personnes en situation financière difficile commencent par envoyer
 un dossier qui précisent les éléments principaux de leur situation. C'est ce que contiennent les bases
-*dossier*, *budget*. Un ou plusieurs rendez-vous téléphonique suit pour renseigné les 
+*dossier*, *budget*. Un ou plusieurs rendez-vous téléphonique suit pour renseigné les
 tables *agenda* et *crédit*.
 Deux colonnes sont utilisées pour qualifier la nature de la situation (diagnostic)
 et l'orientation donnée au dossier. Ce sont les deux informations qu'il faut prédire.
@@ -80,13 +75,13 @@ manuellement après *nature* et *orientation*.
 Compétition
 +++++++++++
 
-La compétition est accessible dur codalab : 
+La compétition est accessible dur codalab :
 `Hackathon ENSAE - EY - Challenge Crésus - 1.5 <https://competitions.codalab.org/competitions/15490>`_.
 C'est un problème de classification **multi-classes**.
 
 * `données du challenge <https://github.com/sdpython/ensae_projects/blob/master/_doc/competitions/2016_ENSAE_hackathon/competition/data_cresus.zip>`_
 
-Les réponses doivent être données dans le même ordre que les lignes de la table 
+Les réponses doivent être données dans le même ordre que les lignes de la table
 ``tbl_dossier.test.X.txt`` dans un fichier texte sans en-tête **answer.txt**.
 Soumettre une solution consiste à envoyer à fichier **answer.zip** qui contient un
 fichier **answer.txt** au format suivant :
@@ -115,12 +110,12 @@ Un exemple de soumission est disponible (réponse aléatoire)
 
 Les métriques produites pour chaque colonne :
 
-* **ERR - taux d'erreur** : c'est la proportion de mauvaises prédictions, 
+* **ERR - taux d'erreur** : c'est la proportion de mauvaises prédictions,
   la classe prédite n'est pas la classe attendue.
 * **AUC - aire sous la courbe ROC** : ce chiffre correspond à la probabilité
   pour le score d'une bonne prédiction d'être supérieur au score d'une mauvaise
   prédiction - `Courbe ROC <http://www.xavierdupre.fr/app/mlstatpy/helpsphinx/c_metric/roc.html>`_.
-  
+
 Une bonne *AUC* indique que le score de la prédiction est fiable.
 Autrement dit, même si le taux d'erreur est élevé, cela signifie que celui qui utilise
 le modèle de prédiction peut plus facilement croire la prédiction quand celle-ci est élevée.
@@ -134,7 +129,6 @@ et le fichier d'évaluation fonctionne en Python 2 ou 3 :
 
 Résultats du challenge prédiction
 +++++++++++++++++++++++++++++++++
-
 
 +-----------+-----------------+-----------------+------------+------------+
 | Team Name | orientation_ERR | orientation_AUC | nature_ERR | nature_AUC |
@@ -157,17 +151,13 @@ Résultats du challenge prédiction
 La compétation est terminée. Les prédictions attendues sont disponibles
 zippées : `reference.zip <https://github.com/sdpython/ensae_projects/blob/master/_doc/competitions/2016_ENSAE_hackathon/competition/reference.zip>`_.
 
-
-    
 Autres données
 ++++++++++++++
-
 
 * `dataforgoodfr/croixrouge <https://github.com/dataforgoodfr/croixrouge/tree/master/data>`_
 * `Description des tables INSEE <https://github.com/dataforgoodfr/croixrouge/wiki/Description-des-tables-INSEE>`_
 * `data.gouv.fr <https://www.data.gouv.fr/fr/>`_
 
-    
 Cheat Sheets
 ++++++++++++
 
@@ -178,41 +168,41 @@ Cheat Sheets
     ../notebooks/chsh_files
     ../notebooks/chsh_dates
     ../notebooks/chsh_pip_install
-    
+
 `Rappel de ce que vous savez déjà mais avez peut-être oublié <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx3/notebooks/td2_eco_rappels_1a.html>`_
-    
+
 Retour sur la compétition
 +++++++++++++++++++++++++
 
 **événements**
 
-La qualité des données a un gros impact sur la performance et 
+La qualité des données a un gros impact sur la performance et
 on découvre les données trop souvent sous la forme de tableau de bord
 alors que ceux-ci sont la conséquence d'une succession d'événements.
 
 Si un système d'information ne conserve que l'état d'une situation,
 d'une association, il ne représente que le présent, perd toute notion
-d'historique et met côte à côte des informations qui n'ont pas 
+d'historique et met côte à côte des informations qui n'ont pas
 été renseignées à la même date.
 
 C'est pourquoi il est beaucoup plus intéressant de construire un système
 qui enregistre des événements, des mises à jour. Il est facile de reconstruire l'état
 du système à partir de cette séquence. Cela permet pour un datascientist
-de comprendre l'évolution des données, de déterminer quelles données étaient 
+de comprendre l'évolution des données, de déterminer quelles données étaient
 disponibles à chaque instant surtout si elles ont servi de base
 à une décision. Ce procédé notamment de repérer qu'une variable est renseignée
 après une autre et qu'elle en dépend.
 
 **id_dossier**
 
-Certains participants ont noté que la variable 
+Certains participants ont noté que la variable
 *id_dossier* avait un impact positif sur la qualité de la prédiction.
 Faut-il s'en passer sachant qu'elle n'a pas de sens particulier ?
 Dans l'idéal, oui ! Mais avant de prendre une décision hâtive,
 il faut s'interroger sur le fait que cette variable ait un impact.
 Tout d'abord, le numéro de dossier est croissant. Il est donc plus ou moins
 corrélé avec la date à laquelle le dossier est ouvert.
-On peut remplacer *id_dossier* par la date et mesurer la 
+On peut remplacer *id_dossier* par la date et mesurer la
 différence de prédiction. Toutefois, on peut se demander pourquoi
 la date aurait un impact sur la prédiction. Cela signifie probablement
 que la distribution de la variable *orientation* évolue avec le temps
@@ -223,11 +213,9 @@ On peut utiliser une astuce pour vérifier :
 
 **données aberrantes**
 
-Il n'existe pas toujours de mode d'emploi. Lorsqu'on voit une 
+Il n'existe pas toujours de mode d'emploi. Lorsqu'on voit une
 valeur *2010-2110* avec une colonne qui porte la mention *début-fin*,
 cela signifie sans doute que le début est bien 2010 mais que la fin n'est
-pas déterminée. Mais comme le système d'information la demande, 
+pas déterminée. Mais comme le système d'information la demande,
 la personne qui a renseigné l'information en donne une plus ou moins aberrante.
 Plus les gens se servent d'une base de données, meilleure elle est.
-
-

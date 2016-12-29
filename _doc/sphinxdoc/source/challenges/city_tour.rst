@@ -10,14 +10,11 @@ Problem definition
 The first notebooks describes the problem with a small example.
 The second notebook introduces two bigger ones.
 
-
-
-.. toctree:: 
+.. toctree::
     :maxdepth: 2
-    
+
     ../notebooks/city_tour_1
     ../notebooks/city_tour_long
-    
 
 Data preparation
 ++++++++++++++++
@@ -25,12 +22,10 @@ Data preparation
 The following notebook describes how the data was obtained
 and preprocessed to build the examples introduced above.
 
-
-.. toctree:: 
+.. toctree::
     :maxdepth: 2
-    
-    ../notebooks/city_tour_data_preparation
 
+    ../notebooks/city_tour_data_preparation
 
 Solutions
 +++++++++
