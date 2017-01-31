@@ -302,5 +302,12 @@ _unittests/ut_challenge/*.shp
 _unittests/ut_challenge/*.shx
 _unittests/ut_challenge/*.dbf
 _unittests/ut_challenge/*.zip
-
 _doc/sphinxdoc/source/phdoc_static/style_notebook_snippet.css
+_doc/notebooks/challenges/bike_data/2016*
+_doc/notebooks/challenges/bike_data/divvy*
+_doc/notebooks/challenges/bike_data/*.zip
+_doc/notebooks/challenges/bike_data/README_2*
+
+
+
+

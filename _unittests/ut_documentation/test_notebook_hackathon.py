@@ -90,7 +90,7 @@ class TestNotebookHackathon(unittest.TestCase):
             return
         fix_tkinter_issues_virtualenv()
         temp = get_temp_folder(__file__, "temp_hackathon_2015")
-        keepnote = ls_notebooks("hackathon_2015")
+        keepnote = ls_notebooks("hackathons/hackathon_2015")
         assert len(keepnote) > 0
         keepnote = [
             _ for _ in keepnote if "database_schemas" not in _ and
