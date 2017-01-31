@@ -108,7 +108,7 @@ def process_cresus_sql(infile, out_clean_sql=None, outdb=None, fLOG=fLOG):
     except Exception as e:
         try:
             exp = str(e).split('"')[1]
-        except:
+        except Exception:
             raise e
         lines = content.split("\n")
         lines = ["{0}/{2}:{1}".format(i, _, len(lines))

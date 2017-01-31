@@ -23,7 +23,7 @@ def convert_dates(sd, option=None, exc=False):
             try:
                 v2 = datetime.datetime.strptime(sd, "%d/%m/%y")
                 return v2.strftime("%Y-%m-%d")
-            except:
+            except Exception:
                 pass
     return sd
 
@@ -204,7 +204,7 @@ def enumerate_text_lines(filename, sep="\t", encoding="utf-8", quotes_as_str=Fal
                         try:
                             v2 = datetime.datetime.strptime(v, "%d/%m/%y")
                             update[k] = v2.strftime("%Y-%m-%d")
-                        except:
+                        except Exception:
                             continue
                 if update:
                     fields.update(update)
