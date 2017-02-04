@@ -1,4 +1,5 @@
 azure
+chardet
 cryptography
 folium
 jyquickhelper
