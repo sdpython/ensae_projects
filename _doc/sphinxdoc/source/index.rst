@@ -72,7 +72,7 @@ pip ::
     :target: https://travis-ci.org/sdpython/ensae_projects
     :alt: Build status
 
-.. image:: https://ci.appveyor.com/api/projects/status/66db8wa3a566u6b7?svg=true
+.. image:: https://ci.appveyor.com/api/projects/status/5qbwt4kaxpc8w415?svg=true
     :target: https://ci.appveyor.com/project/sdpython/ensae-projects
     :alt: Build Status Windows
 
