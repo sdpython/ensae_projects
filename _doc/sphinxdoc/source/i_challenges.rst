@@ -8,4 +8,4 @@ Challenges
     :maxdepth: 2
 
     challenges/city_tour
-    challenges/bike_trips
+    challenges/city_bike

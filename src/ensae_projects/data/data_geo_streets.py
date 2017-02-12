@@ -29,7 +29,7 @@ def get_seattle_streets(filename=None, folder="."):
     @param      folder          temporary folder where to download files
     @return                     shapes, records
 
-    The function returns
+    The function returns a filename.
     """
     if filename is None:
         download_data("WGS84_seattle_street.zip", whereTo=folder)
