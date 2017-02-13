@@ -104,13 +104,11 @@ class TestStationsChicago(unittest.TestCase):
         df = pandas.DataFrame(dict(A=["un", "deux"], B=[1, 2], C=[
                               time(12, 0, 0), time(12, 10, 0)]))
         fLOG(df)
-        dfj = add_missing_time(df, "C")
+        dfj = add_missing_time(df, "C", values="B")
         # fLOG(dfj[dfj.B != 0])
-        self.assertEqual(dfj.shape, (24 * 60 // 10, 3))
+        self.assertEqual(dfj.shape, (2 * 24 * 6, 3))
         g = dfj.B.dropna()
-        self.assertEqual(len(g), 24 * 60 // 10)
-        g = dfj.A.dropna()
-        self.assertEqual(len(g), 2)
+        self.assertEqual(len(g), 2 * 24 * 6)
 
 
 if __name__ == "__main__":
