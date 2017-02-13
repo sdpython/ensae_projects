@@ -6,6 +6,7 @@
 import sys
 import os
 import unittest
+import shutil
 
 
 try:
@@ -75,7 +76,7 @@ from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
 from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook, unittest_raise_exception_notebook
 
 
-class TestNotebookChallengeCityTour(unittest.TestCase):
+class TestNotebookChallengeCityBike(unittest.TestCase):
 
     def test_notebook_challenge_city_tour(self):
         fLOG(
@@ -83,13 +84,19 @@ class TestNotebookChallengeCityTour(unittest.TestCase):
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
         fix_tkinter_issues_virtualenv()
-        temp = get_temp_folder(__file__, "temp_challenge_city_tour")
-        keepnote = ls_notebooks(os.path.join("challenges", "city_tour"))
+        temp = get_temp_folder(__file__, "temp_challenge_city_bike")
+        keepnote = ls_notebooks(os.path.join("challenges", "city_bike"))
         assert len(keepnote) > 0
-        keepnote = [_ for _ in keepnote]
+        folder = os.path.dirname(keepnote[0])
+        images = [os.path.join(folder, "images", "chicago.png")]
+        dest = os.path.join(temp, "images")
+        if not os.path.exists(dest):
+            os.mkdir(dest)
+        for img in images:
+            shutil.copy(img, dest)
         if len(keepnote) > 0:
             res = execute_notebooks(temp, keepnote,
-                                    lambda i, n: "tour" in n,
+                                    lambda i, n: "bike" in n,
                                     fLOG=fLOG,
                                     clean_function=clean_function_notebook)
             unittest_raise_exception_notebook(res, fLOG)
