@@ -33,19 +33,49 @@ def get_chicago_stations(folder=".", as_df=False):
         return file
 
 
-def add_missing_time(df, column, delay=10):
+def df_crossjoin(df1, df2, **kwargs):
+    """
+    Make a cross join (cartesian product) between two dataframes by using a constant temporary key.
+    Also sets a MultiIndex which is the cartesian product of the indices of the input dataframes.
+    Source: `Cross join / cartesian product between pandas DataFrames <https://mkonrad.net/2016/04/16/cross-join--cartesian-product-between-pandas-dataframes.html>`_
+
+    @param      df1     dataframe 1
+    @param      df2     dataframe 2
+    @param      kwargs  keyword arguments that will be passed to pd.merge()
+    @return             cross join of df1 and df2
+    """
+    df1['_tmpkey'] = 1
+    df2['_tmpkey'] = 1
+    res = pandas.merge(df1, df2, on='_tmpkey', **
+                       kwargs).drop('_tmpkey', axis=1)
+    res.index = pandas.MultiIndex.from_product((df1.index, df2.index))
+    df1.drop('_tmpkey', axis=1, inplace=True)
+    df2.drop('_tmpkey', axis=1, inplace=True)
+    return res
+
+
+def add_missing_time(df, column, values, delay=10):
     """
     After aggregation, it usually happens that the series is sparse.
     This function add rows for missing time.
 
     @param      df      dataframe to extend
     @param      column  column with time
+    @param      values  columns which contain the values, the others are considered as the keys
     @aram       dely    populate every *delay* minute
     @return             new dataframe
     """
+    if isinstance(values, str):
+        values = [values]
+    if len(values) == 0:
+        raise ValueError("values cannot be empty")
     all_times = [time(i // 60, i % 60, 0) for i in range(0, 24 * 60, delay)]
+    keys = [_ for _ in df.columns if _ not in values and _ != column]
     dfti = pandas.DataFrame({column: all_times})
-    dfj = df.merge(dfti, on=column, how="right")
+    only = df[keys + [column]
+              ].groupby(keys, as_index=False).count().drop(column, axis=1)
+    dfti = df_crossjoin(only, dfti)
+    dfj = df.merge(dfti, on=keys + [column], how="right")
     for i in range(dfj.shape[1]):
         if dfj.dtypes[i] != object:
             dfj[dfj.columns[i]].fillna(0, inplace=True)
