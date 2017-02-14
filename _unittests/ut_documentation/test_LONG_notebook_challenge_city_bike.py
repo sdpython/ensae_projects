@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 """
-@brief      test log(time=160s)
+@brief      test log(time=1000s)
 """
 
 import sys
@@ -76,15 +76,15 @@ from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
 from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook, unittest_raise_exception_notebook
 
 
-class TestNotebookChallengeCityBike(unittest.TestCase):
+class TestLONGNotebookChallengeCityBike(unittest.TestCase):
 
-    def test_notebook_challenge_city_tour(self):
+    def test_long_notebook_challenge_city_tour(self):
         fLOG(
             __file__,
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
         fix_tkinter_issues_virtualenv()
-        temp = get_temp_folder(__file__, "temp_challenge_city_bike")
+        temp = get_temp_folder(__file__, "temp_long_challenge_city_bike")
         keepnote = ls_notebooks(os.path.join("challenges", "city_bike"))
         assert len(keepnote) > 0
         folder = os.path.dirname(keepnote[0])
@@ -94,12 +94,9 @@ class TestNotebookChallengeCityBike(unittest.TestCase):
             os.mkdir(dest)
         for img in images:
             shutil.copy(img, dest)
-        allowed = {"city_bike_challenge.ipynb",
-                   "bike_seatle.ipynb", "business_chicago.ipynb"}
         if len(keepnote) > 0:
             res = execute_notebooks(temp, keepnote,
-                                    lambda i, n: len(
-                                        [_ for _ in allowed if _ in n]) > 0,
+                                    lambda i, n: "bike" in n,
                                     fLOG=fLOG,
                                     clean_function=clean_function_notebook)
             unittest_raise_exception_notebook(res, fLOG)

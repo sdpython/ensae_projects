@@ -34,6 +34,7 @@ The data can be seen in many ways.
     :maxdepth: 2
 
     ../notebooks/city_bike_views
+    ../notebooks/business_chicago
 
 A solution
 ++++++++++
