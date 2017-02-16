@@ -43,7 +43,18 @@ A solution
     :maxdepth: 2
 
     ../notebooks/city_bike_solution
+
+A solution including clustering
++++++++++++++++++++++++++++++++
+
+The first notebook only clusters on arrival time.
+The second one clusters on bith arrival and starting time.
+
+.. toctree::
+    :maxdepth: 2
+
     ../notebooks/city_bike_solution_cluster
+    ../notebooks/city_bike_solution_cluster_start
 
 Other sources of data
 +++++++++++++++++++++
