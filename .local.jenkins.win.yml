@@ -13,7 +13,7 @@ install:
   - pip freeze > pip_freeze.txt
 script:
   - { CMD: "python -u setup.py unittests", NAME: "UT" }
-  - { CMD: "python -u setup.py unittests_LONG", NAME: "UT_LONG" }
+  - { CMD: "python -u setup.py unittests_LONG", NAME: "UT_LONG", TIMEOUT: 5000 }
   - { CMD: "python -u setup.py unittests_SKIP", NAME: "UT_SKIP" }
 after_script:
   - python -u setup.py bdist_wheel
