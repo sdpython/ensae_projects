@@ -492,7 +492,7 @@ def matching_vertices(distances, algo="blossom"):
                 final.append((a, b))
                 done.add((b, a))
         if len(final) * 2 != len(pairs):
-            mes = "final={0}\{3}={1}\ncost\n{2}".format(
+            mes = "final={0}\n{3}={1}\ncost\n{2}".format(
                 final, pairs, cost, algo)
             raise ValueError(
                 "Did you use the tweak? The matching should be symmetric.\n" + mes)
