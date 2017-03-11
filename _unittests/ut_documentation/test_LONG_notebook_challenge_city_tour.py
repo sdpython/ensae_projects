@@ -75,9 +75,9 @@ from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
 from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook, unittest_raise_exception_notebook
 
 
-class TestNotebookChallengeCityTour(unittest.TestCase):
+class TestLONGNotebookChallengeCityTour(unittest.TestCase):
 
-    def test_notebook_challenge_city_tour(self):
+    def test_long_notebook_challenge_city_tour(self):
         fLOG(
             __file__,
             self._testMethodName,
