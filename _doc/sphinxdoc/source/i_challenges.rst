@@ -9,3 +9,4 @@ Challenges
 
     challenges/city_tour
     challenges/city_bike
+    challenges/knn_kdtree
