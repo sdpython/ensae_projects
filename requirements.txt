@@ -2,6 +2,7 @@ azure
 chardet
 cryptography
 folium
+keyring
 jyquickhelper
 keyring
 pycryptodomex
