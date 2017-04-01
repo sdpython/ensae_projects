@@ -67,8 +67,8 @@ class TestNotebookHackathon(unittest.TestCase):
             __file__,
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
-        if is_travis_or_appveyor() == "appveyor":
-            warnings.warn("disabled on appveyor")
+        if is_travis_or_appveyor():
+            warnings.warn("disabled")
             return
         temp = get_temp_folder(__file__, "temp_joined_schemas")
         try:

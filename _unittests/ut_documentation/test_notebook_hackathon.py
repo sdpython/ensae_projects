@@ -86,7 +86,7 @@ class TestNotebookHackathon(unittest.TestCase):
             __file__,
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
-        if is_travis_or_appveyor() == "appveyor":
+        if is_travis_or_appveyor():
             return
         fix_tkinter_issues_virtualenv()
         temp = get_temp_folder(__file__, "temp_hackathon_2015")
