@@ -22,7 +22,7 @@ sys.path.insert(
 
 from pyquickhelper.helpgen.default_conf import set_sphinx_variables, get_default_stylesheet
 
-set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2016,
+set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2017,
                      "alabaster",  # "sphinx_py3doc_enhanced_theme",
                      None, locals(), add_extensions=["alabaster"],
                      extlinks=dict(issue=('https://github.com/sdpython/ensae_projects/issues/%s', 'issue')))
