@@ -62,7 +62,7 @@ def add_missing_time(df, column, values, delay=10):
     @param      df      dataframe to extend
     @param      column  column with time
     @param      values  columns which contain the values, the others are considered as the keys
-    @aram       dely    populate every *delay* minute
+    @aram       delay   populate every *delay* minutes
     @return             new dataframe
     """
     if isinstance(values, str):
