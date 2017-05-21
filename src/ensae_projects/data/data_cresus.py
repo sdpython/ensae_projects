@@ -207,8 +207,8 @@ def split_train_test_cresus_data(tables, outfold, ratio=0.20, fLOG=fLOG):
                ].sort_values("date_ouverture")
     nb = len(short)
     train = int(nb * (1 - ratio))
-    dossiers = set(short.ix[:train, "id"])
-    users = set(short.ix[:train, "id_user"])
+    dossiers = set(short.loc[:train, "id"])
+    users = set(short.loc[:train, "id_user"])
 
     train_tables = {}
     test_tables = {}
