@@ -41,8 +41,8 @@ except ImportError:
 
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder, is_travis_or_appveyor
-from src.ensae_projects.data.croix_rouge import get_meaning, merge_schema, df2rsthtml
-from src.ensae_projects.data import PasswordException
+from src.ensae_projects.datainc.croix_rouge import get_meaning, merge_schema, df2rsthtml
+from src.ensae_projects.datainc import PasswordException
 
 
 class TestNotebookHackathon(unittest.TestCase):

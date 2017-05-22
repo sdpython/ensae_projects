@@ -141,8 +141,8 @@ des guillemets...
 Par exemple, il est préférable de stocker une date au format ``AAAA-MM-JJ`` plutôt
 que ``JJ-MM-AAAA`` car cela permet de trier facilement les données par ordre chronologique.
 
-* :func:`convert_dates <ensae_projects.data.convert_dates>`
-* :func:`change_encoding <ensae_projects.data.change_encoding>`
+* :func:`convert_dates <ensae_projects.datainc.convert_dates>`
+* :func:`change_encoding <ensae_projects.datainc.change_encoding>`
 * :ref:`processcleanfilesrst`
 
 Import des données dans le serveur SQL

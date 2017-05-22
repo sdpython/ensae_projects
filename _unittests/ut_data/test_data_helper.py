@@ -39,7 +39,7 @@ except ImportError:
 
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder
-from src.ensae_projects.data import enumerate_text_lines, change_encoding_improve, clean_column_name_sql_dump
+from src.ensae_projects.datainc import enumerate_text_lines, change_encoding_improve, clean_column_name_sql_dump
 
 
 class TestNotebookHackathon(unittest.TestCase):

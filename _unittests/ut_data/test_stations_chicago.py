@@ -60,7 +60,7 @@ except ImportError:
 
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder
-from src.ensae_projects.data.data_bikes import get_chicago_stations, folium_html_stations_map, add_missing_time
+from src.ensae_projects.datainc.data_bikes import get_chicago_stations, folium_html_stations_map, add_missing_time
 
 
 class TestStationsChicago(unittest.TestCase):

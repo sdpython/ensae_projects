@@ -44,7 +44,7 @@ Cette table décrit les produits distribués par la Croix-Rouge.
     :showcode:
     :rst:
 
-    from ensae_projects.data.croix_rouge import get_meaning, df2rsthtml
+    from ensae_projects.datainc.croix_rouge import get_meaning, df2rsthtml
     df = get_meaning("ITMMASTER")
     print(df2rsthtml(df.head(n=2), format='rst'))
 
@@ -68,7 +68,7 @@ et ``SINVOICE_.clean.txt`` pour un fichier plat sans guillemets.
     :showcode:
     :rst:
 
-    from ensae_projects.data.croix_rouge import get_meaning, df2rsthtml
+    from ensae_projects.datainc.croix_rouge import get_meaning, df2rsthtml
     df = get_meaning("SINVOICE")
     print(df2rsthtml(df.head(n=2), format='rst'))
 
@@ -98,7 +98,7 @@ et ``SINVOICEV_.clean.txt`` pour un fichier plat sans guillemets.
     :showcode:
     :rst:
 
-    from ensae_projects.data.croix_rouge import get_meaning, df2rsthtml
+    from ensae_projects.datainc.croix_rouge import get_meaning, df2rsthtml
     df = get_meaning("SINVOICE_V")
     print(df2rsthtml(df.head(n=2), format='rst'))
 
@@ -113,7 +113,7 @@ Cette table décrit de façon très détaillée les dons et les réceptions de p
     :showcode:
     :rst:
 
-    from ensae_projects.data.croix_rouge import get_meaning, df2rsthtml
+    from ensae_projects.datainc.croix_rouge import get_meaning, df2rsthtml
     df = get_meaning("stojou")
     print(df2rsthtml(df.head(n=2), format='rst'))
 
@@ -132,6 +132,6 @@ Colonnes communes à toutes les tables
     :showcode:
     :rst:
 
-    from ensae_projects.data.croix_rouge import merge_schema, df2rsthtml
+    from ensae_projects.datainc.croix_rouge import merge_schema, df2rsthtml
     df = merge_schema()
     print(df2rsthtml(df.head(n=2), format='rst'))

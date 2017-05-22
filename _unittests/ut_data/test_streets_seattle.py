@@ -58,9 +58,9 @@ except ImportError:
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder
 from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
-from src.ensae_projects.data.data_geo_streets import get_seattle_streets, shapely_records, folium_html_street_map, get_fields_description
-from src.ensae_projects.data.data_geo_streets import build_streets_vertices, plot_streets_network
-from src.ensae_projects.data.data_geo_streets import seattle_streets_set_level2, seattle_streets_set_small
+from src.ensae_projects.datainc.data_geo_streets import get_seattle_streets, shapely_records, folium_html_street_map, get_fields_description
+from src.ensae_projects.datainc.data_geo_streets import build_streets_vertices, plot_streets_network
+from src.ensae_projects.datainc.data_geo_streets import seattle_streets_set_level2, seattle_streets_set_small
 
 
 class TestStreetsSeattle(unittest.TestCase):

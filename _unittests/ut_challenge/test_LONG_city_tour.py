@@ -56,8 +56,8 @@ except ImportError:
 
 
 from pyquickhelper.loghelper import fLOG
-from src.ensae_projects.data.data_geo_streets import get_seattle_streets, shapely_records
-from src.ensae_projects.data.data_geo_streets import seattle_streets_set_level2
+from src.ensae_projects.datainc.data_geo_streets import get_seattle_streets, shapely_records
+from src.ensae_projects.datainc.data_geo_streets import seattle_streets_set_level2
 from src.ensae_projects.challenge.city_tour import best_euler_path
 
 
