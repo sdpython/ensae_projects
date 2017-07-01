@@ -8,7 +8,6 @@ ipython
 ipywidgets
 jupyter
 matplotlib
-mpld3
 nbformat
 networkx
 numpy
