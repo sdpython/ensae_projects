@@ -10,5 +10,6 @@ pyensae
 pyquickhelper
 pyshp
 qgrid
+shapely
 xgboost
 xlrd

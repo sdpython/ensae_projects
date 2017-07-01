@@ -19,7 +19,6 @@ pyzmq
 requests
 scikit-learn
 seaborn
-shapely
 Sphinx
 statsmodels
 statsmodels
