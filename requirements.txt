@@ -5,10 +5,12 @@ folium
 keyring
 jyquickhelper
 keyring
+mpld3
 pycryptodomex
 pyensae
 pyquickhelper
 pyshp
 qgrid
+shapely
 xgboost
 xlrd

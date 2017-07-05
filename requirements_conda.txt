@@ -8,7 +8,6 @@ ipython
 ipywidgets
 jupyter
 matplotlib
-mpld3
 nbformat
 networkx
 numpy
@@ -19,7 +18,6 @@ pyzmq
 requests
 scikit-learn
 seaborn
-shapely
 Sphinx
 statsmodels
 statsmodels
