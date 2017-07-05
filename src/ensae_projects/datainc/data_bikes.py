@@ -82,7 +82,7 @@ def add_missing_time(df, column, values, delay=10):
     return dfj.sort_values(column)
 
 
-def folium_html_stations_map(stations, html_width=None, html_height=None, **kwargs):
+def folium_html_stations_map(stations, html_width=None, html_height=None, radius=5, **kwargs):
     """
     Returns a folium map which shows stations in different colors.
 
@@ -92,6 +92,7 @@ def folium_html_stations_map(stations, html_width=None, html_height=None, **kwar
                                 `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html#pyensae.notebook_helper.folium_helper.folium_html_map>`_
     @param      html_height     sent to function
                                 `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html#pyensae.notebook_helper.folium_helper.folium_html_map>`_
+    @param      radius          size of the circles
     @return                     see function
                                 `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html#pyensae.notebook_helper.folium_helper.folium_html_map>`_
     """
@@ -109,8 +110,8 @@ def folium_html_stations_map(stations, html_width=None, html_height=None, **kwar
         if isinstance(value, tuple):
             name, value = value
             map_osm.add_child(folium.CircleMarker(
-                [x, y], popup=name, radius=15, fill_color=value, color=value))
+                [x, y], popup=name, radius=radius, fill_color=value, color=value))
         else:
             map_osm.add_child(folium.CircleMarker(
-                [x, y], radius=15, fill_color=value, color=value))
+                [x, y], radius=radius, fill_color=value, color=value))
     return folium_html_map(map_osm, width=html_width, height=html_height)
