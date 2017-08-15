@@ -73,7 +73,8 @@ except ImportError:
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder
 from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
-from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook, unittest_raise_exception_notebook
+from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook, execute_notebook_list_finalize_ut
+import src.ensae_projects
 
 
 class TestLONGNotebookChallengeCityBike(unittest.TestCase):
@@ -86,7 +87,7 @@ class TestLONGNotebookChallengeCityBike(unittest.TestCase):
         fix_tkinter_issues_virtualenv()
         temp = get_temp_folder(__file__, "temp_long_challenge_city_bike")
         keepnote = ls_notebooks(os.path.join("challenges", "city_bike"))
-        assert len(keepnote) > 0
+        self.assertTrue(len(keepnote) > 0)
         folder = os.path.dirname(keepnote[0])
         images = [os.path.join(folder, "images", "chicago.png")]
         dest = os.path.join(temp, "images")
@@ -94,14 +95,12 @@ class TestLONGNotebookChallengeCityBike(unittest.TestCase):
             os.mkdir(dest)
         for img in images:
             shutil.copy(img, dest)
-        if len(keepnote) > 0:
-            res = execute_notebooks(temp, keepnote,
-                                    lambda i, n: "bike" in n,
-                                    fLOG=fLOG,
-                                    clean_function=clean_function_notebook)
-            unittest_raise_exception_notebook(res, fLOG)
-        else:
-            raise Exception("no notebook")
+        res = execute_notebooks(temp, keepnote,
+                                lambda i, n: "bike" in n,
+                                fLOG=fLOG,
+                                clean_function=clean_function_notebook)
+        execute_notebook_list_finalize_ut(
+            res, fLOG=fLOG, dump=src.ensae_projects)
 
 
 if __name__ == "__main__":

@@ -6,7 +6,6 @@
 import sys
 import os
 import unittest
-import warnings
 
 
 try:
@@ -76,7 +75,8 @@ except ImportError:
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder, is_travis_or_appveyor
 from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
-from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook, unittest_raise_exception_notebook
+from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook, execute_notebook_list_finalize_ut
+import src.ensae_projects
 
 
 class TestNotebookHackathon(unittest.TestCase):
@@ -91,7 +91,7 @@ class TestNotebookHackathon(unittest.TestCase):
         fix_tkinter_issues_virtualenv()
         temp = get_temp_folder(__file__, "temp_hackathon_2015")
         keepnote = ls_notebooks("hackathons/hackathon_2015")
-        assert len(keepnote) > 0
+        self.assertTrue(len(keepnote) > 0)
         keepnote = [
             _ for _ in keepnote if "database_schemas" not in _ and
             "process_clean_files" not in _ and
@@ -105,14 +105,10 @@ class TestNotebookHackathon(unittest.TestCase):
                 return False
             return True
 
-        if len(keepnote) > 0:
-            for _ in keepnote:
-                fLOG(_)
-            res = execute_notebooks(temp, keepnote, filter=lambda i, n: True, valid_cell=valid_cell,
-                                    fLOG=fLOG, clean_function=clean_function_notebook)
-            unittest_raise_exception_notebook(res, fLOG)
-        else:
-            warnings.warn("No notebook was tested for the hackathon 2015")
+        res = execute_notebooks(temp, keepnote, filter=lambda i, n: True, valid_cell=valid_cell,
+                                fLOG=fLOG, clean_function=clean_function_notebook)
+        execute_notebook_list_finalize_ut(
+            res, fLOG=fLOG, dump=src.ensae_projects)
 
 
 if __name__ == "__main__":

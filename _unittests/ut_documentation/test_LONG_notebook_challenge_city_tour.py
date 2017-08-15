@@ -72,7 +72,8 @@ except ImportError:
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder
 from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
-from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook, unittest_raise_exception_notebook
+from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook, execute_notebook_list_finalize_ut
+import src.ensae_projects
 
 
 class TestLONGNotebookChallengeCityTour(unittest.TestCase):
@@ -85,16 +86,14 @@ class TestLONGNotebookChallengeCityTour(unittest.TestCase):
         fix_tkinter_issues_virtualenv()
         temp = get_temp_folder(__file__, "temp_challenge_city_tour")
         keepnote = ls_notebooks(os.path.join("challenges", "city_tour"))
-        assert len(keepnote) > 0
+        self.assertTrue(len(keepnote) > 0)
         keepnote = [_ for _ in keepnote]
-        if len(keepnote) > 0:
-            res = execute_notebooks(temp, keepnote,
-                                    lambda i, n: "tour" in n,
-                                    fLOG=fLOG,
-                                    clean_function=clean_function_notebook)
-            unittest_raise_exception_notebook(res, fLOG)
-        else:
-            raise Exception("no notebook")
+        res = execute_notebooks(temp, keepnote,
+                                lambda i, n: "tour" in n,
+                                fLOG=fLOG,
+                                clean_function=clean_function_notebook)
+        execute_notebook_list_finalize_ut(
+            res, fLOG=fLOG, dump=src.ensae_projects)
 
 
 if __name__ == "__main__":

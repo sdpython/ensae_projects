@@ -7,7 +7,7 @@ import os
 import sys
 from pyquickhelper.loghelper import noLOG
 from pyquickhelper.ipythonhelper.notebook_helper import install_python_kernel_for_unittest
-from pyquickhelper.ipythonhelper import run_notebook
+from pyquickhelper.ipythonhelper import execute_notebook_list
 import pyensae
 
 
@@ -148,37 +148,7 @@ def execute_notebooks(folder, notebooks, filter,
 
     kernel_name = None if "travis" in sys.executable else install_python_kernel_for_unittest(
         "ensae_projects")
-    addpath = get_additional_paths()
-    results = {}
-    for i, note in enumerate(notebooks):
-        if filter(i, note):
-            fLOG("******", i, os.path.split(note)[-1])
-            outfile = os.path.join(folder, "out_" + os.path.split(note)[-1])
-            try:
-                stat, out = run_notebook(note, working_dir=folder, outfilename=outfile,
-                                         additional_path=addpath, valid=valid_cell,
-                                         clean_function=clean_function, fLOG=deepfLOG,
-                                         kernel_name=kernel_name)
-                if not os.path.exists(outfile):
-                    raise FileNotFoundError(outfile)
-                results[note] = (True, stat, out)
-            except Exception as e:
-                results[note] = (False, None, e)
-    return results
+    addpaths = get_additional_paths()
 
-
-def unittest_raise_exception_notebook(res, fLOG):
-    """
-    same code for all unit tests
-
-    @param      res     output of @see fn execute_notebooks
-    """
-    assert len(res) > 0
-    fails = [(os.path.split(k)[-1], ) + v
-             for k, v in sorted(res.items()) if not v[0]]
-    for f in fails:
-        fLOG(f)
-    if len(fails) > 0:
-        raise fails[0][-1]
-    for k, v in sorted(res.items()):
-        fLOG("final", os.path.split(k)[-1], v[0], v[1])
+    return execute_notebook_list(
+        folder, notebooks, fLOG=fLOG, valid=_valid_cell, additional_path=addpaths, kernel_name=kernel_name)
