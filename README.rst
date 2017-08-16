@@ -26,6 +26,10 @@ README
 .. image:: https://codecov.io/github/sdpython/ensae_projects/coverage.svg?branch=master
     :target: https://codecov.io/github/sdpython/ensae_projects?branch=master
 
+.. image:: http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/nbcov.png
+    :target: http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/all_notebooks_coverage.html
+    :alt: Notebook Coverage
+
 **Links:**
 
 * `GitHub/ensae_projects <https://github.com/sdpython/ensae_projects/>`_
