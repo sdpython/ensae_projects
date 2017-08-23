@@ -12,6 +12,9 @@ README
     :target: https://ci.appveyor.com/project/sdpython/ensae-projects
     :alt: Build Status Windows
 
+.. image:: https://circleci.com/gh/sdpython/ensae_projects/tree/master.svg?style=svg
+    :target: https://circleci.com/gh/sdpython/ensae_projects/tree/master
+
 .. image:: https://badge.fury.io/py/ensae_projects.svg
     :target: http://badge.fury.io/py/ensae_projects
 

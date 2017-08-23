@@ -27,3 +27,4 @@ unify
 shapely
 wheel
 xgboost
+xlrd
