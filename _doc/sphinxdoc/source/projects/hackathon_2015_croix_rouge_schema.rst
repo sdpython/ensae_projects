@@ -145,8 +145,8 @@ Colonnes communes à toutes les tables
     :rst:
 
     from ensae_projects.datainc.croix_rouge import merge_schema, df2rsthtml
-    df = merge_schema()
     try:
+        df = merge_schema()
         print(df2rsthtml(df.head(n=2), format='rst'))
     except Exception as e:
         print("A password is required.", e)
