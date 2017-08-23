@@ -45,8 +45,8 @@ Cette table décrit les produits distribués par la Croix-Rouge.
     :rst:
 
     from ensae_projects.datainc.croix_rouge import get_meaning, df2rsthtml
-    df = get_meaning("ITMMASTER")
     try:
+        df = get_meaning("ITMMASTER")
         print(df2rsthtml(df.head(n=2), format='rst'))
     except Exception as e:
         print("A password is required.", e)
@@ -72,8 +72,8 @@ et ``SINVOICE_.clean.txt`` pour un fichier plat sans guillemets.
     :rst:
 
     from ensae_projects.datainc.croix_rouge import get_meaning, df2rsthtml
-    df = get_meaning("SINVOICE")
     try:
+        df = get_meaning("SINVOICE")
         print(df2rsthtml(df.head(n=2), format='rst'))
     except Exception as e:
         print("A password is required.", e)
@@ -105,8 +105,8 @@ et ``SINVOICEV_.clean.txt`` pour un fichier plat sans guillemets.
     :rst:
 
     from ensae_projects.datainc.croix_rouge import get_meaning, df2rsthtml
-    df = get_meaning("SINVOICE_V")
     try:
+        df = get_meaning("SINVOICE_V")
         print(df2rsthtml(df.head(n=2), format='rst'))
     except Exception as e:
         print("A password is required.", e)
@@ -123,8 +123,8 @@ Cette table décrit de façon très détaillée les dons et les réceptions de p
     :rst:
 
     from ensae_projects.datainc.croix_rouge import get_meaning, df2rsthtml
-    df = get_meaning("stojou")
     try:
+        df = get_meaning("stojou")
         print(df2rsthtml(df.head(n=2), format='rst'))
     except Exception as e:
         print("A password is required.", e)
