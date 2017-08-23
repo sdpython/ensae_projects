@@ -46,7 +46,10 @@ Cette table décrit les produits distribués par la Croix-Rouge.
 
     from ensae_projects.datainc.croix_rouge import get_meaning, df2rsthtml
     df = get_meaning("ITMMASTER")
-    print(df2rsthtml(df.head(n=2), format='rst'))
+    try:
+        print(df2rsthtml(df.head(n=2), format='rst'))
+    except Exception as e:
+        print("A password is required.", e)
 
 **Remarque**
 
@@ -70,7 +73,10 @@ et ``SINVOICE_.clean.txt`` pour un fichier plat sans guillemets.
 
     from ensae_projects.datainc.croix_rouge import get_meaning, df2rsthtml
     df = get_meaning("SINVOICE")
-    print(df2rsthtml(df.head(n=2), format='rst'))
+    try:
+        print(df2rsthtml(df.head(n=2), format='rst'))
+    except Exception as e:
+        print("A password is required.", e)
 
 C'est cette table qui est utilisée pour les séries temporelles du premier défi ::
 
@@ -100,7 +106,10 @@ et ``SINVOICEV_.clean.txt`` pour un fichier plat sans guillemets.
 
     from ensae_projects.datainc.croix_rouge import get_meaning, df2rsthtml
     df = get_meaning("SINVOICE_V")
-    print(df2rsthtml(df.head(n=2), format='rst'))
+    try:
+        print(df2rsthtml(df.head(n=2), format='rst'))
+    except Exception as e:
+        print("A password is required.", e)
 
 stojou
 ^^^^^^
@@ -115,7 +124,10 @@ Cette table décrit de façon très détaillée les dons et les réceptions de p
 
     from ensae_projects.datainc.croix_rouge import get_meaning, df2rsthtml
     df = get_meaning("stojou")
-    print(df2rsthtml(df.head(n=2), format='rst'))
+    try:
+        print(df2rsthtml(df.head(n=2), format='rst'))
+    except Exception as e:
+        print("A password is required.", e)
 
 Remarques :
 
@@ -134,4 +146,7 @@ Colonnes communes à toutes les tables
 
     from ensae_projects.datainc.croix_rouge import merge_schema, df2rsthtml
     df = merge_schema()
-    print(df2rsthtml(df.head(n=2), format='rst'))
+    try:
+        print(df2rsthtml(df.head(n=2), format='rst'))
+    except Exception as e:
+        print("A password is required.", e)
