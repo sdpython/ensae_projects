@@ -14,6 +14,7 @@ pycryptodomex
 pyensae
 pyquickhelper>1.5.2122
 pyshp
+qgrid
 semantic_version
 sphinx-gallery
 sphinxcontrib-images
