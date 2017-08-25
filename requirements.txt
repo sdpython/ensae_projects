@@ -1,6 +1,7 @@
 antlr4-python3-runtime
 azure
 babel!=2.0
+beautifulsoup4
 blockdiag
 cryptography
 coverage
