@@ -4,8 +4,9 @@ azure
 babel!=2.0
 beautifulsoup4
 blockdiag
-cryptography
+chardet
 coverage
+cryptography
 folium
 jyquickhelper
 keyring
