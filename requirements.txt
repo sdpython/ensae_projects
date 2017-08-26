@@ -1,4 +1,5 @@
 antlr4-python3-runtime
+autopep8
 azure
 babel!=2.0
 beautifulsoup4
@@ -15,10 +16,11 @@ pycodestyle>=2.0.0
 pydocstyle
 pycryptodomex
 pyensae
-pyquickhelper>1.5.2122
+pyquickhelper>1.5.2126
 pyshp
 qgrid
 semantic_version
+shapely
 sphinx-gallery
 sphinxcontrib-images
 sphinxcontrib-imagesvg

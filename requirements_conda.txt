@@ -2,6 +2,7 @@ bokeh
 Cython
 ipython
 jupyter
+jupyter_client
 jupyter_core
 matplotlib
 nbformat
@@ -17,8 +18,7 @@ pyzmq
 scikit-learn
 scipy
 seaborn
-setuptools>=36.0.0
-shapely
+setuptools
 Sphinx
 statsmodels
 toolz
