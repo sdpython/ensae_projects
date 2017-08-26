@@ -24,6 +24,7 @@ install:
   # - make all
   #- conda build build_tools/conda-recipe --quiet
   - conda install -q --file=requirements_conda.txt
+  - conda install basemap
   - pip install -r requirements.txt
 script:
   - python setup.py unittests
