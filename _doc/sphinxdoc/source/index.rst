@@ -37,6 +37,7 @@ Short and useful examples
     cheat_sheets
     mlexamples
     all_notebooks
+    blog/blogindex
 
 FAQ
 ---
