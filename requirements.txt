@@ -11,6 +11,7 @@ folium
 jyquickhelper
 keyring
 keyrings.alt
+mnist
 mutagen
 mpld3
 pycodestyle>=2.0.0
