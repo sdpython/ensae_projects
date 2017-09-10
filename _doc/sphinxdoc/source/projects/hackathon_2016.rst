@@ -75,7 +75,7 @@ manuellement après *nature* et *orientation*.
 Compétition
 +++++++++++
 
-La compétition est accessible dur codalab :
+La compétition est accessible sur codalab :
 `Hackathon ENSAE - EY - Challenge Crésus - 1.5 <https://competitions.codalab.org/competitions/15490>`_.
 C'est un problème de classification **multi-classes**.
 
