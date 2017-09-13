@@ -27,6 +27,7 @@ Challenges
     :maxdepth: 2
 
     i_challenges
+    i_coding_problems
 
 Short and useful examples
 -------------------------
