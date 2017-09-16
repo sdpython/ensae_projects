@@ -79,9 +79,9 @@ from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, exe
 import src.ensae_projects
 
 
-class TestNotebookCheatSheet(unittest.TestCase):
+class TestNotebookCheatSheetHtml(unittest.TestCase):
 
-    def test_notebook_cheatsheet(self):
+    def test_notebook_cheatsheet_html(self):
         fLOG(
             __file__,
             self._testMethodName,
@@ -99,7 +99,7 @@ class TestNotebookCheatSheet(unittest.TestCase):
                 shutil.copy(c, temp)
 
         res = execute_notebooks(temp, keepnote,
-                                lambda i, n: "deviner" not in n and "html" not in n,
+                                lambda i, n: "deviner" not in n and "html" in n,
                                 fLOG=fLOG,
                                 clean_function=clean_function_notebook)
         execute_notebook_list_finalize_ut(
