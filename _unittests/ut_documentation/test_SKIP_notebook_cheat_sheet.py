@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 """
-@brief      test log(time=60s)
+@brief      test log(time=18s)
 """
 
 import sys
@@ -37,6 +37,38 @@ except ImportError:
         sys.path.append(path)
     import pyquickhelper as skip_
 
+try:
+    import pyensae as skip__
+except ImportError:
+    path = os.path.normpath(
+        os.path.abspath(
+            os.path.join(
+                os.path.split(__file__)[0],
+                "..",
+                "..",
+                "..",
+                "pyensae",
+                "src")))
+    if path not in sys.path:
+        sys.path.append(path)
+    import pyensae as skip__
+
+try:
+    import jyquickhelper as skip___
+except ImportError:
+    path = os.path.normpath(
+        os.path.abspath(
+            os.path.join(
+                os.path.split(__file__)[0],
+                "..",
+                "..",
+                "..",
+                "jyquickhelper",
+                "src")))
+    if path not in sys.path:
+        sys.path.append(path)
+    import jyquickhelper as skip___
+
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder
 from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
@@ -47,7 +79,7 @@ import src.ensae_projects
 
 class TestNotebookCheatSheetSkip(unittest.TestCase):
 
-    def test_notebook_hackathon_skip(self):
+    def test_notebook_cheat_sheet_skip(self):
         fLOG(
             __file__,
             self._testMethodName,
