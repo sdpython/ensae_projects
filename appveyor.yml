@@ -29,6 +29,7 @@ install:
   - "%PYTHON%\\Scripts\\pip install pyrsslocal"
   - "%PYTHON%\\Scripts\\pip install mnist"
   - "%PYTHON%\\Scripts\\pymy_install3 xgboost"
+  - "%PYTHON%\\Scripts\\pymy_install3 OpenCV"
   - "%PYTHON%\\Scripts\\pymy_install3 PyYAML"
   - "%PYTHON%\\Scripts\\pymy_install3 pyproj"
 
