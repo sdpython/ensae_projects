@@ -19,6 +19,14 @@ Graphs
     ../notebooks/chsh_graphs
     ../notebooks/chsh_geo
 
+Images
+++++++
+
+.. toctree::
+    :maxdepth: 2
+
+    ../notebooks/chsh_images
+
 Python
 ++++++
 
