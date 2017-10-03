@@ -94,7 +94,8 @@ class TestNotebookCheatSheet(unittest.TestCase):
 
         if len(keepnote) > 0:
             fold = os.path.dirname(keepnote[0])
-            copy = [os.path.join(fold, "geo_data.zip")]
+            copy = [os.path.join(fold, "geo_data.zip"),
+                    os.path.join(fold, "images1.jpg")]
             for c in copy:
                 shutil.copy(c, temp)
 
