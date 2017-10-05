@@ -1,7 +1,8 @@
 #-*- coding: utf-8 -*-
 """
 @file
-@brief Main file
+@brief Module *ensae_projects*.
+Compilation of materials for presentations.
 """
 
 import sys
