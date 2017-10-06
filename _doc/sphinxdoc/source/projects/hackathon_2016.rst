@@ -1,8 +1,10 @@
 
-.. index:: Ernst & Young, ENSAE, Hackathon, Croix-Rouge, Crésus, 2016
+.. _l-hackathon-2016:
 
 Hackathon Ernst & Young / ENSAE / Croix-Rouge / Crésus - 2016
 =============================================================
+
+.. index:: Ernst & Young, ENSAE, Hackathon, Croix-Rouge, Crésus, 2016
 
 .. contents::
     :local:
@@ -171,6 +173,26 @@ Cheat Sheets
 
 `Rappel de ce que vous savez déjà mais avez peut-être oublié <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx3/notebooks/td2_eco_rappels_1a.html>`_
 
+Agenda
+++++++
+
+`Hackathon 2016 <http://www.hackathon-geniusensae.fr/>`_
+
+Lieu : `Cap Digital <http://www.capdigital.com/>`_
+
+Vendredi 25 Novembre
+
+* 15h30 - Accueil des participants
+* 16h30 - EY, Croix-Rouge, Crésus
+* 17h15 - Présentation des sujets
+* 18h00 - Début du hackathon
+
+Samedi 26 Novembre
+
+* 15h30 - Présentation des résultats
+* 17h00 - Remise des prix
+* 18h00 - afterwork
+
 Retour sur la compétition
 +++++++++++++++++++++++++
 
@@ -219,3 +241,23 @@ cela signifie sans doute que le début est bien 2010 mais que la fin n'est
 pas déterminée. Mais comme le système d'information la demande,
 la personne qui a renseigné l'information en donne une plus ou moins aberrante.
 Plus les gens se servent d'une base de données, meilleure elle est.
+
+.. image:: h2016_1.png
+    :width: 600
+
+Vidéo
++++++
+
+.. youtube:: https://www.youtube.com/watch?v=vSchPGmtikI
+
+.. image:: 4677059700.png
+    :width: 200
+
+.. image:: 4677060345.png
+    :width: 200
+
+.. image:: 4677060835.png
+    :width: 200
+
+Photos
+++++++
