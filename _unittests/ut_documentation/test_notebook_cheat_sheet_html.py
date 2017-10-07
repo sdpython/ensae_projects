@@ -72,7 +72,7 @@ except ImportError:
 
 
 from pyquickhelper.loghelper import fLOG
-from pyquickhelper.pycode import get_temp_folder
+from pyquickhelper.pycode import get_temp_folder, is_travis_or_appveyor
 from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
 from pyquickhelper.ipythonhelper import execute_notebook_list_finalize_ut
 from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook
@@ -86,6 +86,11 @@ class TestNotebookCheatSheetHtml(unittest.TestCase):
             __file__,
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
+
+        if is_travis_or_appveyor() == "appveyor":
+            # connectivity issue
+            return
+
         fix_tkinter_issues_virtualenv()
         temp = get_temp_folder(__file__, "temp_cheat_sheet")
         keepnote = ls_notebooks("cheat_sheets")
