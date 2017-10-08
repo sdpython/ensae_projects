@@ -106,34 +106,11 @@ Fusion des données de la La Croix Rouge avec d'autres
 * `Description des tables INSEE <https://github.com/dataforgoodfr/croixrouge/wiki/Description-des-tables-INSEE>`_        		
 * Geocoding using Bing Maps : `geopy <https://pypi.python.org/pypi/geopy/>`_ (fonction uniquement en Python 2.7)
 
-Agenda
-++++++
+Après la compétition
+++++++++++++++++++++
 
-Lieu : `Centre de Conference Microsoft <https://www.facebook.com/pages/Centre-de-Conference-Microsoft/131714796879344>`_
-
-Agenda vendredi 27 novembre
-
-* 14h00 - Introduction Pierre-Louis Xech
-* 14h05 - Julien Pouget, directeur de l'ENSAE
-* 14h15 - Kenji Takeda
-* 14h25 - Jean-François Recco, Lauriane Nicol - BioCycle - le monde caritatif et l'importance des données
-* 14h35 - Laurent Monnet - Croix-Rouge - présentation et enjeux
-* 14h50 - DataForGood - un peu plus sur les données
-* 15h05 - Question / Réponses
-* 15h25 - tutorials - début du hackathon
-* 15h30 - Xavier Dupré - accès aux données
-* 15h40 - Benjamin Guinebertière - Azure tutorial
-
-Agenda samedi 28 novembre
-
-* 17h00 - fin du hackathon
-* 17h20 - jury
-* 18h20 - délibération
-* 18h40 - remise des prix
-* 20h00 - afterwork
-
-Retour sur la compétition
-+++++++++++++++++++++++++
+Take Away
+^^^^^^^^^
 
 * Article paru dans `Variance <http://variances.eu/>`_ :
   `Le premier hackathon organisé par l'ENSAE et Microsoft sur les données de la Croix-Rouge <http://variances.eu/?p=146>`_
@@ -161,7 +138,7 @@ temps : on prédit d'abord à la semaine puis on répartit cette prédiction pou
 jour de la semaine. Les séries agrégées sont moins bruitées.
 
 Vidéo
-+++++
+^^^^^
 
 .. youtube:: https://www.youtube.com/watch?v=Y1UKAbbExn8
 
@@ -172,7 +149,7 @@ Vidéo
     :wdith: 200
 
 Photos
-++++++
+^^^^^^
 
 .. image:: h2015_1.jpg
     :width: 600
@@ -190,3 +167,29 @@ Après une nuit quasiment sans dormir, on ressemble un peu à ça :
 
 .. image:: xd_image.png
     :width: 400
+
+Agenda
+^^^^^^
+
+Lieu : `Centre de Conference Microsoft <https://www.facebook.com/pages/Centre-de-Conference-Microsoft/131714796879344>`_
+
+Agenda vendredi 27 novembre
+
+* 14h00 - Introduction Pierre-Louis Xech
+* 14h05 - Julien Pouget, directeur de l'ENSAE
+* 14h15 - Kenji Takeda
+* 14h25 - Jean-François Recco, Lauriane Nicol - BioCycle - le monde caritatif et l'importance des données
+* 14h35 - Laurent Monnet - Croix-Rouge - présentation et enjeux
+* 14h50 - DataForGood - un peu plus sur les données
+* 15h05 - Question / Réponses
+* 15h25 - tutorials - début du hackathon
+* 15h30 - Xavier Dupré - accès aux données
+* 15h40 - Benjamin Guinebertière - Azure tutorial
+
+Agenda samedi 28 novembre
+
+* 17h00 - fin du hackathon
+* 17h20 - jury
+* 18h20 - délibération
+* 18h40 - remise des prix
+* 20h00 - afterwork
