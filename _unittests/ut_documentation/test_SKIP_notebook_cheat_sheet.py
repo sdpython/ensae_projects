@@ -85,7 +85,7 @@ class TestNotebookCheatSheetSkip(unittest.TestCase):
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
         fix_tkinter_issues_virtualenv()
-        temp = get_temp_folder(__file__, "temp_cheat_sheet")
+        temp = get_temp_folder(__file__, "temp_cheat_sheet_files_skip")
         keepnote = ls_notebooks("cheat_sheets")
         self.assertTrue(len(keepnote) > 0)
         keepnote = [_ for _ in keepnote if "chsh_files" in _]

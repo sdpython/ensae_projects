@@ -47,7 +47,7 @@ import src.ensae_projects
 
 class TestNotebookMlExamples(unittest.TestCase):
 
-    def test_notebook_hackathon(self):
+    def test_notebook_mlexamples(self):
         fLOG(
             __file__,
             self._testMethodName,

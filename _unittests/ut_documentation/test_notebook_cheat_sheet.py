@@ -79,15 +79,15 @@ from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, exe
 import src.ensae_projects
 
 
-class TestNotebookCheatSheet(unittest.TestCase):
+class TestNotebookCheatSheetFiles(unittest.TestCase):
 
-    def test_notebook_cheatsheet(self):
+    def test_notebook_cheatsheet_files(self):
         fLOG(
             __file__,
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
         fix_tkinter_issues_virtualenv()
-        temp = get_temp_folder(__file__, "temp_cheat_sheet")
+        temp = get_temp_folder(__file__, "temp_cheat_sheet_files")
         keepnote = ls_notebooks("cheat_sheets")
         self.assertTrue(len(keepnote) > 0)
         keepnote = [_ for _ in keepnote if "chsh_files" not in _]

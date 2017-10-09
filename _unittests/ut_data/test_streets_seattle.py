@@ -160,7 +160,7 @@ class TestStreetsSeattle(unittest.TestCase):
         vertices, edges = build_streets_vertices(subset, shapes)
         plot_streets_network(subset, edges, vertices,
                              shapes, ax=ax, color_vertices='odd')
-        temp = get_temp_folder(__file__, "temp_plot_streets_network")
+        temp = get_temp_folder(__file__, "temp_plot_streets_network_odd")
         img = os.path.join(temp, "out_img.png")
         fig.savefig(img)
         plt.close('all')

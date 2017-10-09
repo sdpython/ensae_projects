@@ -47,13 +47,13 @@ import src.ensae_projects
 
 class TestLONGNotebookMlExamples(unittest.TestCase):
 
-    def test_notebook_hackathon(self):
+    def test_notebook_mlexamples(self):
         fLOG(
             __file__,
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
         fix_tkinter_issues_virtualenv()
-        temp = get_temp_folder(__file__, "temp_mlexamples")
+        temp = get_temp_folder(__file__, "temp_mlexamples_long")
         keepnote = ls_notebooks("mlexamples")
         self.assertTrue(len(keepnote) > 0)
         keepnote = [
