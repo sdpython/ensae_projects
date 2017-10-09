@@ -8,8 +8,7 @@ ENSAE Projects
 `wheel <http://www.xavierdupre.fr/site2013/index_code.html#ensae_projects>`_,
 `travis <https://travis-ci.org/sdpython/ensae-projects>`_,
 :ref:`l-README`,
-:ref:`blog <ap-main-0>`,
-:ref:`l-issues-todolist`
+:ref:`blog <ap-main-0>`
 
 Events
 ------

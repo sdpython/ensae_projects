@@ -7,6 +7,7 @@ Hackathon Microsoft / ENSAE / Croix-Rouge / DataForGood - 2015
 .. index:: Microsoft, ENSAE, Hackathon, Croix-Rouge, DataForGood, 2015
 
 .. image:: logo_hackathon.png
+    :width: 300
 
 The hackathon was sponsored by `Microsoft <https://www.microsoft.com/>`_,
 the participants were
@@ -163,10 +164,10 @@ Photos
 .. image:: h2015_4.jpg
     :width: 600
 
-Après une nuit quasiment sans dormir, on ressemble un peu à ça :
+Un visage après une nuit quasiment sans dormir :
 
 .. image:: xd_image.png
-    :width: 400
+    :width: 200
 
 Agenda
 ^^^^^^

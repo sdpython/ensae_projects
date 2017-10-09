@@ -38,6 +38,10 @@ pour un secteur de La Croix-Rouge sur les deux dernières années.
 
 *Je veux être bénévole, que me recommandez-vous ?*
 
+Une des bases de données fournies par la Croix-Rouge était similaire au jeu de données
+mis à disposition sur *data.gouv.fr* :
+`Liste des bénévoles actifs de la Croix-Rouge française <https://www.data.gouv.fr/fr/datasets/liste-des-benevoles-actifs-de-la-croix-rouge-francaise/>`_.
+
 Challenge prédictif - Crésus
 ++++++++++++++++++++++++++++
 
