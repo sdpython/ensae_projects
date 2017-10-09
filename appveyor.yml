@@ -32,6 +32,7 @@ install:
   - "%PYTHON%\\Scripts\\pymy_install3 OpenCV"
   - "%PYTHON%\\Scripts\\pymy_install3 PyYAML"
   - "%PYTHON%\\Scripts\\pymy_install3 pyproj"
+  - "%PYTHON%\\Scripts\\pymy_install3 opencv_python"
 
 build: off
 
