@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 """
-@brief      test log(time=160s)
+@brief      test log(time=47s)
 """
 
 import sys
@@ -96,8 +96,7 @@ class TestNotebookChallengeCityBike(unittest.TestCase):
             os.mkdir(dest)
         for img in images:
             shutil.copy(img, dest)
-        allowed = {"city_bike_challenge.ipynb",
-                   "bike_seatle.ipynb", "business_chicago.ipynb"}
+        allowed = {"business_chicago.ipynb"}
         res = execute_notebooks(temp, keepnote,
                                 lambda i, n: len(
                                     [_ for _ in allowed if _ in n]) > 0,
