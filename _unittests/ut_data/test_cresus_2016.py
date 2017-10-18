@@ -75,7 +75,9 @@ class TestCresus2016(unittest.TestCase):
             warnings.warn("disabled on appveyor and travis")
             return
         temp = get_temp_folder(__file__, "temp_process_data_cresus_2016")
-        import keyring
+        with warnings.catch_warnings():
+            warnings.simplefilter('ignore', DeprecationWarning)
+            import keyring
         pwd = keyring.get_password(
             "cresus", os.environ["COMPUTERNAME"] + "ensae")
         assert pwd

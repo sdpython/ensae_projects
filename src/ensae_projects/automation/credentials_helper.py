@@ -2,6 +2,7 @@
 @file
 @brief Helpers around credentials.
 """
+import warnings
 
 
 def set_password(k1, k2, value):
@@ -40,7 +41,9 @@ def set_password(k1, k2, value):
         raise TypeError("value must be a string.")
     if len(value.strip()) == 0:
         raise ValueError("value is empty")
-    import keyring
+    with warnings.catch_warnings():
+        warnings.simplefilter('ignore', DeprecationWarning)
+        import keyring
     keyring.set_password(k1, k2, value)
 
 
@@ -56,7 +59,9 @@ def get_password(k1, k2):
         raise TypeError("k1 must be a string.")
     if not isinstance(k2, str):
         raise TypeError("k1 must be a string.")
-    import keyring
+    with warnings.catch_warnings():
+        warnings.simplefilter('ignore', DeprecationWarning)
+        import keyring
     value = keyring.get_password(k1, k2)
     if value is None:
         raise ValueError(
