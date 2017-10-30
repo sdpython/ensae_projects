@@ -38,9 +38,10 @@ def resize_image(filename_or_bytes, maxdim=512, dest=None, format=None):
         if new_size == img.size:
             return filename_or_bytes
         else:
+            mapping = {'jpg': 'jpeg'}
             img = img.resize(new_size)
             st = BytesIO()
-            img.save(st, format=format.lower())
+            img.save(st, format=mapping.get(format.lower(), format))
             return st.getvalue()
     else:
         raise TypeError("Unexpected type '{0}'".format(
