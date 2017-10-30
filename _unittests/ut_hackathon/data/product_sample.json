@@ -1,0 +1,13 @@
+[
+   {"assigned_images": [], 
+    "best_offer": {"created_on": "2016-11-04T23:20:53+01:00", "images": [], "offer_longitude": null, "availability": "in_stock", "start_selling_date": null, "delay_before_shipping": 0.00, "free_return": null, "free_shipping": null, 
+                   "assigned_images": [{"image_path": "https://coucou.JPEG"}], "id": 1306501, "eco_tax": 0.000000, "keywords": ["boutique", "test"], 
+    "sku": "AAAA27160018", 
+    "product": {"pk": 2550, "external_id": null, "id": 2580}, 
+    "description": "livre l", "last_modified": "2016-11-04T23:27:01+01:00", 
+    "name": "les names", "language": "fr"}, "id": 25540, 
+    "description": "livre 2", "slug": "les-l", 
+    "application_categories": [280, 283], "product_type": "physical", 
+    "name": "les l n", "language": "fr", "popularity": 99, "gender": null
+    }
+]
