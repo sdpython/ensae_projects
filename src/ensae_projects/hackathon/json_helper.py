@@ -18,7 +18,7 @@ def enumerate_json_items(filename, encoding=None, fLOG=noLOG):
     @param      fLOG            logging function
     @return                     iterator on records at first level.
 
-    We assume the syntax follows the format: ``[ {"id":1, ...}, {"id": 2, ...}, ...]``.
+    It assumes the syntax follows the format: ``[ {"id":1, ...}, {"id": 2, ...}, ...]``.
     """
     if isinstance(filename, str):
         if "{" not in filename and os.path.exists(filename):

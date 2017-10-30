@@ -342,7 +342,7 @@ def distance_vertices(edges, vertices, distances):
 def bellman_distances(edges, distances, fLOG=None):
     """
     Computes shortest distances between all vertices.
-    We assume edges are symmetric.
+    It assumes edges are symmetric.
 
     @param      edges           list of tuple (vertex A, vertex B)
     @param      distances       distances (list of floats)

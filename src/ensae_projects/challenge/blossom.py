@@ -525,7 +525,7 @@ class Blossom(object):
         child will be chosen. Otherwise, an edge leading to a peer needs
         to be supplied.
 
-        If an edge is specified, we assume the peer adjusts itself,
+        If an edge is specified, it assumes the peer adjusts itself,
         otherwise we also adjust the single child that becomes the peer.
         """
         assert (self.level == LEVEL_ODD) ^ (edge is not None)

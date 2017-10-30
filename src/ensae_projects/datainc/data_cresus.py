@@ -262,7 +262,7 @@ def split_XY_bind_dataset_cresus_data(filename, fLOG=fLOG):
     @param      filename        table to split
     @return                     dictionary of created files
 
-    We assume the targets are columns *orientation*, *nature*.
+    It assumes the targets are columns *orientation*, *nature*.
     """
     df = pandas.read_csv(filename, sep="\t", encoding="utf-8")
     isnull = df["orientation"].isnull() | df["nature"].isnull()
