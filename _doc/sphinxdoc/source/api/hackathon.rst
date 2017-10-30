@@ -10,6 +10,8 @@ Hackathon Helpers
 
 .. autosignature:: ensae_projects.hackathon.json_helper.extract_images_from_json_2017
 
+.. autosignature:: ensae_projects.hackathon.image_helper.resize_image
+
 2016
 ++++
 
