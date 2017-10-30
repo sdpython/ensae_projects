@@ -40,7 +40,7 @@ def resize_image(filename_or_bytes, maxdim=512, dest=None, format=None):
         else:
             img = img.resize(new_size)
             st = BytesIO()
-            img.save(st, format=format)
+            img.save(st, format=format.lower())
             return st.getvalue()
     else:
         raise TypeError("Unexpected type '{0}'".format(
