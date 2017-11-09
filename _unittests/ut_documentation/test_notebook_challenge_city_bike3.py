@@ -86,7 +86,7 @@ class TestNotebookChallengeCityBike(unittest.TestCase):
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
         fix_tkinter_issues_virtualenv()
-        temp = get_temp_folder(__file__, "temp_challenge_city_bike")
+        temp = get_temp_folder(__file__, "temp_challenge_city_bike3")
         keepnote = ls_notebooks(os.path.join("challenges", "city_bike"))
         self.assertTrue(len(keepnote) > 0)
         folder = os.path.dirname(keepnote[0])
