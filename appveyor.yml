@@ -33,6 +33,7 @@ install:
   - "%PYTHON%\\Scripts\\pymy_install3 PyYAML"
   - "%PYTHON%\\Scripts\\pymy_install3 pyproj"
   - "%PYTHON%\\Scripts\\pymy_install3 opencv_python"
+  - "%PYTHON%\\Scripts\\pymy_install3 pillow"
 
 build: off
 
