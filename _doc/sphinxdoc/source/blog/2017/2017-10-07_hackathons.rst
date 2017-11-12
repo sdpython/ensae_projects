@@ -1,6 +1,6 @@
 
 .. blogpost::
-    :title: Videos of past hackathons et ENSAE
+    :title: Videos of past hackathons at ENSAE
     :keywords: ENSAE, EY, Microsoft, Croix-Rouge, Crésus
     :date: 2017-10-07
     :categories: hackathon
