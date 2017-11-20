@@ -1,8 +1,8 @@
 
 .. _l-hackathon-2017:
 
-Hackathon Ernst & Young / ENSAE / Genius / Latitudes / Label Emmaüs
-===================================================================
+Hackathon Ernst & Young / ENSAE / Genius / Latitudes / Label Emmaüs / 2017
+==========================================================================
 
 .. index:: Ernst & Young, ENSAE, Hackathon, Genius, Label Emmaüs, 2017
 
@@ -24,7 +24,7 @@ Site : `hackathon-geniusensae.fr <http://hackathon-geniusensae.fr/>`_.
     :width: 200
 
 Contexte
-^^^^^^^^
+--------
 
 `Label Emmaüs <https://www.label-emmaus.co/fr/>`_
 propose à la vente en ligne des objets
@@ -39,14 +39,17 @@ ajoute une description, renseigne d'autres informations
 comme sa catégorie.
 
 .. image:: 2017/image2.png
+    :width: 100
 
 .. image:: 2017/image3.png
+    :width: 150
 
 Pour chaque objet, les informations sont vérifiées, classées, un prix
 est fixé puis l'objet est mis en ligne et disponible à la vente.
 L'objet est entreposé jusqu'à ce qu'il soit vendu.
 
 .. image:: 2017/image4.png
+    :width: 600
 
 La détermination d'un prix comme la rédaction d'une description
 ne sont pas toujours simples et il faut un peu de temps et d'expérience
@@ -59,7 +62,7 @@ des données proposées aux futurs acheteurs et optimiser l'espace de
 stockage nécessaire.
 
 Trois défis
-+++++++++++
+-----------
 
 Challenge deep learning
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -77,7 +80,7 @@ Challenge créatif
 *bientôt*
 
 Eléments de code
-++++++++++++++++
+----------------
 
 **Récupérer des données cryptées**
 
@@ -105,7 +108,7 @@ Eléments de code
 `Rappel de ce que vous savez déjà mais avez peut-être oublié <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx3/notebooks/td2_eco_rappels_1a.html>`_
 
 Après la compétition
-++++++++++++++++++++
+--------------------
 
 Take Away
 ^^^^^^^^^
