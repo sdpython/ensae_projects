@@ -1,16 +1,23 @@
 
 .. _l-hackathon-2016:
 
-Hackathon Ernst & Young / ENSAE / Croix-Rouge / Crésus - 2016
-=============================================================
+Hackathon Ernst & Young / ENSAE / Genius / Croix-Rouge / Crésus - 2016
+======================================================================
 
-.. index:: Ernst & Young, ENSAE, Hackathon, Croix-Rouge, Crésus, 2016
+.. index:: Ernst & Young, ENSAE, Genius, Hackathon, Croix-Rouge, Crésus, 2016
+
+Le hackathon était proposé et organisé par
+`Ernst & Young <http://www.ey.com/fr/fr/home>`_ (sponsor),
+`ENSAE <http://www.ensae.fr/ensae/fr/>`_,
+`Genius <https://www.facebook.com/geniusensae/>`_,
+`Croix-Rouge <http://www.croix-rouge.fr/>`_,
+`Cresus <http://www.cresusalsace.org/>`_.
 
 .. contents::
     :local:
 
 Les données seront fournies au début de l'événement et doivent être détruites à la fin de l'événement.
-Elles sont accompagnés de documents qui permettent d'interpréter certains variables
+Elles sont accompagnées de documents qui permettent d'interpréter certains variables
 au regard des activités de chaque association.
 
 Site : `hackathon-geniusensae.fr <http://hackathon-geniusensae.fr/>`_.
