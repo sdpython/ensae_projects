@@ -64,6 +64,53 @@ stockage nécessaire.
 Trois défis
 -----------
 
+Les données sont mis à disposition
+des participants uniquement pour la durée du hackathon
+et doivent être supprimées à la fin de l'événement
+de toutes les ressources utilisées pour répondre
+aux défis.
+
+Les données disponibles sont similaires à aux données
+d'autres sites de vente en ligne. Il y a trois sources
+d'informations : la description des produits vendus
+(image, texte, attributs, catégorie, date de mise en ligne, montant),
+les ventes elles-mêmes (date de vente, panier),
+la composition des paniers (un panier est un acte d'achat
+regroupant plusieurs produits).
+
+Les données proposées sont anonymisées. Noms, prénoms, téléphones
+sont éliminés, seul est gardé un identifiant crypté. Il n'y a pas de
+données de géolocalisation excepté les adresses qui ont été tronquées
+(pas de numéro de rue). Cette information a été laissé en clair afin
+de pouvoir calculer une estimation de la distance entre l'acheteur
+et le vendeur ayant proposé ses produits sur le site.
+Les identifiants produits et panier ont été laissés
+en clair afin de permettre à *Label Emmaüs* d'exploiter les résultats
+trouvés par les participants.
+
+La préparation des données implique une séparation
+jeu d'apprentissage, jeu d'évaluation. Ce dernier ne doit pas
+comporter la cible à prédire. Les données  réceptionnées ont
+moins d'une semaine de retard par rapport au début de l'événement.
+Un produit non vendu peut l'être simplement parce qu'il n'est pas resté
+assez longtemps sur le site. Intuitivement, il suffit de répartir les
+données en apprentissage / évaluation selon l'identifiant produit.
+Les paniers introduisent une difficulté, un :epkg:`data leakage`,
+car il est possible de déduire la date de vente de tous les
+produits d'un même panier à partir d'un seul. De même, si on
+veut pouvoir utiliser des données utilisateurs, il faut également
+avoir des utilisateurs distincts dans les deux jeux. On
+considère l'ensemble des triplets
+*(id produits, id personne, id panier)*. Le découpage est fait de telle
+sorte qu'aucun de ces identifiants n'apparaissent dans les deux bases.
+Il reste un dernier point à propos des données temporelles.
+Il devient vite tentant de calculer des moyennes par utilisateur,
+par produit sans tenir compte de la date à laquelle cette donnée
+est produite. Il en résulte que certaines informations sont utilisées
+pour prédire une valeur dans le passé. Ce scénario sera également
+vérifié en s'assurant que les modèles produisent les mêmes résultats
+des utilisateurs dédoublés mais avec des historiques tronqués.
+
 Challenge deep learning
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -84,9 +131,31 @@ Eléments de code
 
 **Récupérer des données cryptées**
 
+Pour stocker un mot de passe de façon permanente :
+
 ::
 
-    from pyquickhelper.
+    import keyring
+    keyring.get_password("hackathon", "labelemmaus", "motdepasse")
+    
+Pour décoder tous les fichiers dont l'extension est ``.enc`` :
+
+::
+
+    from pyquickhelper.filehelper import decrypt_stream
+    import keyring
+    import os
+
+    password = keyring.get_password("hackathon", "labelemmaus")
+
+    encs = os.listdir(".")
+    for enc in encs:
+        if enc.endswith(".enc"):
+            dest = enc[:-4]
+            if not os.path.exists(dest):
+                print("décrypte", enc)
+                decrypt_stream(key=password.encode("ascii"), filename=enc, 
+                               out_filename=dest, chunksize=2**20)
 
 **Manipulation d'images**
 

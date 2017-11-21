@@ -37,3 +37,6 @@ blog_background = False
 html_context = {
     'css_files': get_default_stylesheet() + ['_static/my-styles.css'],
 }
+
+epkg_dictionary['keras'] = "https://keras.io/"
+
