@@ -172,16 +172,15 @@ def extract_images_from_json_2017(filename, encoding=None, fLOG=noLOG):
         If you plan to store the enumerated dictionaries, you should
         copy them because dictionary are reused.
 
-    One example on dummy data implementing a subset of the field
-    the JSON contains.
+    One example on dummy data implementing a subset of the fields
+    the JSON contains. This can be easily converted into a dataframe.
 
     .. runpython::
         :showcode:
 
         from ensae_projects.hackathon import extract_images_from_json_2017
 
-
-        text = '''
+        text_json = '''
             [
                {"assigned_images": [],
                 "best_offer": {"created_on": "2016-11-04T23:20:53+01:00", "images": [], "offer_longitude": null, "availability": "in_stock",
@@ -196,9 +195,16 @@ def extract_images_from_json_2017(filename, encoding=None, fLOG=noLOG):
                 "name": "les l n", "language": "fr", "popularity": 99, "gender": null
                 }
             ]
+            '''
 
+        items = []
+        for item in extract_images_from_json_2017(text_json):
+            print(item)
+            items.append(item)
 
-
+        from pandas import DataFrame
+        df = DataFrame(items)
+        print(df)
     """
     for record in enumerate_json_items(filename, encoding=encoding, fLOG=fLOG):
         images = []

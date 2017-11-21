@@ -11,7 +11,7 @@ Le hackathon était proposé et organisé par
 `ENSAE <http://www.ensae.fr/ensae/fr/>`_,
 `Genius <https://www.facebook.com/geniusensae/>`_,
 `Latitudes <http://www.latitudes.cc/>`_,
-`Label Emmaüs <https://www.label-emmaus.co/>`_.
+:epkg:`Label Emmaüs`.
 
 .. contents::
     :local:
@@ -26,17 +26,17 @@ Site : `hackathon-geniusensae.fr <http://hackathon-geniusensae.fr/>`_.
 Contexte
 --------
 
-`Label Emmaüs <https://www.label-emmaus.co/fr/>`_
-propose à la vente en ligne des objets
-rénovés ou créés par le mouvement
-`Emmaüs <http://emmaus-france.org/>`_.
-Son catalogue d'objets
-est en croissance régulière. L'ajout d'un objet au catalogue
-depuis la réception de sa désignation (images, descriptif, entrepôt)
-n'est pas automatisé et prend de plus en plus d'importance.
-Chaque vendeur prend plusieurs photos du même objet,
+:epkg:`Label Emmaüs` propose à la vente en ligne des objets
+rénovés ou créés par le mouvement `Emmaüs <http://emmaus-france.org/>`_.
+Son catalogue d'objets est en croissance régulière. L'ajout de
+chaque objet au catalogue depuis la réception de sa désignation
+(images, descriptif, entrepôt) est fait indépendamment des autres
+objets. Chaque vendeur prend plusieurs photos du même objet,
 ajoute une description, renseigne d'autres informations
-comme sa catégorie.
+comme sa catégorie. Au fur et à mesure que le site grossit, la qualité
+des informations saisies devient prépondérant afin que
+chaque utilisateur puisse facilement trouver l'objet qu'il
+recherche.
 
 .. image:: 2017/image2.png
     :width: 100
@@ -44,22 +44,23 @@ comme sa catégorie.
 .. image:: 2017/image3.png
     :width: 150
 
-Pour chaque objet, les informations sont vérifiées, classées, un prix
-est fixé puis l'objet est mis en ligne et disponible à la vente.
+:epkg:`Label Emmaüs` modèrent les annonces avant leur mise en ligne.
 L'objet est entreposé jusqu'à ce qu'il soit vendu.
 
 .. image:: 2017/image4.png
     :width: 600
 
-La détermination d'un prix comme la rédaction d'une description
-ne sont pas toujours simples et il faut un peu de temps et d'expérience
-pour traiter rapidement un objet. L'ajout d'un produit prend aujourd'hui
+La détermination d'un prix comme la rédaction d'une description ne sont
+pas toujours simples et il faut un peu de temps et d'expérience pour
+traiter rapidement un objet. L'ajout d'un produit prend aujourd'hui
 40 minutes jusqu'à la mise en ligne. Beaucoup d'objets restent aussi
 très longtemps sur le site avant de trouver acquéreur et l'augmentation
 du catalogue nécessite plus d'espace de stockage qui n'est pas toujours
 disponible. Trois challenges ont été imaginés pour améliorer la qualité
-des données proposées aux futurs acheteurs et optimiser l'espace de
-stockage nécessaire.
+des données proposées aux futurs acheteurs et optimiser
+l'espace de stockage nécessaire.
+
+*Pour en savoir plus :* `Label Emmaüs - qui sommes nous ? <https://www.label-emmaus.co/fr/a-propos/qui-sommes-nous/>`_.
 
 Trois défis
 -----------
@@ -81,35 +82,12 @@ regroupant plusieurs produits).
 Les données proposées sont anonymisées. Noms, prénoms, téléphones
 sont éliminés, seul est gardé un identifiant crypté. Il n'y a pas de
 données de géolocalisation excepté les adresses qui ont été tronquées
-(pas de numéro de rue). Cette information a été laissé en clair afin
+(pas de numéro de rue). Cette information a été laissée en clair afin
 de pouvoir calculer une estimation de la distance entre l'acheteur
 et le vendeur ayant proposé ses produits sur le site.
 Les identifiants produits et panier ont été laissés
-en clair afin de permettre à *Label Emmaüs* d'exploiter les résultats
+en clair afin de permettre à :epkg:`Label Emmaüs` d'exploiter les résultats
 trouvés par les participants.
-
-La préparation des données implique une séparation
-jeu d'apprentissage, jeu d'évaluation. Ce dernier ne doit pas
-comporter la cible à prédire. Les données  réceptionnées ont
-moins d'une semaine de retard par rapport au début de l'événement.
-Un produit non vendu peut l'être simplement parce qu'il n'est pas resté
-assez longtemps sur le site. Intuitivement, il suffit de répartir les
-données en apprentissage / évaluation selon l'identifiant produit.
-Les paniers introduisent une difficulté, un :epkg:`data leakage`,
-car il est possible de déduire la date de vente de tous les
-produits d'un même panier à partir d'un seul. De même, si on
-veut pouvoir utiliser des données utilisateurs, il faut également
-avoir des utilisateurs distincts dans les deux jeux. On
-considère l'ensemble des triplets
-*(id produits, id personne, id panier)*. Le découpage est fait de telle
-sorte qu'aucun de ces identifiants n'apparaissent dans les deux bases.
-Il reste un dernier point à propos des données temporelles.
-Il devient vite tentant de calculer des moyennes par utilisateur,
-par produit sans tenir compte de la date à laquelle cette donnée
-est produite. Il en résulte que certaines informations sont utilisées
-pour prédire une valeur dans le passé. Ce scénario sera également
-vérifié en s'assurant que les modèles produisent les mêmes résultats
-des utilisateurs dédoublés mais avec des historiques tronqués.
 
 Challenge deep learning
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -126,10 +104,59 @@ Challenge créatif
 
 *bientôt*
 
+Préparation des données
+^^^^^^^^^^^^^^^^^^^^^^^
+
+*Cette partie n'est pas essentielle à la compréhension des challenges.
+Elle éclaire la façon dont les données ont été préparées pour les
+challenges de machine learning.*
+
+La préparation des données implique une séparation
+jeu d'apprentissage, jeu d'évaluation. Ce dernier ne doit pas
+comporter la cible à prédire. Les données  réceptionnées ont
+moins d'une semaine de retard par rapport au début de l'événement.
+Un produit non vendu peut l'être simplement parce qu'il n'est pas resté
+assez longtemps sur le site. Intuitivement, il suffit de répartir les
+données en apprentissage / évaluation selon l'identifiant produit.
+Les paniers introduisent une difficulté, un :epkg:`data leakage`,
+car il est possible de déduire la date de vente de tous les
+produits d'un même panier à partir d'un seul. De même, si on
+veut pouvoir utiliser des données utilisateurs, il faut également
+avoir des utilisateurs distincts dans les deux jeux. On
+considère l'ensemble des triplets
+*(id produits, id personne, id panier)*. Le découpage est fait de telle
+sorte qu'aucun produit n'apparaît dans les deux bases, et que les
+identifiants panier et utilisateurs commun aux deux bases sont réduits.
+Ce découpage est réalisé par la fonction
+`train_test_connex_split <http://www.xavierdupre.fr/app/pandas_streaming/helpsphinx/pandas_streaming/df/connex_split.html#pandas_streaming.df.connex_split.train_test_connex_split>`_ :
+
+::
+
+    from pandas_streaming.df import train_test_connex_split
+    train, test = train_test_connex_split(df, groups=["cart_id","mail","product_id"],
+                                          stop_if_bigger=0.05, keep_balance=0.8,
+                                          must_groups=["product_id"], test_size=0.2)
+
+Il reste un dernier point à propos des données temporelles.
+Il devient vite tentant de calculer des moyennes par utilisateur,
+par produit sans tenir compte de la date à laquelle cette donnée
+est produite. Il en résulte que certaines informations sont utilisées
+pour prédire une valeur dans le passé.
+
+Le fait que ce scénario ne se produit pas pourrait être vérifié
+en s'assurant que les modèles produisent les mêmes résultats
+avec des produits, des paniers et des utilisateurs dédoublés
+mais avec des historiques tronqués. Ceci n'a pas été implémentés
+par manque de temps.
+
 Eléments de code
 ----------------
 
-**Récupérer des données cryptées**
+.. contents::
+    :local:
+
+Récupérer des données cryptées
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Pour stocker un mot de passe de façon permanente :
 
@@ -157,7 +184,8 @@ Pour décoder tous les fichiers dont l'extension est ``.enc`` :
                 decrypt_stream(key=password.encode("ascii"), filename=enc,
                                out_filename=dest, chunksize=2**20)
 
-**Lire de gros fichiers JSON**
+Lire de gros fichiers JSON
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Les fichiers JSON proposés pour la compétition contiennent des informations
 intéressantes mais ils sont très gros : 1 Go. Il est très difficile
@@ -174,14 +202,32 @@ La documentation fournit un exmple d'utilisation.
 
 .. autosignature:: ensae_projects.hackathon.json_helper.extract_images_from_json_2017
 
-**Manipulation d'images**
+Visualiser du JSON
+^^^^^^^^^^^^^^^^^^
+
+::
+
+    from jyquickhelper import JSONJS
+    with open("product_sample.json", "r") as f:
+        js = f.read()
+    import json
+    rl = json.loads(js)
+    JSONJS(rl)
+
+Manipulation d'images et premiers avec le deep learning
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * `Search images with deep learning <http://www.xavierdupre.fr/app/mlinsights/helpsphinx/notebooks/search_images.html>`_ :
   le notebook expose comment manipuler des images avec :epkg:`keras` et comment
   utiliser le résultat des couches intermédiaires d'un réseau de neurones profond
   dans le but de recherche des images similaires.
 
-**Cheat Sheets**
+Cheat Sheets
+^^^^^^^^^^^^
+
+N'importe quelle requête sur un moteur de recherche
+``cheat sheet + <quelque chose>`` retourne des résultats
+intéressants. En voici d'autres...
 
 .. toctree::
     :maxdepth: 1
