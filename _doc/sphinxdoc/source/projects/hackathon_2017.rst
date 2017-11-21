@@ -60,7 +60,7 @@ disponible. Trois challenges ont été imaginés pour améliorer la qualité
 des données proposées aux futurs acheteurs et optimiser
 l'espace de stockage nécessaire.
 
-*Pour en savoir plus :* `Label Emmaüs - qui sommes nous ? <https://www.label-emmaus.co/fr/a-propos/qui-sommes-nous/>`_.
+*Pour en savoir plus :* `Label Emmaüs - qui sommes nous ? <https://www.label-emmaus.co/fr/a-propos/qui-sommes-nous/>`_
 
 Trois défis
 -----------
@@ -249,6 +249,7 @@ Images
 ^^^^^^
 
 .. image:: 2017/hk17.png
+    :width: 500
 
 Vidéo
 ^^^^^
