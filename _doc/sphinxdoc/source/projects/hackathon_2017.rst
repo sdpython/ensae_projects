@@ -137,7 +137,7 @@ Pour stocker un mot de passe de façon permanente :
 
     import keyring
     keyring.get_password("hackathon", "labelemmaus", "motdepasse")
-    
+
 Pour décoder tous les fichiers dont l'extension est ``.enc`` :
 
 ::
@@ -154,8 +154,25 @@ Pour décoder tous les fichiers dont l'extension est ``.enc`` :
             dest = enc[:-4]
             if not os.path.exists(dest):
                 print("décrypte", enc)
-                decrypt_stream(key=password.encode("ascii"), filename=enc, 
+                decrypt_stream(key=password.encode("ascii"), filename=enc,
                                out_filename=dest, chunksize=2**20)
+
+**Lire de gros fichiers JSON**
+
+Les fichiers JSON proposés pour la compétition contiennent des informations
+intéressantes mais ils sont très gros : 1 Go. Il est très difficile
+de le regarder depuis un éditeur. Il faut pouvoir le lire en streaming.
+C'est ce que fait le module :epkg:`ijson`. La première fonction
+l'utilise pour lister les éléments du JSON fourni par :epkg:`Label Emmaüs`.
+La documentation fournit un exmple d'utilisation.
+
+.. autosignature:: ensae_projects.hackathon.json_helper.enumerate_json_items
+
+La seconde fonction extrait des champs intéressants. Rien ne vous empêche
+de récupérer le code pour extraire d'autres champs.
+La documentation fournit un exmple d'utilisation.
+
+.. autosignature:: ensae_projects.hackathon.json_helper.extract_images_from_json_2017
 
 **Manipulation d'images**
 
@@ -200,7 +217,7 @@ Lieu : `Numa <https://paris.numa.co/>`_
 Vendredi 24 Novembre
 
 * 14h00 - Accueil des participants
-* 15h00 - EY, Latitudes, Label Emmaüs
+* 15h00 - EY, ENSAE, Genius, Latitudes, Label Emmaüs
 * 15h45 - Présentation des sujets
 * 16h30 - Début du hackathon
 

@@ -73,7 +73,7 @@ class TestJson(unittest.TestCase):
         self.assertEqual(imgs[0]['image_path'], 'https://coucou.JPEG')
         df = pandas.DataFrame(imgs)
         self.assertEqual(df.shape[0], 1)
-        self.assertEqual(df.shape[1], 13)
+        self.assertEqual(df.shape[1], 26)
 
 
 if __name__ == "__main__":
