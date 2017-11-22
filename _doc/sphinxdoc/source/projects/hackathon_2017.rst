@@ -135,7 +135,7 @@ vendu sera considéré également comme invendu. Ceci explique l'erreur proposé
 
 .. math::
 
-    E = \frac{1}{n} \sum_{i=1}^n  \frac{\min \left| Y_i - \min f(X_i) \right|}{180}
+    E = \frac{1}{n} \sum_{i=1}^n  \frac{\min \left| Y_i - \min(f(X_i), 180) \right|}{180}
 
 :math:`Y_i \in [0, 180]` est la valeur à prédire, elle est égale à 180
 si le produit n'a pas été vendu à la date où est constitué la base de données,
