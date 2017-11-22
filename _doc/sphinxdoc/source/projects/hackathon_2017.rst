@@ -94,10 +94,54 @@ Challenge deep learning
 
 *bientôt*
 
+*Métrique*
+
+C'est un problème de classification multi-label :
+chaque produit est associé à une ou plusieurs classes,
+le plus souvent imbriquées. Un produit est associé au catégorie
+``23946,23958,24038`` ce qui correspond à
+*mode, mode homme, chemises*. On pourrait se contenter de ne
+prédire que la dernière classe et inférer les deux premières
+qui incluent la dernière mais ce n'est pas toujours le cas.
+Certains livres sont rangés au rayon jeunesse et au rayon poésie.
+Pour prendre en compte ces aspects, on définit une métrique
+qui comptabilise le nombre de classes en commun.
+On utilise une métriques définies par
+`Multi-label classification <https://en.wikipedia.org/wiki/Multi-label_classification>`_
+et s'appuyant sur l'indice de `Jaccard <https://en.wikipedia.org/wiki/Jaccard_index>`_.
+:math:`C_i=\{c_{i1}, ..., c_{ik_i}\}` est l'ensemble
+des classes à prédire pour l'objet *i*, :math:`P_i`
+l'ensemble des classes prédite.
+
+.. math::
+
+    E = \frac{1}{n} \sum_{i=1}^n \frac{|C_i \cap P_i|}{|C_i \cup P_i|}
+
+La fonction est implémentée par
+`multi_label_jaccard <http://www.xavierdupre.fr/app/lightmlboard/_doc/sphinxdoc/build/html/lightmlboard/metrics/classification.html#lightmlboard.metrics.classification.multi_label_jaccard>`_.
+
 Challenge machine learning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 *bientôt*
+
+*Métrique*
+
+C'est un problème de régression mais avec des valeurs infinies.
+On aimerait qu'un produit ne reste pas plus de six mois,
+c'est pourquoi un produit qui n'a pas été vendu se verra attribuer une
+durée de six mois ou 180 jours. Un produit récemment ajouté mais pas encore
+vendu sera considéré également comme invendu. Ceci explique l'erreur proposée :
+
+.. math::
+
+    E = \frac{1}{n} \sum_{i=1}^n  \frac{\min \left| Y_i - \min f(X_i) \right|}{180}
+
+:math:`Y_i \in [0, 180]` est la valeur à prédire, elle est égale à 180
+si le produit n'a pas été vendu à la date où est constitué la base de données,
+:math:`f(X_i)` est la valeur prédite.
+La fonction est implémentée par
+`l1_reg_max <http://www.xavierdupre.fr/app/lightmlboard/_doc/sphinxdoc/build/html/lightmlboard/metrics/regression_custom.html#lightmlboard.metrics.regression_custom.l1_reg_max>`_.
 
 Challenge créatif
 ^^^^^^^^^^^^^^^^^
@@ -155,6 +199,17 @@ Eléments de code
 .. contents::
     :local:
 
+Anti-sèches ou Cheat Sheets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* `Essential Cheat Sheets for Machine Learning and Deep Learning Engineers <https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5>`_
+* `PyTorch Cheat Sheet <https://github.com/bfortuner/pytorch-cheatsheet/blob/master/pytorch-cheatsheet.ipynb>`_
+* `Keras Cheat Sheet <https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Keras_Cheat_Sheet_Python.pdf>`_
+
+Autres références sur le deep learning
+
+* `Réseaux de neurones et Deep Learning <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx3/td_2a_mlplus.html#reseaux-de-neurones-et-deep-learning>`_
+
 Récupérer des données cryptées
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -204,6 +259,9 @@ La documentation fournit un exmple d'utilisation.
 
 Visualiser du JSON
 ^^^^^^^^^^^^^^^^^^
+
+Le code suivant est extrait du notebook
+`Notebook, HTML, SVG, Javascript <http://www.xavierdupre.fr/app/jyquickhelper/helpsphinx/notebooks/notebook_html_svg.html#json>`_.
 
 ::
 
