@@ -118,7 +118,7 @@ l'ensemble des classes prédite.
     E = \frac{1}{n} \sum_{i=1}^n \frac{|C_i \cap P_i|}{|C_i \cup P_i|}
 
 La fonction est implémentée par
-`multi_label_jaccard <http://www.xavierdupre.fr/app/lightmlboard/_doc/sphinxdoc/build/html/lightmlboard/metrics/classification.html#lightmlboard.metrics.classification.multi_label_jaccard>`_.
+`multi_label_jaccard <http://www.xavierdupre.fr/app/lightmlboard/helpsphinx/lightmlboard/metrics/classification.html#lightmlboard.metrics.classification.multi_label_jaccard>`_.
 
 Challenge machine learning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -141,7 +141,7 @@ vendu sera considéré également comme invendu. Ceci explique l'erreur proposé
 si le produit n'a pas été vendu à la date où est constitué la base de données,
 :math:`f(X_i)` est la valeur prédite.
 La fonction est implémentée par
-`l1_reg_max <http://www.xavierdupre.fr/app/lightmlboard/_doc/sphinxdoc/build/html/lightmlboard/metrics/regression_custom.html#lightmlboard.metrics.regression_custom.l1_reg_max>`_.
+`l1_reg_max <http://www.xavierdupre.fr/app/lightmlboard/helpsphinx/lightmlboard/metrics/regression_custom.html#lightmlboard.metrics.regression_custom.l1_reg_max>`_.
 
 Challenge créatif
 ^^^^^^^^^^^^^^^^^
