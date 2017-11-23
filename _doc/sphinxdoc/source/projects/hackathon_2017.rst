@@ -94,6 +94,11 @@ Challenge deep learning
 
 *bientôt*
 
+*Lectures*
+
+L'article n'est pas trop long et pourrait vous donner quelques idées :
+`Knowledge Concentration: Learning 100K Object Classifiers in a Single CNN <https://arxiv.org/pdf/1711.07607.pdf>`_.
+
 *Métrique*
 
 C'est un problème de classification multi-label :
@@ -239,6 +244,57 @@ Pour décoder tous les fichiers dont l'extension est ``.enc`` :
                 decrypt_stream(key=password.encode("ascii"), filename=enc,
                                out_filename=dest, chunksize=2**20)
 
+Extraire des champs d'un fichier JSON
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Le script fonctionne si votre ordinateur a assez de mémoire
+pour charger toutes les données. Sinon il faudra passer
+au paragraphe suivant pour faire la même chose mais en mode
+streaming. Vous trouverez dans les données un exemple des informations
+stockées au format JSON pour un seul produit ce qui permettra
+d'ajouter facilement d'autres champs au script ci-dessous.
+
+::
+
+    import simplejson
+    from dateutil import parser
+
+    with open('full.json') as f:
+        js = simplejson.load(f)
+
+    fields = 'product_id|sku|produit|poids|date_created|prix|marchand|merchant_id|statut|stock|categorie|videK|sous-categorie|VideM|VideN|VideO|VideP|VideQ'
+    print(fields.replace("|", "\t"))
+
+    for p in js:
+        try:
+            poids = p['package_weight'].get('kg')
+            if poids:
+                poids = poids * 1000
+            else:
+                poids = p['package_weight'].get('g')
+        except Exception:
+            poids = ''
+
+        created_on = ''
+        try:
+            created_on = parser.parse(p['created_on']).strftime('%Y-%m-%d')
+        except Exception:
+            pass
+
+        values = [p['best_offer']['product']['id']),
+                  p['best_offer']['sku'],
+                  p.get('name',''),
+                  str(poids),
+                  created_on,
+                  str(p['best_offer']['price_with_vat']),
+                  p['best_offer']['merchant']['name'],
+                  str(p['best_offer']['merchant']['id']),
+                  p['best_offer']['status'],
+                  str(p['best_offer']['stock']),
+                  ]
+        values += list(map(lambda x: x['name'], p['application_categories_dict'])
+        print("\t".join(values))
+
 Lire de gros fichiers JSON
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -324,10 +380,16 @@ Vendredi 24 Novembre
 * 14h00 - Accueil des participants
 * 15h00 - EY, ENSAE, Genius, Latitudes, Label Emmaüs
 * 15h45 - Présentation des sujets
+* 16h15 - Installation
 * 16h30 - Début du hackathon
 
 Samedi 25 Novembre
 
-* 15h00 - Présentation des résultats
-* 17h00 - Remise des prix
-* 18h00 - afterwork
+* 12h00 - jusque 15h, les mentors vous conseillent sur les présentations,
+  soulignent les bonnes idées.
+* 15h00 - Mise à disposition du jury du code et des résultats sur GitHub,
+  le leaderboard est figé.
+* 16h00 - Présentation des résultats - 3 minutes de présentation + 2 minutes de questions
+* 17h30 - Délibération du jury
+* 18h00 - Cocktail
+* 19h00 - After cocktail
