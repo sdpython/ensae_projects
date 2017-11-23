@@ -1,11 +1,11 @@
 
 .. blogpost::
     :title: Videos of past hackathons at ENSAE
-    :keywords: ENSAE, EY, Microsoft, Croix-Rouge, Crésus
+    :keywords: ENSAE, EY, Microsoft, Croix-Rouge, Crésus, Genius
     :date: 2017-10-07
     :categories: hackathon
 
-    The thrid hackathon is being prepared and is scheduled
+    The third hackathon is being prepared and is scheduled
     for 24th-25th November 2017. More information will be posted
     soon. Here are some informations about the past two ones.
 

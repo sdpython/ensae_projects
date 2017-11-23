@@ -6,28 +6,29 @@ Hackathon Ernst & Young / ENSAE / Genius / Latitudes / Label Emmaüs / 2017
 
 .. index:: Ernst & Young, ENSAE, Hackathon, Genius, Label Emmaüs, 2017
 
-Le hackathon était proposé et organisé par
+.. image:: 2017/logo1.png
+    :width: 300
+
+.. image:: 2017/logo2.png
+    :width: 600
+
+Le hackathon est proposé et organisé par
 `Ernst & Young <http://www.ey.com/fr/fr/home>`_ (sponsor),
 `ENSAE <http://www.ensae.fr/ensae/fr/>`_,
 `Genius <https://www.facebook.com/geniusensae/>`_,
 `Latitudes <http://www.latitudes.cc/>`_,
 :epkg:`Label Emmaüs`.
+Les données seront fournies au début de l'événement
+et doivent être détruites à la fin de l'événement.
+Site : `hackathon-geniusensae.fr <http://hackathon-geniusensae.fr/>`_.
+
+Version PDF : :download:`StartupKit-Hackathon-2017.pdf <2017/StartupKit-Hackathon-2017.pdf>`.
 
 .. contents::
     :local:
 
-Les données seront fournies au début de l'événement et doivent être détruites à la fin de l'événement.
-
-Site : `hackathon-geniusensae.fr <http://hackathon-geniusensae.fr/>`_.
-
 .. image:: 2017/hk17.png
-    :width: 200
-
-Version PDF : :download:`StartupKit-Hackathon-2017.pdf <2017/StartupKit-Hackathon-2017.pdf>`.
-
-.. image:: 2017/logo1.png
-
-.. image:: 2017/logo2.png
+    :width: 150
 
 Contexte
 --------
