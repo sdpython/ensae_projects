@@ -23,11 +23,11 @@ Site : `hackathon-geniusensae.fr <http://hackathon-geniusensae.fr/>`_.
 .. image:: 2017/hk17.png
     :width: 200
 
-Version PDF : :download:`StartupKit-Hackathon-2017.pdf <StartupKit-Hackathon-2017.pdf>`.
+Version PDF : :download:`StartupKit-Hackathon-2017.pdf <2017/StartupKit-Hackathon-2017.pdf>`.
 
-.. image:: logo1.png
+.. image:: 2017/logo1.png
 
-.. image:: logo2.png
+.. image:: 2017/logo2.png
 
 Contexte
 --------
