@@ -50,6 +50,7 @@ FAQ
     i_faq
     i_ex
     i_nb
+    projects/chutes
     glossary
     blog/main_0000
     README

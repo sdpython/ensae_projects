@@ -258,7 +258,7 @@ Challenge stratégique
     (coût et limites de stockage des produits, dynamique de
     ventes sur l'activité).
 
-**Objectif **
+**Objectif**
 
 Imaginer des fonctionnalités qui pourraient agir sur le
 stock dormant (plus de 3 mois ?) et qui respectent la charte
@@ -385,35 +385,6 @@ Autres références sur le deep learning
 
 * `Réseaux de neurones et Deep Learning <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx3/td_2a_mlplus.html#reseaux-de-neurones-et-deep-learning>`_
 
-Récupérer des données cryptées
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Pour stocker un mot de passe de façon permanente :
-
-::
-
-    import keyring
-    keyring.get_password("hackathon", "labelemmaus", "motdepasse")
-
-Pour décoder tous les fichiers dont l'extension est ``.enc`` :
-
-::
-
-    from pyquickhelper.filehelper import decrypt_stream
-    import keyring
-    import os
-
-    password = keyring.get_password("hackathon", "labelemmaus")
-
-    encs = os.listdir(".")
-    for enc in encs:
-        if enc.endswith(".enc"):
-            dest = enc[:-4]
-            if not os.path.exists(dest):
-                print("décrypte", enc)
-                decrypt_stream(key=password.encode("ascii"), filename=enc,
-                               out_filename=dest, chunksize=2**20)
-
 Extraire des champs d'un fichier JSON
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -533,7 +504,7 @@ Images
 ^^^^^^
 
 .. image:: 2017/hk17.png
-    :width: 500
+    :width: 300
 
 Vidéo
 ^^^^^
