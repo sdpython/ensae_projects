@@ -23,6 +23,12 @@ Site : `hackathon-geniusensae.fr <http://hackathon-geniusensae.fr/>`_.
 .. image:: 2017/hk17.png
     :width: 200
 
+Version PDF : :download:`StartupKit-Hackathon-2017.pdf <StartupKit-Hackathon-2017.pdf>`.
+
+.. image:: logo1.png
+
+.. image:: logo2.png
+
 Contexte
 --------
 
@@ -92,14 +98,49 @@ trouvés par les participants.
 Challenge deep learning
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-*bientôt*
+    Nos compagnons passent 40' pour créer une annonce dont 30'
+    sur l'identification et la qualification de l'objet. Tous
+    n'ont pas les compétences pour faire ce travail
+    d'identification et sont donc exclus de fait de l'accès
+    à ce nouveau métier.
 
-*Lectures*
+**Objectif**
 
-L'article n'est pas trop long et pourrait vous donner quelques idées :
-`Knowledge Concentration: Learning 100K Object Classifiers in a Single CNN <https://arxiv.org/pdf/1711.07607.pdf>`_.
+Chaque objet est caractérisé par une ou plusieurs d'images.
+Il faut déterminer la ou les catégories auxquelles il appartient.
 
-*Métrique*
+**Les aspects auxquels le jury fera attention**
+
+Comment Label Emmaüs pourra-t-il utiliser votre solution ? ROI ?
+Y-a-t-il des objets ou des classes plus difficiles que d'autres ?
+Comment votre modèle peut-il être utilisé pour proposer d'autres suggestions ?
+
+**Pour démarrer**
+
+`Search images with deep learning <http://www.xavierdupre.fr/app/mlinsights/helpsphinx/notebooks/search_images.html>`_ :
+le notebook expose comment manipuler des
+images avec :epkg:`keras` et comment utiliser le résultat des couches intermédiaires
+d'un réseau de neurones profond dans le but de recherche des images similaires.
+
+**Données**
+
+Les données sont réparties sur quatre fichiers
+qui vous seront communiqués au début du hackathon.
+
+* Un fichier zip contenant les images (~175.000, 3.4 Go)
+  de la base d'apprentissage. Si une image appartient
+  à plusieurs catégories (176), elle sera dans le sous-répertoire de la catégorie
+  à l'identifiant le plus élevé.
+* Un fichier contenant trois colonnes *product_id,category,image_name*.
+  C'est la base d'apprentissage.
+* Un fichier zip contenant les images de la base de test.
+* Un fichier contenent deux colonnes *product_id,image_name*.
+  C'est la base de test.
+
+Le nom de chaque image commencent par l'identifiant
+produit auquel elle appartient.
+
+**Métrique**
 
 C'est un problème de classification multi-label :
 chaque produit est associé à une ou plusieurs classes,
@@ -125,12 +166,61 @@ l'ensemble des classes prédite.
 La fonction est implémentée par
 `multi_label_jaccard <http://www.xavierdupre.fr/app/lightmlboard/helpsphinx/lightmlboard/metrics/classification.html#lightmlboard.metrics.classification.multi_label_jaccard>`_.
 
+**Exemple de soumission**
+
+Une fichier avec deux colonnes séparées par un point-virgule et sans en-tête.
+La première contient les id de produits, la seconde votre prédiction.
+Tous les id de produits de la base de test doivent être présents.
+L'ordre des lignes n'a pas d'incidence.
+
+::
+
+    2324245;21005
+    23242235;21005,22456
+    3242235;21456,23555
+
+**Lectures**
+
+L'article n'est pas trop long et pourrait vous donner quelques idées :
+`Knowledge Concentration: Learning 100K Object Classifiers in a Single CNN <https://arxiv.org/pdf/1711.07607.pdf>`_.
+
 Challenge machine learning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-*bientôt*
+    Certains groupes, vendent mieux que d'autre.
+    Ceux qui vendent moins bien créent moins d'annonces :
+    ils ont un espace de stockage qui tend à saturer,
+    l'activité n'est pas perçue comme assez performante
+    pour investir. A la question "pourquoi mes produits ne
+    se vendent pas", Label Emmaüs ne sait pas répondre
+    (sauf par du ressenti métier).
 
-*Métrique*
+**Objectif**
+
+Prédire la durée entre la mise en ligne et la vente d'un objet.
+
+**Les aspects auxquels le jury fera attention**
+
+Comment Label Emmaüs pourra-t-il utiliser votre solution ? Quel est son ROI ?
+Y-a-t-il des objets plus difficiles que d'autres ?
+Comment votre prédiction évolue en fonction de cinq variables clés
+(le prix, la catégorie, la distance entre l'acheteur et l'entrepôt,
+le nombre de produits dans les paniers, les mots-clés dans les descriptions).
+
+**Données**
+
+Les données sont réparties sur plusieurs fichiers
+contenant toutes les informations sur les produits,
+les utilisateurs anonymisés, les paniers. Il y a deux
+fichiers importants :
+
+* Un fichier contenant les valeurs à prédire pour chaque produit,
+  avec deux colonnes *product_id,days*.
+  C'est la base d'apprentissage.
+* Un fichier contenant des identifiants de produits de la base
+  de test.
+
+**Métrique**
 
 C'est un problème de régression mais avec des valeurs infinies.
 On aimerait qu'un produit ne reste pas plus de six mois,
@@ -148,17 +238,97 @@ si le produit n'a pas été vendu à la date où est constitué la base de donn�
 La fonction est implémentée par
 `l1_reg_max <http://www.xavierdupre.fr/app/lightmlboard/helpsphinx/lightmlboard/metrics/regression_custom.html#lightmlboard.metrics.regression_custom.l1_reg_max>`_.
 
-Challenge créatif
-^^^^^^^^^^^^^^^^^
+**Exemple de soumission**
 
-*bientôt*
+Une fichier avec deux colonnes séparées par un point-virgule et sans en-tête.
+La première contient les id de produits, la seconde votre prédiction.
+Tous les id de produits de la base de test doivent être présents.
+L'ordre des lignes n'a pas d'incidence.
+
+::
+
+    2324245;24.3
+    23242233;14.3
+    3242235;180
+
+Challenge stratégique
+^^^^^^^^^^^^^^^^^^^^^
+
+    La rotation du stock dormant est un enjeu important
+    (coût et limites de stockage des produits, dynamique de
+    ventes sur l'activité).
+
+**Objectif **
+
+Imaginer des fonctionnalités qui pourraient agir sur le
+stock dormant (plus de 3 mois ?) et qui respectent la charte
+Emmaüs.
+Tout l'enjeu du sujet est d'inciter à
+l'achat tout en restant équitable.
+
+**Contraintes de la charte Emmaüs**
+
+Pas d'enchères ascendantes : le prix doit rester accessible à tous...
+Les ventes liées ou une réduction pour l'achat de deux objets.
+Chaque marchand doit être traité de façon équitable.
+
+**Les aspects auxquels le jury fera attention**
+
+Est-ce que les données récoltées permettent de définir le caractère équitable de Label Emmaüs ?
+Comment les utilisateurs vont-ils modifier leur comportement ?
+Le prix est-il le principal facteur incitatif ?
+
+**Eléments de réflexion**
+
+Doit-on s'adresser aux acheteurs réguliers ? A ce qui ne le sont pas ?
+Doit-on les différencier ? Faut-il appliquer vos idées sur tous
+les objets ou certains objets, avec un prix élevé ou simplement
+encombrants, certaines saisons ? Pensez-vous à un système permanent,
+ponctuel ? Le prix est-il toujours bien choisi ? Pensez-vous à
+organiser une loterie pour certains acheteurs ? Des friperies ?
+Peut-on recommander un objet à un utilisateur, n'est-ce pas
+l'influencer ? Comment mesurer le caractère équitable du site de
+vente en ligne ? Il est difficile de quantifier ce qu'une idée
+peut apporter quand elle n'est pas encore mis en place. Ne peut-on
+pas tout de même faire un rapprochement entre deux objets similaire,
+un qui s'est vendu et un autre qui ne s'est pas vendu ?
+
+Les enchères descendantes vérifient les contraintes imposées par Emmaüs,
+cela ne risque-t-il pas d'inciter les acheteurs à attendre que les
+enchères commencent ? Comment organiser une sorte de dégressivité
+équitable sans diminuer l'intérêt des achteurs et des vendeurs pour
+le site ? Comment créer des bundles (achat groupé) avec plusieurs
+marchands sans favoriser l'un  d'eux ? Faudrait-il mutualiser
+les risques et décider de la répartition du prix de la vente
+avant que celle-ci ait lieu ?
+
+**Données**
+
+Les données sont identiques à celles du second challenge.
 
 Préparation des données
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-*Cette partie n'est pas essentielle à la compréhension des challenges.
+Cette partie n'est pas essentielle à la compréhension des challenges.
 Elle éclaire la façon dont les données ont été préparées pour les
-challenges de machine learning.*
+challenges de machine learning et pourraient vous être utiles
+pour diviser en apprentissage / test.
+
+**Challenge 1**
+
+Les données ont été construites à partir des images présentes
+sur le site :epkg:`Label Emmaüs`. Le problème est un problème
+de classification multi-label et cela complique la constitution
+des bases d'apprentissage et de tests. La fonction
+`train_test_split <http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html>`_
+ne peut pas être utilisée telle quelle mais on souhaite pourtant
+répartir les produits et toutes les images qui s'y réfèrent dans un
+jeu ou dans l'autre mais on souhaite aussi que les petites classes
+soient représentées dans les bases d'apprentissage et de tests.
+Cette répartition a été effectuée avec la fonction :
+`train_test_apart_stratify <http://www.xavierdupre.fr/app/pandas_streaming/helpsphinx/pandas_streaming/df/connex_split.html#pandas_streaming.df.connex_split.train_test_apart_stratify>`_.
+
+**Challenge 2**
 
 La préparation des données implique une séparation
 jeu d'apprentissage, jeu d'évaluation. Ce dernier ne doit pas
@@ -195,7 +365,7 @@ pour prédire une valeur dans le passé.
 Le fait que ce scénario ne se produit pas pourrait être vérifié
 en s'assurant que les modèles produisent les mêmes résultats
 avec des produits, des paniers et des utilisateurs dédoublés
-mais avec des historiques tronqués. Ceci n'a pas été implémentés
+mais avec des historiques tronqués. Ceci n'a pas été implémenté
 par manque de temps.
 
 Eléments de code
@@ -375,7 +545,7 @@ Agenda
 
 Lieu : `Numa <https://paris.numa.co/>`_
 
-Vendredi 24 Novembre
+*Vendredi 24 Novembre*
 
 * 14h00 - Accueil des participants
 * 15h00 - EY, ENSAE, Genius, Latitudes, Label Emmaüs
@@ -383,11 +553,11 @@ Vendredi 24 Novembre
 * 16h15 - Installation
 * 16h30 - Début du hackathon
 
-Samedi 25 Novembre
+*Samedi 25 Novembre*
 
 * 12h00 - jusque 15h, les mentors vous conseillent sur les présentations,
   soulignent les bonnes idées.
-* 15h00 - Mise à disposition du jury du code et des résultats sur GitHub,
+* 15h00 - A destination du jury, mise à disposition du code et des résultats sur GitHub,
   le leaderboard est figé.
 * 16h00 - Présentation des résultats - 3 minutes de présentation + 2 minutes de questions
 * 17h30 - Délibération du jury
