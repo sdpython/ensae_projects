@@ -440,7 +440,7 @@ La version avec les librairies standard de :epkg:`Python` :
                     break
 
 Dézipper un fichier zip
-+++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^
 
 La librairie standard de :epkg:`Python` fonctionne bien :
 
