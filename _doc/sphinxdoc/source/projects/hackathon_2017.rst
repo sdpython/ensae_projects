@@ -465,7 +465,7 @@ Elle ne dézippe pas ce qui a déjà été dézippé.
         os.mkdir("images")
 
     from pyquickhelper.filehelper import unzip_files
-    unzip_file('test2.zip', 'images', fLOG=print)
+    unzip_files('test2.zip', 'images', fLOG=print)
 
 Extraire des champs d'un fichier JSON
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
