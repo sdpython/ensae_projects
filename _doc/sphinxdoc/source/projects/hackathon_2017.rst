@@ -252,8 +252,8 @@ L'ordre des lignes n'a pas d'incidence.
     23242233;14.3
     3242235;180
 
-Challenge stratégique
-^^^^^^^^^^^^^^^^^^^^^
+Challenge créatif
+^^^^^^^^^^^^^^^^^
 
     La rotation du stock dormant est un enjeu important
     (coût et limites de stockage des produits, dynamique de
@@ -378,13 +378,94 @@ Eléments de code
 Anti-sèches ou Cheat Sheets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Des anti-sèches plus spécifiques au deep learning :
+
 * `Essential Cheat Sheets for Machine Learning and Deep Learning Engineers <https://startupsventurecapital.com/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5>`_
 * `PyTorch Cheat Sheet <https://github.com/bfortuner/pytorch-cheatsheet/blob/master/pytorch-cheatsheet.ipynb>`_
 * `Keras Cheat Sheet <https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Keras_Cheat_Sheet_Python.pdf>`_
 
-Autres références sur le deep learning
+d'autres références sur le deep learning (cours à l'ENSAE) :
 
 * `Réseaux de neurones et Deep Learning <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx3/td_2a_mlplus.html#reseaux-de-neurones-et-deep-learning>`_
+
+N'importe quelle requête sur un moteur de recherche
+``cheat sheet + <quelque chose>`` retourne des résultats
+intéressants. D'autres anti-sèches rédigées pour les hackathons
+précédents :
+
+.. toctree::
+    :maxdepth: 1
+
+    ../notebooks/chsh_graphs
+    ../notebooks/chsh_files
+    ../notebooks/chsh_dates
+    ../notebooks/chsh_pip_install
+
+`Rappel de ce que vous savez déjà mais avez peut-être oublié <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx3/notebooks/td2_eco_rappels_1a.html>`_
+
+Télécharger un gros fichier
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+La méthode toute prête (avec :epkg:`pyquickhelper`).
+Le processus est plus ou moins selon
+la vitesse de votre connexion internet. Sur un ADSL classique,
+il faut une 15 minutes pour télécharger un Go.
+
+::
+
+    from pyquickhelper.filehelper import get_url_content_timeout
+    url = "..."
+    get_url_content_timeout(url, output="test2.zip", encoding=None, chunk=2**24, fLOG=print)
+
+La version avec les librairies standard de :epkg:`Python` :
+
+::
+
+    import urllib.request
+
+    url = "..."
+    filename = "test3.zip"
+    chunk = 2**24
+    size = 0
+
+    with open(filename, "wb") as f :
+        with urllib.request.urlopen(url) as ur:
+            while True:
+                data = ur.read(chunk)
+                size += len(data)
+                print("downloaded", size, "bytes")
+                if len(data) > 0:
+                    f.write(data)
+                else:
+                    break
+
+Dézipper un fichier zip
++++++++++++++++++++++++
+
+La librairie standard de :epkg:`Python` fonctionne bien :
+
+::
+
+    import os
+    if not os.path.exists("images"):
+        os.mkdir("images")
+
+    import zipfile
+    with zipfile.ZipFile("test2.zip","r") as zip_ref:
+        zip_ref.extractall("images")
+
+L'autre option est la suivante (avec :epkg:`pyquickhelper`).
+Elle est pratique si le processus est interrompu.
+Elle ne dézippe pas ce qui a déjà été dézippé.
+
+::
+
+    import os
+    if not os.path.exists("images"):
+        os.mkdir("images")
+
+    from pyquickhelper.filehelper import unzip_files
+    unzip_file('test2.zip', 'images', fLOG=print)
 
 Extraire des champs d'un fichier JSON
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -477,23 +558,6 @@ Manipulation d'images et premiers avec le deep learning
   le notebook expose comment manipuler des images avec :epkg:`keras` et comment
   utiliser le résultat des couches intermédiaires d'un réseau de neurones profond
   dans le but de recherche des images similaires.
-
-Cheat Sheets
-^^^^^^^^^^^^
-
-N'importe quelle requête sur un moteur de recherche
-``cheat sheet + <quelque chose>`` retourne des résultats
-intéressants. En voici d'autres...
-
-.. toctree::
-    :maxdepth: 1
-
-    ../notebooks/chsh_graphs
-    ../notebooks/chsh_files
-    ../notebooks/chsh_dates
-    ../notebooks/chsh_pip_install
-
-`Rappel de ce que vous savez déjà mais avez peut-être oublié <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx3/notebooks/td2_eco_rappels_1a.html>`_
 
 Après la compétition
 --------------------
