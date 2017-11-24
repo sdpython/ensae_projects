@@ -559,6 +559,15 @@ Manipulation d'images et premiers avec le deep learning
   utiliser le résultat des couches intermédiaires d'un réseau de neurones profond
   dans le but de recherche des images similaires.
 
+Installer un package sur la machine virtual Azure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Un exemple.
+
+::
+
+    !/anaconda/envs/py35/bin/pip install pyquickhelper
+
 Après la compétition
 --------------------
 
