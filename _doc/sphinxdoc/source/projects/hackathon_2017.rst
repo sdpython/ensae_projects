@@ -24,6 +24,8 @@ Site : `hackathon-geniusensae.fr <http://hackathon-geniusensae.fr/>`_.
 
 Version PDF : :download:`StartupKit-Hackathon-2017.pdf <2017/StartupKit-Hackathon-2017.pdf>`.
 
+Comptes twitter `#HackGenius17 <https://twitter.com/hashtag/HackGenius17>`_
+
 .. contents::
     :local:
 
@@ -578,7 +580,18 @@ Take Away
 Images
 ^^^^^^
 
+L'affiche de l'événement et quelques photos extraites du comptes twitter.
+
 .. image:: 2017/hk17.png
+    :width: 300
+
+.. image:: 2017/DPa0L4VW4AAv5SO.jpg
+    :width: 300
+
+.. image:: 2017/DPafXCiWsAAkxcA.jpg
+    :width: 300
+
+.. image:: 2017/DPfdD_1XkAAtPY4.jpg
     :width: 300
 
 Vidéo
