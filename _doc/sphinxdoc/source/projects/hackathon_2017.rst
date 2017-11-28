@@ -597,7 +597,7 @@ Un exemple.
     !/anaconda/envs/py35/bin/pip install pyquickhelper
 
 Arrêter un process GPU
-++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^
 
 La commande `nvidia-smi <https://www.microway.com/hpc-tech-tips/nvidia-smi_control-your-gpus/>`_
 affiche les processus GPU qui tourne sur la machine. Si l'ordinateur ne répond plus,
