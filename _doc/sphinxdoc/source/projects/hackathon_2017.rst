@@ -473,6 +473,29 @@ Elle ne dézippe pas ce qui a déjà été dézippé.
 Extraire des champs d'un fichier JSON
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+On peut utiliser la fonction
+`read_json <https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_json.html>`_
+de :epkg:`pandas`. Cette méthode ne lire que le premier niveau des attributs
+définis dans le fichier json. Elle
+introduit des colonnes qui peuvent
+contenir des listes ou des dictionnaires et qu'il
+faut ensuite scinder soi-même avec un code
+qui ressemble à celui-ci :
+
+::
+
+    data_split = pandas.DataFrame(pf['application_categories_dict'].values.tolist())
+    data_split.columns = data_split.columns.astype(str)
+    data_wide = pandas.DataFrame()
+    for x in data_split.columns:
+        L = data_split[str(x)].values.tolist()
+        L = [x for x in L if x is not None]
+        df = pandas.DataFrame(L)
+        for y in df.columns:
+            df = df.rename (columns = {y : y+str(x)})
+        data_wide = pandas.concat([data_wide, df], axis = 1)
+
+On peut aussi le faire sans :epkg:`pandas`.
 Le script fonctionne si votre ordinateur a assez de mémoire
 pour charger toutes les données. Sinon il faudra passer
 au paragraphe suivant pour faire la même chose mais en mode
@@ -527,8 +550,10 @@ Lire de gros fichiers JSON
 Les fichiers JSON proposés pour la compétition contiennent des informations
 intéressantes mais ils sont très gros : 1 Go. Il est très difficile
 de le regarder depuis un éditeur. Il faut pouvoir le lire en streaming.
-C'est ce que fait le module :epkg:`ijson`. La première fonction
-l'utilise pour lister les éléments du JSON fourni par :epkg:`Label Emmaüs`.
+C'est ce que fait le module :epkg:`ijson`.
+On peut lire le blog `Python & JSON: Working with large datasets using Pandas <https://www.dataquest.io/blog/python-json-tutorial/>`_
+ou utiliser les fonctions ci-dessous.
+La première utilise :epkg:`ijson` pour lister les éléments du JSON fourni par :epkg:`Label Emmaüs`.
 La documentation fournit un exmple d'utilisation.
 
 .. autosignature:: ensae_projects.hackathon.json_helper.enumerate_json_items
@@ -571,11 +596,30 @@ Un exemple.
 
     !/anaconda/envs/py35/bin/pip install pyquickhelper
 
+Arrêter un process GPU
+++++++++++++++++++++++
+
+La commande `nvidia-smi <https://www.microway.com/hpc-tech-tips/nvidia-smi_control-your-gpus/>`_
+affiche les processus GPU qui tourne sur la machine. Si l'ordinateur ne répond plus,
+il suffit d'arrêter les processus avec la commande
+`kill <https://www.digitalocean.com/community/tutorials/how-to-use-ps-kill-and-nice-to-manage-processes-in-linux>`_ (processus ID) (Linux).
+
 Après la compétition
 --------------------
 
 Take Away
 ^^^^^^^^^
+
+**Quelques réponses**
+
+Je me souviens avoir dû répondre à une question sur
+l'interprétation des coefficients d'une régression linéaire.
+La première règle est de tenir compte plus du signe que de la
+valeur des coefficients : si on fait une régression
+sur une variable :math:`10X_1` plutôt que sur :math:`X_1`, le coefficient
+de la régression est divisé par 10 sans perte de performance
+(même :math:`R^2`). D'autres subtilités sont exposées dans le notebook :
+`Régression linéaire et résultats numériques <http://www.xavierdupre.fr/app/mlstatpy/helpsphinx/notebooks/regression_lineaire.html>`_.
 
 Images
 ^^^^^^
