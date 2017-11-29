@@ -621,6 +621,24 @@ de la régression est divisé par 10 sans perte de performance
 (même :math:`R^2`). D'autres subtilités sont exposées dans le notebook :
 `Régression linéaire et résultats numériques <http://www.xavierdupre.fr/app/mlstatpy/helpsphinx/notebooks/regression_lineaire.html>`_.
 
+**L'année prochaine**
+
+Les participants passent plusieurs heures à préparer une première base de données
+et c'est une étape importante que certaines équipes ne terminent pas assez vite,
+elles agrègent trop de features avant de commencer l'apprentissage d'un modèle
+qui pourrait déjà orienter cette première étape dans une direction différente.
+Pourquoi ne pas mettre en commun certaines bases vers 6h après le début du
+hackathon et attribuer un prix pour cela ?
+
+Les échanges de code au sein d'une équipe sont assez fastidieux, certains ont
+utilisés *facebook*, d'autres *slack*, quelques rares équipes le répertoire *git*.
+Il serait sans doute judicieux de passer quelques minutes au début pour faire
+une démo de quelques outils.
+
+**Echanges de savoir**
+
+*Quand j'ai vu ce que faisaient les 3A, cela m'a donné envie d'apprendre à coder.*
+
 Images
 ^^^^^^
 

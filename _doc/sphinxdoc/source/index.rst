@@ -90,6 +90,10 @@ pip ::
     :alt: GitHub Issues
     :target: https://github.com/sdpython/ensae_projects/issues
 
+.. image:: https://badge.waffle.io/sdpython/ensae_projects.png?label=ready&title=Ready
+    :alt: Waffle
+    :target: https://waffle.io/sdpython/ensae_projects
+
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
     :alt: MIT License
     :target: http://opensource.org/licenses/MIT
