@@ -12,7 +12,7 @@ by a deep learning model.
 ####################
 # Settings.
 host = '127.0.0.1'
-port = 8081
+port = 8083
 
 ########################
 # Creates the search engine and starts a server in a different process.
