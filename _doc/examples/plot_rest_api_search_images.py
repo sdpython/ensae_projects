@@ -81,7 +81,10 @@ imgfile = os.path.join(os.path.dirname(si.__file__), "cat-1192026__480.jpg")
 
 from PIL import Image
 img = Image.open(imgfile)
-img.show()
+
+import numpy
+from matplotlib.pyplot import imshow
+imshow(numpy.asarray(img))
 
 ############################
 # Let's query the server.
