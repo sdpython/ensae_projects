@@ -67,7 +67,7 @@ def decrypt_dataframe(infile, password=None, sep="\t", encoding="utf8", **kwargs
     @param      password    password
     @param      sep         separator
     @param      encoding    encoding
-    @param      kwargs      others options for `read_csv <>`_
+    @param      kwargs      others options for :epkg:`pandas:read_csv`
     @return                 dataframe
     """
     password = get_password_from_keyring_or_env(password)
