@@ -84,8 +84,9 @@ class TestDummyAppSearchImg(testing.TestBase):
         self.assertEqual(len(d['Y'][0]), 5)
         self.assertIsInstance(d['Y'][0][0][0], float)
         self.assertIsInstance(d['Y'][0][0][1], int)
-        self.assertEqual(d['Y'][0][0][2].replace('\\', '/'), {
-                         'name': 'oneclass/cat-2922832__480.jpg'})
+        self.assertIn('name', d['Y'][0][0][2])
+        self.assertEqual(d['Y'][0][0][2]['name'].replace(
+            '\\', '/'), 'oneclass/cat-2922832__480.jpg')
 
     def test_dummy_error_img(self):
         fLOG(
