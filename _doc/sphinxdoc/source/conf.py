@@ -40,7 +40,10 @@ html_context = {
 
 epkg_dictionary['Cresus'] = "http://www.cresus-france.org/"
 epkg_dictionary['data leakage'] = "https://www.kaggle.com/wiki/Leakage"
+epkg_dictionary['falcon'] = "https://falconframework.org/"
 epkg_dictionary['ijson'] = "https://pypi.python.org/pypi/ijson"
+epkg_dictionary['keras'] = "https://keras.io/"
 epkg_dictionary['Label Emmaüs'] = 'https://www.label-emmaus.co/'
 epkg_dictionary['lightmlrestapi'] = "http://www.xavierdupre.fr/app/lightmlrestapi/helpsphinx/index.html"
-epkg_dictionary['keras'] = "https://keras.io/"
+epkg_dictionary['waitress'] = "https://docs.pylonsproject.org/projects/waitress/en/latest/"
+epkg_dictionary['WSGI'] = "https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface"
