@@ -35,7 +35,7 @@ install:
   - "%PYTHON%\\Scripts\\pymy_install3 opencv_python"
   - "%PYTHON%\\Scripts\\pymy_install3 pillow psutil tensorflow"
   - "%PYTHON%\\Scripts\\pip install keras"
-  - "%PYTHON%\\Scripts\\pip install lightmlrestapi mlinsights pandas_streaming"
+  - "%PYTHON%\\Scripts\\pip install lightmlrestapi mlinsights pandas_streaming waitress"
 
 
 build: off

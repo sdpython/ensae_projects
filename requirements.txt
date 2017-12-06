@@ -42,6 +42,7 @@ tensorflow
 tqdm
 unify
 shapely
+waitress
 wheel
 xgboost
 xlrd

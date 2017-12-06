@@ -195,7 +195,7 @@ if is_local():
         additional_local_path=["pyquickhelper", "jyquickhelper",
                                "pyensae", "pyrsslocal", "pymyinstall",
                                "lightmlrestapi", "mlinsights", "pandas_streaming"],
-        copy_add_ext=["enc"], fLOG=logging_function, layout=['html'],
+        copy_add_ext=["enc", 'jpg'], fLOG=logging_function, layout=['html'],
         covtoken=("ad448134-a962-480b-85c6-a899999575d5", "'_UT_36_std' in outfile"))
     if not r and not ({"bdist_msi", "sdist",
                        "bdist_wheel", "publish", "publish_doc", "register",
