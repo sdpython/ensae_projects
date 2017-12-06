@@ -8,3 +8,4 @@ API
     data
     hackathon
     password
+    cheatsheet

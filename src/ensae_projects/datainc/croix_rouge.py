@@ -14,7 +14,7 @@ from .data_exception import ProjectDataException, PasswordException
 
 def get_password_from_keyring_or_env(pwd):
     """
-    Get the password from `keyring <https://pypi.python.org/pypi/keyring>`_ first,
+    Gets the password from `keyring <https://pypi.python.org/pypi/keyring>`_ first,
     then from the environment variables.
 
     @param      pwd     password to use or None to get it as ``os.environ["PWDCROIXROUGE"]``
@@ -47,7 +47,7 @@ def get_password_from_keyring_or_env(pwd):
 
 def encrypt_file(infile, outfile, password=None):
     """
-    Encrypt a file with a specific password.
+    Encrypts a file with a specific password.
 
     @param      password        password for the hackathon, if None, look into
                                 ``os.environ["PWDCROIXROUGE"]``
@@ -61,7 +61,7 @@ def encrypt_file(infile, outfile, password=None):
 
 def decrypt_dataframe(infile, password=None, sep="\t", encoding="utf8", **kwargs):
     """
-    Read an encrypted dataframe.
+    Reads an encrypted dataframe.
 
     @param      infile      filename
     @param      password    password
@@ -79,7 +79,7 @@ def decrypt_dataframe(infile, password=None, sep="\t", encoding="utf8", **kwargs
 
 def get_meaning(table="invoice", password=None):
     """
-    Retrieve data related to the meaning of a table.
+    Retrieves data related to the meaning of a table.
 
     @param      table           SINVOICE or SINVOICE_V, ITTMASTER or stojou
     @param      password        password, see @see fn get_password_from_keyring_or_env

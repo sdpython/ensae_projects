@@ -11,7 +11,7 @@ from PIL import Image
 def resize_image(filename_or_bytes, maxdim=512, dest=None, format=None):
     """
     Resizes an image until one of its dimension becomes smaller
-    than *maxdim*.
+    than *maxdim* after dividing the dimensions by two many times.
 
     @param      filename        filename or bytes
     @param      maxdim          maximum dimension

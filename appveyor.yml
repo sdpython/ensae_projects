@@ -33,7 +33,10 @@ install:
   - "%PYTHON%\\Scripts\\pymy_install3 PyYAML"
   - "%PYTHON%\\Scripts\\pymy_install3 pyproj"
   - "%PYTHON%\\Scripts\\pymy_install3 opencv_python"
-  - "%PYTHON%\\Scripts\\pymy_install3 pillow"
+  - "%PYTHON%\\Scripts\\pymy_install3 pillow psutil tensorflow"
+  - "%PYTHON%\\Scripts\\pip install keras"
+  - "%PYTHON%\\Scripts\\pip install lightmlrestapi mlinsights pandas_streaming"
+
 
 build: off
 

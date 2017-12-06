@@ -22,7 +22,7 @@ def get_fields_description():
 
 def get_seattle_streets(filename=None, folder="."):
     """
-    Retrieve processed data from
+    Retrieves processed data from
     `Seattle Streets <https://data.seattle.gov/dataset/Street-Network-Database/afip-2mzr/data)>`_.
 
     @param      filename        local filename
@@ -41,7 +41,7 @@ def get_seattle_streets(filename=None, folder="."):
 
 def shapely_records(filename):
     """
-    Use `pyshp <https://pypi.python.org/pypi/pyshp/>`_ to return
+    Uses `pyshp <https://pypi.python.org/pypi/pyshp/>`_ to return
     shapes and records from shapefiles.
 
     @param      filename        filename
@@ -188,7 +188,7 @@ def build_streets_vertices(edges, shapes):
 def plot_streets_network(edges_index, edges, vertices, shapes, order=None,
                          color_vertices=None, color_edges=None, ax=None, **kwargs):
     """
-    Plot the network based on `basemap <http://matplotlib.org/basemap/>`_.
+    Plots the network based on `basemap <http://matplotlib.org/basemap/>`_.
 
     @param      edges_index     index of the edges in shapes
     @param      edges           list of tuple(v1, v2) in array of vertices
@@ -331,7 +331,7 @@ def _complete_subset_streets(edges, shapes):
 
 def _enumerate_close(lon, lat, shapes, th=None):
     """
-    Enumerate close streets from a starting point.
+    Enumerates close streets from a starting point.
 
     @param      lon     longitude
     @param      lat     latitude

@@ -10,12 +10,17 @@ cryptography
 folium
 ijson
 jyquickhelper
+keras
 keyring
 keyrings.alt
+lightmlrestapi
+mlinsights
 mnist
 mutagen
 mpld3
 opencv-python
+pandas_streaming
+psutil
 pycodestyle>=2.0.0
 pydocstyle
 pycryptodomex
@@ -33,6 +38,7 @@ sphinxcontrib-jsdemo
 sphinxjp.themes.basicstrap
 sphinxjp.themes.revealjs
 sphinxjp.themes.sphinxjp
+tensorflow
 tqdm
 unify
 shapely

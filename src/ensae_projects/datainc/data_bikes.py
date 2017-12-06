@@ -12,7 +12,7 @@ from pyensae.notebook_helper import folium_html_map
 
 def get_chicago_stations(folder=".", as_df=False):
     """
-    Retrieve processed data from
+    Retrieves processed data from
     `Divvy Data <https://www.divvybikes.com/system-data>`_.
 
     @param      folder          temporary folder where to download files
@@ -35,7 +35,7 @@ def get_chicago_stations(folder=".", as_df=False):
 
 def df_crossjoin(df1, df2, **kwargs):
     """
-    Make a cross join (cartesian product) between two dataframes by using a constant temporary key.
+    Makes a cross join (cartesian product) between two dataframes by using a constant temporary key.
     Also sets a MultiIndex which is the cartesian product of the indices of the input dataframes.
     Source: `Cross join / cartesian product between pandas DataFrames <https://mkonrad.net/2016/04/16/cross-join--cartesian-product-between-pandas-dataframes.html>`_
 
@@ -84,7 +84,7 @@ def add_missing_time(df, column, values, delay=10):
 
 def folium_html_stations_map(stations, html_width=None, html_height=None, radius=5, **kwargs):
     """
-    Returns a folium map which shows stations in different colors.
+    Returns a :epkg:`folium` map which shows stations in different colors.
 
     @param      stations        list ``[ (lat, lon), color ]`` or ``[ (lat, lon), (name, color) ]``
     @param      kwargs          extra parameters for `Map <https://github.com/python-visualization/folium/blob/master/folium/folium.py#L19>`_

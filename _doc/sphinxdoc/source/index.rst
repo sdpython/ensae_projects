@@ -35,6 +35,7 @@ Short and useful examples
 .. toctree::
     :maxdepth: 1
 
+    gyexamples/index
     api/index
     cheat_sheets
     mlexamples

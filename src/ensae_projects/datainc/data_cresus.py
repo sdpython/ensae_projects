@@ -12,8 +12,8 @@ from pyensae.sql import Database
 
 def process_cresus_whole_process(infile, outfold, ratio=0.20, fLOG=fLOG):
     """
-    process the database from Cresus until it splits the data into two
-    two sets of files
+    Processes the database from :epkg:`Cresus` until it splits the data into two
+    two sets of files.
     """
     if not os.path.exists(outfold):
         os.mkdir(outfold)
@@ -44,8 +44,8 @@ def cresus_dummy_file():
 
 def process_cresus_sql(infile, out_clean_sql=None, outdb=None, fLOG=fLOG):
     """
-    Process the database sent by cresus and produces
-    a list of flat files
+    Processes the database sent by cresus and produces
+    a list of flat files.
 
     @param      filename        dump of a sql database
     @param      out_clean_sql   filename which contains the cleaned sql
@@ -143,7 +143,7 @@ def process_cresus_sql(infile, out_clean_sql=None, outdb=None, fLOG=fLOG):
 
 def prepare_cresus_data(dbfile, outfold=None, fLOG=fLOG):
     """
-    Prepare the data for the challenge.
+    Prepares the data for the challenge.
 
     @param      dbfile      database file
     @param      outfold     output folder
@@ -193,7 +193,7 @@ def prepare_cresus_data(dbfile, outfold=None, fLOG=fLOG):
 
 def split_train_test_cresus_data(tables, outfold, ratio=0.20, fLOG=fLOG):
     """
-    splits the tables into two sets for tables (based on users)
+    Splits the tables into two sets for tables (based on users).
 
     @param          tables      dictionary of tables,
                                 @see fn prepare_cresus_data
@@ -257,7 +257,7 @@ def split_train_test_cresus_data(tables, outfold, ratio=0.20, fLOG=fLOG):
 
 def split_XY_bind_dataset_cresus_data(filename, fLOG=fLOG):
     """
-    split XY for the blind set
+    Splits XY for the blind set.
 
     @param      filename        table to split
     @return                     dictionary of created files

@@ -9,7 +9,7 @@ from .data_exception import FileFormatException
 
 def convert_dates(sd, option=None, exc=False):
     """
-    Convert a string into a date.
+    Converts a string into a date.
 
     @param      sd          string
     @param      option      see below
@@ -30,7 +30,7 @@ def convert_dates(sd, option=None, exc=False):
 
 def clean_column_name_sql_dump(i, line, hist, sep=";"):
     """
-    Remove quotes in a line which looks like:
+    Removes quotes in a line which looks like:
 
     ::
 
@@ -75,7 +75,7 @@ def change_encoding(infile,
                     process=None,
                     fLOG=noLOG):
     """
-    Change the encoding of a text file and removes quotes.
+    Changes the encoding of a text file and removes quotes.
     By default *process* is @see fn process_line.
 
     @param      infile      input file
@@ -114,7 +114,7 @@ def change_encoding_improve(infile,
                             process=None,
                             fLOG=noLOG):
     """
-    Change the encoding of a text file, removes quotes.
+    Changes the encoding of a text file, removes quotes.
     By default *process* is @see fn process_line
     but the function has access to the distribution of the number of columns
     in the previous lines.
@@ -153,7 +153,7 @@ def enumerate_text_lines(filename, sep="\t", encoding="utf-8", quotes_as_str=Fal
                          clean_column_name=None, convert_float=False, option=None, skip=0, take=-1,
                          fLOG=noLOG):
     """
-    Enumerate all lines from a text file and does some cleaning (see the list of parameters).
+    Enumerates all lines from a text file and does some cleaning (see the list of parameters).
 
     @param          filename            filename
     @param          sep                 column separator
