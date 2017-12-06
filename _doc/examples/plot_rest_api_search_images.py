@@ -28,8 +28,11 @@ def process_server(host, port):
     hdlr.setFormatter(formatter)
     logger.addHandler(hdlr)
 
+    # If not specified, the application looks for zip file:
+    # http://www.xavierdupre.fr/enseignement/complements/dog-cat-pixabay.zip
+    url = None
     from ensae_projects.restapi import search_images_dogcat
-    app = search_images_dogcat()
+    app = search_images_dogcat(url_images=url)
 
     from waitress import serve
     serve(app, host=host, port=port)
@@ -37,6 +40,7 @@ def process_server(host, port):
 ##########################
 # Saves this code into a file and we start it
 # from a different process.
+
 
 import os
 import ensae_projects
@@ -81,7 +85,6 @@ img.show()
 ############################
 # Let's query the server.
 
-
 import requests
 import ujson
 
@@ -116,12 +119,14 @@ import matplotlib.pyplot as plt
 
 ####################
 # Let's stop the server.
-proc.terminate()
+proc.kill()
 
 ############################
 # You can check that the process disappeared.
 import psutil
 sleep(1)
-while proc.pid in psutil.pids():
+nb = 0
+while nb < 5 and proc.pid in psutil.pids():
     print("Let's wait for the server to terminate.")
     sleep(1)
+    nb += 1

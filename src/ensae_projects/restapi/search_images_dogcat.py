@@ -66,7 +66,13 @@ def search_images_dogcat(app=None, url_images=None, dest=None):
     # Downloads and unzips images.
     logger.info("Downloads images '{0}'".format(url_images))
     logger.info("Destination '{0}'".format(dest))
-    download_data(url_images, whereTo=dest)
+    if '/' in url_images:
+        spl = url_images.split('/')
+        zipname = spl[-1]
+        website = '/'.join(spl[:-1])
+        download_data(zipname, whereTo=dest, website=website + "/")
+    else:
+        download_data(url_images, whereTo=dest)
 
     classes = [_ for _ in os.listdir(
         dest) if os.path.isdir(os.path.join(dest, _))]
