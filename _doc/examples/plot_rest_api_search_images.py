@@ -76,7 +76,8 @@ sleep(15)
 # Let's load an image.
 
 from lightmlrestapi.args import image2base64
-imgfile = os.path.join(os.path.dirname(__file__), "cat-1192026__480.jpg")
+import ensae_projects.datainc.search_images as si
+imgfile = os.path.join(os.path.dirname(si.__file__), "cat-1192026__480.jpg")
 
 from PIL import Image
 img = Image.open(imgfile)
