@@ -147,7 +147,7 @@ Vidéo
     :width: 200
 
 .. image:: MSFT_logo_rgb_C-Gray.png
-    :wdith: 200
+    :width: 200
 
 Photos
 ^^^^^^
