@@ -94,7 +94,7 @@ import ujson
 
 b64 = image2base64(imgfile)[1]
 features = ujson.dumps({'X': b64})
-r = requests.post('http://127.0.0.1:8081', data=features)
+r = requests.post('http://127.0.0.1:%d' % port, data=features)
 js = r.json()
 if 'description' in js:
     # This is an error.
