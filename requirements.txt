@@ -26,7 +26,7 @@ pydocstyle
 pycryptodomex
 pyensae
 pymyinstall
-pyquickhelper>=1.5.2259
+pyquickhelper>1.6.2290
 pyshp
 qgrid
 semantic_version

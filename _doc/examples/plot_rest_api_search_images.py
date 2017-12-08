@@ -62,9 +62,12 @@ with open(code_file, "w") as f:
 
 import sys
 from subprocess import Popen
-cmd = '{0} -u "{1}"'.format(sys.executable.replace("pythonw",
-                                                   "python"), code_file)
-proc = Popen(cmd)
+if sys.platform.startswith('win'):
+    cmd = '{0} -u "{1}"'.format(sys.executable, code_file)
+    proc = Popen(cmd)
+else:
+    cmd = [sys.executable, '-u', code_file]
+    proc = Popen(cmd)
 print('Start server, process id', proc.pid)
 
 ##########################
@@ -123,14 +126,5 @@ import matplotlib.pyplot as plt
 
 ####################
 # Let's stop the server.
-proc.kill()
-
-############################
-# You can check that the process disappeared.
-import psutil
-sleep(1)
-nb = 0
-while nb < 5 and proc.pid in psutil.pids():
-    print("Let's wait for the server to terminate.")
-    sleep(1)
-    nb += 1
+from pyquickhelper.loghelper import reap_children
+reap_children(subset={proc.pid}, fLOG=print)
