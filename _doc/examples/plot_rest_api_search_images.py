@@ -52,95 +52,97 @@ import sys
 sys.path.append(r'{0}')
 """.format(os.path.join(os.path.dirname(ensae_projects.__file__), '..'))
 
-import inspect
-code = "".join(inspect.getsourcelines(process_server)[0])
-code = header + code + "\nprocess_server('{0}', {1})\n".format(host, port)
-dest = os.path.abspath('temp_scripts')
-if not os.path.exists(dest):
-    os.mkdir(dest)
-code_file = os.path.join(dest, "_start_server.py")
-print("Write file '{0}'.".format(code_file))
-with open(code_file, "w") as f:
-    f.write(code)
+if True:
 
-import sys
-from subprocess import Popen
-if sys.platform.startswith('win'):
-    cmd = '{0} -u "{1}"'.format(sys.executable, code_file)
-    print("Running '{0}'".format(cmd))
-    proc = Popen(cmd)
-else:
-    cmd = [sys.executable, '-u', code_file]
-    print("Running '{0}'".format(cmd))
-    # proc = Popen(cmd)
-    print('Skipping server.')
-print('Start server, process id', proc.pid)
+    import inspect
+    code = "".join(inspect.getsourcelines(process_server)[0])
+    code = header + code + "\nprocess_server('{0}', {1})\n".format(host, port)
+    dest = os.path.abspath('temp_scripts')
+    if not os.path.exists(dest):
+        os.mkdir(dest)
+    code_file = os.path.join(dest, "_start_server.py")
+    print("Write file '{0}'.".format(code_file))
+    with open(code_file, "w") as f:
+        f.write(code)
 
-##########################
-# Let's wait.
-from time import sleep
-sleep(15)
-
-####################
-# Let's load an image.
-
-from lightmlrestapi.args import image2base64
-import ensae_projects.datainc.search_images as si
-imgfile = os.path.join(os.path.dirname(si.__file__), "cat-1192026__480.jpg")
-if not os.path.exists(imgfile):
-    raise FileNotFoundError(imgfile)
-
-from PIL import Image
-img = Image.open(imgfile)
-
-import numpy
-from matplotlib.pyplot import imshow
-imshow(numpy.asarray(img))
-
-############################
-# Let's query the server.
-
-import requests
-import ujson
-
-b64 = image2base64(imgfile)[1]
-features = ujson.dumps({'X': b64})
-try:
-    r = requests.post('http://127.0.0.1:%d' % port, data=features)
-    stop = False
-except Exception as e:
-    print("unable to request", 'http://127.0.0.1:%d' % port)
-    print(e)
-    stop = True
-
-if not stop:
-    js = r.json()
-    if 'description' in js:
-        # This is an error.
-        print(js['description'])
-        res = None
+    import sys
+    from subprocess import Popen
+    if sys.platform.startswith('win'):
+        cmd = '{0} -u "{1}"'.format(sys.executable, code_file)
+        print("Running '{0}'".format(cmd))
+        proc = Popen(cmd)
     else:
-        print(js)
-        res = []
-        for ans in js['Y']:
-            print("Number of neighbors:", len(ans))
-            for n in ans:
-                print("score, id, name", n)
-                res.append((n[0], n[2]['name']))
+        cmd = [sys.executable, '-u', code_file]
+        print("Running '{0}'".format(cmd))
+        # proc = Popen(cmd)
+        print('Skipping server.')
+    print('Start server, process id', proc.pid)
 
-    #######################
-    # Let's display the images.
-
-    txts = list(map(lambda x: str(x[0]), res))
-    imgs = list(map(lambda x: os.path.join('images', x[1]), res))
-
-    from mlinsights.plotting import plot_gallery_images
-    plot_gallery_images(imgs, txts)
-
-    import matplotlib.pyplot as plt
-    # plt.show()
+    ##########################
+    # Let's wait.
+    from time import sleep
+    sleep(15)
 
     ####################
-    # Let's stop the server.
-    from pyquickhelper.loghelper import reap_children
-    reap_children(subset={proc.pid}, fLOG=print)
+    # Let's load an image.
+
+    from lightmlrestapi.args import image2base64
+    import ensae_projects.datainc.search_images as si
+    imgfile = os.path.join(os.path.dirname(si.__file__), "cat-1192026__480.jpg")
+    if not os.path.exists(imgfile):
+        raise FileNotFoundError(imgfile)
+
+    from PIL import Image
+    img = Image.open(imgfile)
+
+    import numpy
+    from matplotlib.pyplot import imshow
+    imshow(numpy.asarray(img))
+
+    ############################
+    # Let's query the server.
+
+    import requests
+    import ujson
+
+    b64 = image2base64(imgfile)[1]
+    features = ujson.dumps({'X': b64})
+    try:
+        r = requests.post('http://127.0.0.1:%d' % port, data=features)
+        stop = False
+    except Exception as e:
+        print("unable to request", 'http://127.0.0.1:%d' % port)
+        print(e)
+        stop = True
+
+    if not stop:
+        js = r.json()
+        if 'description' in js:
+            # This is an error.
+            print(js['description'])
+            res = None
+        else:
+            print(js)
+            res = []
+            for ans in js['Y']:
+                print("Number of neighbors:", len(ans))
+                for n in ans:
+                    print("score, id, name", n)
+                    res.append((n[0], n[2]['name']))
+
+        #######################
+        # Let's display the images.
+
+        txts = list(map(lambda x: str(x[0]), res))
+        imgs = list(map(lambda x: os.path.join('images', x[1]), res))
+
+        from mlinsights.plotting import plot_gallery_images
+        plot_gallery_images(imgs, txts)
+
+        import matplotlib.pyplot as plt
+        # plt.show()
+
+        ####################
+        # Let's stop the server.
+        from pyquickhelper.loghelper import reap_children
+        reap_children(subset={proc.pid}, fLOG=print)
