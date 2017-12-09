@@ -20,13 +20,15 @@ port = 8083
 
 
 def process_server(host, port):
-    import logging
-    logger = logging.getLogger('search_images_dogcat')
-    logger.setLevel(logging.INFO)
-    hdlr = logging.FileHandler('search_images_dogcat.log')
-    formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-    hdlr.setFormatter(formatter)
-    logger.addHandler(hdlr)
+    if False:
+        # Enable the section to intercept logged information.
+        import logging
+        logger = logging.getLogger('search_images_dogcat')
+        logger.setLevel(logging.INFO)
+        hdlr = logging.FileHandler('search_images_dogcat.log')
+        formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+        hdlr.setFormatter(formatter)
+        logger.addHandler(hdlr)
 
     # If not specified, the application looks for zip file:
     # http://www.xavierdupre.fr/enseignement/complements/dog-cat-pixabay.zip
