@@ -72,7 +72,8 @@ if sys.platform.startswith('win'):
 else:
     cmd = [sys.executable, '-u', code_file]
     print("Running '{0}'".format(cmd))
-    proc = Popen(cmd)
+    # proc = Popen(cmd)
+    print('Skipping server.')
 print('Start server, process id', proc.pid)
 
 ##########################
@@ -86,6 +87,8 @@ sleep(15)
 from lightmlrestapi.args import image2base64
 import ensae_projects.datainc.search_images as si
 imgfile = os.path.join(os.path.dirname(si.__file__), "cat-1192026__480.jpg")
+if not os.path.exists(imgfile):
+    raise FileNotFoundError(imgfile)
 
 from PIL import Image
 img = Image.open(imgfile)
@@ -102,34 +105,42 @@ import ujson
 
 b64 = image2base64(imgfile)[1]
 features = ujson.dumps({'X': b64})
-r = requests.post('http://127.0.0.1:%d' % port, data=features)
-js = r.json()
-if 'description' in js:
-    # This is an error.
-    print(js['description'])
-    res = None
-else:
-    print(js)
-    res = []
-    for ans in js['Y']:
-        print("Number of neighbors:", len(ans))
-        for n in ans:
-            print("score, id, name", n)
-            res.append((n[0], n[2]['name']))
+try:
+    r = requests.post('http://127.0.0.1:%d' % port, data=features)
+    stop = False
+except Exception as e:
+    print("unable to request", 'http://127.0.0.1:%d' % port)
+    print(e)
+    stop = True
 
-#######################
-# Let's display the images.
+if not stop:
+    js = r.json()
+    if 'description' in js:
+        # This is an error.
+        print(js['description'])
+        res = None
+    else:
+        print(js)
+        res = []
+        for ans in js['Y']:
+            print("Number of neighbors:", len(ans))
+            for n in ans:
+                print("score, id, name", n)
+                res.append((n[0], n[2]['name']))
 
-txts = list(map(lambda x: str(x[0]), res))
-imgs = list(map(lambda x: os.path.join('images', x[1]), res))
+    #######################
+    # Let's display the images.
 
-from mlinsights.plotting import plot_gallery_images
-plot_gallery_images(imgs, txts)
+    txts = list(map(lambda x: str(x[0]), res))
+    imgs = list(map(lambda x: os.path.join('images', x[1]), res))
 
-import matplotlib.pyplot as plt
-# plt.show()
+    from mlinsights.plotting import plot_gallery_images
+    plot_gallery_images(imgs, txts)
 
-####################
-# Let's stop the server.
-from pyquickhelper.loghelper import reap_children
-reap_children(subset={proc.pid}, fLOG=print)
+    import matplotlib.pyplot as plt
+    # plt.show()
+
+    ####################
+    # Let's stop the server.
+    from pyquickhelper.loghelper import reap_children
+    reap_children(subset={proc.pid}, fLOG=print)
