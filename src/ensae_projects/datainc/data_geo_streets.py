@@ -356,7 +356,7 @@ def seattle_streets_set_level(shapes, records,
 
     @param      shapes      list of streets
     @param      records     description of each street
-    @param      center      center of the graphs
+    @param      pos         center of the graphs
     @param      size        number of elements
     @return                 indices of edges, edges, vertices, distances
 

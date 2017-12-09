@@ -53,7 +53,7 @@ def get_password(k1, k2):
 
     @param      k1      first key
     @param      k2      second key
-    @param      value   value
+    @return             value
     """
     if not isinstance(k1, str):
         raise TypeError("k1 must be a string.")

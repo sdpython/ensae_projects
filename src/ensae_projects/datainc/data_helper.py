@@ -159,6 +159,7 @@ def enumerate_text_lines(filename, sep="\t", encoding="utf-8", quotes_as_str=Fal
     @param          sep                 column separator
     @param          header              first row is header
     @param          encoding            encoding
+    @param          quotes_as_str       surrounded by quotes
     @param          clean_column_name   function to clean column name
     @param          convert_float       convert number into float wherever possible
     @param          option              several option to clean dates, see below

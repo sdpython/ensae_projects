@@ -47,7 +47,7 @@ def process_cresus_sql(infile, out_clean_sql=None, outdb=None, fLOG=fLOG):
     Processes the database sent by cresus and produces
     a list of flat files.
 
-    @param      filename        dump of a sql database
+    @param      infile          dump of a sql database
     @param      out_clean_sql   filename which contains the cleaned sql
     @param      outdb           sqlite3 file (removed if it exists)
     @param      fLOG            logging function
@@ -260,6 +260,7 @@ def split_XY_bind_dataset_cresus_data(filename, fLOG=fLOG):
     Splits XY for the blind set.
 
     @param      filename        table to split
+    @param      fLOG            logging function
     @return                     dictionary of created files
 
     It assumes the targets are columns *orientation*, *nature*.

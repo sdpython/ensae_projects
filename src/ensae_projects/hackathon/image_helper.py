@@ -13,11 +13,11 @@ def resize_image(filename_or_bytes, maxdim=512, dest=None, format=None):
     Resizes an image until one of its dimension becomes smaller
     than *maxdim* after dividing the dimensions by two many times.
 
-    @param      filename        filename or bytes
-    @param      maxdim          maximum dimension
-    @param      dest            if filename is a str
-    @param      format          saved image format (if *filename_or_bytes* is bytes)
-    @return                     same type
+    @param      filename_or_bytes   filename or bytes
+    @param      maxdim              maximum dimension
+    @param      dest                if filename is a str
+    @param      format              saved image format (if *filename_or_bytes* is bytes)
+    @return                         same type
     """
     if isinstance(filename_or_bytes, str):
         ext = os.path.splitext(filename_or_bytes)[-1][1:]

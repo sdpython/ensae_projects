@@ -42,7 +42,7 @@ def distance_solution(edges_index, edges, distances, solution, exc=True):
 
     @param      edges_index     list of indices of edges (if None --> range(len(edges))
     @param      edges           list of tuple (vertex A, vertex B)
-    @param      distance        list of distances of each edge
+    @param      distances       list of distances of each edge
     @param      solution        proposed solutions (list of edge indices)
     @param      exc             raises an exception in case of error
     """
@@ -385,11 +385,11 @@ def bellman_distances(edges, distances, fLOG=None):
 def dijkstra_path(edges, distances, va, vb):
     """
     Returns the best path between two vertices.
-    Uses Dikjstra algorithm.
+    Uses `Dikjstra <https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm>`_ algorithm.
 
     @param      edges       list of edges.
     @param      distances   list of distances
-    @ppara      va          first vertex
+    @param      va          first vertex
     @param      vb          last vertex
     @return                 list of edges
 
@@ -576,7 +576,7 @@ def best_euler_path(edges, vertices, distances, edges_index=None, algo="blossom"
     @param      edges_index     list of indices of edges (if None --> range(len(edges))
     @param      algo            algorithm to use to computes the matching
                                 (see @see fn matching_vertices)
-
+    @param      fLOG            logging function
     @return                     list of edges as tuple, list of edges as indices, distance
     """
     if fLOG:

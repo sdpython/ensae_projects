@@ -135,6 +135,7 @@ def AUC_multi_multi(nb, answers, scores, ignored=None):
     """
     Compute the `AUC <https://en.wikipedia.org/wiki/Area_under_the_curve_(pharmacokinetics)>`_.
 
+    @param      nb          number of observations
     @param      answers     expected answers, list of tuple of classes as a string
     @param      scores      prediction and score `(class, score)`
     @param      ignored     ignored class
