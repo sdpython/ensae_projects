@@ -65,11 +65,11 @@ import sys
 from subprocess import Popen
 if sys.platform.startswith('win'):
     cmd = '{0} -u "{1}"'.format(sys.executable, code_file)
-    print("Running '{0}'."format(cmd))
+    print("Running '{0}'".format(cmd))
     proc = Popen(cmd)
 else:
     cmd = [sys.executable, '-u', code_file]
-    print("Running '{0}'."format(cmd))
+    print("Running '{0}'".format(cmd))
     proc = Popen(cmd)
 print('Start server, process id', proc.pid)
 
