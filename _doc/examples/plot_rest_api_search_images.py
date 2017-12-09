@@ -19,7 +19,7 @@ port = 8083
 # See :func:`search_images_dogcat <ensae_projects.restapi.search_images_dogcat.search_images_dogcat>`.
 
 
-def process_server(host, port):
+def process_server_images(host, port):
     if False:
         # Enable the section to intercept logged information.
         import logging
@@ -52,18 +52,18 @@ import sys
 sys.path.append(r'{0}')
 """.format(os.path.join(os.path.dirname(ensae_projects.__file__), '..'))
 
-if False:
+import inspect
+code = "".join(inspect.getsourcelines(process_server_images)[0])
+code = header + code + "\nprocess_server('{0}', {1})\n".format(host, port)
+dest = os.path.abspath('temp_scripts')
+if not os.path.exists(dest):
+    os.mkdir(dest)
+code_file = os.path.join(dest, "_start_server.py")
+print("Write file '{0}'.".format(code_file))
+with open(code_file, "w") as f:
+    f.write(code)
 
-    import inspect
-    code = "".join(inspect.getsourcelines(process_server)[0])
-    code = header + code + "\nprocess_server('{0}', {1})\n".format(host, port)
-    dest = os.path.abspath('temp_scripts')
-    if not os.path.exists(dest):
-        os.mkdir(dest)
-    code_file = os.path.join(dest, "_start_server.py")
-    print("Write file '{0}'.".format(code_file))
-    with open(code_file, "w") as f:
-        f.write(code)
+if False:
 
     import sys
     from subprocess import Popen
@@ -74,7 +74,7 @@ if False:
     else:
         cmd = [sys.executable, '-u', code_file]
         print("Running '{0}'".format(cmd))
-        # proc = Popen(cmd)
+        proc = Popen(cmd)
         print('Skipping server.')
     print('Start server, process id', proc.pid)
 
