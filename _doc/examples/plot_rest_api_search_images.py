@@ -18,16 +18,16 @@ port = 8083
 # Creates the search engine and starts a server in a different process.
 # See :func:`search_images_dogcat <ensae_projects.restapi.search_images_dogcat.search_images_dogcat>`.
 
-
+code = """
 def process_server_images(host, port):
-    #~ # Enable the section to intercept logged information.
-    #~ import logging
-    #~ logger = logging.getLogger('search_images_dogcat')
-    #~ logger.setLevel(logging.INFO)
-    #~ hdlr = logging.FileHandler('search_images_dogcat.log')
-    #~ formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-    #~ hdlr.setFormatter(formatter)
-    #~ logger.addHandler(hdlr)
+    # Enable the section to intercept logged information.
+    import logging
+    logger = logging.getLogger('search_images_dogcat')
+    logger.setLevel(logging.INFO)
+    hdlr = logging.FileHandler('search_images_dogcat.log')
+    formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+    hdlr.setFormatter(formatter)
+    logger.addHandler(hdlr)
 
     url = None
     # If not specified, the application looks for zip file:
@@ -37,6 +37,7 @@ def process_server_images(host, port):
 
     from waitress import serve
     serve(app, host=host, port=port)
+"""
 
 ##########################
 # Saves this code into a file and we start it
@@ -51,9 +52,7 @@ import sys
 sys.path.append(r'{0}')
 """.format(os.path.join(os.path.dirname(ensae_projects.__file__), '..'))
 
-import inspect
-code = inspect.getsource(process_server_images)
-code = header + code + "\nprocess_server('{0}', {1})\n".format(host, port)
+code = header + code + "\nprocess_server_images('{0}', {1})\n".format(host, port)
 dest = os.path.abspath('temp_scripts')
 if not os.path.exists(dest):
     os.mkdir(dest)
