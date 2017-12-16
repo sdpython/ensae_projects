@@ -43,7 +43,7 @@ from pyquickhelper.pycode import get_temp_folder, add_missing_development_versio
 from pyquickhelper.ipythonhelper import execute_notebook_list, execute_notebook_list_finalize_ut, get_additional_paths
 
 
-class TestNotebook123Coverage(unittest.TestCase):
+class TestNotebook123Coverage2(unittest.TestCase):
 
     def setUp(self):
         add_missing_development_version(["pymyinstall", "pyensae", "jyquickhelper"],
@@ -74,46 +74,14 @@ class TestNotebook123Coverage(unittest.TestCase):
             temp, keepnote, additional_path=add_path, valid=valid)
         execute_notebook_list_finalize_ut(res, fLOG=fLOG, dump=thismodule)
 
-    def test_notebook_process_clean_files(self):
-        fLOG(
-            __file__,
-            self._testMethodName,
-            OutputPrint=__name__ == "__main__")
-
-        if False:
-            # No such file or directory: 'SINVOICE_.txt'.
-            self.a_test_notebook_runner(
-                "process_clean_files", "hackathons/hackathon_2015")
-
-    def test_notebook_timeseries(self):
-        fLOG(
-            __file__,
-            self._testMethodName,
-            OutputPrint=__name__ == "__main__")
-
-        if False:
-            self.a_test_notebook_runner(
-                "time_series", "hackathons/hackathon_2015")
-
-    def test_notebook_knn(self):
+    def test_notebook_dices_sequence(self):
         fLOG(
             __file__,
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
 
         self.a_test_notebook_runner(
-            "nearest_neighbours_sparse_features", "challenges/knn_kdtree")
-
-    def test_notebook_image_features(self):
-        fLOG(
-            __file__,
-            self._testMethodName,
-            OutputPrint=__name__ == "__main__")
-
-        folder = os.path.abspath(os.path.join(os.path.dirname(
-            __file__), "..", "..", "_doc", "notebooks", "mlimages", "tomates"))
-        self.a_test_notebook_runner(
-            "image_features", "mlimages", copy_folder=folder)
+            "dices_sequence", "coding_problems")
 
 
 if __name__ == "__main__":

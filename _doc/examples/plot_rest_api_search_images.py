@@ -52,7 +52,8 @@ import sys
 sys.path.append(r'{0}')
 """.format(os.path.join(os.path.dirname(ensae_projects.__file__), '..'))
 
-code = header + code + "\nprocess_server_images('{0}', {1})\n".format(host, port)
+code = header + code + \
+    "\nprocess_server_images('{0}', {1})\n".format(host, port)
 dest = os.path.abspath('temp_scripts')
 if not os.path.exists(dest):
     os.mkdir(dest)
