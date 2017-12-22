@@ -160,6 +160,9 @@ if r is not None:
     txts = list(map(lambda x: str(x[0]), res))
     imgs = list(map(lambda x: os.path.join(
         'temp_scripts', 'images', x[1]), res))
+    if not os.path.exists(imgs[0]):
+        imgs = list(map(lambda x: os.path.join(
+            'images', x[1]), res))
 
     from mlinsights.plotting import plot_gallery_images
     plot_gallery_images(imgs, txts)
