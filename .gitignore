@@ -326,4 +326,4 @@ _doc/notebooks/cheat_sheets/clean_content
 _unittests/.vscode/settings.json
 _doc/examples/images
 _doc/sphinxdoc/source/gyexamples/
-_doc/sphinxdoc/source/nbcov.png
+_doc/sphinxdoc/source/nbcov*.png
