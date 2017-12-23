@@ -35,10 +35,10 @@ Short and useful examples
 .. toctree::
     :maxdepth: 1
 
-    gyexamples/index
     api/index
     cheat_sheets
     mlexamples
+    gyexamples/index
     all_notebooks
     blog/blogindex
 
@@ -51,7 +51,6 @@ FAQ
     i_faq
     i_ex
     i_nb
-    projects/chutes
     glossary
     blog/main_0000
     README

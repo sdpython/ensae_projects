@@ -48,7 +48,7 @@ Description
 
 Outils pour des projets d'étudiants.
 
-*Helpers, tools for teachings, event, hackathons.*
+*Helpers, tools for teachings, events, hackathons.*
 
 Installation
 ------------

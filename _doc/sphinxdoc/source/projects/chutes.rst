@@ -24,11 +24,10 @@ Pour décoder tous les fichiers dont l'extension est ``.enc`` :
 
     password = keyring.get_password("hackathon", "labelemmaus")
 
-    encs = os.listdir(".")
+    encs = [f for f in os.listdir(".") if os.path.splitext(f)[-1] == '.enc']
     for enc in encs:
-        if enc.endswith(".enc"):
-            dest = enc[:-4]
-            if not os.path.exists(dest):
-                print("décrypte", enc)
-                decrypt_stream(key=password.encode("ascii"), filename=enc,
-                               out_filename=dest, chunksize=2**20)
+        dest = enc[:-4]
+        if not os.path.exists(dest):
+            print("décrypte", enc)
+            decrypt_stream(key=password.encode("ascii"), filename=enc,
+                           out_filename=dest, chunksize=2**20)

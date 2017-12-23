@@ -1,6 +1,9 @@
 
-Quick samples on machine learning
-=================================
+Examples on machine learning
+============================
+
+.. contents::
+    :local:
 
 Machine Learning and any data
 -----------------------------

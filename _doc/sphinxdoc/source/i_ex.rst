@@ -1,8 +1,8 @@
 
 .. _l-EX2:
 
-Examples
-========
+Bouts de code en cas de besoin
+==============================
 
 .. contents::
     :local:
