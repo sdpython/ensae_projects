@@ -7,6 +7,17 @@ import os
 import keyring
 
 
+def _default_name():
+    """
+    Returns a default username.
+
+    ::
+
+        os.environ.get('USERNAME', os.environ.get('NAME', 'unknown'))
+    """
+    return os.environ.get('USERNAME', os.environ.get('NAME', 'unknown'))
+
+
 def get_password(key, username=None):
     """
     Retrieves a password assocatied to *key*.
@@ -39,7 +50,7 @@ def get_password(key, username=None):
             print(pwd)
     """
     if username is None:
-        username = os.environ['USERNAME']
+        username = _default_name()
     return keyring.get_password(key, username)
 
 
@@ -54,5 +65,5 @@ def set_password(pwd, key, username=None):
     @return                 password
     """
     if username is None:
-        username = os.environ['USERNAME']
+        username = _default_name()
     keyring.set_password(key, username, pwd)
