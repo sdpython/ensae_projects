@@ -5,8 +5,6 @@
 import sys
 import os
 import unittest
-import json
-import pandas
 
 
 try:
@@ -39,7 +37,6 @@ except ImportError:
     import pyquickhelper as skip_
 
 from pyquickhelper.loghelper import fLOG
-from src.ensae_projects.hackathon import enumerate_json_items
 from src.ensae_projects.hackathon.crypt_helper import set_password, get_password
 
 
