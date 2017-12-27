@@ -111,9 +111,9 @@ class TestNotebook123Coverage(unittest.TestCase):
             OutputPrint=__name__ == "__main__")
 
         folder = os.path.abspath(os.path.join(os.path.dirname(
-            __file__), "..", "..", "_doc", "notebooks", "mlimages", "tomates"))
+            __file__), "..", "..", "_doc", "notebooks", "cheat_sheets", "tomates"))
         self.a_test_notebook_runner(
-            "image_features", "mlimages", copy_folder=folder)
+            "image_features", "cheat_sheets", copy_folder=folder)
 
 
 if __name__ == "__main__":
