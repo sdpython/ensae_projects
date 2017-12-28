@@ -98,6 +98,12 @@ class TestNotebookCheatSheetFiles(unittest.TestCase):
                     os.path.join(fold, "images1.jpg")]
             for c in copy:
                 shutil.copy(c, temp)
+            copy = [os.path.join(fold, "tomates", "imgt_61.jpg"),
+                    os.path.join(fold, "tomates", "imgt_66.jpg")]
+            tempt = os.path.join(temp, "tomates")
+            os.mkdir(tempt)
+            for c in copy:
+                shutil.copy(c, tempt)
 
         res = execute_notebooks(temp, keepnote,
                                 lambda i, n: "deviner" not in n and "html" not in n,
