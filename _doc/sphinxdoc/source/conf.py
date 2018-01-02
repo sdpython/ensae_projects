@@ -24,7 +24,7 @@ sys.path.insert(
 
 from pyquickhelper.helpgen.default_conf import set_sphinx_variables, get_default_stylesheet
 
-set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2017,
+set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2018,
                      "sphinx_redactor_theme",  # "sphinx_py3doc_enhanced_theme",
                      # add_extensions=["alabaster"],
                      sphinx_redactor_theme.get_html_theme_path(), locals(),
