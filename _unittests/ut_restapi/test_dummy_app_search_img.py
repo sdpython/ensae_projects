@@ -42,9 +42,11 @@ except ImportError:
     import src
 
 from pyquickhelper.loghelper import fLOG
-from pyquickhelper.pycode import get_temp_folder, add_missing_development_version, skipif_travis, ExtTestCase
+from pyquickhelper.pycode import get_temp_folder, add_missing_development_version
+# from pyquickhelper.pycode import skipif_travis
 
-class TestDummyAppSearchImg(ExtTestCase):
+
+class TestDummyAppSearchImg(testing.TestCase):
 
     def setUp(self):
         add_missing_development_version(["pymyinstall", "pyensae", "jyquickhelper",
@@ -52,12 +54,10 @@ class TestDummyAppSearchImg(ExtTestCase):
                                         __file__, hide=True)
         super().setUp()
 
-    def before(self):
         from src.ensae_projects.restapi import search_images_dogcat
         temp = get_temp_folder(__file__, 'temp_search_images_dogcat')
         search_images_dogcat(self.api, dest=temp)
 
-    @skipif_travis('tensorflow/python/lib/core/bfloat16.cc:664] Check failed: PyBfloat16_Type.tp_base != nullptr')
     def test_dummy_search_app_search_img(self):
         fLOG(
             __file__,
@@ -71,13 +71,11 @@ class TestDummyAppSearchImg(ExtTestCase):
                             "data", "wiki_modified.png")
         b64 = image2base64(img2)[1]
         bodyin = ujson.dumps({'X': b64})
-        body = self.simulate_request(
-            '/', decode='utf-8', method="POST", body=bodyin)
-        if self.srmock.status != falcon.HTTP_201:
-            res = ujson.loads(body)
-            raise Exception("Failure\n{0}".format(res['description']))
-        self.assertEqual(self.srmock.status, falcon.HTTP_201)
-        d = ujson.loads(body)
+        result = self.simulate_request(path='/', method="POST", body=bodyin)
+        if result.status != falcon.HTTP_201:
+            raise Exception("Failure\n{0}".format(result.status))
+        self.assertEqual(result.status, falcon.HTTP_201)
+        d = ujson.loads(result.content)
         self.assertTrue('Y' in d)
         self.assertIsInstance(d['Y'], list)
         self.assertEqual(len(d['Y']), 1)
@@ -88,7 +86,6 @@ class TestDummyAppSearchImg(ExtTestCase):
         self.assertEqual(d['Y'][0][0][2]['name'].replace(
             '\\', '/'), 'oneclass/cat-2922832__480.jpg')
 
-    @skipif_travis('tensorflow/python/lib/core/bfloat16.cc:664] Check failed: PyBfloat16_Type.tp_base != nullptr')
     def test_dummy_error_img(self):
         fLOG(
             __file__,
@@ -104,10 +101,9 @@ class TestDummyAppSearchImg(ExtTestCase):
         arr = image2array(img2)
         bodyin = ujson.dumps({'X': arr.tolist()})
 
-        body = self.simulate_request(
-            '/', decode='utf-8', method="POST", body=bodyin)
-        self.assertEqual(self.srmock.status, falcon.HTTP_400)
-        d = ujson.loads(body)
+        result = self.simulate_request(path='/', method="POST", body=bodyin)
+        self.assertEqual(result.status, falcon.HTTP_400)
+        d = ujson.loads(result.content)
         self.assertIn('Unable to predict', d['title'])
         self.assertIn("object has no attribute", d['description'])
 
