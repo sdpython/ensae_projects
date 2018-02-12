@@ -7,6 +7,7 @@ blockdiag
 chardet
 coverage
 cryptography
+falcon>=1.4.1
 folium
 ijson
 jyquickhelper
