@@ -36,7 +36,7 @@ install:
   - "%PYTHON%\\Scripts\\pymy_install3 pillow psutil protobuf tensorflow"
   - "%PYTHON%\\Scripts\\pip install keras"
   - "%PYTHON%\\Scripts\\pip install lightmlrestapi mlinsights pandas_streaming waitress sphinx-redactor-theme"
-
+  - "%PYTHON%\\Scripts\\pip install mpld3"
 
 build: off
 
