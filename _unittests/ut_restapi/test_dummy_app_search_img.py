@@ -43,7 +43,7 @@ except ImportError:
 
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder, add_missing_development_version
-# from pyquickhelper.pycode import skipif_travis
+from pyquickhelper.pycode import skipif_travis
 
 
 class TestDummyAppSearchImg(testing.TestCase):
@@ -58,6 +58,7 @@ class TestDummyAppSearchImg(testing.TestCase):
         temp = get_temp_folder(__file__, 'temp_search_images_dogcat')
         search_images_dogcat(self.api, dest=temp)
 
+    @skipif_travis('tensorflow/python/lib/core/bfloat16.cc:664] Check failed: PyBfloat16_Type.tp_base != nullptr')
     def test_dummy_search_app_search_img(self):
         fLOG(
             __file__,
