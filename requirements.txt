@@ -11,6 +11,7 @@ keyrings.alt
 lightmlrestapi
 mlinsights
 mnist
+mpld3
 opencv-python
 pandas_streaming
 psutil
