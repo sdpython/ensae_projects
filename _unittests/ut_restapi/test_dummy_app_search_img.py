@@ -58,7 +58,6 @@ class TestDummyAppSearchImg(testing.TestCase):
         temp = get_temp_folder(__file__, 'temp_search_images_dogcat')
         search_images_dogcat(self.api, dest=temp)
 
-    @skipif_travis('tensorflow/python/lib/core/bfloat16.cc:664] Check failed: PyBfloat16_Type.tp_base != nullptr')
     def test_dummy_search_app_search_img(self):
         fLOG(
             __file__,
@@ -87,6 +86,7 @@ class TestDummyAppSearchImg(testing.TestCase):
         self.assertEqual(d['Y'][0][0][2]['name'].replace(
             '\\', '/'), 'oneclass/cat-2922832__480.jpg')
 
+    @skipif_travis('tensorflow/python/lib/core/bfloat16.cc:664] Check failed: PyBfloat16_Type.tp_base != nullptr')
     def test_dummy_error_img(self):
         fLOG(
             __file__,
