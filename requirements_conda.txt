@@ -1,12 +1,7 @@
 bokeh
 Cython
-ipython
 jupyter
-jupyter_client
-jupyter_core
 matplotlib
-nbformat
-nbpresent
 notebook>=5.0.0
 networkx
 numba
@@ -14,7 +9,6 @@ numpy>=1.11.0
 pandas>=0.20.0
 pillow
 pyproj
-pyzmq
 scikit-learn
 scipy
 seaborn
