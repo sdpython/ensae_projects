@@ -71,7 +71,7 @@ except ImportError:
     import pyensae as skip__
 
 from pyquickhelper.loghelper import fLOG
-from pyquickhelper.pycode import get_temp_folder
+from pyquickhelper.pycode import get_temp_folder, skipif_travis
 from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
 from pyquickhelper.ipythonhelper import execute_notebook_list_finalize_ut
 from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook
@@ -80,6 +80,7 @@ import src.ensae_projects
 
 class TestNotebookChallengeCityBike(unittest.TestCase):
 
+    @skipif_travis('tensorflow/python/lib/core/bfloat16.cc:664] Check failed: PyBfloat16_Type.tp_base != nullptr')
     def test_notebook_challenge_city_tour(self):
         fLOG(
             __file__,
