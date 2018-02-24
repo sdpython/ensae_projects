@@ -13,6 +13,7 @@ mnist
 opencv-python
 pandas_streaming
 psutil
+pycryptodomex
 pyensae
 pymyinstall
 pyquickhelper>=1.6.2413
