@@ -16,7 +16,7 @@ psutil
 pycryptodomex
 pyensae
 pymyinstall
-pyquickhelper>=1.6.2413
+pyquickhelper>=1.7.2438
 pyshp
 shapely
 sphinx-redactor-theme
