@@ -7,6 +7,7 @@ addons:
 -  apt:
 -    packages:
       - ffmpeg
+      - libgeos-dev
 install:
   # We do this conditionally because it saves us some downloading if the
   # version is the same.
@@ -24,7 +25,7 @@ install:
   # - make all
   #- conda build build_tools/conda-recipe --quiet
   - conda install -q --file=requirements_conda.txt
-  - conda install basemap
+  - pip install git+https://github.com/matplotlib/basemap.git
   - pip install -r requirements.txt
 script:
   - python setup.py unittests
