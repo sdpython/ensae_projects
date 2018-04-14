@@ -639,6 +639,36 @@ une démo de quelques outils.
 
 *Quand j'ai vu ce que faisaient les 3A, cela m'a donné envie d'apprendre à coder.*
 
+**t-SNE**
+
+Lorsque la projection
+`t-SNE <https://lvdmaaten.github.io/tsne/>`_
+donne quelque chose de visuellement éclaté,
+même sur un échantillon,
+il y a de bonnes chances pour qu'un modèle
+parvienne à apprendre quelque chose.
+
+**Deep learning**
+
+10.000 c'est déjà beaucoup alors 100.000, ce fut un challenge que d'apprendre
+en aussi peu de temps un modèle de deep learning, même pour y faire
+du transfer learning.
+
+**Quelques leçons**
+
+Il fut difficile de prédire l'attrait d'un objet avec
+sa seule description. Souvent très courte, sans données provenant
+que l'utilisation du site web, la qualité des modèles de prédiction
+s'est révélée très faible. Le deep learning s'est avérée difficile
+à caser en 24h surtout quand on le découvre pour la première fois,
+et :epkg:`Keras` n'est pas le meilleur module pour le pratique.
+Il est simple parce que proche de :epkg:`scikit-learn` mais
+je choisirai plutôt :epkg:`pytorch` la prochaine fois,
+différent mais tout aussi intuitif. Le challenge économique
+a données les résultats les plus créatifs et a montré
+quelques-uns de nos comportements face à un livre
+parfois contre intuitifs.
+
 Images
 ^^^^^^
 
@@ -656,8 +686,44 @@ L'affiche de l'événement et quelques photos extraites du comptes twitter.
 .. image:: 2017/DPfdD_1XkAAtPY4.jpg
     :width: 300
 
+.. image:: 2017/EY 2-4.jpg
+
+.. image:: 2017/EY 2-7.jpg
+
+.. image:: 2017/EY 2-12.jpg
+
+.. image:: 2017/EY 2-22.jpg
+
+.. image:: 2017/EY 2-25.jpg
+
+.. image:: 2017/EY 3-6.jpg
+
+.. image:: 2017/EY 3-14.jpg
+
+.. image:: 2017/EY 3-18.jpg
+
+.. image:: 2017/EY 3-30.jpg
+
+.. image:: 2017/EY 3-41.jpg
+
+.. image:: 2017/EY 3-46.jpg
+
+.. image:: 2017/EY-13.jpg
+
+.. image:: 2017/EY-53.jpg
+
+.. image:: 2017/EY-56.jpg
+
+.. image:: 2017/EY-65.jpg
+
+.. image:: 2017/EY-66.jpg
+
 Vidéo
 ^^^^^
+
+.. video:: http://www.xavierdupre.fr/ensae/video_hackathon_ensae_ey_label_emmaus_2017.mp4
+    :width: 400
+    :height: 600
 
 Agenda
 ^^^^^^

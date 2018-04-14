@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 @file
 @brief Data related to La Croix-Rouge (Hackathon Microsoft / ENSAE / Croix-Rouge / 2015)

@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 @brief      test log(time=30s)
 """
@@ -85,7 +85,8 @@ class TestDummyAppSearchImg(testing.TestCase):
         self.assertIsInstance(d['Y'][0][0][1], int)
         self.assertIn('name', d['Y'][0][0][2])
         val = d['Y'][0][0][2]['name'].replace('\\', '/')
-        self.assertIn(val, ('oneclass/cat-2922832__480.jpg', 'oneclass/wolf-2865653__480.jpg'))
+        self.assertIn(val, ('oneclass/cat-2922832__480.jpg',
+                            'oneclass/wolf-2865653__480.jpg'))
 
     @skipif_travis('tensorflow/python/lib/core/bfloat16.cc:664] Check failed: PyBfloat16_Type.tp_base != nullptr')
     def test_dummy_error_img(self):
