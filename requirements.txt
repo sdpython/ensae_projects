@@ -29,5 +29,7 @@ tensorflow
 shapely
 waitress
 wheel
+x86cpu
 xgboost
 xlrd
+

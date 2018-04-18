@@ -30,7 +30,7 @@ install:
   - "%PYTHON%\\Scripts\\pip install mnist"
   - "%PYTHON%\\Scripts\\pymy_install3 xgboost"
   - "%PYTHON%\\Scripts\\pymy_install3 OpenCV"
-  - "%PYTHON%\\Scripts\\pymy_install3 PyYAML"
+  - "%PYTHON%\\Scripts\\pymy_install3 PyYAML x86cpu"
   - "%PYTHON%\\Scripts\\pymy_install3 pyproj"
   - "%PYTHON%\\Scripts\\pymy_install3 opencv_python"
   - "%PYTHON%\\Scripts\\pymy_install3 pillow psutil protobuf tensorflow"
