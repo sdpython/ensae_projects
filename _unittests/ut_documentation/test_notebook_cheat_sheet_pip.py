@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-@brief      test log(time=28s)
+@brief      test log(time=13s)
 """
 
 import sys
@@ -79,9 +79,9 @@ from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, exe
 import src.ensae_projects
 
 
-class TestNotebookCheatSheetFiles(unittest.TestCase):
+class TestNotebookCheatSheetFilesPip(unittest.TestCase):
 
-    def test_notebook_cheatsheet_files(self):
+    def test_notebook_cheatsheet_files_pip(self):
         fLOG(
             __file__,
             self._testMethodName,
@@ -106,7 +106,7 @@ class TestNotebookCheatSheetFiles(unittest.TestCase):
                 shutil.copy(c, tempt)
 
         res = execute_notebooks(temp, keepnote,
-                                lambda i, n: "deviner" not in n and "html" not in n and 'pip' not in n,
+                                lambda i, n: "pip" in n,
                                 fLOG=fLOG,
                                 clean_function=clean_function_notebook)
         execute_notebook_list_finalize_ut(
