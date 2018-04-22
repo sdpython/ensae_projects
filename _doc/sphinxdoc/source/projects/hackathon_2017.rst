@@ -686,37 +686,53 @@ L'affiche de l'événement et quelques photos extraites du comptes twitter.
 .. image:: 2017/DPfdD_1XkAAtPY4.jpg
     :width: 300
 
-.. image:: 2017/EY 2-4.jpg
+.. image:: 2017/EY-2-4.jpg
+    :width: 300
 
-.. image:: 2017/EY 2-7.jpg
+.. image:: 2017/EY-2-7.jpg
+    :width: 300
 
-.. image:: 2017/EY 2-12.jpg
+.. image:: 2017/EY-2-12.jpg
+    :width: 300
 
-.. image:: 2017/EY 2-22.jpg
+.. image:: 2017/EY-2-22.jpg
+    :width: 300
 
-.. image:: 2017/EY 2-25.jpg
+.. image:: 2017/EY-2-25.jpg
+    :width: 300
 
-.. image:: 2017/EY 3-6.jpg
+.. image:: 2017/EY-3-6.jpg
+    :width: 300
 
-.. image:: 2017/EY 3-14.jpg
+.. image:: 2017/EY-3-14.jpg
+    :width: 300
 
-.. image:: 2017/EY 3-18.jpg
+.. image:: 2017/EY-3-18.jpg
+    :width: 300
 
-.. image:: 2017/EY 3-30.jpg
+.. image:: 2017/EY-3-30.jpg
+    :width: 300
 
-.. image:: 2017/EY 3-41.jpg
+.. image:: 2017/EY-3-41.jpg
+    :width: 300
 
-.. image:: 2017/EY 3-46.jpg
+.. image:: 2017/EY-3-46.jpg
+    :width: 300
 
 .. image:: 2017/EY-13.jpg
+    :width: 300
 
 .. image:: 2017/EY-53.jpg
+    :width: 300
 
 .. image:: 2017/EY-56.jpg
+    :width: 300
 
 .. image:: 2017/EY-65.jpg
+    :width: 300
 
 .. image:: 2017/EY-66.jpg
+    :width: 300
 
 Vidéo
 ^^^^^
