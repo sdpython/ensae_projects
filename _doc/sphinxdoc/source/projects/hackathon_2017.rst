@@ -738,8 +738,8 @@ Vidéo
 ^^^^^
 
 .. video:: http://www.xavierdupre.fr/ensae/video_hackathon_ensae_ey_label_emmaus_2017.mp4
-    :width: 400
-    :height: 600
+    :width: 600
+    :height: 400
 
 Agenda
 ^^^^^^
