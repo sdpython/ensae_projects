@@ -140,7 +140,7 @@ class TestCityTour(unittest.TestCase):
             assert len(path) > 0
             self.assertEqual(list(sorted(path)), list(sorted(solution)))
             for ii in range(1, len(path)):
-                ed = path[i - 1:ii + 1]
+                ed = path[ii - 1:ii + 1]
                 e1 = asso[ed[0]]
                 e2 = asso[ed[1]]
                 con = 0
