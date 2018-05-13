@@ -9,10 +9,10 @@ import unittest
 import falcon
 import falcon.testing as testing
 import x86cpu
-import ujson
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder, add_missing_development_version
 from pyquickhelper.pycode import skipif_travis
+import ujson
 
 try:
     import src
