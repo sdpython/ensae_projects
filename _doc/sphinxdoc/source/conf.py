@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
 import os
-import datetime
-import re
 # import sphinxjp.themes.basicstrap
 # import sphinx_py3doc_enhanced_theme
 # import alabaster
