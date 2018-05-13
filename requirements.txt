@@ -18,7 +18,7 @@ psutil
 pycryptodomex
 pyensae>=1.2.731
 pymyinstall
-pyquickhelper>=1.7.2569
+pyquickhelper>=1.8
 pyshp
 qgrid
 shapely

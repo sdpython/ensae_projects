@@ -5,71 +5,70 @@
 import sys
 import os
 import unittest
-import warnings
-
+from pyquickhelper.loghelper import fLOG
+from pyquickhelper.pycode import check_pep8, ExtTestCase
 
 try:
-    import pyquickhelper as skip_
+    import src
 except ImportError:
     path = os.path.normpath(
         os.path.abspath(
             os.path.join(
                 os.path.split(__file__)[0],
                 "..",
-                "..",
-                "..",
-                "pyquickhelper",
-                "src",)))
+                "..")))
     if path not in sys.path:
         sys.path.append(path)
-    import pyquickhelper as skip_
-
-from pyquickhelper.loghelper import fLOG
-from pyquickhelper.pycode import check_pep8
-from pyquickhelper.pycode.utils_tests_helper import _extended_refactoring
+    import src
 
 
-class TestCodeStyle(unittest.TestCase):
+class TestCodeStyle(ExtTestCase):
+    """Test style."""
 
-    def test_code_style_src(self):
-        fLOG(
-            __file__,
-            self._testMethodName,
-            OutputPrint=__name__ == "__main__")
+    def test_src(self):
+        "skip pylint"
+        self.assertFalse(src is None)
 
-        if sys.version_info[0] == 2 or "Anaconda" in sys.executable \
-                or "condavir" in sys.executable:
-            warnings.warn(
-                "skipping test_code_style because of Python 2 or " + sys.executable)
-            return
-
+    def test_style_src(self):
         thi = os.path.abspath(os.path.dirname(__file__))
         src_ = os.path.normpath(os.path.join(thi, "..", "..", "src"))
-        check_pep8(src_, fLOG=fLOG, extended=[("fLOG", _extended_refactoring)],
-                   neg_filter=".*faq_python.py$")
+        check_pep8(src_, fLOG=fLOG,
+                   pylint_ignore=('C0103', 'C1801', 'R0201', 'R1705', 'W0108', 'W0613',
+                                  'C0111', 'W0212'),
+                   skip=["Use % formatting in logging functions and pass the % parameters",
+                         "Redefining built-in 'next'",
+                         "Redefining name 'fLOG' from outer scope ",
+                         "Redefining built-in 'format'",
+                         "Redefining built-in 'iter' ",
+                         "Redefining built-in 'filter'",
+                         "json_helper.py:131: E1137",
+                         "json_helper.py:149: E1137",
+                         "json_helper.py:155: E1137",
+                         "image_helper.py:11: R1710",
+                         "city_tour.py:428: R1710",
+                         "croix_rouge.py:150: E0602",
+                         "blossom.py:690: W0612",
+                         "blossom.py:693: W0612",
+                         ])
 
-    def test_code_style_test(self):
-        fLOG(
-            __file__,
-            self._testMethodName,
-            OutputPrint=__name__ == "__main__")
-
-        if sys.version_info[0] == 2 or "Anaconda" in sys.executable \
-                or "condavir" in sys.executable:
-            warnings.warn(
-                "skipping test_code_style because of Python 2 or " + sys.executable)
-            return
-
+    def test_style_test(self):
         thi = os.path.abspath(os.path.dirname(__file__))
         test = os.path.normpath(os.path.join(thi, "..", ))
-        check_pep8(test, fLOG=fLOG, neg_filter="temp_.*",
+        check_pep8(test, fLOG=fLOG, neg_pattern="temp_.*",
+                   pylint_ignore=('C0103', 'C1801', 'R0201', 'R1705', 'W0108', 'W0613',
+                                  'C0111'),
                    skip=["src' imported but unused",
                          "skip_' imported but unused",
                          "skip__' imported but unused",
                          "skip___' imported but unused",
-                         ],
-                   extended=[("fLOG", _extended_refactoring)],
-                   max_line_length=320)
+                         "Unused variable 'skip_'",
+                         "imported as skip_",
+                         "Unused import src",
+                         "Module 'ujson' has no 'loads'",
+                         "Redefining built-in 'iter'",
+                         "Redefining name 'path' from outer scope",
+                         "Module 'ujson' has no 'dumps'",
+                         ])
 
 
 if __name__ == "__main__":

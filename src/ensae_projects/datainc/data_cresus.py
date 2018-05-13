@@ -83,7 +83,7 @@ def process_cresus_sql(infile, out_clean_sql=None, outdb=None, fLOG=fLOG):
             ]
     new_lines = []
     modified = 0
-    for i, line in enumerate(lines):
+    for line in lines:
         if line.startswith("CREATE DATABASE "):
             line = "-- " + line
             modified += 1
@@ -233,7 +233,7 @@ def split_train_test_cresus_data(tables, outfold, ratio=0.20, fLOG=fLOG):
                 else:
                     raise Exception("unexpected: {0}".format(k))
                 try:
-                    spl = data[key].apply(lambda x: x in select)
+                    spl = data[key].apply(lambda x, ens=select: x in ens)
                 except KeyError as e:
                     raise Exception("issue for table '{0}' and columns={1}".format(
                         k, data.columns)) from e

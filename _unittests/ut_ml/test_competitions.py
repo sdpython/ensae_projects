@@ -6,6 +6,8 @@ import sys
 import os
 import unittest
 import shutil
+from pyquickhelper.loghelper import fLOG
+from pyquickhelper.pycode import get_temp_folder
 
 
 try:
@@ -21,24 +23,6 @@ except ImportError:
         sys.path.append(path)
     import src
 
-try:
-    import pyquickhelper as skip_
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..",
-                "..",
-                "pyquickhelper",
-                "src")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import pyquickhelper as skip_
-
-from pyquickhelper.loghelper import fLOG
-from pyquickhelper.pycode import get_temp_folder
 from src.ensae_projects.ml.competitions import AUC, AUC_multi, AUC_multi_multi
 from src.ensae_projects.ml.competitions import private_codalab_wrapper_binary_classification, private_codalab_wrapper_multi_classification
 
@@ -165,7 +149,8 @@ class TestCompetitions(unittest.TestCase):
         fLOG("**", code)
 
         self.assertEqual(
-            code, "orientation_ERR:0.7183754333828628\norientation_AUC:0.5862428771453444\nnature_ERR:0.8236750866765725\nnature_AUC:0.5160556240766593")
+            code, ("orientation_ERR:0.7183754333828628\norientation_AUC:0.5862428771453444" +
+                   "\nnature_ERR:0.8236750866765725\nnature_AUC:0.5160556240766593"))
 
 
 if __name__ == "__main__":

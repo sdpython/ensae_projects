@@ -4,8 +4,8 @@
 @brief Data related to a challenge, streets in Seattle
 """
 import os
-import pandas
 from datetime import time
+import pandas
 from pyensae.datasource import download_data
 from pyensae.notebook_helper import folium_html_map
 
@@ -37,7 +37,8 @@ def df_crossjoin(df1, df2, **kwargs):
     """
     Makes a cross join (cartesian product) between two dataframes by using a constant temporary key.
     Also sets a MultiIndex which is the cartesian product of the indices of the input dataframes.
-    Source: `Cross join / cartesian product between pandas DataFrames <https://mkonrad.net/2016/04/16/cross-join--cartesian-product-between-pandas-dataframes.html>`_
+    Source: `Cross join / cartesian product between pandas DataFrames
+    <https://mkonrad.net/2016/04/16/cross-join--cartesian-product-between-pandas-dataframes.html>`_.
 
     @param      df1     dataframe 1
     @param      df2     dataframe 2
@@ -89,12 +90,15 @@ def folium_html_stations_map(stations, html_width=None, html_height=None, radius
     @param      stations        list ``[ (lat, lon), color ]`` or ``[ (lat, lon), (name, color) ]``
     @param      kwargs          extra parameters for `Map <https://github.com/python-visualization/folium/blob/master/folium/folium.py#L19>`_
     @param      html_width      sent to function
-                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html#pyensae.notebook_helper.folium_helper.folium_html_map>`_
+                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html
+                                #pyensae.notebook_helper.folium_helper.folium_html_map>`_
     @param      html_height     sent to function
-                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html#pyensae.notebook_helper.folium_helper.folium_html_map>`_
+                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html
+                                #pyensae.notebook_helper.folium_helper.folium_html_map>`_
     @param      radius          size of the circles
     @return                     see function
-                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html#pyensae.notebook_helper.folium_helper.folium_html_map>`_
+                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html
+                                #pyensae.notebook_helper.folium_helper.folium_html_map>`_
     """
     import folium
     map_osm = None

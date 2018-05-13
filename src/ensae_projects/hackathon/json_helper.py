@@ -3,9 +3,9 @@
 @file
 @brief Helpers for the hackathon 2017 (Label Emmaüs).
 """
-import ijson
 import os
 from io import StringIO
+import ijson
 from pyquickhelper.loghelper import noLOG
 
 
@@ -100,7 +100,7 @@ def enumerate_json_items(filename, encoding=None, fLOG=noLOG):
         curkey = None
         stack = []
         nbyield = 0
-        for i, (prefix, event, value) in enumerate(parser):
+        for i, (_, event, value) in enumerate(parser):
             if i % 1000000 == 0:
                 fLOG("[enumerate_json_items] i={0} yielded={1}".format(
                     i, nbyield))
@@ -185,7 +185,8 @@ def extract_images_from_json_2017(filename, encoding=None, fLOG=noLOG):
                {"assigned_images": [],
                 "best_offer": {"created_on": "2016-11-04T23:20:53+01:00", "images": [], "offer_longitude": null, "availability": "in_stock",
                                "start_selling_date": null, "delay_before_shipping": 0.00, "free_return": null, "free_shipping": null,
-                               "assigned_images": [{"image_path": "https://coucou.JPEG"}], "id": 1306501, "eco_tax": 0.000000, "keywords": ["boutique", "test"],
+                               "assigned_images": [{"image_path": "https://coucou.JPEG"}],
+                               "id": 1306501, "eco_tax": 0.000000, "keywords": ["boutique", "test"],
                 "sku": "AAAA27160018",
                 "product": {"pk": 2550, "external_id": null, "id": 2580},
                 "description": "livre l", "last_modified": "2016-11-04T23:27:01+01:00",

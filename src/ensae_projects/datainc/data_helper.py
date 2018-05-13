@@ -23,7 +23,7 @@ def convert_dates(sd, option=None, exc=False):
             try:
                 v2 = datetime.datetime.strptime(sd, "%d/%m/%y")
                 return v2.strftime("%Y-%m-%d")
-            except Exception:
+            except ValueError:
                 pass
     return sd
 
@@ -36,7 +36,7 @@ def clean_column_name_sql_dump(i, line, hist, sep=";"):
 
         0; "a"; 'j"'; "r;"
 
-    @param      i       line number
+    @param      i       line number (unused)
     @param      line    line to process
     @param      hist    distribution of the number of columns
     @param      sep     line separator
@@ -45,16 +45,16 @@ def clean_column_name_sql_dump(i, line, hist, sep=";"):
     vals = []
     beg = -1
     ending = ""
-    for i, c in enumerate(line):
+    for ii, c in enumerate(line):
         if beg == -1:
-            beg = i
+            beg = ii
             if c in ('"', "'"):
                 next = c
             else:
                 next = sep
         elif c == next:
             if c == sep:
-                vals.append(line[beg:i].strip())
+                vals.append(line[beg:ii].strip())
                 beg = -1
             else:
                 next = sep
@@ -100,11 +100,13 @@ def change_encoding(infile,
         process = process_line
     with open(infile, "r", encoding=enc1) as f:
         with open(outfile, "w", encoding=enc2) as g:
+            lasti = 0
             for i, line in enumerate(f):
+                lasti = i
                 if (i + 1) % 10000 == 0:
                     fLOG(infile, "-", i + 1, "lines")
                 g.write(process(i, line))
-            return i
+            return lasti
 
 
 def change_encoding_improve(infile,
@@ -140,13 +142,15 @@ def change_encoding_improve(infile,
     hist = {}
     with open(infile, "r", encoding=enc1) as f:
         with open(outfile, "w", encoding=enc2) as g:
+            lasti = 0
             for i, line in enumerate(f):
+                lasti = i
                 if (i + 1) % 10000 == 0:
                     fLOG(infile, "-", i + 1, "lines")
                 line, nb_col = process(i, line, hist)
                 hist[nb_col] = hist.get(nb_col, 0) + 1
                 g.write(line)
-            return i
+            return lasti
 
 
 def enumerate_text_lines(filename, sep="\t", encoding="utf-8", quotes_as_str=False, header=True,
@@ -205,7 +209,7 @@ def enumerate_text_lines(filename, sep="\t", encoding="utf-8", quotes_as_str=Fal
                         try:
                             v2 = datetime.datetime.strptime(v, "%d/%m/%y")
                             update[k] = v2.strftime("%Y-%m-%d")
-                        except Exception:
+                        except ValueError:
                             continue
                 if update:
                     fields.update(update)

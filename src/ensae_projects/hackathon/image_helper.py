@@ -27,6 +27,7 @@ def resize_image(filename_or_bytes, maxdim=512, dest=None, format=None):
             dest = filename_or_bytes
         with open(dest, "wb") as f:
             f.write(r)
+        return None
     elif isinstance(filename_or_bytes, bytes):
         st = BytesIO(filename_or_bytes)
         img = Image.open(st)

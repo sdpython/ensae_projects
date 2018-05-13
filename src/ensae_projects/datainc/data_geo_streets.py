@@ -107,12 +107,15 @@ def folium_html_street_map(subset, shapes, html_width=None, html_height=None, co
     @param      shapes          list of shapes
     @param      kwargs          extra parameters for `Map <https://github.com/python-visualization/folium/blob/master/folium/folium.py#L19>`_
     @param      html_width      sent to function
-                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html#pyensae.notebook_helper.folium_helper.folium_html_map>`_
+                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html
+                                #pyensae.notebook_helper.folium_helper.folium_html_map>`_
     @param      html_height     sent to function
-                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html#pyensae.notebook_helper.folium_helper.folium_html_map>`_
+                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html
+                                #pyensae.notebook_helper.folium_helper.folium_html_map>`_
     @param      color_vertices  see below
     @return                     see function
-                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html#pyensae.notebook_helper.folium_helper.folium_html_map>`_
+                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html
+                                #pyensae.notebook_helper.folium_helper.folium_html_map>`_
 
     if *color_vertices* is equal to `'odd'`, the function computes the degree
     of each vertex and choose a different color for odd (yellow)
@@ -219,7 +222,7 @@ def plot_streets_network(edges_index, edges, vertices, shapes, order=None,
     params = ["color_v", "color_e", "size_v", "size_e", "size_c", "size_et"]
     if ax is None:
         options = {k: v for k, v in kwargs.items() if k not in params}
-        fig, ax = plt.subplots(**options)
+        _, ax = plt.subplots(**options)
     x1, x2 = min(_[0] for _ in vertices), max(_[0] for _ in vertices)
     y1, y2 = min(_[1] for _ in vertices), max(_[1] for _ in vertices)
     dx, dy = (x2 - x1) * 0.2, (y2 - y1) * 0.2
@@ -315,7 +318,7 @@ def _complete_subset_streets(edges, shapes):
     """
     sedges = set(edges)
     extension = []
-    for i, shape in enumerate(shapes):
+    for i, _ in enumerate(shapes):
         if i in sedges:
             continue
         add = []
@@ -364,7 +367,6 @@ def seattle_streets_set_level(shapes, records,
     """
     from shapely.geometry import LineString
     lon, lat = pos
-    x, y = shapes[0].points[0]
     closes = list(_enumerate_close(lon, lat, shapes))
     closes.sort()
     subset = [index for dist, index in closes[:size]]

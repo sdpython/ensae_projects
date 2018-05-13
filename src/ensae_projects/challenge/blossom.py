@@ -468,9 +468,12 @@ class Blossom(object):
             v1, v2 = v2, v1
 
         # v1 is in the base blossom, find the blossom containing v2
+        lasti = 0
         for i, b in enumerate(self.cycle):
+            lasti = i
             if v2 in b.members:
                 break
+        i = lasti
 
         # Trivial case: if both v1 and v2 are in the same blossom, we
         # don't need to do anything at this level.
@@ -566,9 +569,15 @@ class Blossom(object):
 
         # Find the component connected to parent.
         boundary_vertex = next(iter(self.parent_edge.vertices & self.members))
+        lasti = 0
+        last_bl = None
         for i, blossom in enumerate(self.cycle):
+            lasti = i
+            last_bl = blossom
             if boundary_vertex in blossom.members:
                 break
+        i = lasti
+        blossom = last_bl
 
         if i % 2 == 0:
             # Repoint the even-length part of the cycle to form a part of
@@ -630,8 +639,8 @@ class Vertex(Blossom):
     # Single vertices are allowed to have negative charges.
     minimum_charge = -INF
 
-    def __init__(self, id):
-        self.id = id
+    def __init__(self, idi):
+        self.id = idi
         self.edges = []
         super(Vertex, self).__init__(cycle=[self], charge=0)
 
@@ -674,7 +683,7 @@ def get_max_delta(roots):
 
     assert delta >= 0
 
-    if not delta > 0:
+    if delta <= 0:
         raise MaximumDualReached()
 
     return delta
@@ -711,27 +720,31 @@ def update_tree_structures(roots):
 
 if __name__ == "__main__":
 
-    if len(sys.argv) > 1:
-        input_file = open(sys.argv[1])
-    else:
-        input_file = sys.stdin
-    vertices = read_input(input_file)
-    aroots = set(vertices.values())
-    try:
-        while True:
-            delta = get_max_delta(aroots)
-            sys.stderr.write("Adjusting by %s\n" % (delta,))
-            for root in aroots:
-                root.adjust_charge(delta)
-            update_tree_structures(aroots)
-    except MaximumDualReached:
-        pass
+    def main_blossom():
 
-    M = set()
-    for v in vertices.values():
-        M.update(e for e in v.edges if e.selected)
+        if len(sys.argv) > 1:
+            input_file = open(sys.argv[1])
+        else:
+            input_file = sys.stdin
+        vertices = read_input(input_file)
+        aroots = set(vertices.values())
+        try:
+            while True:
+                delta = get_max_delta(aroots)
+                sys.stderr.write("Adjusting by %s\n" % (delta,))
+                for root_ in aroots:
+                    root_.adjust_charge(delta)
+                update_tree_structures(aroots)
+        except MaximumDualReached:
+            pass
 
-    total_weight = sum(e.value for e in M)
-    print(total_weight)
-    for e in M:
-        print("%s %s" % (e, e.value))
+        M = set()
+        for v in vertices.values():
+            M.update(e for e in v.edges if e.selected)
+
+        total_weight = sum(e.value for e in M)
+        print(total_weight)
+        for e in M:
+            print("%s %s" % (e, e.value))
+
+    main_blossom()

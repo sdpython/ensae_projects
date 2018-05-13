@@ -4,9 +4,9 @@
 @brief Data related to La Croix-Rouge (Hackathon Microsoft / ENSAE / Croix-Rouge / 2015)
 """
 import os
-import pandas
 import io
 import warnings
+import pandas
 from pyquickhelper.filehelper import encrypt_stream, decrypt_stream
 from pyquickhelper.pandashelper import df2rst, df2html
 from .data_exception import ProjectDataException, PasswordException
@@ -147,7 +147,7 @@ def merge_schema(tables=None, password=None):
         cs = [c for c in join.columns if c.startswith(prf)]
         if prf == "Intitulé long":
             cs.append("Description_ie")
-        new_col = join.apply(lambda row: merge_values(row, cs), axis=1)
+        new_col = join.apply(lambda row, cs=cs: merge_values(row, cs), axis=1)
         join = join[[c for c in join.columns if c not in cs]]
         join[prf] = new_col
 
@@ -175,3 +175,5 @@ def df2rsthtml(df, format="html", fillna=""):
         return df2html(df)
     elif format == "rst":
         return df2rst(df)
+    else:
+        raise ValueError("Unknown format '{0}'".format(format))

@@ -6,6 +6,9 @@
 import sys
 import os
 import unittest
+from pyquickhelper.loghelper import fLOG
+from pyquickhelper.pycode import get_temp_folder
+from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
 
 
 try:
@@ -21,43 +24,7 @@ except ImportError:
         sys.path.append(path)
     import src
 
-try:
-    import pyquickhelper as skip_
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..",
-                "..",
-                "pyquickhelper",
-                "src")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import pyquickhelper as skip_
 
-
-try:
-    import pyensae as skip__
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..",
-                "..",
-                "pyensae",
-                "src")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import pyensae as skip__
-
-
-from pyquickhelper.loghelper import fLOG
-from pyquickhelper.pycode import get_temp_folder
-from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
 from src.ensae_projects.datainc.data_geo_streets import get_seattle_streets, shapely_records, folium_html_street_map, get_fields_description
 from src.ensae_projects.datainc.data_geo_streets import build_streets_vertices, plot_streets_network
 from src.ensae_projects.datainc.data_geo_streets import seattle_streets_set_level2, seattle_streets_set_small

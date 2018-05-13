@@ -8,6 +8,10 @@ import os
 import unittest
 import warnings
 import pandas
+from pyquickhelper.loghelper import fLOG
+from pyquickhelper.pycode import get_temp_folder, is_travis_or_appveyor
+from pyquickhelper.filehelper.encryption import decrypt_stream
+from pyquickhelper.filehelper.compression_helper import unzip_files
 
 
 try:
@@ -23,45 +27,8 @@ except ImportError:
         sys.path.append(path)
     import src
 
-try:
-    import pyquickhelper as skip_
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..",
-                "..",
-                "pyquickhelper",
-                "src")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import pyquickhelper as skip_
 
-
-try:
-    import pyensae as skip__
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..",
-                "..",
-                "pyensae",
-                "src")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import pyensae as skip__
-
-
-from pyquickhelper.loghelper import fLOG
-from pyquickhelper.pycode import get_temp_folder, is_travis_or_appveyor
-from pyquickhelper.filehelper.encryption import decrypt_stream
 from src.ensae_projects.datainc.data_cresus import process_cresus_whole_process, cresus_dummy_file
-from pyquickhelper.filehelper.compression_helper import unzip_files
 
 
 class TestCresus2016(unittest.TestCase):
@@ -90,7 +57,7 @@ class TestCresus2016(unittest.TestCase):
         res = unzip_files(zipname, temp)
         fLOG(res)
         infile = res[0]
-        train, test = process_cresus_whole_process(
+        train, _ = process_cresus_whole_process(
             infile, outfold=temp, fLOG=fLOG)
         for r in train.values():
             df = pandas.read_csv(r, sep="\t", encoding="utf-8")

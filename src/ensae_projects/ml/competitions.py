@@ -3,11 +3,6 @@
 @brief Compute metrics in for a competition
 """
 import os
-import sys
-
-
-if sys.version_info[0] == 2:
-    FileNotFoundError = Exception
 
 
 def main_codalab_wrapper_binary_classification(fct, metric_name, argv, truth_file="truth.txt",
@@ -42,7 +37,8 @@ def private_codalab_wrapper_binary_classification(fct, metric_name, fold1, fold2
                                                   output="scores.txt", use_print=False):
     """
     Wraps the function following the guidelines
-    `User_Building a Scoring Program for a Competition <https://github.com/codalab/codalab-competitions/wiki/User_Building-a-Scoring-Program-for-a-Competition>`_.
+    `User_Building a Scoring Program for a Competition
+    <https://github.com/codalab/codalab-competitions/wiki/User_Building-a-Scoring-Program-for-a-Competition>`_.
     It replicates the example available at
     `competition-examples/hello_world <https://github.com/Tivix/competition-examples/tree/master/hello_world/competition>`_.
 
@@ -175,7 +171,8 @@ def private_codalab_wrapper_multi_classification(fct, variables_name, fold1, fol
                                                  output="scores.txt", use_print=False, ignored=None):
     """
     Wraps the function following the guidelines
-    `User_Building a Scoring Program for a Competition <https://github.com/codalab/codalab-competitions/wiki/User_Building-a-Scoring-Program-for-a-Competition>`_.
+    `User_Building a Scoring Program for a Competition
+    <https://github.com/codalab/codalab-competitions/wiki/User_Building-a-Scoring-Program-for-a-Competition>`_.
     It replicates the example available at
     `competition-examples/hello_world <https://github.com/Tivix/competition-examples/tree/master/hello_world/competition>`_.
 

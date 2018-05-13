@@ -7,6 +7,10 @@ import sys
 import os
 import unittest
 import shutil
+from pyquickhelper.loghelper import fLOG
+from pyquickhelper.pycode import get_temp_folder, skipif_travis
+from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
+from pyquickhelper.ipythonhelper import execute_notebook_list_finalize_ut
 
 
 try:
@@ -22,58 +26,6 @@ except ImportError:
         sys.path.append(path)
     import src
 
-try:
-    import pyquickhelper as skip_
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..",
-                "..",
-                "pyquickhelper",
-                "src")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import pyquickhelper as skip_
-
-try:
-    import jyquickhelper as skip___
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..",
-                "..",
-                "jyquickhelper",
-                "src")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import jyquickhelper as skip___
-
-try:
-    import pyensae as skip__
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..",
-                "..",
-                "pyensae",
-                "src")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import pyensae as skip__
-
-from pyquickhelper.loghelper import fLOG
-from pyquickhelper.pycode import get_temp_folder, skipif_travis
-from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
-from pyquickhelper.ipythonhelper import execute_notebook_list_finalize_ut
 from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook
 import src.ensae_projects
 

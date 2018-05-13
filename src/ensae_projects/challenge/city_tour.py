@@ -82,7 +82,7 @@ def distance_solution(edges_index, edges, distances, solution, exc=True):
         degrees[b] = degrees.get(b, 0) + 1
 
     odd, even = 0, 0
-    for k, d in degrees.items():
+    for d in degrees.values():
         if d % 2 == 0:
             even += 1
         else:
@@ -305,7 +305,7 @@ def _explore_path(edges_from, begin):
 
         if len(edges_from[to]) == 1:
             if begin != to:
-                raise NotImplemented("Wrong algorithm.")
+                raise NotImplementedError("Wrong algorithm.")
             else:
                 stay = False
 
@@ -427,7 +427,7 @@ def dijkstra_path(edges, distances, va, vb):
 
 def matching_vertices(distances, algo="blossom"):
     """
-    Find the best match between vertices.
+    Finds the best match between vertices.
 
     @param      distances       result of function @bellman_distances but only for odd vertices (odd = odd degree),
                                 dictionary { (vi,vj) : distance}
@@ -435,7 +435,8 @@ def matching_vertices(distances, algo="blossom"):
     @return                     sequences of best matches.
 
     If ``algo=='hungarian'``,
-    the function relies on `linear_sum_assignment <https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.linear_sum_assignment.html>`_
+    the function relies on `linear_sum_assignment
+    <https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.linear_sum_assignment.html>`_
     from `scipy <https://docs.scipy.org/doc/scipy-0.18.1/>`_ which uses the
     `Hungarian Algorithm <https://en.wikipedia.org/wiki/Hungarian_algorithm>`_.
     Vertex index do not have to start from zero and be continuous.

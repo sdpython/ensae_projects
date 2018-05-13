@@ -6,6 +6,7 @@
 import sys
 import os
 import unittest
+from pyquickhelper.loghelper import fLOG
 
 
 try:
@@ -21,24 +22,7 @@ except ImportError:
         sys.path.append(path)
     import src
 
-try:
-    import pyquickhelper as skip_
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..",
-                "..",
-                "pyquickhelper",
-                "src")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import pyquickhelper as skip_
 
-
-from pyquickhelper.loghelper import fLOG
 from src.ensae_projects.challenge.city_tour import distance_solution, SolutionException, haversine_distance, euler_path
 from src.ensae_projects.challenge.city_tour import distance_vertices, bellman_distances, compute_degrees, dijkstra_path
 from src.ensae_projects.challenge.city_tour import matching_vertices, best_euler_path
@@ -155,8 +139,8 @@ class TestCityTour(unittest.TestCase):
             path = euler_path(edges_index, edges, solution)
             assert len(path) > 0
             self.assertEqual(list(sorted(path)), list(sorted(solution)))
-            for i in range(1, len(path)):
-                ed = path[i - 1:i + 1]
+            for ii in range(1, len(path)):
+                ed = path[i - 1:ii + 1]
                 e1 = asso[ed[0]]
                 e2 = asso[ed[1]]
                 con = 0
@@ -307,8 +291,11 @@ class TestCityTour(unittest.TestCase):
         exp_ind = [0, 0, 107, 1003, 1101, 1670, 2418, 2803, 2808, 2808, 3353, 3353, 4553, 4553, 4994, 4994,
                    6265, 6488, 6488, 6712, 8378, 9118, 9989, 11274, 11394, 12783, 12783, 15023, 17680, 29114, 30370]
         self.assertEqual(ind, exp_ind)
-        exp_co = [(1, 0), (2, 1), (4, 0), (4, 6), (4, 6), (5, 1), (5, 1), (5, 4), (5, 4), (7, 2), (7, 5), (8, 9), (9, 3), (9, 3), (9, 10), (10, 7),
-                  (10, 7), (10, 11), (11, 5), (11, 14), (12, 8), (12, 13), (13, 9), (13, 9), (14, 4), (15, 11), (16, 10), (16, 10), (16, 15), (17, 13), (17, 16)]
+        exp_co = [(1, 0), (2, 1), (4, 0), (4, 6), (4, 6), (5, 1), (5, 1), (5, 4), (5, 4), (7, 2),
+                  (7, 5), (8, 9), (9, 3), (9, 3), (9, 10), (10, 7),
+                  (10, 7), (10, 11), (11, 5), (11, 14), (12,
+                                                         8), (12, 13), (13, 9), (13, 9), (14, 4),
+                  (15, 11), (16, 10), (16, 10), (16, 15), (17, 13), (17, 16)]
         self.assertEqual(co, exp_co)
 
 
