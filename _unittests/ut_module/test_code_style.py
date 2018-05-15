@@ -26,10 +26,11 @@ class TestCodeStyle(ExtTestCase):
     """Test style."""
 
     def test_src(self):
-        "skip pylint"
+        """Remove one pylint warning."""
         self.assertFalse(src is None)
 
     def test_style_src(self):
+        """Checks style of source files."""
         thi = os.path.abspath(os.path.dirname(__file__))
         src_ = os.path.normpath(os.path.join(thi, "..", "..", "src"))
         check_pep8(src_, fLOG=fLOG,
@@ -49,9 +50,11 @@ class TestCodeStyle(ExtTestCase):
                          "croix_rouge.py:150: E0602",
                          "blossom.py:690: W0612",
                          "blossom.py:693: W0612",
+                         "Instance of 'X86Info' has no 'supports_avx2'",
                          ])
 
     def test_style_test(self):
+        """Checks style of tests files."""
         thi = os.path.abspath(os.path.dirname(__file__))
         test = os.path.normpath(os.path.join(thi, "..", ))
         check_pep8(test, fLOG=fLOG, neg_pattern="temp_.*",
@@ -68,6 +71,7 @@ class TestCodeStyle(ExtTestCase):
                          "Redefining built-in 'iter'",
                          "Redefining name 'path' from outer scope",
                          "Module 'ujson' has no 'dumps'",
+                         "Instance of 'X86Info' has no 'supports_avx2'",
                          ])
 
 

@@ -5,22 +5,9 @@ import os
 # import sphinx_py3doc_enhanced_theme
 # import alabaster
 import sphinx_redactor_theme
-
+from pyquickhelper.helpgen.default_conf import set_sphinx_variables, get_default_stylesheet
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.split(__file__)[0])))
-sys.path.insert(
-    0,
-    os.path.abspath(
-        os.path.join(
-            os.path.split(__file__)[0],
-            "..",
-            "..",
-            "..",
-            "..",
-            "pyquickhelper",
-            "src")))
-
-from pyquickhelper.helpgen.default_conf import set_sphinx_variables, get_default_stylesheet
 
 set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2018,
                      "sphinx_redactor_theme",  # "sphinx_py3doc_enhanced_theme",
