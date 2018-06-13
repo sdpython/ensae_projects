@@ -2,6 +2,17 @@
 Cheat sheets
 ============
 
+.. contents::
+    :local:
+
+Coding
+++++++
+
+.. toctree::
+    :maxdepth: 2
+
+    ../cheatsheet/git
+
 Data Science
 ++++++++++++
 
