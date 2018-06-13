@@ -74,3 +74,14 @@ Update a branch
 Example::
 
     git pull origin master
+
+Update a submodule
+++++++++++++++++++
+
+::
+
+    git submodule update --remote --merge
+
+Example::
+
+    git submodule update --remote --merge
