@@ -7,6 +7,17 @@ Cheat Sheet on Git
 .. contents::
     :local:
 
+Add a remote
+++++++++++++
+
+::
+
+    git remote add <remote_name> <url_repo.git>
+
+Example::
+
+    git remote add upstream_dmlc https://github.com/dmlc/xgboost.git
+
 Add a submodule
 +++++++++++++++
 
@@ -16,7 +27,7 @@ Add a submodule
 
 Example::
 
-    git submodule add -b investigate https://github.com/sdpython/machinelearning.git cscode/machinelearning
+    git submodule add -b branchpy https://github.com/sdpython/machinelearning.git cscode/machinelearning
 
 Create a new local branch
 +++++++++++++++++++++++++
@@ -69,7 +80,7 @@ Update a branch
 
 ::
 
-    git pull <origin> <branch>
+    git pull <remote> <branch>
 
 Example::
 
