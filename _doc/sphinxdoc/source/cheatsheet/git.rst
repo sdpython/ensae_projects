@@ -87,6 +87,20 @@ Example::
 
     git rm cscode/machinelearning -f
 
+Reset a submodule
++++++++++++++++++
+
+::
+
+    git submodule foreach git reset --hard
+
+Example::
+
+    git submodule foreach git reset --hard
+
+The option ``--recursive`` does it for submodules included
+in submodules.
+
 Update a branch
 +++++++++++++++
 
