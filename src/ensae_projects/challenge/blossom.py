@@ -76,7 +76,7 @@ class StructureUpToDate(Exception):
     """
 
 
-class Edge(object):
+class Edge:
 
     def __init__(self, v1, v2, value):
         self.vertices = frozenset((v1, v2))
@@ -156,7 +156,7 @@ class Edge(object):
         self.selected = 1 - self.selected
 
 
-class Blossom(object):
+class Blossom:
     # For nontrivial blossoms, the charge cannot decrease below 0.
     minimum_charge = 0
 

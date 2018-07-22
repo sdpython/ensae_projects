@@ -49,15 +49,15 @@ def clean_column_name_sql_dump(i, line, hist, sep=";"):
         if beg == -1:
             beg = ii
             if c in ('"', "'"):
-                next = c
+                nxt = c
             else:
-                next = sep
-        elif c == next:
+                nxt = sep
+        elif c == nxt:
             if c == sep:
                 vals.append(line[beg:ii].strip())
                 beg = -1
             else:
-                next = sep
+                nxt = sep
         elif c == "\n":
             ending = c
     if beg != -1:
@@ -68,12 +68,8 @@ def clean_column_name_sql_dump(i, line, hist, sep=";"):
         return sep.join(vals), len(vals)
 
 
-def change_encoding(infile,
-                    outfile,
-                    enc1,
-                    enc2="utf-8",
-                    process=None,
-                    fLOG=noLOG):
+def change_encoding(infile, outfile, enc1, enc2="utf-8",
+                    process=None, fLOG=noLOG):
     """
     Changes the encoding of a text file and removes quotes.
     By default *process* is @see fn process_line.
@@ -109,12 +105,8 @@ def change_encoding(infile,
             return lasti
 
 
-def change_encoding_improve(infile,
-                            outfile,
-                            enc1,
-                            enc2="utf-8",
-                            process=None,
-                            fLOG=noLOG):
+def change_encoding_improve(infile, outfile, enc1, enc2="utf-8",
+                            process=None, fLOG=noLOG):
     """
     Changes the encoding of a text file, removes quotes.
     By default *process* is @see fn process_line
@@ -219,7 +211,7 @@ def enumerate_text_lines(filename, sep="\t", encoding="utf-8", quotes_as_str=Fal
         d = 0
         nb = 0
         for i, line in enumerate(f):
-            if take >= 0 and nb >= take:
+            if nb >= take >= 0:
                 break
             spl = line.strip("\r\n").split(sep)
             if i == 0:
