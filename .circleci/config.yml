@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.7.0
+      - image: circleci/python:3.6.5
     
     working_directory: ~/repo
     
@@ -48,7 +48,7 @@ jobs:
           command: |
                     sudo apt-get install libav-tools
 
-      # pywavelets setup.py requires it
+      # statsmodels setup.py requires it
       - run:
           name: install numpy
           command: |
