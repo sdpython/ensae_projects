@@ -26,6 +26,7 @@ html_context = {
     'css_files': get_default_stylesheet() + ['_static/my-styles.css'],
 }
 
+epkg_dictionary['cartopy'] = "https://scitools.org.uk/cartopy/docs/latest/"
 epkg_dictionary['Cresus'] = "http://www.cresus-france.org/"
 epkg_dictionary['data leakage'] = "https://www.kaggle.com/wiki/Leakage"
 epkg_dictionary['falcon'] = "https://falconframework.org/"

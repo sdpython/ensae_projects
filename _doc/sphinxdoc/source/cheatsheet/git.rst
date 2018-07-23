@@ -29,14 +29,13 @@ Example::
 
     git submodule add -b branchpy https://github.com/sdpython/machinelearning.git cscode/machinelearning
 
-
 Checkout a specific file from a remote
 ++++++++++++++++++++++++++++++++++++++
 
 ::
 
     git checkout [-p|--patch] [<tree-ish>] [--] <pathspec>...
-    
+
 Example::
 
     git checkout origin/master -- include\xgboost\predictor.h

@@ -7,7 +7,7 @@ import sys
 import os
 import unittest
 from pyquickhelper.loghelper import fLOG
-from pyquickhelper.pycode import get_temp_folder
+from pyquickhelper.pycode import get_temp_folder, ExtTestCase
 from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
 
 
@@ -26,11 +26,11 @@ except ImportError:
 
 
 from src.ensae_projects.datainc.data_geo_streets import get_seattle_streets, shapely_records, folium_html_street_map, get_fields_description
-from src.ensae_projects.datainc.data_geo_streets import build_streets_vertices, plot_streets_network
+from src.ensae_projects.datainc.data_geo_streets import build_streets_vertices, plot_streets_network, plot_streets_network_projection
 from src.ensae_projects.datainc.data_geo_streets import seattle_streets_set_level2, seattle_streets_set_small
 
 
-class TestStreetsSeattle(unittest.TestCase):
+class TestStreetsSeattle(ExtTestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -103,7 +103,9 @@ class TestStreetsSeattle(unittest.TestCase):
         shapes = self._shapes
         fix_tkinter_issues_virtualenv()
         import matplotlib.pyplot as plt
-        fig, ax = plt.subplots()
+        fig = plt.figure()
+        ax = fig.add_subplot(
+            1, 1, 1, projection=plot_streets_network_projection())
         subset = list(range(0, 10))
         vertices, edges = build_streets_vertices(subset, shapes)
         plot_streets_network(subset, edges, vertices, shapes, ax=ax)
@@ -111,7 +113,7 @@ class TestStreetsSeattle(unittest.TestCase):
         img = os.path.join(temp, "out_img.png")
         fig.savefig(img)
         plt.close('all')
-        assert os.path.exists(img)
+        self.assertExists(img)
 
     def test_plot_streets_network_odd(self):
         fLOG(
@@ -122,7 +124,9 @@ class TestStreetsSeattle(unittest.TestCase):
         shapes = self._shapes
         fix_tkinter_issues_virtualenv()
         import matplotlib.pyplot as plt
-        fig, ax = plt.subplots()
+        fig = plt.figure()
+        ax = fig.add_subplot(
+            1, 1, 1, projection=plot_streets_network_projection())
         subset = list(range(0, 10))
         vertices, edges = build_streets_vertices(subset, shapes)
         plot_streets_network(subset, edges, vertices,
@@ -131,7 +135,7 @@ class TestStreetsSeattle(unittest.TestCase):
         img = os.path.join(temp, "out_img.png")
         fig.savefig(img)
         plt.close('all')
-        assert os.path.exists(img)
+        self.assertExists(img)
 
     def test_seattle_description(self):
         fLOG(

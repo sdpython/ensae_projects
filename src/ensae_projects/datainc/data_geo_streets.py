@@ -188,10 +188,21 @@ def build_streets_vertices(edges, shapes):
     return vertices, new_edges
 
 
+def plot_streets_network_projection(central_longitude=0.0, min_latitude=-80.0,
+                                    max_latitude=84.0, globe=None,
+                                    latitude_true_scale=0.0):
+    """
+    Returns the default projection for @see fn plot_streets_network.
+    See `projection <https://scitools.org.uk/cartopy/docs/v0.15/crs/projections.html>`_.
+    """
+    import cartopy.crs as ccrs
+    return ccrs.PlateCarree()
+
+
 def plot_streets_network(edges_index, edges, vertices, shapes, order=None,
                          color_vertices=None, color_edges=None, ax=None, **kwargs):
     """
-    Plots the network based on `basemap <http://matplotlib.org/basemap/>`_.
+    Plots the network based on :epkg:`cartopy`.
 
     @param      edges_index     index of the edges in shapes
     @param      edges           list of tuple(v1, v2) in array of vertices
@@ -214,15 +225,42 @@ def plot_streets_network(edges_index, edges, vertices, shapes, order=None,
     if *color_vertices* is equal to `'odd'`, the function computes the degree
     of each vertex and choose a different color for odd (yellow)
     and even degrees (black).
+    If *ax* is predefined, it should contain the parameter::
+
+        import cartopy.crs as ccrs
+        import matplotlib.pyplot as plt
+        from ensae_projects.datainc.data_geo_streets import plot_streets_network_projection
+        fig = plt.figure(figsize=(7,7))
+        ax = fig.add_subplot(1, 1, 1, projection=plot_streets_network_projection())
+
+    The default projection is given by @see fn plot_streets_network_projection.
+    https://scitools.org.uk/cartopy/docs/v0.15/examples/hurricane_katrina.html
     """
-    from mpl_toolkits.basemap import Basemap
-    import numpy
-    from matplotlib.collections import LineCollection
+    import cartopy.feature as cfeature
     import matplotlib.pyplot as plt
-    params = ["color_v", "color_e", "size_v", "size_e", "size_c", "size_et"]
+    from matplotlib.lines import Line2D
+    import numpy
+    from matplotlib.path import Path
+
+    params = ["color_v", "color_e", "size_v", "size_e",
+              "size_c", "size_et", "projection"]
     if ax is None:
         options = {k: v for k, v in kwargs.items() if k not in params}
-        _, ax = plt.subplots(**options)
+        fig = plt.figure(**options)
+        projection = plot_streets_network_projection()
+        ax = fig.add_subplot(projection=projection)
+    else:
+        projection = kwargs.get(
+            'projection', plot_streets_network_projection())
+
+    try:
+        ax.add_feature(cfeature.OCEAN)
+        ax.add_feature(cfeature.COASTLINE)
+        ax.add_feature(cfeature.BORDERS, linestyle=':')
+    except AttributeError as e:
+        raise AttributeError(
+            "cartopy is not properly set up, did you use parameter projection?") from e
+
     x1, x2 = min(_[0] for _ in vertices), max(_[0] for _ in vertices)
     y1, y2 = min(_[1] for _ in vertices), max(_[1] for _ in vertices)
     dx, dy = (x2 - x1) * 0.2, (y2 - y1) * 0.2
@@ -230,27 +268,23 @@ def plot_streets_network(edges_index, edges, vertices, shapes, order=None,
     x2 += dx
     y1 -= dy
     y2 += dy
-    m = Basemap(resolution='i', projection='merc', llcrnrlat=y1, urcrnrlat=y2,
-                llcrnrlon=x1, urcrnrlon=x2, lat_ts=(y1 + y2) / 2, ax=ax)
-    m.drawcountries(linewidth=0.5)
-    m.drawcoastlines(linewidth=0.5)
+    ax.set_extent([x1, x2, y1, y2], projection)
+
     for n in edges_index:
         sh = shapes[n]
         geo_points = sh.points
         lons = [_[0] for _ in geo_points]
         lats = [_[1] for _ in geo_points]
-        data = numpy.array(m(lons, lats)).T
-        segs = [data, ]
-        lines = LineCollection(segs, antialiaseds=(1,))
-        if color_edges is not None:
-            ecolor = color_edges.get(n, "black")
-        else:
-            ecolor = "black"
-        lines.set_edgecolors(ecolor)
-        lines.set_linewidth(kwargs.get('size_e', 2))
-        ax.add_collection(lines)
+        ecolor = color_edges.get(
+            n, "black") if color_edges is not None else "black"
+
+        linewidth = kwargs.get('size_e', 2)
+
+        line = Line2D(lons, lats, lw=linewidth, color=ecolor, axes=ax)
+        ax.add_line(line)
+
         mx, my = (lons[0] + lons[-1]) / 2, (lats[0] + lats[-1]) / 2
-        gx, gy = m(mx, my)
+        gx, gy = mx, my
         if order is None:
             ax.text(gx, gy, "e%d" % n, color=kwargs.get('color_e', "blue"))
         else:
@@ -260,6 +294,7 @@ def plot_streets_network(edges_index, edges, vertices, shapes, order=None,
                 ax.text(gx, gy, ",".join(pos),
                         size=kwargs.get("size_et", 12),
                         color=kwargs.get('color_e', "blue"))
+
     if color_vertices == "odd":
         count = {}
         for a, b in edges:
@@ -267,11 +302,17 @@ def plot_streets_network(edges_index, edges, vertices, shapes, order=None,
             count[b] = count.get(b, 0) + 1
         color_vertices = {k: ('yellow' if v % 2 == 1 else 'black')
                           for k, v in count.items()}
+
+    theta = numpy.linspace(0, 2 * numpy.pi, 100)
+    circle_verts = numpy.vstack([numpy.sin(theta), numpy.cos(theta)]).T
+    concentric_circle = Path.make_compound_path(Path(circle_verts[::-1]),
+                                                Path(circle_verts * 0.6))
     for n, (a, b) in enumerate(vertices):
-        gx, gy = m(a, b)
+        gx, gy = a, b
         color = color_vertices.get(n, 'black') if color_vertices else 'black'
-        c = plt.Circle((gx, gy), kwargs.get('size_c', 5), color=color)
-        ax.add_artist(c)
+        ax.plot(gx, gy, transform=projection,
+                marker=concentric_circle, color=color, markersize=5,
+                linestyle='')
         ax.text(gx, gy, "v%d" % n, size=kwargs.get('size_v', 12),
                 color=kwargs.get('color_v', "red"))
     return ax
