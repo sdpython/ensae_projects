@@ -2,6 +2,7 @@ version: 2
 jobs:
   build:
     docker:
+      # pyproj does not work on Python 3.7 on linux
       - image: circleci/python:3.6.5
     
     working_directory: ~/repo
@@ -27,6 +28,7 @@ jobs:
                     sudo apt-get install -y texlive
                     sudo apt-get install -y texlive-latex-extra
                     sudo apt-get install -y texlive-lang-french
+                    sudo apt-get install -y texlive-xetex
           
       - run:
           name: Install 7z
@@ -48,6 +50,20 @@ jobs:
           command: |
                     sudo apt-get install libav-tools
 
+      - run:
+          name: Install geos, proj for cartopy
+          command: |
+            sudo apt-get -qq update
+            sudo apt-get install -y libproj-dev proj-bin proj-data
+            sudo apt-get install -y python-pyproj
+            sudo apt-get install -y libc6
+            sudo apt-get install libgeos-dev
+            sudo apt-get install python-gdal gdal-bin
+            wget http://es.archive.ubuntu.com/ubuntu/pool/universe/p/proj/libproj9_4.9.2-2_amd64.deb 
+            sudo dpkg -i libproj9_4.9.2-2_amd64.deb 
+            wget http://es.archive.ubuntu.com/ubuntu/pool/universe/p/proj/libproj-dev_4.9.2-2_amd64.deb
+            sudo dpkg -i libproj-dev_4.9.2-2_amd64.deb
+
       # statsmodels setup.py requires it
       - run:
           name: install numpy
@@ -57,21 +73,28 @@ jobs:
             pip install numpy
 
       - run:
-          name: install dependencies 1
+          name: install dependencies (1)
           command: |
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements_conda.txt
             
       - run:
-          name: install dependencies 2
+          name: install cartopy
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install cartopy
+
+      - run:
+          name: install dependencies (2)
           command: |
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
             
       - run:
-          name: install dependencies 3
+          name: install dependencies (3)
           command: |
             python3 -m venv venv
             . venv/bin/activate
