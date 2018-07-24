@@ -20,7 +20,7 @@ install:
   - "%PYTHON%\\Scripts\\pip install pymyinstall"
   - "%PYTHON%\\Scripts\\pymy_install3 --set=ensae_teaching_cs"
   - "%PYTHON%\\Scripts\\pymy_install3 xgboost"
-  - "%PYTHON%\\Scripts\\pymy_install3 OpenCV"
+  - "%PYTHON%\\Scripts\\pymy_install3 h5py"
   - "%PYTHON%\\Scripts\\pymy_install3 PyYAML x86cpu"
   - "%PYTHON%\\Scripts\\pymy_install3 pyproj"
   - "%PYTHON%\\Scripts\\pymy_install3 opencv_python"

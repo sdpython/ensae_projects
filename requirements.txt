@@ -6,6 +6,7 @@ folium
 ijson
 jyquickhelper
 keras
+keras_applications
 keyring
 keyrings.alt
 lightmlrestapi

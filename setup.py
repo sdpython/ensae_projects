@@ -160,9 +160,7 @@ if not r:
         package_dir=package_dir,
         package_data=package_data,
         install_requires=[
-            "pyquickhelper>=1.5.2259", "pyensae", "pymyinstall",
+            "pyquickhelper>=1.8", "pyensae", "pymyinstall",
             "scikit-learn", "pyrsslocal", "pandas", "numpy",
             "matplotlib", "jupyter"],
-        # avoids downloading cvxopt (its installation is never easy)
-        # extra_requires=["cvxopt"],
     )
