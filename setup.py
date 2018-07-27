@@ -151,7 +151,7 @@ if not r:
         author_email='xavier.dupre@gmail.com',
         license="MIT",
         url="http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/index.html",
-        download_url="https://github.com/sdpython/actuariat_python/",
+        download_url="https://github.com/sdpython/ensae_projects/",
         description=DESCRIPTION,
         long_description=long_description,
         keywords=KEYWORDS,

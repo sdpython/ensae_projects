@@ -248,7 +248,7 @@ def plot_streets_network(edges_index, edges, vertices, shapes, order=None,
         options = {k: v for k, v in kwargs.items() if k not in params}
         fig = plt.figure(**options)
         projection = plot_streets_network_projection()
-        ax = fig.add_subplot(projection=projection)
+        ax = fig.add_subplot(1, 1, 1, projection=projection)
     else:
         projection = kwargs.get(
             'projection', plot_streets_network_projection())
