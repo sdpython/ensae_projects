@@ -4,15 +4,15 @@ import os
 # import sphinxjp.themes.basicstrap
 # import sphinx_py3doc_enhanced_theme
 # import alabaster
-import sphinx_redactor_theme
+import sphinx_modern_theme
 from pyquickhelper.helpgen.default_conf import set_sphinx_variables, get_default_stylesheet
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.split(__file__)[0])))
 
 set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2018,
-                     "sphinx_redactor_theme",  # "sphinx_py3doc_enhanced_theme",
+                     "sphinx_modern_theme",  # "sphinx_py3doc_enhanced_theme",
                      # add_extensions=["alabaster"],
-                     sphinx_redactor_theme.get_html_theme_path(), locals(),
+                     sphinx_modern_theme.get_html_theme_path(), locals(),
                      extlinks=dict(issue=('https://github.com/sdpython/ensae_projects/issues/%s', 'issue')))
 
 # html_theme = 'alabaster'  # 'sphinx_py3doc_enhanced_theme'
