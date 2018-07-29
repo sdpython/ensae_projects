@@ -23,7 +23,7 @@ pyquickhelper>=1.8
 pyshp
 qgrid
 shapely
-sphinx_modern_theme
+sphinx_materialdesign_theme
 tensorflow
 shapely
 waitress
