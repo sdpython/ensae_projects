@@ -5,7 +5,7 @@
 """
 import os
 from pyensae.datasource import download_data
-from pyensae.notebook_helper import folium_html_map
+from pyensae.notebookhelper import folium_html_map
 
 
 def get_fields_description():
@@ -107,15 +107,15 @@ def folium_html_street_map(subset, shapes, html_width=None, html_height=None, co
     @param      shapes          list of shapes
     @param      kwargs          extra parameters for `Map <https://github.com/python-visualization/folium/blob/master/folium/folium.py#L19>`_
     @param      html_width      sent to function
-                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html
-                                #pyensae.notebook_helper.folium_helper.folium_html_map>`_
+                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebookhelper/folium_helper.html
+                                #pyensae.notebookhelper.folium_helper.folium_html_map>`_
     @param      html_height     sent to function
-                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html
-                                #pyensae.notebook_helper.folium_helper.folium_html_map>`_
+                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebookhelper/folium_helper.html
+                                #pyensae.notebookhelper.folium_helper.folium_html_map>`_
     @param      color_vertices  see below
     @return                     see function
-                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html
-                                #pyensae.notebook_helper.folium_helper.folium_html_map>`_
+                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebookhelper/folium_helper.html
+                                #pyensae.notebookhelper.folium_helper.folium_html_map>`_
 
     if *color_vertices* is equal to `'odd'`, the function computes the degree
     of each vertex and choose a different color for odd (yellow)

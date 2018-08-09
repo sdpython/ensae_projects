@@ -7,7 +7,7 @@ import os
 from datetime import time
 import pandas
 from pyensae.datasource import download_data
-from pyensae.notebook_helper import folium_html_map
+from pyensae.notebookhelper import folium_html_map
 
 
 def get_chicago_stations(folder=".", as_df=False):
@@ -90,15 +90,15 @@ def folium_html_stations_map(stations, html_width=None, html_height=None, radius
     @param      stations        list ``[ (lat, lon), color ]`` or ``[ (lat, lon), (name, color) ]``
     @param      kwargs          extra parameters for `Map <https://github.com/python-visualization/folium/blob/master/folium/folium.py#L19>`_
     @param      html_width      sent to function
-                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html
-                                #pyensae.notebook_helper.folium_helper.folium_html_map>`_
+                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebookhelper/folium_helper.html
+                                #pyensae.notebookhelper.folium_helper.folium_html_map>`_
     @param      html_height     sent to function
-                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html
-                                #pyensae.notebook_helper.folium_helper.folium_html_map>`_
+                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebookhelper/folium_helper.html
+                                #pyensae.notebookhelper.folium_helper.folium_html_map>`_
     @param      radius          size of the circles
     @return                     see function
-                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebook_helper/folium_helper.html
-                                #pyensae.notebook_helper.folium_helper.folium_html_map>`_
+                                `folium_html_map <http://www.xavierdupre.fr/app/pyensae/helpsphinx/pyensae/notebookhelper/folium_helper.html
+                                #pyensae.notebookhelper.folium_helper.folium_html_map>`_
     """
     import folium
     map_osm = None
