@@ -22,7 +22,7 @@ install:
   - "%PYTHON%\\Scripts\\pymy_install3 xgboost"
   - "%PYTHON%\\Scripts\\pymy_install3 h5py"
   - "%PYTHON%\\Scripts\\pymy_install3 PyYAML x86cpu"
-  - "%PYTHON%\\Scripts\\pymy_install3 pyproj"
+  - "%PYTHON%\\Scripts\\pymy_install3 pyproj shapely"
   - "%PYTHON%\\Scripts\\pymy_install3 opencv_python"
   - "%PYTHON%\\Scripts\\pymy_install3 pillow psutil protobuf tensorflow"
   - "%PYTHON%\\Scripts\\pip install -r requirements.txt"

@@ -142,7 +142,7 @@ def folium_html_street_map(subset, shapes, html_width=None, html_height=None, co
             else:
                 map_osm = folium.Map(kwargs["location"], **kwargs)
         map_osm.add_child(folium.PolyLine(
-            locations=shape.points, latlon=False, weight=10))
+            locations=shape.points, weight=10))
         if color_vertices:
             a = (shape.points[0][0], shape.points[0][1])
             b = (shape.points[-1][0], shape.points[-1][1])
