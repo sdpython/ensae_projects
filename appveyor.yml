@@ -18,7 +18,7 @@ init:
 install:
   - "%PYTHON%\\python -m pip install --upgrade pip"
   - "%PYTHON%\\Scripts\\pip install pymyinstall"
-  - "%PYTHON%\\Scripts\\pymy_install3 --set=ensae_teaching_cs"
+  - "%PYTHON%\\Scripts\\pymy_install3 --set=pyensae"
   - "%PYTHON%\\Scripts\\pymy_install3 xgboost"
   - "%PYTHON%\\Scripts\\pymy_install3 h5py"
   - "%PYTHON%\\Scripts\\pymy_install3 PyYAML x86cpu"
@@ -26,6 +26,7 @@ install:
   - "%PYTHON%\\Scripts\\pymy_install3 opencv_python"
   - "%PYTHON%\\Scripts\\pymy_install3 pillow psutil protobuf tensorflow"
   - "%PYTHON%\\Scripts\\pip install -r requirements.txt"
+  - "%PYTHON%\\Scripts\\pip uninstall -y ensae_projects"
 
 build: off
 
