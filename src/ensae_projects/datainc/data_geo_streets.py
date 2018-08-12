@@ -101,7 +101,7 @@ def shapely_records(filename):
 
 def folium_html_street_map(subset, shapes, html_width=None, html_height=None, color_vertices=None, **kwargs):
     """
-    Returns a folium map which represents the streets.
+    Returns a :epkg:`folium` map which represents the streets.
 
     @param      subset          list of streets index
     @param      shapes          list of shapes

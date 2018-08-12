@@ -5,7 +5,12 @@
 History
 =======
 
-current - 2018-07-27 - 0.00Mb
+current - 2018-08-13 - 0.00Mb
+=============================
+
+* `9`: function folium_html_street_map fails with folium 0.6 (2018-08-12)
+
+0.1.419 - 2018-07-27 - 0.12Mb
 =============================
 
 * `8`: fix a bug in plot_streets_network (2018-07-27)

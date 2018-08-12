@@ -107,7 +107,8 @@ sleep(15)
 
 from lightmlrestapi.args import image2base64
 import ensae_projects.datainc.search_images as si
-imgfile = os.path.abspath(os.path.join(os.path.dirname(si.__file__), "cat-1192026__480.jpg"))
+imgfile = os.path.abspath(os.path.join(
+    os.path.dirname(si.__file__), "cat-1192026__480.jpg"))
 if not os.path.exists(imgfile):
     raise FileNotFoundError("Unable to find '{0}'".format(imgfile))
 
