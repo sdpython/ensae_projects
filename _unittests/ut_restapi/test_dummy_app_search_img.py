@@ -6,6 +6,8 @@
 import sys
 import os
 import unittest
+from io import StringIO
+from contextlib import redirect_stderr
 import falcon
 import falcon.testing as testing
 import x86cpu
@@ -38,6 +40,17 @@ class TestDummyAppSearchImg(testing.TestCase):
 
         from src.ensae_projects.restapi import search_images_dogcat
         temp = get_temp_folder(__file__, 'temp_search_images_dogcat')
+        
+        with redirect_stderr(StringIO()):
+            try:
+                from keras.applications.mobilenet import MobileNet
+                assert MobileNet is not None
+                self._run_test = True
+            except SyntaxError as e:
+                warnings.warn("tensorflow is probably not available yet on python 3.7: {0}".format(e))
+                self._run_test = False
+                return
+
         search_images_dogcat(self.api, dest=temp)
 
     @skipif_travis('tensorflow/python/lib/core/bfloat16.cc:664] Check failed: PyBfloat16_Type.tp_base != nullptr')
@@ -54,6 +67,10 @@ class TestDummyAppSearchImg(testing.TestCase):
                             "data", "wiki_modified.png")
         b64 = image2base64(img2)[1]
         bodyin = ujson.dumps({'X': b64})
+
+        if not self._run_test:
+            return
+
         result = self.simulate_request(path='/', method="POST", body=bodyin)
         if result.status != falcon.HTTP_201:
             raise Exception("Failure\n{0}".format(result.status))
@@ -86,6 +103,9 @@ class TestDummyAppSearchImg(testing.TestCase):
         img2 = base642image(ext_b64[1]).convert('RGB')
         arr = image2array(img2)
         bodyin = ujson.dumps({'X': arr.tolist()})
+
+        if not self._run_test:
+            return
 
         result = self.simulate_request(path='/', method="POST", body=bodyin)
         self.assertEqual(result.status, falcon.HTTP_400)
