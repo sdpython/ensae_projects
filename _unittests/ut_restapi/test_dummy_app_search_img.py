@@ -41,7 +41,7 @@ class TestDummyAppSearchImg(testing.TestCase):
 
         from src.ensae_projects.restapi import search_images_dogcat
         temp = get_temp_folder(__file__, 'temp_search_images_dogcat')
-        
+
         with redirect_stderr(StringIO()):
             try:
                 from keras.applications.mobilenet import MobileNet
