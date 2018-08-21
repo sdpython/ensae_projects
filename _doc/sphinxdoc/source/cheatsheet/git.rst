@@ -111,6 +111,18 @@ Example::
 
     git pull origin master
 
+You can also rebase the repository:
+
+::
+
+    git fetch <remote>
+    git rebase <remote>/<banch>
+
+Example::
+
+    git fetch upstream
+    git rebase upstream/master
+
 Update a submodule
 ++++++++++++++++++
 
