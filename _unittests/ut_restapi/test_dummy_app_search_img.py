@@ -6,6 +6,7 @@
 import sys
 import os
 import unittest
+import warnings
 from io import StringIO
 from contextlib import redirect_stderr
 import falcon
