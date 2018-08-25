@@ -17,6 +17,7 @@ opencv-python
 pandas_streaming
 psutil
 pycryptodomex
+pyecharts
 pyensae>=1.2.788
 pymyinstall
 pyquickhelper>=1.8
