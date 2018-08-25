@@ -133,12 +133,12 @@ except Exception as e:
     print("unable to request", 'http://127.0.0.1:%d' % port)
     print(e)
     print("We are using dummy data.")
-    r = {'Y': [[[0.0, 1, {'name': 'oneclass\\cat-1192026__480.jpg'}],
-                [0.0185132341, 11, {'name': 'oneclass\\cat-2946028__480.jpg'}],
-                [0.0745846851, 2, {'name': 'oneclass\\cat-1508613__480.jpg'}],
+    r = {'Y': [[[0.0, 1, {'name': 'oneclass/cat-1192026__480.jpg'}],
+                [0.0185132341, 11, {'name': 'oneclass/cat-2946028__480.jpg'}],
+                [0.0745846851, 2, {'name': 'oneclass/cat-1508613__480.jpg'}],
                 [0.0940817104, 28, {
-                    'name': 'oneclass\\shotlanskogo-2934720__480.jpg'}],
-                [0.2563886613, 5, {'name': 'oneclass\\cat-2603300__480.jpg'}]]]}
+                    'name': 'oneclass/shotlanskogo-2934720__480.jpg'}],
+                [0.2563886613, 5, {'name': 'oneclass/cat-2603300__480.jpg'}]]]}
 
 if r is not None:
     js = r if isinstance(r, dict) else r.json()
