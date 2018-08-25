@@ -19,6 +19,8 @@ def haversine_distance(lat1, lng1, lat2, lng2):
     """
     Computes `Haversine formula <http://en.wikipedia.org/wiki/Haversine_formula>`_.
 
+    .. index:: Haversine
+
     @param      lat1    lattitude
     @param      lng1    longitude
     @param      lat2    lattitude
@@ -37,7 +39,7 @@ def haversine_distance(lat1, lng1, lat2, lng2):
 
 def distance_solution(edges_index, edges, distances, solution, exc=True):
     """
-    Checks if a solution is a solution and returns the distance of it,
+    Checks if a solution is really a solution and returns the distance of it,
     None if it is not a solution. The function does not case about the order.
 
     @param      edges_index     list of indices of edges (if None --> range(len(edges))
@@ -104,7 +106,7 @@ def distance_solution(edges_index, edges, distances, solution, exc=True):
 
 def compute_degrees(edges):
     """
-    Compute the degrees of vertices.
+    Compute the degree of vertices.
 
     @param      edges       list of tuple
     @return                 dictionary {key: degree}
@@ -118,7 +120,9 @@ def compute_degrees(edges):
 
 def euler_path(edges_index, edges, solution):
     """
-    Compute an eulerian path.
+    Computes an Eulerian path.
+
+    .. index:: Eulerian
 
     @param      edges_index     list of indices of edges (if None --> range(len(edges))
     @param      edges           list of tuple (vertex A, vertex B)
@@ -167,7 +171,7 @@ def euler_path(edges_index, edges, solution):
 
 def _euler_path(edges):
     """
-    Compute an eulerian path.
+    Computes an Eulerian path.
 
     @param      edges           edges
     @return                     path, list of (vertex,edge)
@@ -271,7 +275,7 @@ def _delete_edge(edges_from, n, to):
 
 def _explore_path(edges_from, begin):
     """
-    Explore an eulerian path, remove used edges from *edges_from*.
+    Explores an Eulerian path, remove used edges from *edges_from*.
 
     @param      edges_from      structure which contains the edges (will be modified)
     @param      begin           first vertex to use
@@ -317,7 +321,7 @@ def _explore_path(edges_from, begin):
 
 def distance_vertices(edges, vertices, distances):
     """
-    Computes the length of edges if distances is None
+    Computes the length of edges if distances is None.
 
     @param      edges           list of tuple (vertex A, vertex B)
     @param      vertices        locations of the vertices
@@ -429,7 +433,8 @@ def matching_vertices(distances, algo="blossom"):
     """
     Finds the best match between vertices.
 
-    @param      distances       result of function @bellman_distances but only for odd vertices (odd = odd degree),
+    @param      distances       result of function @bellman_distances but
+                                only for odd vertices (odd = odd degree),
                                 dictionary { (vi,vj) : distance}
     @param      algo            algorithm (see below)
     @return                     sequences of best matches.
@@ -569,7 +574,7 @@ def matching_vertices(distances, algo="blossom"):
 
 def best_euler_path(edges, vertices, distances, edges_index=None, algo="blossom", fLOG=None):
     """
-    Computes the final solution for the Eulerian path
+    Computes the final solution for the Eulerian path.
 
     @param      edges           edges (list of tuple)
     @param      vertices        location of the vertices (not needed if distances are filled)

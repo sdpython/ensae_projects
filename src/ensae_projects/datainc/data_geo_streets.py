@@ -10,7 +10,8 @@ from pyensae.notebookhelper import folium_html_map
 
 def get_fields_description():
     """
-    Retrieves a dataframe which describes the meaning of the metadata.
+    Retrieves a :epkg:`dataframe` which describes
+    the meaning of the metadata.
 
     @return         dataframe
     """
@@ -99,7 +100,8 @@ def shapely_records(filename):
     return shapes, records, rshp.fields
 
 
-def folium_html_street_map(subset, shapes, html_width=None, html_height=None, color_vertices=None, **kwargs):
+def folium_html_street_map(subset, shapes, html_width=None, html_height=None,
+                           color_vertices=None, **kwargs):
     """
     Returns a :epkg:`folium` map which represents the streets.
 
@@ -142,21 +144,21 @@ def folium_html_street_map(subset, shapes, html_width=None, html_height=None, co
             else:
                 map_osm = folium.Map(kwargs["location"], **kwargs)
         map_osm.add_child(folium.PolyLine(
-            locations=shape.points, weight=10))
+            locations=[(_[1], _[0]) for _ in shape.points], weight=10))
         if color_vertices:
             a = (shape.points[0][0], shape.points[0][1])
             b = (shape.points[-1][0], shape.points[-1][1])
             c1 = color_vertices[a]
             c2 = color_vertices[b]
             map_osm.add_child(folium.CircleMarker(
-                [shape.points[0][1], shape.points[0][0]], popup=str((i, index)), radius=3, fill_color=c1))
+                [shape.points[0][1], shape.points[0][0]], popup=str((i, index)), radius=8, fill_color=c1))
             map_osm.add_child(folium.CircleMarker(
-                [shape.points[-1][1], shape.points[-1][0]], popup=str((i, index)), radius=3, fill_color=c2))
+                [shape.points[-1][1], shape.points[-1][0]], popup=str((i, index)), radius=8, fill_color=c2))
         else:
             map_osm.add_child(folium.CircleMarker(
-                [shape.points[0][1], shape.points[0][0]], popup=str((i, index)), radius=3))
+                [shape.points[0][1], shape.points[0][0]], popup=str((i, index)), radius=8, fill_color="yellow"))
             map_osm.add_child(folium.CircleMarker(
-                [shape.points[-1][1], shape.points[-1][0]], popup=str((i, index)), radius=3))
+                [shape.points[-1][1], shape.points[-1][0]], popup=str((i, index)), radius=8, fill_color="yellow"))
     return folium_html_map(map_osm, width=html_width, height=html_height)
 
 

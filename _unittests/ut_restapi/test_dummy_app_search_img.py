@@ -48,7 +48,8 @@ class TestDummyAppSearchImg(testing.TestCase):
                 assert MobileNet is not None
                 self._run_test = True
             except SyntaxError as e:
-                warnings.warn("tensorflow is probably not available yet on python 3.7: {0}".format(e))
+                warnings.warn(
+                    "tensorflow is probably not available yet on python 3.7: {0}".format(e))
                 self._run_test = False
                 return
 
