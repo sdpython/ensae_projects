@@ -4,6 +4,13 @@
 City Tour
 =========
 
+Every city has many garbage truck and they need
+to go in every street to collect garbage. Did
+you ever think how the truck was choosing
+its way among all the possibilites ?
+In short terms, how to find the shortest
+path to visit all streets ?
+
 Problem definition
 ++++++++++++++++++
 

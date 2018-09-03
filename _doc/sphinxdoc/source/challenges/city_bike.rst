@@ -4,6 +4,11 @@
 City Bike
 =========
 
+Many cities offer bicycles people can rent
+for short trips and many people use it every day.
+As a result, by knowing when and where people use
+them, we may infer...
+
 Data preparation
 ++++++++++++++++
 
