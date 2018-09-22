@@ -133,3 +133,14 @@ Update a submodule
 Example::
 
     git submodule update --remote --merge
+
+Update a submodule to the remote branch
++++++++++++++++++++++++++++++++++++++++
+
+::
+
+    git submodule update --init
+    
+Example::
+
+    git submodule update --init
