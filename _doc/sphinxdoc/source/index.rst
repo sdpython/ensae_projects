@@ -1,6 +1,6 @@
 
-ENSAE Projects
-==============
+Le hackathon de l'ENSAE
+=======================
 
 **Links:** `pypi <https://pypi.python.org/pypi/ensae_projects/>`_,
 `github <https://github.com/sdpython/ensae_projects/>`_,
@@ -10,8 +10,16 @@ ENSAE Projects
 :ref:`l-README`,
 :ref:`blog <ap-main-0>`
 
-Events
-------
+Ce site regroupe principalement différentes ressources
+nécessaires pour participer aux hackathons de
+l'ENSAE, description des hackathons passés,
+anti-sèches (ou cheat sheets), et quelques
+défis intéressants pour se préparer. La langue
+oscille entre anglais et français selon l'inspiration
+du moment.
+
+Evénements
+----------
 
 .. toctree::
     :maxdepth: 1
@@ -20,8 +28,8 @@ Events
     projects/hackathon_2016
     projects/hackathon_2017
 
-Challenges
-----------
+Défis
+-----
 
 .. toctree::
     :maxdepth: 2
