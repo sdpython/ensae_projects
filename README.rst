@@ -46,7 +46,7 @@ README
 Description
 -----------
 
-Outils pour des projets d'étudiants.
+Outils pour des projets d'étudiants, des hackathons.
 
 *Helpers, tools for teachings, events, hackathons.*
 

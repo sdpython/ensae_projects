@@ -1,6 +1,6 @@
 
-Le hackathon de l'ENSAE
-=======================
+Hackathons, anti-sèches, défis
+==============================
 
 **Links:** `pypi <https://pypi.python.org/pypi/ensae_projects/>`_,
 `github <https://github.com/sdpython/ensae_projects/>`_,
@@ -10,65 +10,29 @@ Le hackathon de l'ENSAE
 :ref:`l-README`,
 :ref:`blog <ap-main-0>`
 
-Ce site regroupe principalement différentes ressources
+Ce site regroupe différentes ressources
 nécessaires pour participer aux hackathons de
 l'ENSAE, description des hackathons passés,
-anti-sèches (ou cheat sheets), et quelques
-défis intéressants pour se préparer. La langue
+anti-sèches (ou cheat sheets), quelques
+défis intéressants de machine learning ou
+d'algorithmie. La langue
 oscille entre anglais et français selon l'inspiration
 du moment.
-
-Evénements
-----------
-
-.. toctree::
-    :maxdepth: 1
-
-    projects/hackathon_2015
-    projects/hackathon_2016
-    projects/hackathon_2017
-
-Défis
------
 
 .. toctree::
     :maxdepth: 2
 
-    i_challenges
-    i_coding_problems
-
-Short and useful examples
--------------------------
-
-.. toctree::
-    :maxdepth: 1
-
-    api/index
-    cheat_sheets
-    mlexamples
-    gyexamples/index
-    all_notebooks
-    blog/blogindex
-
-FAQ
----
-
-.. toctree::
-    :maxdepth: 1
-
-    i_faq
-    i_ex
-    i_nb
-    glossary
+    hackathon
+    defis
+    antiseche
+    faqts
     blog/main_0000
-    README
     license
-    filechanges
+    glossary
 
-Installation
-------------
+*Installation*
 
-pip ::
+::
 
     pip install ensae_projects
 
