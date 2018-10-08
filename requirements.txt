@@ -18,6 +18,7 @@ pandas_streaming
 psutil
 pycryptodomex
 pyecharts
+pyecharts-javascripthon
 pyensae>=1.2.788
 pymyinstall
 pyquickhelper>=1.8
