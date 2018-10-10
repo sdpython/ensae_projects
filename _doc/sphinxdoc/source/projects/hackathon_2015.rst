@@ -1,7 +1,7 @@
 
 .. _l-hackathon-2015:
 
-Hackathon Microsoft / ENSAE / Croix-Rouge / DataForGood - 2015
+Hackathon ENSAE / Croix-Rouge / DataForGood / Microsoft - 2015
 ==============================================================
 
 .. index:: Microsoft, ENSAE, Hackathon, Croix-Rouge, DataForGood, 2015

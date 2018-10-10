@@ -1,7 +1,7 @@
 
 .. _l-hackathon-2017:
 
-Hackathon Ernst & Young / ENSAE / Genius / Latitudes / Label Emmaüs / 2017
+Hackathon ENSAE / Label Emmaüs / Latitudes / Genius / Ernst & Young - 2017
 ==========================================================================
 
 .. index:: Ernst & Young, ENSAE, Hackathon, Genius, Label Emmaüs, 2017
