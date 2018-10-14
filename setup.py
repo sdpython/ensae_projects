@@ -38,6 +38,7 @@ package_data = {
     project_var_name + ".datainc.hackathon_2015_croix_rouge": ["*.enc"],
     project_var_name + ".datainc.search_images": ["*.jpg"],
     project_var_name + ".datainc.seattle_streets": ["*.xlsx"],
+    project_var_name + ".datainc.zips": ["*.zip"],
     project_var_name + ".automation": ["*.r", "*.ico"]}
 
 ############
@@ -120,13 +121,13 @@ if is_local():
         sys.argv, __file__, project_var_name,
         unittest_modules=["pyquickhelper"],
         github_owner='sdpython',
-        requirements=["pyquickhelper", "jyquickhelper",
+        requirements=["pyquickhelper", "jyquickhelper", "manydataapi",
                       "pyensae", "pyrsslocal", "pymyinstall",
                       "lightmlrestapi", "mlinsights", "pandas_streaming"],
-        additional_notebook_path=["pyquickhelper", "jyquickhelper",
+        additional_notebook_path=["pyquickhelper", "jyquickhelper", "manydataapi",
                                   "pyensae", "pyrsslocal", "pymyinstall",
                                   "lightmlrestapi", "mlinsights", "pandas_streaming"],
-        additional_local_path=["pyquickhelper", "jyquickhelper",
+        additional_local_path=["pyquickhelper", "jyquickhelper", "manydataapi",
                                "pyensae", "pyrsslocal", "pymyinstall",
                                "lightmlrestapi", "mlinsights", "pandas_streaming"],
         copy_add_ext=["enc", 'jpg'], fLOG=logging_function, layout=['html'],
@@ -163,5 +164,5 @@ if not r:
         install_requires=[
             "pyquickhelper>=1.8", "pyensae", "pymyinstall",
             "scikit-learn", "pyrsslocal", "pandas", "numpy",
-            "matplotlib", "jupyter"],
+            "matplotlib", "jupyter", "manydataapi"],
     )

@@ -5,7 +5,12 @@
 History
 =======
 
-current - 2018-08-13 - 0.00Mb
+current - 2018-10-14 - 0.00Mb
+=============================
+
+* `10`: add code about bicycle trajectories knowning their location when they are stopped (2018-10-14)
+
+0.1.427 - 2018-08-12 - 0.12Mb
 =============================
 
 * `9`: function folium_html_street_map fails with folium 0.6 (2018-08-12)
