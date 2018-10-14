@@ -62,7 +62,7 @@ class TestVelibTrajectories(unittest.TestCase):
 
         params = ParemetreCoutTrajet()
         fLOG(params)
-        mindist, moyenne, appariement_, positif, negatif = appariement(
+        mindist, moyenne, appariement_, positif, negatif = appariement(  # pylint: disable=W0612
             events, iter=100, params=params)
         fLOG("vitesse moyenne", moyenne)
         self.assertGreater(moyenne, 0)

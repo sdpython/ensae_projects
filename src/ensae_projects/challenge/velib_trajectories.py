@@ -34,16 +34,18 @@ def enumerate_events(df):
     df = df.sort_values(["name", "file", "collect_date"])
     lastrow = None
     for row in df.values:
-        if lastrow is not None and lastrow[2] == row[2]:
-            d1 = row[-2] - lastrow[-2]  # nombre de place en plus
-            d2 = row[-1] - lastrow[-1]  # nombre de vélos en plus
+        if lastrow is not None and lastrow[2] == row[2]:  # pylint: disable=E1136
+            # nombre de place en plus
+            d1 = row[-2] - lastrow[-2]  # pylint: disable=E1136
+            # nombre de vélos en plus
+            d2 = row[-1] - lastrow[-1]  # pylint: disable=E1136
             if d1 != 0:
                 step = d1 // abs(d1)
-                for i in range(1, abs(d1) + 1):
+                for _ in range(1, abs(d1) + 1):
                     yield tuple(row[:-2]) + (step,)
             elif d2 != 0:
                 step = d2 // abs(d2)
-                for i in range(1, abs(d2) + 1):
+                for _ in range(1, abs(d2) + 1):
                     yield tuple(row[:-2]) + (step,)
 
         lastrow = row
@@ -232,7 +234,7 @@ def appariement(events, iter=1000, params=ParemetreCoutTrajet(), fLOG=print):
         positif.append(default)
 
     appariement_ = [(i, i) for i in range(0, len(positif))]
-    vit, mindist, vitav, nbneg = distance(
+    vit, mindist, vitav, nbneg = distance(  # pylint: disable=W0612
         positif, negatif, appariement_, params)
     nbchange = 0
 
@@ -249,7 +251,7 @@ def appariement(events, iter=1000, params=ParemetreCoutTrajet(), fLOG=print):
             ki, kj = appariement_[i], appariement_[j]
             appariement_[i] = (ki[0], kj[1])
             appariement_[j] = (kj[0], ki[1])
-            v, dist, vt, nbneg = distance(
+            v, dist, vt, nbneg = distance(  # pylint: disable=W0612
                 positif, negatif, appariement_, params)
             if dist < mindist:
                 mindist = dist
@@ -319,7 +321,7 @@ if __name__ == "__main__":
 
         params = ParemetreCoutTrajet()
         print(params)
-        mindist, moyenne, appariement_, positif, negatif = appariement(
+        mindist, moyenne, appariement_, positif, negatif = appariement(  # pylint: disable=W0612
             events, iter=200, params=params)
         print("vitesse moyenne", moyenne)
 
