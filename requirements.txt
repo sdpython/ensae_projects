@@ -10,6 +10,7 @@ keras_applications
 keyring
 keyrings.alt
 lightmlrestapi
+manydataapi
 mlinsights
 mnist
 mpld3
