@@ -98,7 +98,9 @@ Example::
     git submodule foreach git reset --hard
 
 The option ``--recursive`` does it for submodules included
-in submodules.
+in submodules. Another to do it is to remove the submodule
+folder and to type ``git reset --hard`` which removes
+every modification made since the last pull.
 
 Update a branch
 +++++++++++++++
