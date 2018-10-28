@@ -146,3 +146,6 @@ Update a submodule to the remote branch
 Example::
 
     git submodule update --init
+
+Option ``--recursive`` can be added to fetch
+submodules inside submodules.
