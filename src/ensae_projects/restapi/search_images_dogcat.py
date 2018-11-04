@@ -104,23 +104,24 @@ def search_images_dogcat(app=None, url_images=None, dest=None):
                       weights='imagenet', input_tensor=None, pooling=None, classes=1000)
 
     # Sets up the application.
-    from mlinsights.search_rank import SearchEnginePredictionImages
-    se = SearchEnginePredictionImages(model, fct_params=dict(layer=len(model.layers) - 2),
-                                      n_neighbors=5)
-
-    # fit
-    logger.info("Creating the neighbors")
-    se.fit(iterimf)
+    def predict_load():
+        from mlinsights.search_rank import SearchEnginePredictionImages
+        se = SearchEnginePredictionImages(model, fct_params=dict(layer=len(model.layers) - 2),
+                                          n_neighbors=5)
+        # fit
+        logger.info("Creating the neighbors")
+        se.fit(iterimf)
+        return se
 
     # prediction function
     from lightmlrestapi.args import base642image, image2array
 
-    def mypredict(X):
+    def mypredict(se, X):
         if isinstance(X, str):
             img2 = base642image(X)
-            return mypredict(img2)
+            return mypredict(se, img2)
         elif isinstance(X, list):
-            return [mypredict(x) for x in X]
+            return [mypredict(se, x) for x in X]
         else:
             gen = ImageDataGenerator(rescale=1. / 255)
             X = image2array(X.convert('RGB').resize((224, 224)))
@@ -136,6 +137,6 @@ def search_images_dogcat(app=None, url_images=None, dest=None):
     from lightmlrestapi.mlapp import MachineLearningPost
     if app is None:
         app = falcon.API()
-    app.add_route(
-        '/', MachineLearningPost(mypredict))
+    app.add_route('/',
+                  MachineLearningPost(predict_load, mypredict))
     return app

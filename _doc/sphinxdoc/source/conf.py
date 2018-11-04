@@ -26,15 +26,20 @@ html_context = {
     'css_files': get_default_stylesheet() + ['_static/my-styles.css'],
 }
 
+epkg_dictionary['B-Corp'] = "https://bcorporation.eu/about-b-lab/country-partner/france"
+epkg_dictionary['BRGM'] = "http://www.brgm.fr/"
 epkg_dictionary['cartopy'] = "https://scitools.org.uk/cartopy/docs/latest/"
 epkg_dictionary['Cresus'] = "http://www.cresus-france.org/"
 epkg_dictionary['data leakage'] = "https://www.kaggle.com/wiki/Leakage"
+epkg_dictionary['ESUS'] = "https://www.service-public.fr/professionnels-entreprises/vosdroits/F32275"
 epkg_dictionary['falcon'] = "https://falconframework.org/"
 epkg_dictionary['ijson'] = "https://pypi.python.org/pypi/ijson"
 epkg_dictionary['keras'] = "https://keras.io/"
 epkg_dictionary['keyring'] = "https://pypi.python.org/pypi/keyring"
 epkg_dictionary['Label Emmaüs'] = 'https://www.label-emmaus.co/'
+epkg_dictionary['Latitudes'] = "http://www.latitudes.cc/"
 epkg_dictionary['lightmlrestapi'] = "http://www.xavierdupre.fr/app/lightmlrestapi/helpsphinx/index.html"
+epkg_dictionary['Microdon'] = "https://www.microdon.org/"
 epkg_dictionary['REST API'] = "https://en.wikipedia.org/wiki/Representational_state_transfer"
 epkg_dictionary['waitress'] = "https://docs.pylonsproject.org/projects/waitress/en/latest/"
 epkg_dictionary['WSGI'] = "https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface"

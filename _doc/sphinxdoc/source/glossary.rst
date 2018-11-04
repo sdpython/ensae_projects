@@ -6,6 +6,23 @@ Glossaire
 
 .. glossary::
 
+    B-corp
+        La communauté B Corp, fondée en 2006, aux Etats-Unis,
+        réunit dans le monde les entreprises qui souhaitent (ré)affirmer
+        leur Mission Sociétale au cœur de leur raison d’être. Ce sont des
+        entreprises à but lucratif (for profit) qui souhaitent progresser
+        et démontrer leur impact positif (for purpose) en étant évaluées
+        sur leur performance globale tous les 3 ans. Les entreprises
+        labellisées à date sont de toutes tailles et tous secteurs,
+        icônes historiques comme Patagonia, Natura, Alessi ou Ecover,
+        « jeunes pousses » comme Fairphone, Triodos, change.org,
+ou Kickstarter…
+
+    BRGM
+        Le Bureau de Recherches Géologiques et Minières est l'établissement (:epkg:`BRGM`)
+        public de référence dans les applications des sciences de la Terre pour
+        gérer les ressources et les risques du sol et du sous-sol.
+
     Data For Good
         `DataForGood <https://dataforgood.fr/>`_ propose à des
         datascientist de réfléchir sur des problématiques
@@ -73,6 +90,12 @@ Glossaire
         L'association *Latitudes* a proposé et aidés à l'élaboration
         les sujets des hackathons
         :ref:`2017 <l-hackathon-2017>` et 2018.
+
+    Microdon
+        :epkg:`Microdon`une start-up agréée
+        :epkg:`ESUS` et certifiée :epkg:`B-Corp` qui propose aux entreprises soucieuses de
+        leur Responsabilité sociétale des solutions innovantes pour faciliter
+        l'engagement solidaire en entreprise.
 
     Microsoft
         `Microsoft <https://www.microsoft.com/>`_ a sponsorisé le premier

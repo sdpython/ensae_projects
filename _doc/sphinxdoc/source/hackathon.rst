@@ -22,3 +22,4 @@ des données peut apporter à leur activité.
     projects/hackathon_2015
     projects/hackathon_2016
     projects/hackathon_2017
+    projects/hackathon_2018
