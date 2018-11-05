@@ -6,7 +6,6 @@ import sys
 import os
 import warnings
 import unittest
-from pyquickhelper.pycode import skipif_travis
 
 
 try:
