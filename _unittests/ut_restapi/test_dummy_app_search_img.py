@@ -80,12 +80,11 @@ class TestDummyAppSearchImg(testing.TestCase):
         d = ujson.loads(result.content)
         self.assertTrue('Y' in d)
         self.assertIsInstance(d['Y'], list)
-        self.assertEqual(len(d['Y']), 1)
-        self.assertEqual(len(d['Y'][0]), 5)
-        self.assertIsInstance(d['Y'][0][0][0], float)
-        self.assertIsInstance(d['Y'][0][0][1], int)
-        self.assertIn('name', d['Y'][0][0][2])
-        val = d['Y'][0][0][2]['name'].replace('\\', '/')
+        self.assertEqual(len(d['Y']), 5)
+        self.assertIsInstance(d['Y'][0][0], float)
+        self.assertIsInstance(d['Y'][0][1], int)
+        self.assertIn('name', d['Y'][0][2])
+        val = d['Y'][0][2]['name'].replace('\\', '/')
         self.assertIn(val, ('oneclass/cat-2922832__480.jpg',
                             'oneclass/wolf-2865653__480.jpg'))
 
