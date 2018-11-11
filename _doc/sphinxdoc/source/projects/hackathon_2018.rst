@@ -66,18 +66,46 @@ de 90 étudiants se sont inscrits…
 Challenge deep learning
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+La construction d'un défi n'a pas été simple pour ce challenge.
+Une vue d'ensemble des images montre que les photos partagées
+sur twitter illustrent des inondations sérieuses, des voitures sous
+l'eau, des bateaux dans les rues. Il y a peu de photos d'intérieures
+dévastés. Le problème est plus flagrant pour les séismes ou peu de
+gens prennent des photos au regard du nombre de gens
+qui les propagent. Cela tient sans doute à la soudaineté
+de la catastrophe. Les personnes sont surprises et plongées
+dans l'urgence alors qu'une inondation monte lentement et laisse
+le temps de prendre des photos du danger.
+
+La base d'images sur tweeter regroupe de nombreuses images
+d'inondations ou de séims, des cartes. A cela ont été ajoutées
+des images de la base :epkg:`ImageNet` pour avoir des images
+de rues non inondées assez rares dans la base récoltées par
+le :epkg:`BRGM`. Des images ont été récupérées depuis l'url
+suivant : `ImageNet/street <http://www.image-net.org/search?q=street>`_.
+Il n'est pas interdit d'en ajouter d'autres.
+
+Le jeu de données fourni pour le hackathon contient :
+
+* Les images initiales extraites de tweeter.
+* Les images sans doublons extraites par une méthode statistiques.
+* Des images extraites de :ref:`ImageNet`
+* Quelques images annotées.
+
 Challenge machine learning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Eléments de code
 ----------------
 
-**Challenge deep learning**
+Vous pouvez importer le module :epkg:`ensae_projects`
+ou copier/coller le code.
 
-**Challenge machine learning**
+* :ref:`l-hack-fct-2018`
+* :ref:`chshimagesrst`
 
-Manipulation d'images et premiers avec le deep learning
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Manipulation d'images et premiers pas avec le deep learning
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * `Search images with deep learning <http://www.xavierdupre.fr/app/mlinsights/helpsphinx/notebooks/search_images.html>`_ :
   le notebook expose comment manipuler des images avec :epkg:`keras` et comment
@@ -120,7 +148,7 @@ Lieu : `Numa <https://paris.numa.co/>`_
 *Vendredi 16 Novembre*
 
 * 14h00 - Accueil des participants
-* 15h00 - EY, ENSAE, Genius, Latitudes, Microdon, BRGM
+* 15h00 - EY, ENSAE, Genius, Latitudes, Microdon, BRGM, Numa
 * 15h45 - Présentation des sujets
 * 16h15 - Début du hackathon
 

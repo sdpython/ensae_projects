@@ -26,20 +26,30 @@ html_context = {
     'css_files': get_default_stylesheet() + ['_static/my-styles.css'],
 }
 
-epkg_dictionary['B-Corp'] = "https://bcorporation.eu/about-b-lab/country-partner/france"
-epkg_dictionary['BRGM'] = "http://www.brgm.fr/"
-epkg_dictionary['cartopy'] = "https://scitools.org.uk/cartopy/docs/latest/"
-epkg_dictionary['Cresus'] = "http://www.cresus-france.org/"
-epkg_dictionary['data leakage'] = "https://www.kaggle.com/wiki/Leakage"
-epkg_dictionary['ESUS'] = "https://www.service-public.fr/professionnels-entreprises/vosdroits/F32275"
-epkg_dictionary['falcon'] = "https://falconframework.org/"
-epkg_dictionary['ijson'] = "https://pypi.python.org/pypi/ijson"
-epkg_dictionary['keras'] = "https://keras.io/"
-epkg_dictionary['keyring'] = "https://pypi.python.org/pypi/keyring"
-epkg_dictionary['Label Emmaüs'] = 'https://www.label-emmaus.co/'
-epkg_dictionary['Latitudes'] = "http://www.latitudes.cc/"
-epkg_dictionary['lightmlrestapi'] = "http://www.xavierdupre.fr/app/lightmlrestapi/helpsphinx/index.html"
-epkg_dictionary['Microdon'] = "https://www.microdon.org/"
-epkg_dictionary['REST API'] = "https://en.wikipedia.org/wiki/Representational_state_transfer"
-epkg_dictionary['waitress'] = "https://docs.pylonsproject.org/projects/waitress/en/latest/"
-epkg_dictionary['WSGI'] = "https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface"
+epkg_dictionary.update({
+    'B-Corp': "https://bcorporation.eu/about-b-lab/country-partner/france",
+    'BRGM': "http://www.brgm.fr/",
+    'cartopy': "https://scitools.org.uk/cartopy/docs/latest/",
+    'Cresus': "http://www.cresus-france.org/",
+    'data leakage': "https://www.kaggle.com/wiki/Leakage",
+    'ensae_projects': 'https://pypi.org/project/ensae_projects/',
+    'ESUS': "https://www.service-public.fr/professionnels-entreprises/vosdroits/F32275",
+    'falcon': "https://falconframework.org/",
+    'ijson': "https://pypi.python.org/pypi/ijson",
+    'ImageNet': "http://www.image-net.org/",
+    'keras': "https://keras.io/",
+    'keyring': "https://pypi.python.org/pypi/keyring",
+    'kneighbors': 'https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors.kneighbors',
+    'kneighbors_graph': 'https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors.kneighbors_graph',
+    'NearestNeighbors': 'https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html',
+    'Label Emmaüs': 'https://www.label-emmaus.co/',
+    'Latitudes': "http://www.latitudes.cc/",
+    'lightmlrestapi': "http://www.xavierdupre.fr/app/lightmlrestapi/helpsphinx/index.html",
+    'Microdon': "https://www.microdon.org/",
+    'PIL.Image': "https://pillow.readthedocs.io/en/5.1.x/reference/Image.html",
+    'plot_gallery_images': 'http://www.xavierdupre.fr/app/mlinsights/helpsphinx/mlinsights/plotting/gallery.html#mlinsights.plotting.gallery.plot_gallery_images',
+    'radius_neighbors': 'https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors.radius_neighbors',
+    'REST API': "https://en.wikipedia.org/wiki/Representational_state_transfer",
+    'waitress': "https://docs.pylonsproject.org/projects/waitress/en/latest/",
+    'WSGI': "https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface",
+})
