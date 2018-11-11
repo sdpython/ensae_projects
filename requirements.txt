@@ -16,6 +16,7 @@ mnist
 mpld3
 opencv-python
 pandas_streaming
+papierstat
 psutil
 pycryptodomex
 pyecharts
