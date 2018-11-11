@@ -329,3 +329,5 @@ _doc/sphinxdoc/source/gyexamples/
 _doc/sphinxdoc/source/nbcov*.png
 _doc/notebooks/hackathon_2018/batch/
 _doc/notebooks/hackathon_2018/img5050/
+_unittests/ut_hackathon/chromedriver_win32.zip
+_unittests/ut_hackathon/chromedriver.exe

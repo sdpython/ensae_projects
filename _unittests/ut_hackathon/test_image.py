@@ -1,5 +1,5 @@
 """
-@brief      test log(time=5s)
+@brief      test log(time=9s)
 """
 
 import sys
@@ -25,7 +25,9 @@ except ImportError:
 
 from src.ensae_projects.hackathon.image_helper import resize_image, read_image, enumerate_image_class, histogram_image_size, img2gray
 from src.ensae_projects.hackathon.image_helper import stream_apply_image_transform, image_zoom, stream_image2features
-from src.ensae_projects.hackathon.image_helper import load_batch_features, stream_download_images, stream_copy_images
+from src.ensae_projects.hackathon.image_helper import load_batch_features, stream_download_images, stream_copy_images, stream_random_sample
+from src.ensae_projects.hackathon.image_helper import last_element, plot_gallery_random_images
+from src.ensae_projects.hackathon.image_helper import folder_split_train_test
 from src.ensae_projects.hackathon.image_knn import ImageNearestNeighbors
 
 
@@ -278,6 +280,37 @@ class TestImage(ExtTestCase):
         folder = os.path.join(temp, "..", "data", "many")
         files = list(stream_copy_images(folder, temp, valid=lambda img: True))
         self.assertEqual(len(files), 6)
+
+    def test_random_sample(self):
+        this = os.path.abspath(os.path.dirname(__file__))
+        folder = os.path.join(this, "data", "many")
+        images = last_element(stream_random_sample(folder, n=2, abspath=False))
+        self.assertEqual(len(images), 2)
+
+    def test_plot_gallery_random_images(self):
+        this = os.path.abspath(os.path.dirname(__file__))
+        folder = os.path.join(this, "data", "many")
+        temp = get_temp_folder(__file__, "temp_plot_gallery_random_images")
+
+        from matplotlib import pyplot as plt
+        (fig, _), rnd = plot_gallery_random_images(
+            folder, n=2, return_figure=True)
+        img = os.path.join(temp, "gallery.png")
+        fig.savefig(img)
+        plt.close('all')
+        self.assertNotEmpty(rnd)
+        self.assertIsInstance(rnd[0], tuple)
+        self.assertEqual(len(rnd[0]), 3)
+
+    def test_folder_train_test_split(self):
+        temp = get_temp_folder(__file__, "temp_folder_train_test_split")
+        data = os.path.join(temp, '..', 'data', 'many')
+        train = os.path.join(temp, "train")
+        test = os.path.join(temp, "test")
+        itrain, itest = folder_split_train_test(
+            data, train, test, test_size=0.5)
+        self.assertEqual(len(itrain), 3)
+        self.assertEqual(len(itest), 3)
 
 
 if __name__ == "__main__":

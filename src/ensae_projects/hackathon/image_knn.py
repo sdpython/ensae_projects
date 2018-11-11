@@ -221,7 +221,7 @@ class ImageNearestNeighbors(NearestNeighbors):
     def plot_neighbors(self, neighbors, distances=None, obs=None, return_figure=False,
                        format_distance="%1.2f", folder_or_images=None):
         """
-        Calls `plot_gallery_images :epkg:`plot_gallery_images`
+        Calls :epkg:`plot_gallery_images`
         with information on the neighbors.
 
         @param      neighbors           matrix of indices

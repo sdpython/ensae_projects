@@ -75,22 +75,37 @@ gens prennent des photos au regard du nombre de gens
 qui les propagent. Cela tient sans doute à la soudaineté
 de la catastrophe. Les personnes sont surprises et plongées
 dans l'urgence alors qu'une inondation monte lentement et laisse
-le temps de prendre des photos du danger.
+le temps de prendre des photos du danger. On part également du principe
+que les gens prendront d'abord une photo d'une rivière qui monte,
+puis d'une voiture ou d'une rue. Partant de ce principe, la gravité
+de l'inondation est indiqué par ce que contient la photo :
+une rivière ou un élément de la ville, rue ou voiture.
+Le challenge doit répondre à deux questions à partir d'une image :
+
+* L'image concerne-t-elle une inondation ?
+* Si l'image concerne une inondation, voit-on plutôt
+  une rivière ou une rue, voiture...
 
 La base d'images sur tweeter regroupe de nombreuses images
-d'inondations ou de séims, des cartes. A cela ont été ajoutées
+d'inondations ou de séimes, des cartes. A cela ont été ajoutées
 des images de la base :epkg:`ImageNet` pour avoir des images
 de rues non inondées assez rares dans la base récoltées par
 le :epkg:`BRGM`. Des images ont été récupérées depuis l'url
 suivant : `ImageNet/street <http://www.image-net.org/search?q=street>`_.
-Il n'est pas interdit d'en ajouter d'autres.
-
+Il n'est pas interdit d'en ajouter d'autres surtout
+pour obtenir des images sans inondations ou séismes qui n'ont pas
+été ciblées par la méthode de sélection.
 Le jeu de données fourni pour le hackathon contient :
 
 * Les images initiales extraites de tweeter.
 * Les images sans doublons extraites par une méthode statistiques.
-* Des images extraites de :ref:`ImageNet`
+* Des images extraites de :ref:`ImageNet` et de :ref:`Bing`
 * Quelques images annotées.
+
+La difficulté de ce challenge vient du fait que peu d'images sont
+labellisées et qu'il faudra probablement augmenter la base
+avec des images venant d'internet pour contrebalancer la surreprésentation
+des images d'inondations.
 
 Challenge machine learning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -98,36 +113,9 @@ Challenge machine learning
 Eléments de code
 ----------------
 
-Vous pouvez importer le module :epkg:`ensae_projects`
-ou copier/coller le code.
+.. toctree::
 
-* :ref:`l-hack-fct-2018`
-* :ref:`chshimagesrst`
-
-Manipulation d'images et premiers pas avec le deep learning
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-* `Search images with deep learning <http://www.xavierdupre.fr/app/mlinsights/helpsphinx/notebooks/search_images.html>`_ :
-  le notebook expose comment manipuler des images avec :epkg:`keras` et comment
-  utiliser le résultat des couches intermédiaires d'un réseau de neurones profond
-  dans le but de recherche des images similaires.
-
-Installer un package sur la machine virtual Azure
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Un exemple.
-
-::
-
-    !/anaconda/envs/py35/bin/pip install pyquickhelper
-
-Arrêter un process GPU
-^^^^^^^^^^^^^^^^^^^^^^
-
-La commande `nvidia-smi <https://www.microway.com/hpc-tech-tips/nvidia-smi_control-your-gpus/>`_
-affiche les processus GPU qui tourne sur la machine. Si l'ordinateur ne répond plus,
-il suffit d'arrêter les processus avec la commande
-`kill <https://www.digitalocean.com/community/tutorials/how-to-use-ps-kill-and-nice-to-manage-processes-in-linux>`_ (processus ID) (Linux).
+    hackathon_2018_code_deep
 
 Après la compétition
 --------------------

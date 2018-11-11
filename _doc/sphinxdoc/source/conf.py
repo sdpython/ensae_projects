@@ -28,6 +28,7 @@ html_context = {
 
 epkg_dictionary.update({
     'B-Corp': "https://bcorporation.eu/about-b-lab/country-partner/france",
+    'Bing Image': 'https://www.bing.com/images/',
     'BRGM': "http://www.brgm.fr/",
     'cartopy': "https://scitools.org.uk/cartopy/docs/latest/",
     'Cresus': "http://www.cresus-france.org/",
@@ -51,5 +52,6 @@ epkg_dictionary.update({
     'radius_neighbors': 'https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors.radius_neighbors',
     'REST API': "https://en.wikipedia.org/wiki/Representational_state_transfer",
     'waitress': "https://docs.pylonsproject.org/projects/waitress/en/latest/",
+    'webhtml': 'http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx3/ensae_teaching_cs/faq/faq_web.html#ensae_teaching_cs.faq.faq_web.webhtml',
     'WSGI': "https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface",
 })

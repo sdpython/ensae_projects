@@ -17,13 +17,19 @@ Functions about images
 
 .. autosignature:: ensae_projects.hackathon.image_helper.enumerate_image_class
 
+.. autosignature:: ensae_projects.hackathon.image_helper.folder_split_train_test
+
 .. autosignature:: ensae_projects.hackathon.image_helper.histogram_image_size
 
 .. autosignature:: ensae_projects.hackathon.image_helper.img2gray
 
 .. autosignature:: ensae_projects.hackathon.image_helper.image_zoom
 
+.. autosignature:: ensae_projects.hackathon.image_helper.last_element
+
 .. autosignature:: ensae_projects.hackathon.image_helper.load_batch_features
+
+.. autosignature:: ensae_projects.hackathon.image_helper.plot_gallery_random_images
 
 .. autosignature:: ensae_projects.hackathon.image_helper.read_image
 
@@ -34,6 +40,8 @@ Functions about images
 .. autosignature:: ensae_projects.hackathon.image_helper.stream_download_images
 
 .. autosignature:: ensae_projects.hackathon.image_helper.stream_image2features
+
+.. autosignature:: ensae_projects.hackathon.image_helper.stream_random_sample
 
 Some of these functions are used in notebook :ref:`imagesdupsrst`.
 Many examples can be found in unit test
