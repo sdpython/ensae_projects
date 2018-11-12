@@ -1,6 +1,7 @@
 beautifulsoup4
 chardet
 coverage
+ensae_teaching_cs
 falcon>=1.4.1
 folium
 ijson
