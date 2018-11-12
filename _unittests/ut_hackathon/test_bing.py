@@ -43,7 +43,7 @@ class TestBing(ExtTestCase):
             res[0], "http://dailynous.com/wp-content/uploads/2017/08/hurricane-harvey-3.jpg")
 
     @unittest.skipIf(not _has_selenium(), reason="selenium not installed")
-    def _test_web_search_helper_selenium(self):
+    def test_web_search_helper_selenium(self):
         temp = get_temp_folder(__file__, "temp_web_search_helper_selenium")
         res = query_bing_image("inondations france",
                                folder_cache=temp, use_selenium=True)
