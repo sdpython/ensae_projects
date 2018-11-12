@@ -40,7 +40,7 @@ class TestBing(ExtTestCase):
         res = list(sorted(res))
         self.assertNotEmpty(res)
 
-    @unittest.skipIf(not _has_selenium() and __name__ != "__main__", reason="selenium not installed")
+    @unittest.skipIf(not _has_selenium() or __name__ != "__main__", reason="selenium not installed")
     def test_web_search_helper_selenium(self):
         temp = get_temp_folder(__file__, "temp_web_search_helper_selenium")
         res = query_bing_image("inondations france",
