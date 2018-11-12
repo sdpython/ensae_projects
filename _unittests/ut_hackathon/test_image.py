@@ -149,8 +149,8 @@ class TestImage(ExtTestCase):
         exp = [[0, 2], [1, 2], [2, 1], [3, 2], [4, 5], [5, 4]]
         self.assertEqual(kn[:, 0], numpy.array(exp)[:, 0])
         self.assertEqual(kn.shape, names.shape)
-        self.assertEqual(
-            names[0, 0], 'cl1/739728353121427456_CkQLA7WVEAAZxFI.jpg')
+        self.assertIn(names[0, 0], ['cl1/739728353121427456_CkQLA7WVEAAZxFI.jpg',
+                                    'cl1/img23.jpg'])
         names = knn.get_image_classes(kn)
         self.assertEqual(kn.shape, names.shape)
         exp = [['cl1', 'cl1'], ['cl1', 'cl1'], ['cl1', 'cl1'],
