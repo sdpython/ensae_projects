@@ -14,7 +14,7 @@ from pyensae.datasource import download_data
 
 def search_images_dogcat(app=None, url_images=None, dest=None):
     """
-    Defines a REST application.
+    Defines a :epkg:`REST` application.
     It returns a list of neighbors among a small set of
     images representing dogs and cats.
 

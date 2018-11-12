@@ -124,8 +124,6 @@ def img2gray(img, mode='L'):
     @param      img     see :epkg:`PIL.Image`
     @param      mode    ``'L'`` or ``'LA'``
     @return             see :epkg:`PIL.Image`
-
-    .. faqref:: How to convert an image in
     """
     return img.convert(mode)
 
