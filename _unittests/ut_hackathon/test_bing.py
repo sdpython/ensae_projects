@@ -39,8 +39,6 @@ class TestBing(ExtTestCase):
         res = query_bing_image("inondations france", folder_cache=temp)
         res = list(sorted(res))
         self.assertNotEmpty(res)
-        self.assertEqual(
-            res[0], "http://dailynous.com/wp-content/uploads/2017/08/hurricane-harvey-3.jpg")
 
     @unittest.skipIf(not _has_selenium(), reason="selenium not installed")
     def test_web_search_helper_selenium(self):
@@ -49,8 +47,6 @@ class TestBing(ExtTestCase):
                                folder_cache=temp, use_selenium=True)
         res = list(sorted(res))
         self.assertNotEmpty(res)
-        self.assertEqual(
-            res[0], "http://dailynous.com/wp-content/uploads/2017/08/hurricane-harvey-3.jpg")
 
     def test_extract_images(self):
         this = os.path.abspath(os.path.dirname(__file__))
