@@ -499,7 +499,7 @@ def stream_random_sample(folder, n=1000, seed=None, abspath=True,  # pylint: dis
         from ensae_projects.hackathon.image_helper import stream_random_sample, last_element
 
         this = os.path.join(os.path.dirname(__file__), '..')
-        res = last_element(stream_random_sample(this, abspath=False, ext={'.py', '.rst', '.pyc'})
+        res = last_element(stream_random_sample(this, abspath=False, ext={'.py', '.rst', '.pyc'}))
         print(res)
     """
     sample = []
