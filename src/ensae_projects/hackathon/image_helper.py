@@ -531,7 +531,7 @@ def last_element(iter):
             for i in range(10):
                 yield "A%d" % i
 
-        print(last_element(gen())
+        print(last_element(gen()))
     """
     el = None
     for el in iter:
