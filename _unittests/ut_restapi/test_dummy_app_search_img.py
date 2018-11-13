@@ -31,6 +31,14 @@ except ImportError:
     import src
 
 
+def has_tf():
+    try:
+        import tensorflow
+        return True
+    except ImportError:
+        return False
+
+
 class TestDummyAppSearchImg(testing.TestCase):
 
     def setUp(self):
@@ -55,6 +63,7 @@ class TestDummyAppSearchImg(testing.TestCase):
 
         search_images_dogcat(self.api, dest=temp)
 
+    @unittest.skipIf(not has_tf(), reason="tensor not installed")
     @skipif_travis('tensorflow/python/lib/core/bfloat16.cc:664] Check failed: PyBfloat16_Type.tp_base != nullptr')
     def test_dummy_search_app_search_img(self):
         fLOG(
@@ -88,6 +97,7 @@ class TestDummyAppSearchImg(testing.TestCase):
         self.assertIn(val, ('oneclass/cat-2922832__480.jpg',
                             'oneclass/wolf-2865653__480.jpg'))
 
+    @unittest.skipIf(not has_tf(), reason="tensor not installed")
     @skipif_travis('tensorflow/python/lib/core/bfloat16.cc:664] Check failed: PyBfloat16_Type.tp_base != nullptr')
     @unittest.skipIf(not x86cpu.info.supports_avx2, "tensorflow requires instructions AVX2 on CPU")
     def test_dummy_error_img(self):
