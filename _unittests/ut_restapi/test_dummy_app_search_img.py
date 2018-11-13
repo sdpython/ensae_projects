@@ -34,7 +34,7 @@ except ImportError:
 def has_tf():
     try:
         import tensorflow
-        return True
+        return tensorflow is not None
     except ImportError:
         return False
 
