@@ -248,7 +248,7 @@ def stream_image2features(src_folder, dest_folder, transform, batch_size=1000,  
 
 def load_batch_features(batch_file):
     """
-    Loads a batch file saved by @see fct stream_image2features.
+    Loads a batch file saved by @see fn stream_image2features.
 
     @param      batch_file      batch file
     @return                     features, classes

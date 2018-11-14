@@ -45,6 +45,9 @@ class ImageNearestNeighbors(NearestNeighbors):
             return lambda img: image_zoom(pre(img), new_size=self.image_size)
 
     def _folder2matrix(self, folder, fLOG):
+        """
+        Converts images stored in a folder into a matrix of features.
+        """
         transform = self._get_transform()
         imgs = []
         subs = []
@@ -62,6 +65,9 @@ class ImageNearestNeighbors(NearestNeighbors):
         return X, imgs, subs
 
     def _imglist2matrix(self, list_of_images, fLOG):
+        """
+        Converts a list of images into a matrix of features.
+        """
         transform = self._get_transform()
         imgs = []
         subs = []
@@ -170,7 +176,7 @@ class ImageNearestNeighbors(NearestNeighbors):
 
     def kneighbors(self, X=None, n_neighbors=None, return_distance=True, fLOG=None):  # pylint: disable=W0221
         """
-        See :epkg:`:epkg:`NearestNeighbors`, method :epkg:`kneighbors`.
+        See :epkg:`NearestNeighbors`, method :epkg:`kneighbors`.
         Parameter *X* can be a file, the image is then loaded and converted
         with the same transform. *X* can also be a :epkg:`PIL.Image`.
         """
@@ -178,7 +184,7 @@ class ImageNearestNeighbors(NearestNeighbors):
 
     def kneighbors_graph(self, X=None, n_neighbors=None, mode='connectivity', fLOG=None):  # pylint: disable=W0221
         """
-        See :epkg:`:epkg:`NearestNeighbors`, method :epkg:`kneighbors_graph`.
+        See :epkg:`NearestNeighbors`, method :epkg:`kneighbors_graph`.
         Parameter *X* can be a file, the image is then loaded and converted
         with the same transform. *X* can also be a :epkg:`PIL.Image`.
         """
@@ -186,7 +192,7 @@ class ImageNearestNeighbors(NearestNeighbors):
 
     def radius_neighbors(self, X=None, radius=None, return_distance=True, fLOG=None):  # pylint: disable=W0221
         """
-        See :epkg:`:epkg:`NearestNeighbors`, method :epkg:`radius_neighbors`.
+        See :epkg:`NearestNeighbors`, method :epkg:`radius_neighbors`.
         Parameter *X* can be a file, the image is then loaded and converted
         with the same transform. *X* can also be a :epkg:`PIL.Image`.
         """
