@@ -7,8 +7,8 @@ Eléments de code pour le challenge 2018
 .. contents::
     :local:
 
-Challenge
----------
+Challenge Deep Learning
+-----------------------
 
 A partir d'une image, un modèle de machine learning doit
 déterminer si l'image représenté une zone inondée ou non
@@ -48,6 +48,11 @@ Notebooks
 * :ref:`imagesgetsrst`
 * :ref:`imagesdupsrst`
 * :ref:`baselineimageskerasrst`
+
+Challenge Machine Learning
+--------------------------
+
+* :ref:`donneesinseerst`
 
 Fonctions à importer ou copier/coller
 -------------------------------------
