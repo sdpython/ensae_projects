@@ -25,7 +25,7 @@ La moitié des images sont dites indésirables, elles représentent
 des dessins, des cartes ou des photos d'écrans.
 
 .. list-table::
-    :header-row: 0
+    :header-rows: 0
     :widths: 5 5 5 5
 
     * - .. image:: 2018/imn1.jpg

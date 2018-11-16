@@ -338,3 +338,5 @@ _doc/notebooks/hackathon_2018/microdon_train.csv
 _doc/notebooks/hackathon_2018/microdon_test.csv
 _doc/notebooks/hackathon_2018/microdon.ipynb
 _doc/notebooks/hackathon_2018/microdon_geo.ipynb
+src/ensae_projects/hackathon/brgm.html
+src/ensae_projects/hackathon/cache_file.csv

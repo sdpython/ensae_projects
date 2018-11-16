@@ -84,6 +84,9 @@ Le challenge doit répondre à deux questions à partir d'une image :
 
 **L'image concerne-t-elle une inondation ou un séisme ?**
 
+.. image:: 2018/imp.jpg
+    :width: 200
+
 La base d'images sur tweeter regroupe de nombreuses images
 d'inondations ou de séimes, des cartes. A cela ont été ajoutées
 des images de la base :epkg:`ImageNet` pour avoir des images
@@ -108,7 +111,23 @@ des images d'inondations.
 On pourra regarder si l'image contient une voiture, une rue,
 une rivière et s'en servir pour classer les images.
 La base d'évaluation contient environ 200 images qu'il faudra classer
-avec précision.
+avec précision. Il y a quelques **pièges** :
+
+.. list-table::
+    :header-rows: 0
+    :widths: 5 5 5 5
+
+    * - .. image:: 2018/imn1.jpg
+            :width: 150
+      - .. image:: 2018/imn2.jpg
+            :width: 150
+      - .. image:: 2018/imn3.jpg
+            :width: 150
+      - .. image:: 2018/imn4.jpg
+            :width: 150
+
+La moitié des images sont dites indésirables, elles représentent
+des dessins, des cartes ou des photos d'écrans.
 
 
 Challenge machine learning
@@ -117,15 +136,16 @@ Challenge machine learning
 Microdon reçoit des dons de nombreux points de collecte
 pour les redistribuer ensuite à de nombreuses associations.
 La base de données contient plus d'un million de lignes anonymisées
-pour des dons agrégées par jour. Les huit dernières semaines vous sont 
-inconnues mais il faudra prédire les sommes agrégées par semaine 
+pour des dons agrégées par jour. Les huit dernières semaines vous sont
+inconnues mais il faudra prédire les sommes agrégées par semaine
 pour chaque campagne pour ces huit semaines manquantes, soit environ
-200 valeurs à prédire.
+200 valeurs. Il faut prédire le **taux de participation** d'une 
+campagne agrégrée par semaine.
 
 .. image:: 2018/micro.png
 
 Le numéro de la semaine est déterminé par la fonction
-``dt.week <https://pandas.pydata.org/pandas-docs/version/0.20/generated/pandas.Series.dt.week.html>`_.
+`dt.week <https://pandas.pydata.org/pandas-docs/version/0.20/generated/pandas.Series.dt.week.html>`_.
 
 Eléments de code
 ----------------

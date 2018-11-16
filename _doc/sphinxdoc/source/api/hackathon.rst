@@ -52,6 +52,13 @@ Functions or classes to analyse
 
 .. autosignature:: ensae_projects.hackathon.image_knn.ImageNearestNeighbors
 
+Functions about performance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. autosignature:: ensae_projects.hackathon.perf2018.MLStoragePerf2018
+
+.. autosignature:: ensae_projects.hackathon.perf2018.MLStoragePerf2018Image
+
 2017
 ++++
 
