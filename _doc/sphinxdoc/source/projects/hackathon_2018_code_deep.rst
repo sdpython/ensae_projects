@@ -47,6 +47,7 @@ Notebooks
 * :ref:`chshimagesrst`
 * :ref:`imagesgetsrst`
 * :ref:`imagesdupsrst`
+* :ref:`baselineimageskerasrst`
 
 Fonctions à importer ou copier/coller
 -------------------------------------
