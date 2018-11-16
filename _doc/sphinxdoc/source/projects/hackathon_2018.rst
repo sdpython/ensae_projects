@@ -150,11 +150,10 @@ Le numéro de la semaine est déterminé par la fonction
 Eléments de code
 ----------------
 
-* `API REST <http://www.xavierdupre.fr/app/lightmlrestapi/helpsphinx/tutorial/store_rest_api.html>`_
-
 .. toctree::
 
-    hackathon_2018_code_deep
+    hackathon_2018_api_rest
+    hackathon_2018_code_deep    
 
 Après la compétition
 --------------------
