@@ -82,9 +82,7 @@ de l'inondation est indiqué par ce que contient la photo :
 une rivière ou un élément de la ville, rue ou voiture.
 Le challenge doit répondre à deux questions à partir d'une image :
 
-* L'image concerne-t-elle une inondation ?
-* Si l'image concerne une inondation, voit-on plutôt
-  une rivière ou une rue, voiture...
+**L'image concerne-t-elle une inondation ou un séisme ?**
 
 La base d'images sur tweeter regroupe de nombreuses images
 d'inondations ou de séimes, des cartes. A cela ont été ajoutées
@@ -107,11 +105,32 @@ labellisées et qu'il faudra probablement augmenter la base
 avec des images venant d'internet pour contrebalancer la surreprésentation
 des images d'inondations.
 
+On pourra regarder si l'image contient une voiture, une rue,
+une rivière et s'en servir pour classer les images.
+La base d'évaluation contient environ 200 images qu'il faudra classer
+avec précision.
+
+
 Challenge machine learning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Microdon reçoit des dons de nombreux points de collecte
+pour les redistribuer ensuite à de nombreuses associations.
+La base de données contient plus d'un million de lignes anonymisées
+pour des dons agrégées par jour. Les huit dernières semaines vous sont 
+inconnues mais il faudra prédire les sommes agrégées par semaine 
+pour chaque campagne pour ces huit semaines manquantes, soit environ
+200 valeurs à prédire.
+
+.. image:: 2018/micro.png
+
+Le numéro de la semaine est déterminé par la fonction
+``dt.week <https://pandas.pydata.org/pandas-docs/version/0.20/generated/pandas.Series.dt.week.html>`_.
+
 Eléments de code
 ----------------
+
+* `API REST <http://www.xavierdupre.fr/app/lightmlrestapi/helpsphinx/tutorial/store_rest_api.html>`_
 
 .. toctree::
 

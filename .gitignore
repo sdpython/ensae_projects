@@ -333,3 +333,8 @@ _unittests/ut_hackathon/chromedriver_win32.zip
 _unittests/ut_hackathon/chromedriver.exe
 _doc/notebooks/hackathon_2018/200m-carreaux-metropole/*
 _doc/notebooks/hackathon_2018/200m-carreaux-metropole.zip
+_doc/notebooks/hackathon_2018/microdon.csv
+_doc/notebooks/hackathon_2018/microdon_train.csv
+_doc/notebooks/hackathon_2018/microdon_test.csv
+_doc/notebooks/hackathon_2018/microdon.ipynb
+_doc/notebooks/hackathon_2018/microdon_geo.ipynb

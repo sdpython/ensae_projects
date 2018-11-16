@@ -14,7 +14,7 @@ A partir d'une image, un modèle de machine learning doit
 déterminer si l'image représenté une zone inondée ou non
 ce qui est clairement le cas dans l'image qui suit :
 
-.. image:: imp.jpg
+.. image:: 2018/imp.jpg
     :width: 200
 
 Ensuite, il faut déterminer si cette image représente
@@ -28,13 +28,13 @@ des dessins, des cartes ou des photos d'écrans.
     :header-row: 0
     :widths: 5 5 5 5
 
-    * - .. image:: imn1.jpg
+    * - .. image:: 2018/imn1.jpg
             :width: 150
-      - .. image:: imn2.jpg
+      - .. image:: 2018/imn2.jpg
             :width: 150
-      - .. image:: imn3.jpg
+      - .. image:: 2018/imn3.jpg
             :width: 150
-      - .. image:: imn4.jpg
+      - .. image:: 2018/imn4.jpg
             :width: 150
 
 Ce sont des images où il n'y bien évidemment pas d'inondations
