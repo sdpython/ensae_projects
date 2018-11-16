@@ -129,7 +129,6 @@ avec précision. Il y a quelques **pièges** :
 La moitié des images sont dites indésirables, elles représentent
 des dessins, des cartes ou des photos d'écrans.
 
-
 Challenge machine learning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -139,7 +138,7 @@ La base de données contient plus d'un million de lignes anonymisées
 pour des dons agrégées par jour. Les huit dernières semaines vous sont
 inconnues mais il faudra prédire les sommes agrégées par semaine
 pour chaque campagne pour ces huit semaines manquantes, soit environ
-200 valeurs. Il faut prédire le **taux de participation** d'une 
+200 valeurs. Il faut prédire le **taux de participation** d'une
 campagne agrégrée par semaine.
 
 .. image:: 2018/micro.png
@@ -153,7 +152,7 @@ Eléments de code
 .. toctree::
 
     hackathon_2018_api_rest
-    hackathon_2018_code_deep    
+    hackathon_2018_code_deep
 
 Après la compétition
 --------------------

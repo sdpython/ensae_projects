@@ -8,9 +8,8 @@ Les outils développés s'appuie sur le module
 :epkg:`lightmlrestapi` et reprennent une partie
 des éléments décrits dans ce tutorial :
 `API REST <http://www.xavierdupre.fr/app/lightmlrestapi/helpsphinx/tutorial/store_rest_api.html>`_.
-Il vous sera distribué un login et un mot de passe au début 
+Il vous sera distribué un login et un mot de passe au début
 de l'événement.
-
 
 .. contents::
     :local:
@@ -29,7 +28,6 @@ Voir aussi
 * `Keras <http://www.xavierdupre.fr/app/lightmlrestapi/helpsphinx/tutorial/store_rest_api.html#example-with-keras>`_
 * `Torch <http://www.xavierdupre.fr/app/lightmlrestapi/helpsphinx/tutorial/store_rest_api.html#example-with-torch>`_
 
-
 Uploader son modèle
 -------------------
 
@@ -39,5 +37,5 @@ Voir
 Vérifier le modèle uploadé
 --------------------------
 
-Voir 
+Voir
 `Compute prediction through the REST API <http://www.xavierdupre.fr/app/lightmlrestapi/helpsphinx/tutorial/store_rest_api.html#compute-prediction-through-the-rest-api>`_.
