@@ -32,7 +32,7 @@ class MLStoragePerf2018:
         """
         Creates an instance of a
         `MLStorage <http://www.xavierdupre.fr/app/lightmlrestapi/helpsphinx/lightmlrestapi/mlapp/mlstorage.html
-        #lightmlrestapi.mlapp.mlstorage.MLStorage>`_
+        # lightmlrestapi.mlapp.mlstorage.MLStorage>`_
         based on a folder.
 
         @param      root        folder
@@ -98,6 +98,7 @@ class MLStoragePerf2018:
                         fLOG("[MLStoragePerf2018] exception for {0}: {1}".format(
                             name, res['exc']))
                 res["name"] = name
+                res["stime"] = os.stat(self._storage._folder, name).st_mtime
                 t1 = time.perf_counter() - t0
                 res["time"] = t1
                 rows.append(res)
@@ -127,6 +128,21 @@ class MLStoragePerf2018:
 class MLStoragePerf2018Image(MLStoragePerf2018):
     """
     Overloads *compute_perf* for images.
+    Example of use:
+
+    ::
+
+        from ensae_projects.hackathon.perf2018 import MLStoragePerf2018Image
+        mstorage = "storage_brgm"
+        mexample = "hackathon_test/sample_labelled_test"
+        mpref = MLStoragePerf2018Image(mstorage, mexample)
+        mres = mpref.compute_performance(fLOG=print, use_cache=True)
+        mres = mres.sort_values("precision", ascending=False)
+        print(mres)
+        mbody = "<html><body><h1>Hackathon EY-ENSAE 2018 - BRGM</h1>\n"
+        mcontent = "{0}{1}</body></html>".format(mbody, mres.to_html())
+        with open("brgm.html", "w", encoding="utf-8") as f:
+            f.write(mcontent)
     """
 
     def __init__(self, storage, examples, cache_file="cache_file.csv"):
@@ -218,8 +234,9 @@ class MLStoragePerf2018Image(MLStoragePerf2018):
                 gr = final["correcti"].sum() / final.shape[0]
                 res["precision"] = gr
 
-                gr = final[["sub", "correcti", "correct"]].groupby(
-                    "sub", as_index=False).agg({"correct": len, 'correcti': sum})
+                gr = final[["sub", "correcti", "correct"]]
+                gr = gr.groupby("sub", as_index=False)
+                gr = gr.agg({"correct": len, 'correcti': sum})
                 gr["ratio"] = gr["correcti"] / gr["correct"]
                 for i in range(gr.shape[0]):
                     res["p_%s" % gr.loc[i, "sub"]] = gr.loc[i, "ratio"]
@@ -233,14 +250,157 @@ class MLStoragePerf2018Image(MLStoragePerf2018):
         return res
 
 
-if __name__ == "__main__":
-    mstorage = r'C:\temp\storage_brgm'
-    mexample = r'C:\temp\hackathon_test\sample_labelled_test'
-    mpref = MLStoragePerf2018Image(mstorage, mexample)
-    mres = mpref.compute_performance(fLOG=print, use_cache=True)
-    mres = mres.sort_values("precision", ascending=False)
-    print(mres)
-    mbody = "<html><body><h1>Hackathon EY-ENSAE 2018 - BRGM</h1>\n"
-    mcontent = "{0}{1}</body></html>".format(mbody, mres.to_html())
-    with open("brgm.html", "w", encoding="utf-8") as f:
-        f.write(mcontent)
+class MLStoragePerf2018TimeSeries(MLStoragePerf2018):
+    """
+    Overloads *compute_perf* for timeseries.
+
+    Example of use:
+
+    ::
+
+        from ensae_projects.hackathon.perf2018 import MLStoragePerf2018TimeSeries
+        mstorage = "storage_microdon"
+        mexample = "hackathon_test/sample_labelled_test"
+        mpref = MLStoragePerf2018TimeSeries(mstorage, mexample)
+        mres = mpref.compute_performance(fLOG=print, use_cache=True)
+        mres = mres.sort_values("cor", ascending=False)
+        print(mres)
+        mbody = "<html><body><h1>Hackathon EY-ENSAE 2018 - Microdon</h1>\n"
+        mcontent = "{0}{1}</body></html>".format(mbody, mres.to_html())
+        with open("brgm.html", "w", encoding="utf-8") as f:
+            f.write(mcontent)
+    """
+
+    def __init__(self, storage, examples, cache_file="cache_file.csv"):
+        """
+        @param      storage     storage location
+        @param      examples    deep learning models
+        """
+        MLStoragePerf2018.__init__(self, storage, examples, cache_file)
+
+        df = pandas.read_csv(examples)
+
+        sub = df[["year", "week", "campaigns_campaign_id", "collecteur_id",
+                  "montant_total", "nb_dons_total", "nb_transac_total"]].copy()
+        dsub = sub.fillna(0)
+        gr = dsub.groupby(
+            ["year", "week", "campaigns_campaign_id"], as_index=False).sum()
+        gr["PARTICIPATION"] = gr["nb_dons_total"] / gr["nb_transac_total"]
+        self._expected = gr
+
+    def _label_mapping(self, subs):
+        """
+        Computes the label based on a subfolder name.
+        """
+        return 1 if subs.endswith('1') else 0
+
+    def compute_perf(self, name):
+        """
+        Computes the performances for every image and one
+        particular model.
+        """
+
+        try:
+            model = self._storage.load_model(name)
+            vers = self._storage.call_version(name)
+            exc = None
+        except Exception as e:  # pylint: disable=W0703
+            model = None
+            exc = e
+            vers = None
+
+        cols = ["year", "week", "campaigns_campaign_id",
+                "PARTICIPATION", "nb_transac_total"]
+        X = self._expected[cols]
+        total = 0
+        total10 = 0
+        total100 = 0
+        total1000 = 0
+        n1 = 0
+        n10 = 0
+        n100 = 0
+        n1000 = 0
+
+        preds = []
+        exps = []
+        diffs = {}
+
+        for i in range(0, X.shape[0]):
+            week = X.iloc[i, 1]
+            camp = X.iloc[i, 2]
+            exp = X.iloc[i, 3]
+            if exp > 1:
+                continue
+            nb_transac_total = X.iloc[i, 4]
+            if nb_transac_total > 0:
+                try:
+                    pred = self._storage.call_predict(
+                        name, (week, camp), loaded_model=model)
+                except Exception as e:  # pylint: disable=W0703
+                    exc = e
+                    pred = 0
+                if isinstance(pred, list):
+                    if len(pred) == 1:
+                        pred = pred[0]
+                    else:
+                        exc = Exception(
+                            "Returned a list of value when expecting one")
+                elif isinstance(pred, numpy.ndarray):
+                    pred = pred.ravel()
+                    if len(pred) == 1:
+                        pred = pred[0]
+                    else:
+                        exc = Exception(
+                            "Returned a list of value when expecting one")
+                n1 += 1
+                exps.append(exp)
+                preds.append(pred)
+                diffs[week, camp] = abs(exp - pred)
+                total += (pred - exp) ** 2
+                if nb_transac_total >= 10:
+                    total10 += (pred - exp) ** 2
+                    n10 += 1
+                    if nb_transac_total >= 100:
+                        total100 += (pred - exp) ** 2
+                        n100 += 1
+                        if nb_transac_total >= 1000:
+                            total1000 += (pred - exp) ** 2
+                            n1000 += 1
+
+        res = {}
+        if vers is not None:
+            res["version"] = vers
+        if exc is not None:
+            res["exc"] = exc
+        if n1 > 0:
+            res["score"] = (total / n1) ** 0.5
+            res["score10"] = (total10 / n10) ** 0.5
+            res["score100"] = (total100 / n100) ** 0.5
+            res["score1000"] = (total1000 / n1000) ** 0.5
+            try:
+                res["cor"] = numpy.corrcoef(numpy.array(preds),
+                                            numpy.array(exps))[0, 1]
+            except (AttributeError, KeyError):
+                res["cor"] = numpy.nan
+            try:
+                res["pmin"] = numpy.min(preds)
+                res["pmax"] = numpy.max(preds)
+            except (KeyError, ValueError):
+                res["pmin"] = numpy.nan
+                res["pmax"] = numpy.nan
+
+            resort = [(v, k) for k, v in diffs.items()]
+
+            try:
+                resort.sort()
+                skip = False
+            except ValueError:
+                skip = True
+                exc = Exception(
+                    "Unable to sort differences {0}".format(resort[0]))
+            if not skip:
+                last = resort[-1]
+                res["worst"] = "{0}:{1}".format(last[1], last[0])
+                best = resort[0]
+                res["best"] = "{0}:{1}".format(best[1], best[0])
+        return res

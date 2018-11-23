@@ -47,21 +47,8 @@ prédiction de séries temporelles pas si éloigné d'ailleurs d'un des
 sujets du premier hackathon organisé en 2015. Le hackathon innove
 cette année pour faciliter le passage de témoin entre les participants
 et les associations. Il est prévu que les prédictions des modèles
-soient accessibles via une API REST afin de permettre aux porteurs de
+soient accessibles via une :epkg:`API REST` afin de permettre aux porteurs de
 projets de s'approprier plus facilement le travail des étudiants.
-
-90 étudiants ont participé au hackathon l'année dernière,
-70 l'année d'avant. Je confirme que certains élèves ont fait les
-trois premiers hackathons et que d'autres ont récité Shakespeare.
-Qui dort à 4h du matin ? A vrai dire pas grand monde, le creux
-est plutôt de 5h à 7h. Il y a même parfois de grands cris de joie
-car trouver un résultat à ces heures nocturnes est une gageure.
-Le café de 8h est très attendu surtout par les quelques mentors qui
-se disputent le titre de mentor le plus vaillant. Il faudra sans
-doute dormir moins d'une heure pour espérer l'emporter.
-
-Et pour conclure, le temps que j'écrive ces quelques mots, plus
-de 90 étudiants se sont inscrits…
 
 Challenge deep learning
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -157,8 +144,108 @@ Eléments de code
 Après la compétition
 --------------------
 
+Ce fut une belle bataille. Je n'avais pas tout-à-fait
+automatisé le leaderboard que je devais mettre à jour
+manuellement. Je n'ai pas pu quitter mon ordinateur
+entre 8h et 15h où je fus presque forcé de dire que je
+n'admettais plus aucune soumission.
+
+.. list-table::
+    :header-rows: 0
+    :widths: 10 10
+
+    * - .. image:: 2018/nb2018.png
+            :width: 400
+      - .. image:: 2018/perf2018.png
+            :width: 400
+
+Les données ont gardé quelques secrets jusqu'à la fin
+de l'événement qui ont été dévoilés par de brillants orateurs
+lors des présentations.
+Vers 8h du matin, après quelques pains aux chocolat et plusieurs
+tasses de cafés, les équipes ont commencé à s'intéresser
+aux campagnes qui n'avaient pas débuté à la date du 15 septembre
+qui constituaient le premier jour de la base d'évaluation choisie
+pour comparer les résultats. La bataille pour la première place
+s'est quelque peu intensifiée. Le challenge deep learning n'est
+pas resté sur la touche. J'ai découvert la galère que cela
+peut être de faire tourner un modèle *tensorflow* sur une machine
+alors qu'il a été appris sur une autre. Si le deep learning
+paraît la rolls des modèles, il ne roule pas sur toutes les routes
+sans changer de pneus. Je n'aurais jamais pu survivre à tous les
+problèmes que les participants ont évoqués sans l'aide incroyable
+des mentors et amis qui m'ont accompagné toute la nuit.
+Il est toujours difficile d'anticiper les problèmes et comme l'année
+dernière, je suis venu avec quelques nuits courtes dans les jambes
+et quelques bouts de code encore à coder pour évaluer les équipes.
+Vous pourrez lire un récit de cet épique marathon dans cet
+article de blog : :ref:`blog-2018-hackathon-rendu`.
+
+J'apprécie toujours autant l'ambience de ces deux jours où
+le fait que tous soient de la même école contribue pour beaucoup
+à la convivialité. Les temps morts sont très rares, c'est un peu plus
+calme entre quatre et cinq heures du matin mais en fait je ne suis pas
+sûr car c'est souvent le moment que je choisis pour m'allonger
+une heure pour ne pas m'écrouler à 10h du matin plutôt qu'à 10h du soir.
+Les bruits paraissent plus lointains.
+
+Encore une fois, j'ai été surpris par l'abnégation et l'inventivité
+des participants. 
+
+Résultats
+---------
+
+La prédiction sur le challenge machine learning a atteint 90%
+de corrélation entre la série attendue et la série prédite
+pour le meilleur des groupes. Ils ont distingué les campagnes qui 
+avaient déjà commencé de celles qui commençaient après le debut
+de la période de test et ont proposé deux modèles.
+
+Le challenge deep learning a tourné autour des 80% de performance.
+Cela peut sembler peu mais si on utilise ce modèle pour construire
+un système d'alerte. Malgré le nombre de faux positifs, il est à
+peu près sûr que ce nombre augmentera rapidement en cas de catastrophe.
+C'est comme si d'une période normale avec 20% d'images considérées
+comme des inondations, on passait tout à coup à 40%. Dans le lot,
+la moitié sont toujours détecté par erreur, quant aux autres, elles 
+suffiront à retenir l'attention en temps réel.
+
+Communication
+-------------
+
 Photos
 ^^^^^^
+
+.. image:: 2018/EY002.jpg
+    :width: 300
+.. image:: 2018/EY012.jpg
+    :width: 300
+.. image:: 2018/EY017.jpg
+    :width: 300
+.. image:: 2018/EY019.jpg
+    :width: 300
+.. image:: 2018/EY023.jpg
+    :width: 300
+.. image:: 2018/EY027.jpg
+    :width: 300
+.. image:: 2018/EY032.jpg
+    :width: 300
+.. image:: 2018/EY034.jpg
+    :width: 300
+.. image:: 2018/EY053.jpg
+    :width: 300
+.. image:: 2018/EY057.jpg
+    :width: 300
+.. image:: 2018/EY095.jpg
+    :width: 300
+.. image:: 2018/EY099.jpg
+    :width: 300
+.. image:: 2018/EY112.jpg
+    :width: 300
+.. image:: 2018/EY141.jpg
+    :width: 300
+.. image:: 2018/EY170.jpg
+    :width: 300
 
 Vidéo
 ^^^^^
@@ -179,7 +266,7 @@ Lieu : `Numa <https://paris.numa.co/>`_
 
 *Samedi 17 Novembre*
 
-* 15h00 - Présentation des résultats - 3 minutes de présentation + 1 minute de questions
-* 17h00 - Délibération du jury
+* 15h45 - Présentation des résultats - 4 minutes de présentation + 1 minute de questions
+* 17h30 - Délibération du jury
 * 18h00 - Cocktail
 * 19h00 - After cocktail

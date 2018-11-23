@@ -244,7 +244,6 @@ _doc/notebooks/population/*.txt
 _doc/notebooks/population/*.gz
 _doc/notebooks/population/*.nc
 _doc/notebooks/population/*.zip
-README
 build_help.bat
 _doc/sphinxdoc/source/blog/*.rst
 _doc/sphinxdoc/source/blog/rss.xml
@@ -283,8 +282,6 @@ _doc/notebooks/mlexamples/u1.test
 _doc/notebooks/mlexamples/Bike-Sharing*
 _doc/notebooks/mlexamples/day.csv
 _doc/notebooks/mlexamples/hour.csv
-_doc/notebooks/mlexamples/Readme.txt
-_doc/notebooks/mlexamples/Readme.txt
 _doc/notebooks/challenges/city_tour/Street_Network_Database/*
 .ipynb_checkpoints
 _doc/sphinxdoc/source/phdoc_static/require.js
@@ -306,7 +303,6 @@ _doc/sphinxdoc/source/phdoc_static/style_notebook_snippet.css
 _doc/notebooks/challenges/bike_data/2016*
 _doc/notebooks/challenges/bike_data/divvy*
 _doc/notebooks/challenges/bike_data/*.zip
-_doc/notebooks/challenges/bike_data/README_2*
 _doc/notebooks/challenges/city_bike/2016-12_station_data.csv
 _doc/notebooks/challenges/city_bike/Divvy_Trips_2016_Q3Q4.zip
 _doc/notebooks/challenges/city_bike/Divvy_Trips_2016_Q3.csv
@@ -345,3 +341,11 @@ _doc/notebooks/hackathon_2018/model_iris.pkl
 _doc/notebooks/hackathon_2018/model_iris.py
 _doc/notebooks/hackathon_2018/microsodon_target.csv
 _doc/notebooks/hackathon_2018/file2.csv
+_doc/notebooks/hackathon_2018/ensae.csv
+_doc/notebooks/hackathon_2018/seisme_Amatrice.zip
+_doc/notebooks/hackathon_2018/camp_collecteur_test.zip
+_doc/notebooks/hackathon_2018/camp_collecteur_test.csv
+_doc/notebooks/hackathon_2018/camp_collecteur_asso_test.zip
+_doc/notebooks/hackathon_2018/camp_collecteur_asso_test.csv
+_doc/notebooks/hackathon_2018/time.csv
+_doc/notebooks/hackathon_2018/microdon_score.csv
