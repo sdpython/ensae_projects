@@ -10,7 +10,7 @@ from PIL import Image
 from lightmlrestapi.mlapp.mlstorage import MLStorage
 try:
     from ..hackathon.image_helper import enumerate_image_class
-except ValueError:
+except (ImportError, ValueError):
     from ensae_projects.hackathon.image_helper import enumerate_image_class
 
 
@@ -85,6 +85,8 @@ class MLStoragePerf2018:
 
         rows = []
         for i, name in enumerate(sorted(self._storage.enumerate_names())):
+            if i % 30 == 0:
+                print('.')
             if name not in already:
                 t0 = time.perf_counter()
                 if fLOG:
@@ -163,6 +165,8 @@ class MLStoragePerf2018Image(MLStoragePerf2018):
         Computes the performances for every image and one
         particular model.
         """
+        from keras import backend as K
+        K.clear_session()
         folder = self._examples
 
         try:
@@ -179,16 +183,18 @@ class MLStoragePerf2018Image(MLStoragePerf2018):
             label = self._label_mapping(sub)
             obs = dict(image=img, sub=sub, label=label)
             if model is None:
-                obs = {'exc': e}
+                obs = {'exc': Exception("model is None")}
                 pred = None
             else:
                 X = numpy.array(Image.open(img))
                 try:
                     pred = self._storage.call_predict(
                         name, X, loaded_model=model)
+                    #print("*****",pred)
                 except Exception as e:  # pylint: disable=W0703
                     exc = e
                     pred = None
+                    #print('------', e)
 
             if pred is None:
                 pass
@@ -218,6 +224,8 @@ class MLStoragePerf2018Image(MLStoragePerf2018):
                 obs.update(dict(predicted_label=plabel, score=score))
 
             rows.append(obs)
+            #print(rows)
+            #break
 
         final = pandas.DataFrame(rows)
         if 'score' in final.columns:
@@ -404,3 +412,21 @@ class MLStoragePerf2018TimeSeries(MLStoragePerf2018):
                 best = resort[0]
                 res["best"] = "{0}:{1}".format(best[1], best[0])
         return res
+
+
+if __name__ == "__main__":
+    mstorage = r'/home/jbr/hack35/'
+    mexample = r'./sample_labelled_test'
+    mpref = MLStoragePerf2018Image(mstorage, mexample)
+    mres = mpref.compute_performance(fLOG=print, use_cache=True)
+    mres = mres.sort_values("precision", ascending=False)
+    print(mres)
+    if 'exc' in mres.columns:
+        print(list(mres['exc']))
+    mbody = "<html><body><h1>Hackathon EY-ENSAE 2018 - BRGM</h1>\n"
+    mcontent = "{0}{1}</body></html>".format(mbody, mres.to_html())
+    from pyquickhelper.pandashelper.tblformat import df2rst
+    with open("hackathon2018/brgm.rst", "w", encoding="utf-8") as f:
+       f.write(df2rst(mres))
+    with open("hackathon2018/brgm.html", "w", encoding="utf-8") as f:
+        f.write(mcontent)
