@@ -427,6 +427,6 @@ if __name__ == "__main__":
     mcontent = "{0}{1}</body></html>".format(mbody, mres.to_html())
     from pyquickhelper.pandashelper.tblformat import df2rst
     with open("hackathon2018/brgm.rst", "w", encoding="utf-8") as f:
-       f.write(df2rst(mres))
+        f.write(df2rst(mres))
     with open("hackathon2018/brgm.html", "w", encoding="utf-8") as f:
         f.write(mcontent)

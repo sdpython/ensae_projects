@@ -85,15 +85,33 @@ The corresponding folder in ``.git/modules/<localpath>`` must be removed too.
 Example::
 
     git rm cscode/machinelearning -f
+    
+Reset a branch
+++++++++++++++
+
+Reset to local branch
+
+::
+
+    git reset --hard <branch>
+    
+Reset to a remote branch
+
+::
+
+    git reset --hard <remote>/<branch>
+    
+Example:
+
+::
+
+    git reset --hard upstream/master
+    
 
 Reset a submodule
 +++++++++++++++++
 
 ::
-
-    git submodule foreach git reset --hard
-
-Example::
 
     git submodule foreach git reset --hard
 
