@@ -375,4 +375,7 @@
     tous là, pour défendre une certaine idée de l'école qui nous a diplômés ?
     Pour laisser des souvenirs à plusieurs promotions d'étudiants ?
     L'envie de transmettre... L'envie d'ouvrir une fenêtre dans
-    l'école telle que je l'ai connue...
+    l'école telle que je l'ai connue... Je n'ai jamais vu l'école comme une façon
+    d'apprendre un métier utile pour la société. Elle transmet
+    un savoir qui confère des pouvoirs magiques.
+
