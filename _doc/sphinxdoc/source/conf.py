@@ -27,6 +27,7 @@ html_context = {
 }
 
 epkg_dictionary.update({
+    'API REST': '',
     'B-Corp': "https://bcorporation.eu/about-b-lab/country-partner/france",
     'Bing Image': 'https://www.bing.com/images/',
     'BRGM': "http://www.brgm.fr/",
@@ -39,6 +40,7 @@ epkg_dictionary.update({
     'ESUS': "https://www.service-public.fr/professionnels-entreprises/vosdroits/F32275",
     'EY': "https://www.ey.com/fr/fr/home",
     'falcon': "https://falconframework.org/",
+    'fatboy': 'https://www.fatboy.com/fr-fr/lamzac',
     "folium": "https://github.com/python-visualization/folium",
     'ijson': "https://pypi.python.org/pypi/ijson",
     'ImageNet': "http://www.image-net.org/",
@@ -50,6 +52,7 @@ epkg_dictionary.update({
     'Label Emmaüs': 'https://www.label-emmaus.co/',
     'Latitudes': "http://www.latitudes.cc/",
     'lightmlrestapi': "http://www.xavierdupre.fr/app/lightmlrestapi/helpsphinx/index.html",
+    'Numa': 'https://www.numa.co/',
     'Microdon': "https://www.microdon.org/",
     "pickle": "https://docs.python.org/3/library/pickle.html",
     "PIL": "https://pillow.readthedocs.io/en/5.3.x/",
@@ -58,8 +61,10 @@ epkg_dictionary.update({
     'radius_neighbors': 'https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors.radius_neighbors',
     'reservoir sampling': 'https://en.wikipedia.org/wiki/Reservoir_sampling',
     'REST API': "https://en.wikipedia.org/wiki/Representational_state_transfer",
+    'Tensorflow': 'https://www.tensorflow.org/',
     'urllib3': 'https://urllib3.readthedocs.io/en/latest/',
     "vélib": "https://www.velib-metropole.fr/",
+    'VM': 'https://fr.wikipedia.org/wiki/Machine_virtuelle',
     'waitress': "https://docs.pylonsproject.org/projects/waitress/en/latest/",
     'webhtml': 'http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx3/ensae_teaching_cs/faq/faq_web.html#ensae_teaching_cs.faq.faq_web.webhtml',
     'WSGI': "https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface",

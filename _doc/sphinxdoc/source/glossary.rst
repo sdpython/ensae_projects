@@ -16,7 +16,7 @@ Glossaire
         labellisées à date sont de toutes tailles et tous secteurs,
         icônes historiques comme Patagonia, Natura, Alessi ou Ecover,
         « jeunes pousses » comme Fairphone, Triodos, change.org,
-ou Kickstarter…
+        ou Kickstarter...
 
     BRGM
         Le Bureau de Recherches Géologiques et Minières est l'établissement (:epkg:`BRGM`)
@@ -90,6 +90,9 @@ ou Kickstarter…
         L'association *Latitudes* a proposé et aidés à l'élaboration
         les sujets des hackathons
         :ref:`2017 <l-hackathon-2017>` et 2018.
+
+    Numa
+        :epkg:`Numa`, espace de coworking et terrain de jeu du hackathon.
 
     Microdon
         :epkg:`Microdon`une start-up agréée

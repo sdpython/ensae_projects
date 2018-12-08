@@ -190,7 +190,7 @@ class MLStoragePerf2018Image(MLStoragePerf2018):
                 try:
                     pred = self._storage.call_predict(
                         name, X, loaded_model=model)
-                    #print("*****",pred)
+                    # print("*****",pred)
                 except Exception as e:  # pylint: disable=W0703
                     exc = e
                     pred = None
@@ -224,8 +224,8 @@ class MLStoragePerf2018Image(MLStoragePerf2018):
                 obs.update(dict(predicted_label=plabel, score=score))
 
             rows.append(obs)
-            #print(rows)
-            #break
+            # print(rows)
+            # break
 
         final = pandas.DataFrame(rows)
         if 'score' in final.columns:

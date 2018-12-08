@@ -190,14 +190,14 @@ une heure pour ne pas m'écrouler à 10h du matin plutôt qu'à 10h du soir.
 Les bruits paraissent plus lointains.
 
 Encore une fois, j'ai été surpris par l'abnégation et l'inventivité
-des participants. 
+des participants.
 
 Résultats
 ---------
 
 La prédiction sur le challenge machine learning a atteint 90%
 de corrélation entre la série attendue et la série prédite
-pour le meilleur des groupes. Ils ont distingué les campagnes qui 
+pour le meilleur des groupes. Ils ont distingué les campagnes qui
 avaient déjà commencé de celles qui commençaient après le debut
 de la période de test et ont proposé deux modèles.
 
@@ -207,7 +207,7 @@ un système d'alerte. Malgré le nombre de faux positifs, il est à
 peu près sûr que ce nombre augmentera rapidement en cas de catastrophe.
 C'est comme si d'une période normale avec 20% d'images considérées
 comme des inondations, on passait tout à coup à 40%. Dans le lot,
-la moitié sont toujours détecté par erreur, quant aux autres, elles 
+la moitié sont toujours détecté par erreur, quant aux autres, elles
 suffiront à retenir l'attention en temps réel.
 
 Communication
