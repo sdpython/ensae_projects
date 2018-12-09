@@ -253,8 +253,6 @@ Vidéo
 Agenda
 ^^^^^^
 
-`Hackathon 2018 <http://www.hackathon-geniusensae.fr/>`_
-
 Lieu : `Numa <https://paris.numa.co/>`_
 
 *Vendredi 16 Novembre*
@@ -270,3 +268,7 @@ Lieu : `Numa <https://paris.numa.co/>`_
 * 17h30 - Délibération du jury
 * 18h00 - Cocktail
 * 19h00 - After cocktail
+
+Le lien vers le site de l'événement,
+`Hackathon 2018 <http://www.hackathon-geniusensae.fr/>`_,
+valide uniquement un mois dans l'année.

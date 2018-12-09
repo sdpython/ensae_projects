@@ -1,8 +1,8 @@
 
 .. _l-hackathon-2016:
 
-Hackathon ENSAE La Croix-Rouge / Crésus / Genius / Ernst & Young - 2016
-=======================================================================
+Hackathon ENSAE / La Croix-Rouge / Crésus / Genius / Ernst & Young - 2016
+=========================================================================
 
 .. index:: Ernst & Young, ENSAE, Genius, Hackathon, Croix-Rouge, Crésus, 2016
 

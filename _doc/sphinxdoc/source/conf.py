@@ -27,7 +27,7 @@ html_context = {
 }
 
 epkg_dictionary.update({
-    'API REST': '',
+    'API REST': 'https://fr.wikipedia.org/wiki/Representational_state_transfer',
     'B-Corp': "https://bcorporation.eu/about-b-lab/country-partner/france",
     'Bing Image': 'https://www.bing.com/images/',
     'BRGM': "http://www.brgm.fr/",
@@ -54,6 +54,7 @@ epkg_dictionary.update({
     'lightmlrestapi': "http://www.xavierdupre.fr/app/lightmlrestapi/helpsphinx/index.html",
     'Numa': 'https://www.numa.co/',
     'Microdon': "https://www.microdon.org/",
+    'Microsoft': 'https://www.microsoft.com/fr-fr',
     "pickle": "https://docs.python.org/3/library/pickle.html",
     "PIL": "https://pillow.readthedocs.io/en/5.3.x/",
     'PIL.Image': "https://pillow.readthedocs.io/en/5.1.x/reference/Image.html",
