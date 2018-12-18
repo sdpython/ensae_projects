@@ -18,7 +18,6 @@ class ImageNearestNeighbors(NearestNeighbors):
 
     def __init__(self, transform='gray', size=(10, 10), **kwargs):
         """
-        @param      folder_or_list      folder or list or of images
         @param      transform           function which transform every image
         @param      size                every image is zoomed to keep the same dimension
         @param      kwargs              see :epkg:`NearestNeighbors`
@@ -134,6 +133,7 @@ class ImageNearestNeighbors(NearestNeighbors):
                     "X should be a list of PIL.Image not {0}".format(type(X[0])))
 
         super(ImageNearestNeighbors, self).fit(X, y)
+        return self
 
     def _private_kn(self, method, X, *args, fLOG=None, **kwargs):
         """
@@ -234,6 +234,7 @@ class ImageNearestNeighbors(NearestNeighbors):
         @param      distances           distances to display
         @param      obs                 original image, if not None, will be placed
                                         on the first row
+        @param      return_figure       returns ``fig, ax`` instead of ``ax``
         @param      format_distance     used to format distances
         @param      folder_or_images    image paths may be relative to some folder,
                                         in that case, they should be relative to
