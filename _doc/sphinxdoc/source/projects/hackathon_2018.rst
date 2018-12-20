@@ -250,6 +250,8 @@ Photos
 Vidéo
 ^^^^^
 
+.. youtube:: https://www.youtube.com/watch?v=Jw2D3ry36WQ
+
 Agenda
 ^^^^^^
 
