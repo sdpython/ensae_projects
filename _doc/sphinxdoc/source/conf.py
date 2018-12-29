@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
 import sys
 import os
-# import sphinxjp.themes.basicstrap
-# import sphinx_py3doc_enhanced_theme
-# import alabaster
-import sphinx_materialdesign_theme
+import sphinx_modern_theme_modified
 from pyquickhelper.helpgen.default_conf import set_sphinx_variables, get_default_stylesheet
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.split(__file__)[0])))
 
 set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2018,
-                     "sphinx_materialdesign_theme",  # "sphinx_py3doc_enhanced_theme",
-                     # add_extensions=["alabaster"],
-                     sphinx_materialdesign_theme.get_path(), locals(),
+                     "sphinx_modern_theme_modified", sphinx_modern_theme_modified.get_html_theme_path(),
+                     locals(),
                      extlinks=dict(issue=('https://github.com/sdpython/ensae_projects/issues/%s', 'issue')))
 
 # html_theme = 'alabaster'  # 'sphinx_py3doc_enhanced_theme'

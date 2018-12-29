@@ -378,4 +378,3 @@
     l'école telle que je l'ai connue... Je n'ai jamais vu l'école comme une façon
     d'apprendre un métier utile pour la société. Elle transmet
     un savoir qui confère des pouvoirs magiques.
-
