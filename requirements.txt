@@ -29,8 +29,8 @@ pyshp
 qgrid
 shapely
 sphinx_modern_theme_modified
-tensorflow
 shapely
+tf-nightly
 waitress
 wheel
 x86cpu
