@@ -200,8 +200,13 @@ class TestImage(ExtTestCase):
         images = list(enumerate_image_class(folder))
         images = [(read_image(_[0]), _[1]) for _ in images]
         knn.fit(images)
-        self.assertEqual(knn.image_classes_, [
-                         'cl1', 'cl1', 'cl1', 'cl2', 'cl2', 'cl2'])
+        cl1_first = knn.image_classes_[0] == "cl1"
+        if cl1_first:
+            self.assertEqual(knn.image_classes_, [
+                             'cl1', 'cl1', 'cl1', 'cl2', 'cl2', 'cl2'])
+        else:
+            self.assertEqual(knn.image_classes_, [
+                             'cl2', 'cl2', 'cl2', 'cl1', 'cl1', 'cl1'])
         dist, kn = knn.kneighbors(images, n_neighbors=2)
         self.assertEqual(kn.shape, dist.shape)
         names = knn.get_image_names(kn)
@@ -211,8 +216,12 @@ class TestImage(ExtTestCase):
         self.assertEqual(None, names[0, 0])
         names = knn.get_image_classes(kn)
         self.assertEqual(kn.shape, names.shape)
-        exp = [['cl1', 'cl1'], ['cl1', 'cl1'], ['cl1', 'cl1'],
-               ['cl2', 'cl1'], ['cl2', 'cl2'], ['cl2', 'cl2']]
+        if cl1_first:
+            exp = [['cl1', 'cl1'], ['cl1', 'cl1'], ['cl1', 'cl1'],
+                   ['cl2', 'cl1'], ['cl2', 'cl2'], ['cl2', 'cl2']]
+        else:
+            exp = [['cl2', 'cl1'], ['cl2', 'cl2'], ['cl2', 'cl2'],
+                   ['cl1', 'cl1'], ['cl1', 'cl1'], ['cl1', 'cl1']]
         self.assertEqual(names.ravel().tolist()[::2],
                          numpy.array(exp).ravel().tolist()[::2])
 
