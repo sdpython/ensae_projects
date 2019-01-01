@@ -23,10 +23,8 @@ except ImportError:
 
 
 def _run_cmd_filter(name):
-    if "faq_matplotlib.py" in name:
-        return True
     print("#", name)
-    return False
+    return True
 
 
 class TestCodeStyle(ExtTestCase):
@@ -42,7 +40,6 @@ class TestCodeStyle(ExtTestCase):
             __file__,
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
-
         thi = os.path.abspath(os.path.dirname(__file__))
         src_ = os.path.normpath(os.path.join(thi, "..", "..", "src"))
         check_pep8(src_, fLOG=fLOG, verbose=False, run_cmd_filter=_run_cmd_filter,
@@ -71,7 +68,6 @@ class TestCodeStyle(ExtTestCase):
             __file__,
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
-
         thi = os.path.abspath(os.path.dirname(__file__))
         test = os.path.normpath(os.path.join(thi, "..", ))
         check_pep8(test, fLOG=fLOG, neg_pattern="temp_.*", verbose=False,
