@@ -167,6 +167,7 @@ class TestImage(ExtTestCase):
                                         'cl1/img23.jpg'])
         else:
             self.assertIn(names[0, 0], ['cl2/768263167319371776_CqlrRw3WAAAb3ni.jpg',
+                                        'cl2/768263432214814720_CqlrfCqXEAAANKG.jpg',
                                         'cl2/img22.jpg'])
         names = knn.get_image_classes(kn)
         self.assertEqual(kn.shape, names.shape)
