@@ -137,16 +137,24 @@ class TestImage(ExtTestCase):
         if cl1_first:
             self.assertEqual(knn.image_classes_, [
                              'cl1', 'cl1', 'cl1', 'cl2', 'cl2', 'cl2'])
+            self.assertEqual(list(sorted(knn.image_names_)),
+                             list(sorted(['cl1/739728353121427456_CkQLA7WVEAAZxFI.jpg',
+                                          'cl1/950995136640700416_DTKdA4lWAAAOuqj.jpg',
+                                          'cl1/img23.jpg',
+                                          'cl2/768263167319371776_CqlrRw3WAAAb3ni.jpg',
+                                          'cl2/768263432214814720_CqlrfCqXEAAANKG.jpg',
+                                          'cl2/img22.jpg'])))
+
         else:
             self.assertEqual(knn.image_classes_, [
                              'cl2', 'cl2', 'cl2', 'cl1', 'cl1', 'cl1'])
-        self.assertEqual(list(sorted(knn.image_names_)),
-                         list(sorted(['cl1/739728353121427456_CkQLA7WVEAAZxFI.jpg',
-                                      'cl1/950995136640700416_DTKdA4lWAAAOuqj.jpg',
-                                      'cl1/img23.jpg',
-                                      'cl2/768263167319371776_CqlrRw3WAAAb3ni.jpg',
-                                      'cl2/768263432214814720_CqlrfCqXEAAANKG.jpg',
-                                      'cl2/img22.jpg'])))
+            self.assertEqual(list(sorted(knn.image_names_)),
+                             list(sorted(['cl2/768263167319371776_CqlrRw3WAAAb3ni.jpg',
+                                          'cl2/768263432214814720_CqlrfCqXEAAANKG.jpg',
+                                          'cl2/img22.jpg',
+                                          'cl1/739728353121427456_CkQLA7WVEAAZxFI.jpg',
+                                          'cl1/950995136640700416_DTKdA4lWAAAOuqj.jpg',
+                                          'cl1/img23.jpg'])))
 
         dist, kn = knn.kneighbors(folder, n_neighbors=2)
         self.assertEqual(kn.shape, dist.shape)
@@ -154,8 +162,12 @@ class TestImage(ExtTestCase):
         exp = [[0, 2], [1, 2], [2, 1], [3, 2], [4, 5], [5, 4]]
         self.assertEqual(kn[:, 0], numpy.array(exp)[:, 0])
         self.assertEqual(kn.shape, names.shape)
-        self.assertIn(names[0, 0], ['cl1/739728353121427456_CkQLA7WVEAAZxFI.jpg',
-                                    'cl1/img23.jpg'])
+        if cl1_first:
+            self.assertIn(names[0, 0], ['cl1/739728353121427456_CkQLA7WVEAAZxFI.jpg',
+                                        'cl1/img23.jpg'])
+        else:
+            self.assertIn(names[0, 0], ['cl2/768263167319371776_CqlrRw3WAAAb3ni.jpg',
+                                        'cl2/img22.jpg'])
         names = knn.get_image_classes(kn)
         self.assertEqual(kn.shape, names.shape)
         if cl1_first:
