@@ -31,9 +31,14 @@ class TestCodeStyle(ExtTestCase):
 
     def test_style_src(self):
         """Checks style of source files."""
+        fLOG(
+            __file__,
+            self._testMethodName,
+            OutputPrint=__name__ == "__main__")
+
         thi = os.path.abspath(os.path.dirname(__file__))
         src_ = os.path.normpath(os.path.join(thi, "..", "..", "src"))
-        check_pep8(src_, fLOG=fLOG,
+        check_pep8(src_, fLOG=fLOG, verbose=True,
                    pylint_ignore=('C0103', 'C1801', 'R0201', 'R1705', 'W0108', 'W0613',
                                   'C0111', 'W0212', 'W0107'),
                    skip=["Use % formatting in logging functions and pass the % parameters",
@@ -55,9 +60,14 @@ class TestCodeStyle(ExtTestCase):
 
     def test_style_test(self):
         """Checks style of tests files."""
+        fLOG(
+            __file__,
+            self._testMethodName,
+            OutputPrint=__name__ == "__main__")
+
         thi = os.path.abspath(os.path.dirname(__file__))
         test = os.path.normpath(os.path.join(thi, "..", ))
-        check_pep8(test, fLOG=fLOG, neg_pattern="temp_.*",
+        check_pep8(test, fLOG=fLOG, neg_pattern="temp_.*", verbose=True,
                    pylint_ignore=('C0103', 'C1801', 'R0201', 'R1705', 'W0108', 'W0613',
                                   'C0111', 'C0414', 'W0107'),
                    skip=["src' imported but unused",
