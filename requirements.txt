@@ -30,7 +30,6 @@ qgrid
 shapely
 sphinx_modern_theme_modified
 shapely
-tf-nightly
 waitress
 wheel
 x86cpu
