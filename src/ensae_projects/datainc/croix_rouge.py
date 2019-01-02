@@ -161,7 +161,7 @@ def merge_schema(tables=None, password=None):
     return join
 
 
-def df2rsthtml(df, format="html", fillna=""):
+def df2rsthtml(df, format="html", fillna=""):  # pylint: disable=W0622
     """
     Writes a table into RST or HTML format.
 

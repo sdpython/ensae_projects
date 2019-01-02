@@ -155,6 +155,9 @@ if r is not None:
                 print("score, id, name", n)
                 res.append((n[0], n[2]['name']))
 
+    if len(res) == 0:
+        raise ValueError("No results found in\n{0}".format(js))
+
     #######################
     # Let's display the images.
 

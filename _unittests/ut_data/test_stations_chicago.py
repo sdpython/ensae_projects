@@ -53,7 +53,7 @@ class TestStationsChicago(unittest.TestCase):
         df_stations = self._stations
         colors = ["red", "blue"]
         draw = []
-        for iter in df_stations.apply(lambda row: (row["latitude"], row["longitude"]), axis=1):
+        for iter in df_stations.apply(lambda row: (row["latitude"], row["longitude"]), axis=1):  # pylint: disable=W0622
             x, y = iter
             h = random.randint(0, 1)
             draw.append(((x, y), colors[h]))
@@ -68,8 +68,8 @@ class TestStationsChicago(unittest.TestCase):
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
 
-        df = pandas.DataFrame(dict(A=["un", "deux"], B=[1, 2], C=[
-                              time(12, 0, 0), time(12, 10, 0)]))
+        df = pandas.DataFrame(dict(A=["un", "deux"], B=[1, 2],
+                                   C=[time(12, 0, 0), time(12, 10, 0)]))
         fLOG(df)
         dfj = add_missing_time(df, "C", values="B")
         # fLOG(dfj[dfj.B != 0])

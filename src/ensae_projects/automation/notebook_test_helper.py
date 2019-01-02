@@ -107,7 +107,7 @@ def clean_function_notebook(code):
     return code
 
 
-def execute_notebooks(folder, notebooks, filter,
+def execute_notebooks(folder, notebooks, filter,  # pylint: disable= W0622
                       clean_function=None,
                       fLOG=noLOG,
                       deepfLOG=noLOG,

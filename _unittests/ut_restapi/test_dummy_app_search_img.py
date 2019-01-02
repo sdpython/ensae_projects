@@ -77,7 +77,7 @@ class TestDummyAppSearchImg(testing.TestCase):
         img2 = os.path.join(os.path.dirname(__file__),
                             "data", "wiki_modified.png")
         b64 = image2base64(img2)[1]
-        bodyin = ujson.dumps({'X': b64})
+        bodyin = ujson.dumps({'X': b64})  # pylint: disable=E1101
 
         if not self._run_test:
             return
@@ -86,7 +86,7 @@ class TestDummyAppSearchImg(testing.TestCase):
         if result.status != falcon.HTTP_201:
             raise Exception("Failure\n{0}".format(result.status))
         self.assertEqual(result.status, falcon.HTTP_201)
-        d = ujson.loads(result.content)
+        d = ujson.loads(result.content)  # pylint: disable=E1101
         self.assertTrue('Y' in d)
         self.assertIsInstance(d['Y'], list)
         self.assertEqual(len(d['Y']), 5)
@@ -113,14 +113,14 @@ class TestDummyAppSearchImg(testing.TestCase):
         ext_b64 = image2base64(img2)
         img2 = base642image(ext_b64[1]).convert('RGB')
         arr = image2array(img2)
-        bodyin = ujson.dumps({'X': arr.tolist()})
+        bodyin = ujson.dumps({'X': arr.tolist()})  # pylint: disable=E1101
 
         if not self._run_test:
             return
 
         result = self.simulate_request(path='/', method="POST", body=bodyin)
         self.assertEqual(result.status, falcon.HTTP_400)
-        d = ujson.loads(result.content)
+        d = ujson.loads(result.content)  # pylint: disable=E1101
         self.assertIn('Unable to predict', d['title'])
         self.assertIn("object has no attribute", d['description'])
 

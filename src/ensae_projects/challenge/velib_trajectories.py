@@ -187,7 +187,7 @@ def distance(positif, negatif, app, params):
         len(val) - len(cor)
 
 
-def appariement(events, iter=1000, params=ParemetreCoutTrajet(), fLOG=print):
+def appariement(events, iter=1000, params=ParemetreCoutTrajet(), fLOG=print):  # pylint: disable=W0622
     """
     On veut apparier les événemens -1 aux événemens +1.
     On s'attend aux colonnes suivantes:

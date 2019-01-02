@@ -96,7 +96,8 @@ class TestCityTour(unittest.TestCase):
         distances = [1, 1, 1, 1]
         solution = [1, 2, 3, 4]
         d = distance_solution(edges_index, edges, distances, solution)
-        path = euler_path(edges_index, edges, solution)
+        path = euler_path(edges_index, edges,  # pylint: disable=W0621
+                          solution)
         self.assertEqual(len(path), d)
         self.assertEqual(list(sorted((path))), [1, 2, 3, 4])
 
@@ -118,7 +119,8 @@ class TestCityTour(unittest.TestCase):
                 raise e
         solution = [1, 2, 3, 4, 5, 6, 1, 2, 2]
         d = distance_solution(edges_index, edges, distances, solution)
-        path = euler_path(edges_index, edges, solution)
+        path = euler_path(edges_index, edges,  # pylint: disable=W0621
+                          solution)
         self.assertEqual(len(path), d)
         self.assertEqual(list(sorted(path)), [1, 1, 2, 2, 2, 3, 4, 5, 6])
 
@@ -136,7 +138,8 @@ class TestCityTour(unittest.TestCase):
                  (15, 11), (1, 0), (4, 6), (8, 9), (13, 9), (7, 5), (11, 14), (16, 10), (2, 1), (12, 8), (9, 3), (12, 13)]
         asso = {edges_index[i]: edges[i] for i in range(len(edges_index))}
         for i in range(0, 20):
-            path = euler_path(edges_index, edges, solution)
+            path = euler_path(edges_index, edges,  # pylint: disable=W0621
+                              solution)
             assert len(path) > 0
             self.assertEqual(list(sorted(path)), list(sorted(solution)))
             for ii in range(1, len(path)):

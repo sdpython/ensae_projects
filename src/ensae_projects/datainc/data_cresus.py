@@ -10,7 +10,7 @@ from pyquickhelper.loghelper import fLOG
 from pyensae.sql import Database
 
 
-def process_cresus_whole_process(infile, outfold, ratio=0.20, fLOG=fLOG):
+def process_cresus_whole_process(infile, outfold, ratio=0.20, fLOG=fLOG):  # pylint: disable=W0621
     """
     Processes the database from :epkg:`Cresus` until it splits the data into two
     two sets of files.
@@ -42,7 +42,7 @@ def cresus_dummy_file():
     return name
 
 
-def process_cresus_sql(infile, out_clean_sql=None, outdb=None, fLOG=fLOG):
+def process_cresus_sql(infile, out_clean_sql=None, outdb=None, fLOG=fLOG):  # pylint: disable=W0621
     """
     Processes the database sent by cresus and produces
     a list of flat files.
@@ -141,7 +141,7 @@ def process_cresus_sql(infile, out_clean_sql=None, outdb=None, fLOG=fLOG):
     return df
 
 
-def prepare_cresus_data(dbfile, outfold=None, fLOG=fLOG):
+def prepare_cresus_data(dbfile, outfold=None, fLOG=fLOG):  # pylint: disable=W0621
     """
     Prepares the data for the challenge.
 
@@ -191,7 +191,7 @@ def prepare_cresus_data(dbfile, outfold=None, fLOG=fLOG):
     return res
 
 
-def split_train_test_cresus_data(tables, outfold, ratio=0.20, fLOG=fLOG):
+def split_train_test_cresus_data(tables, outfold, ratio=0.20, fLOG=fLOG):  # pylint: disable=W0621
     """
     Splits the tables into two sets for tables (based on users).
 
@@ -255,7 +255,7 @@ def split_train_test_cresus_data(tables, outfold, ratio=0.20, fLOG=fLOG):
     return rtrain, rtest
 
 
-def split_XY_bind_dataset_cresus_data(filename, fLOG=fLOG):
+def split_XY_bind_dataset_cresus_data(filename, fLOG=fLOG):  # pylint: disable=W0621
     """
     Splits XY for the blind set.
 

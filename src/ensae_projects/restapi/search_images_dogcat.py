@@ -57,15 +57,17 @@ def search_images_dogcat(app=None, url_images=None, dest=None):
     if dest is None or len(dest) == 0:
         dest = os.path.abspath("images")
         if not os.path.exists(dest):
-            logger.info("Create folder '{0}'".format(dest))
+            logger.info("Create folder '{0}'".format(  # pylint: disable=W1202
+                dest))
             os.mkdir(dest)
 
     if not os.path.exists(dest):
         raise FileNotFoundError("Unable to find folder '{0}'".format(dest))
 
     # Downloads and unzips images.
-    logger.info("Downloads images '{0}'".format(url_images))
-    logger.info("Destination '{0}'".format(dest))
+    logger.info("Downloads images '{0}'".format(  # pylint: disable=W1202
+        url_images))
+    logger.info("Destination '{0}'".format(dest))  # pylint: disable=W1202
     if '/' in url_images:
         spl = url_images.split('/')
         zipname = spl[-1]
@@ -83,22 +85,25 @@ def search_images_dogcat(app=None, url_images=None, dest=None):
         os.mkdir(cl)
         for img in imgs:
             shutil.move(os.path.join(dest, img), cl)
-        logger.info("Moving all images to '{0}'".format(cl))
+        logger.info("Moving all images to '{0}'".format(  # pylint: disable=W1202
+            cl))
         classes = ['oneclass']
 
     # Iterator on images
-    logger.info("Discovering images in '{0}'".format(dest))
+    logger.info("Discovering images in '{0}'".format(  # pylint: disable=W1202
+        dest))
     from keras.preprocessing.image import ImageDataGenerator
     augmenting_datagen = ImageDataGenerator(rescale=1. / 255)
     try:
         iterimf = augmenting_datagen.flow_from_directory(dest, batch_size=1, target_size=(224, 224),
                                                          classes=classes, shuffle=False)
     except Exception as e:
-        logger.info("ERROR '{0}'".format(str(e)))
+        logger.info("ERROR '{0}'".format(str(e)))  # pylint: disable=W1202
         raise e
 
     # Deep learning model.
-    logger.info("Loading model '{0}'".format('MobileNet'))
+    logger.info("Loading model '{0}'".format(  # pylint: disable=W1202
+        'MobileNet'))
     from keras.applications.mobilenet import MobileNet
     model = MobileNet(input_shape=None, alpha=1.0, depth_multiplier=1, dropout=1e-3, include_top=True,
                       weights='imagenet', input_tensor=None, pooling=None, classes=1000)

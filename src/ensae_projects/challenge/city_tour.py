@@ -360,7 +360,7 @@ def bellman_distances(edges, distances, fLOG=None):
     dist.update({(b, a): d for d, (a, b) in zip(distances, edges)})
     dist0 = dist.copy()
 
-    iter = 0
+    iter = 0  # pylint: disable=W0622
     up = dist
     while len(up) > 0:
         iter += 1

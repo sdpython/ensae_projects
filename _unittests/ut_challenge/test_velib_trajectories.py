@@ -50,7 +50,7 @@ class TestVelibTrajectories(unittest.TestCase):
         # fLOG(df.head())
 
         # on regarde s'il existe le fichier des trajectoires
-        path = jeu.replace("_data.", "_path.")
+        path = jeu.replace("_data.", "_path.")  # pylint: disable=W0621
         if path != jeu and os.path.exists(path):
             dfp = pandas.read_csv(path, sep="\t")
             dfp = dfp[dfp["beginend"] == "end"]

@@ -128,7 +128,7 @@ def enumerate_json_items(filename, encoding=None, fLOG=noLOG):
                 if curkey is None:
                     current.append(c)
                 else:
-                    current[curkey] = c
+                    current[curkey] = c  # pylint: disable=E1137
                 stack.append(c)
                 current = c
                 curkey = None
@@ -146,13 +146,13 @@ def enumerate_json_items(filename, encoding=None, fLOG=noLOG):
                 if curkey is None:
                     current.append(value)
                 else:
-                    current[curkey] = value
+                    current[curkey] = value  # pylint: disable=E1137
                     curkey = None
             elif event == "null":
                 if curkey is None:
                     current.append(None)
                 else:
-                    current[curkey] = None
+                    current[curkey] = None  # pylint: disable=E1137
                     curkey = None
             else:
                 raise ValueError("Unknown event '{0}'".format(event))

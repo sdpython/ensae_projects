@@ -691,6 +691,8 @@ def get_max_delta(roots):
 
 def read_input(input_file):
     N, M = [int(x) for x in next(input_file).split()]
+    if N is None or M is None:
+        raise ValueError("Unable to process '{0}'".format(input_file))
     vertices = dict()
 
     for line in input_file:
