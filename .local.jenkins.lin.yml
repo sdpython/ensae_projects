@@ -17,7 +17,8 @@ install:
 script:
   - { CMD: "$PYINT -u setup.py unittests -g \".*((code_style)|(LONG)|(SKIP)|(dummy_app)).*\"", NAME: "UT" }
   - { CMD: "$PYINT -u setup.py unittests -e \".*code_style.*\"", NAME: "UT_STYLE" }
-  - { CMD: "$PYINT -u setup.py unittests -e \".*dummy_app.*\"", NAME: "UT_DUMMY_APP" }
+  - { CMD: "$PYINT -u setup.py unittests -e \".*dummy_app[a-z_]+?keras.*\"", NAME: "UT_DUMMY_APP_KERAS" }
+  - { CMD: "$PYINT -u setup.py unittests -e \".*dummy_app[a-z_]+?torch.*\"", NAME: "UT_DUMMY_APP_TORCH" }
   - { CMD: "$PYINT -u setup.py unittests_LONG", NAME: "UT_LONG", TIMEOUT: 5000 }
   - { CMD: "$PYINT -u setup.py unittests_SKIP", NAME: "UT_SKIP" }
 
