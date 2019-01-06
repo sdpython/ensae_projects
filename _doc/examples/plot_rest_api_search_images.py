@@ -86,7 +86,7 @@ else:
 ##########################
 # Let's wait.
 from time import sleep
-# sleep(15)
+sleep(10)
 
 ####################
 # Let's load an image.
