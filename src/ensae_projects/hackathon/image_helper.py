@@ -63,7 +63,7 @@ def read_image(filename_or_bytes):
     Reads an image.
 
     @param      filename_or_bytes   filename or bytes
-    @return                         :epkg:`PIL.Image`
+    @return                         *Image* from :epkg:`PIL`
     """
     if isinstance(filename_or_bytes, str):
         with open(filename_or_bytes, "rb") as f:
@@ -121,9 +121,9 @@ def img2gray(img, mode='L'):
     """
     Converts an image (:epkg:`PIL`) to gray scale.
 
-    @param      img     see :epkg:`PIL.Image`
+    @param      img     see *Image* from :epkg:`PIL`
     @param      mode    ``'L'`` or ``'LA'``
-    @return             see :epkg:`PIL.Image`
+    @return             see *Image* from :epkg:`PIL`
     """
     return img.convert(mode)
 
@@ -167,7 +167,7 @@ def stream_apply_image_transform(src_folder, dest_folder, transform,  # pylint: 
 
 def image_zoom(img, new_size, **kwargs):
     """
-    Applies :epkg:`PIL:Image:resize`.
+    Resizes an *image* (from :epkg:`PIL`).
 
 
     @param  img         :epkg:`PIL.Image`

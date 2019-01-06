@@ -178,7 +178,7 @@ class ImageNearestNeighbors(NearestNeighbors):
         """
         See :epkg:`NearestNeighbors`, method :epkg:`kneighbors`.
         Parameter *X* can be a file, the image is then loaded and converted
-        with the same transform. *X* can also be a :epkg:`PIL.Image`.
+        with the same transform. *X* can also be an *Image* from :epkg:`PIL`.
         """
         return self._private_kn("kneighbors", X=X, n_neighbors=n_neighbors, return_distance=return_distance, fLOG=fLOG)
 
@@ -186,7 +186,7 @@ class ImageNearestNeighbors(NearestNeighbors):
         """
         See :epkg:`NearestNeighbors`, method :epkg:`kneighbors_graph`.
         Parameter *X* can be a file, the image is then loaded and converted
-        with the same transform. *X* can also be a :epkg:`PIL.Image`.
+        with the same transform. *X* can also be an *Image* from :epkg:`PIL`.
         """
         return self._private_kn("kneighbors_graph", X=X, n_neighbors=n_neighbors, mode=mode, fLOG=fLOG)
 
@@ -194,7 +194,7 @@ class ImageNearestNeighbors(NearestNeighbors):
         """
         See :epkg:`NearestNeighbors`, method :epkg:`radius_neighbors`.
         Parameter *X* can be a file, the image is then loaded and converted
-        with the same transform. *X* can also be a :epkg:`PIL.Image`.
+        with the same transform. *X* can also be an *Image* from :epkg:`PIL`.
         """
         return self._private_kn("radius_neighbors", X=X, radius=radius, return_distance=return_distance, fLOG=fLOG)
 

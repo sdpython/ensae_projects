@@ -4,6 +4,7 @@
 @brief Data related to a challenge, streets in Seattle
 """
 import os
+import pandas
 from pyensae.datasource import download_data
 from pyensae.notebookhelper import folium_html_map
 
@@ -17,7 +18,6 @@ def get_fields_description():
     """
     from .seattle_streets import __file__ as local_dir
     this = os.path.join(os.path.dirname(local_dir), "street_seattle.desc.xlsx")
-    import pandas
     return pandas.read_excel(this)
 
 
@@ -40,12 +40,14 @@ def get_seattle_streets(filename=None, folder="."):
     return filename
 
 
-def shapely_records(filename):
+def shapely_records(filename, **kwargs):
     """
     Uses `pyshp <https://pypi.python.org/pypi/pyshp/>`_ to return
     shapes and records from shapefiles.
 
     @param      filename        filename
+    @param      kwargs          addition parameter for the shapefile reader,
+                                useful options car *encoding* and *encodingErrors*
     @return                     shapes, records, fields
 
     .. faqref::
@@ -82,7 +84,7 @@ def shapely_records(filename):
 
     """
     import shapefile
-    rshp = shapefile.Reader(filename)
+    rshp = shapefile.Reader(filename, **kwargs)
     shapes = rshp.shapes()
     records = rshp.records()
     try:
