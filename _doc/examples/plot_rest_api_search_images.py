@@ -155,7 +155,11 @@ if r is not None:
             'images', x[1]), res))
 
     from mlinsights.plotting import plot_gallery_images
-    plot_gallery_images(imgs, txts)
+    try:
+        plot_gallery_images(imgs, txts)
+    except FileNotFoundError as e:
+        raise FileNotFoundError("Unable to find images '{0}' - cwd='{1}' full='{2}'".format(
+                imgs[0], os.getcwd(), os.path.abspath(imgs[0])))
 
     # import matplotlib.pyplot as plt
     # plt.show()

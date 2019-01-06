@@ -62,6 +62,8 @@ epkg_dictionary.update({
     'REST': 'https://fr.wikipedia.org/wiki/Representational_state_transfer',
     'REST API': "https://en.wikipedia.org/wiki/Representational_state_transfer",
     'Tensorflow': 'https://www.tensorflow.org/',
+    'torch': 'https://pytorch.org/',
+    'pytorch': 'https://pytorch.org/',
     'urllib3': 'https://urllib3.readthedocs.io/en/latest/',
     "vélib": "https://www.velib-metropole.fr/",
     'VM': 'https://fr.wikipedia.org/wiki/Machine_virtuelle',
