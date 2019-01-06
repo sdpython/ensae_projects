@@ -33,7 +33,7 @@ def process_server_images(host, port):
     # If not specified, the application looks for zip file:
     # http://www.xavierdupre.fr/enseignement/complements/dog-cat-pixabay.zip
     from ensae_projects.restapi import search_images_dogcat
-    app = search_images_dogcat(url_images=url)
+    app = search_images_dogcat(url_images=url, module="torch")
 
     from waitress import serve
     print("Start")
@@ -75,7 +75,7 @@ if sys.platform.startswith('win'):
     cmd = '{0} -u "{1}"'.format(sys.executable.replace('w.exe', '.exe'),
                                 code_file)
     print("Running '{0}'".format(cmd))
-    # proc = Popen(cmd)
+    proc = Popen(cmd)
 else:
     cmd = [sys.executable, '-u', code_file]
     print("Running '{0}'".format(cmd))
