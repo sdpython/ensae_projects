@@ -17,5 +17,3 @@ setuptools
 Sphinx
 statsmodels
 toolz
-torch
-torchvision
