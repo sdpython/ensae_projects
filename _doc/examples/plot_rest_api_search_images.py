@@ -9,9 +9,6 @@ searches for similar images based on features produced
 by a deep learning model.
 """
 
-import sys
-sys.path.append(r'../../../ensae_projects/src')
-
 ####################
 # Settings.
 host = '127.0.0.1'
@@ -57,18 +54,7 @@ def path_module(mod):
     return os.path.normpath(os.path.abspath(os.path.join(os.path.dirname(m.__file__), '..')))
 
 
-additional_path = ['ensae_projects', 'pyensae', 'pyquickhelper',
-                   'mlinsights', 'lightmlrestapi', 'pandas_streaming']
-paths = [path_module(m) for m in additional_path]
-
-
-header = """
-import sys
-{0}
-""".format("\n".join(set("sys.path.append(r'{0}')".format(p) for p in paths)))
-
-code = header + code + \
-    "\nprocess_server_images('{0}', {1})\n".format(host, port)
+code = code + "\nprocess_server_images('{0}', {1})\n".format(host, port)
 dest = os.path.abspath('temp_scripts')
 if not os.path.exists(dest):
     os.mkdir(dest)
@@ -86,21 +72,21 @@ print(code)
 import sys
 from subprocess import Popen
 if sys.platform.startswith('win'):
-    cmd = '{0} -u "{1}"'.format(sys.executable.replace('w.exe',
-                                                       '.exe'), code_file)
+    cmd = '{0} -u "{1}"'.format(sys.executable.replace('w.exe', '.exe'),
+                                code_file)
     print("Running '{0}'".format(cmd))
-    proc = Popen(cmd)
+    # proc = Popen(cmd)
 else:
     cmd = [sys.executable, '-u', code_file]
     print("Running '{0}'".format(cmd))
-    proc = Popen(cmd)
+    # proc = Popen(cmd)
     print('Skipping server.')
-print('Start server, process id', proc.pid)
+#print('Start server, process id', proc.pid)
 
 ##########################
 # Let's wait.
 from time import sleep
-sleep(15)
+# sleep(15)
 
 ####################
 # Let's load an image.
@@ -128,7 +114,7 @@ import ujson
 b64 = image2base64(imgfile)[1]
 features = ujson.dumps({'X': b64})
 try:
-    r = requests.post('http://127.0.0.1:%d' % port, data=features, timeout=15)
+    r = requests.post('http://127.0.0.1:%d' % port, data=features, timeout=10)
 except Exception as e:
     print("unable to request", 'http://127.0.0.1:%d' % port)
     print(e)

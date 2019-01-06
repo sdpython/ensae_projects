@@ -95,7 +95,7 @@ Glossaire
         :epkg:`Numa`, espace de coworking et terrain de jeu du hackathon.
 
     Microdon
-        :epkg:`Microdon`une start-up agréée
+        :epkg:`Microdon` une start-up agréée
         :epkg:`ESUS` et certifiée :epkg:`B-Corp` qui propose aux entreprises soucieuses de
         leur Responsabilité sociétale des solutions innovantes pour faciliter
         l'engagement solidaire en entreprise.

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-@brief      test log(time=30s)
+@brief      test log(time=13s)
 """
 
 import sys
@@ -31,15 +31,15 @@ except ImportError:
     import src
 
 
-def has_tf():
+def has_torch():
     try:
-        import tensorflow
-        return tensorflow is not None
+        import torch
+        return torch is not None
     except ImportError:
         return False
 
 
-class TestDummyAppSearchImg(testing.TestCase):
+class TestDummyAppSearchImgTorch(testing.TestCase):
 
     def setUp(self):
         add_missing_development_version(["pymyinstall", "pyensae", "jyquickhelper",
@@ -48,23 +48,21 @@ class TestDummyAppSearchImg(testing.TestCase):
         super().setUp()
 
         from src.ensae_projects.restapi import search_images_dogcat
-        temp = get_temp_folder(__file__, 'temp_search_images_dogcat')
+        temp = get_temp_folder(__file__, 'temp_search_images_dogcat_torch')
 
         with redirect_stderr(StringIO()):
             try:
-                from keras.applications.mobilenet import MobileNet
-                assert MobileNet is not None
+                from torchvision.models import squeezenet1_1
+                assert squeezenet1_1 is not None
                 self._run_test = True
             except SyntaxError as e:
                 warnings.warn(
-                    "tensorflow is probably not available yet on python 3.7: {0}".format(e))
+                    "torch is not available: {0}".format(e))
                 self._run_test = False
                 return
 
-        search_images_dogcat(self.api, dest=temp)
+        search_images_dogcat(self.api, dest=temp, module="torch")
 
-    @unittest.skipIf(not has_tf(), reason="tensor not installed")
-    @skipif_travis('tensorflow/python/lib/core/bfloat16.cc:664] Check failed: PyBfloat16_Type.tp_base != nullptr')
     def test_dummy_search_app_search_img(self):
         fLOG(
             __file__,
@@ -94,12 +92,9 @@ class TestDummyAppSearchImg(testing.TestCase):
         self.assertIsInstance(d['Y'][0][1], int)
         self.assertIn('name', d['Y'][0][2])
         val = d['Y'][0][2]['name'].replace('\\', '/')
-        self.assertIn(val, ('oneclass/cat-2922832__480.jpg',
-                            'oneclass/wolf-2865653__480.jpg'))
+        val = "/".join(val.split("/")[-2:])
+        self.assertIn(val, ('oneclass/shotlanskogo-2934720__480.jpg'), )
 
-    @unittest.skipIf(not has_tf(), reason="tensor not installed")
-    @skipif_travis('tensorflow/python/lib/core/bfloat16.cc:664] Check failed: PyBfloat16_Type.tp_base != nullptr')
-    @unittest.skipIf(not x86cpu.info.supports_avx2, "tensorflow requires instructions AVX2 on CPU")
     def test_dummy_error_img(self):
         fLOG(
             __file__,
