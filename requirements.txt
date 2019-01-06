@@ -6,8 +6,6 @@ falcon>=1.4.1
 folium
 ijson
 jyquickhelper
-keras
-keras_applications
 keyring
 keyrings.alt
 lightmlrestapi

@@ -24,7 +24,7 @@ install:
   - "%PYTHON%\\Scripts\\pymy_install3 PyYAML x86cpu"
   - "%PYTHON%\\Scripts\\pymy_install3 pyproj shapely cartopy"
   - "%PYTHON%\\Scripts\\pymy_install3 opencv_python"
-  - "%PYTHON%\\Scripts\\pymy_install3 pillow psutil protobuf tensorflow"
+  - "%PYTHON%\\Scripts\\pymy_install3 pillow psutil protobuf tensorflow torch"
   - "%PYTHON%\\Scripts\\pip install -r requirements_conda.txt"
   - "%PYTHON%\\Scripts\\pip install -r requirements.txt"
   - "%PYTHON%\\Scripts\\pip uninstall -y ensae_projects"
