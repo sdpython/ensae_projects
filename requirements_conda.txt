@@ -2,7 +2,6 @@ bokeh
 Cython
 jupyter
 keras
-keras_applications
 matplotlib
 notebook>=5.0.0
 networkx
