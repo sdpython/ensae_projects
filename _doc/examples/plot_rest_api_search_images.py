@@ -80,9 +80,8 @@ if sys.platform.startswith('win'):
 else:
     cmd = [sys.executable, '-u', code_file]
     print("Running '{0}'".format(cmd))
-    # proc = Popen(cmd)
-    print('Skipping server.')
-#print('Start server, process id', proc.pid)
+    proc = Popen(cmd)
+print('Start server, process id', proc.pid)
 
 ##########################
 # Let's wait.
