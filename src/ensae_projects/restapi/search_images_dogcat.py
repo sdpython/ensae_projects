@@ -1,7 +1,8 @@
 """
 @file
 @brief Defines a search engine for images inspired from
-`Search images with deep learning <http://www.xavierdupre.fr/app/mlinsights/helpsphinx/notebooks/search_images.html#searchimagesrst>`_.
+# searchimagesrst>`_.
+`Search images with deep learning <http://www.xavierdupre.fr/app/mlinsights/helpsphinx/notebooks/search_images.html
 It relies on :epkg:`lightmlrestapi`.
 """
 import os
@@ -51,39 +52,38 @@ def search_images_dogcat(app=None, url_images=None, dest=None, module="torch"):
 
         {'Y': [[[41, 4.8754486973, {'name': 'wiki.png', description='something'}]]]}
     """
+    logger = logging.getLogger('search_images_dogcat')
+    logger.setLevel(logging.INFO)
     if module == "keras":
-        _search_images_dogcat_keras(app=app, url_images=url_images, dest=dest)
+        _search_images_dogcat_keras(
+            app=app, url_images=url_images, dest=dest, fLOG=print) # logger.info)
     elif module == "torch":
-        _search_images_dogcat_torch(app=app, url_images=url_images, dest=dest)
+        _search_images_dogcat_torch(
+            app=app, url_images=url_images, dest=dest, fLOG=print) # logger.info)
     else:
         raise ValueError("Unexpected module '{0}'.".format(module))
 
 
-def _search_images_dogcat_keras(app=None, url_images=None, dest=None):
-    logger = logging.getLogger('search_images_dogcat')
-    logger.setLevel(logging.INFO)
-
+def _search_images_dogcat_keras(app=None, url_images=None, dest=None, fLOG=None):
     if url_images is None or len(url_images) == 0:
         url_images = "dog-cat-pixabay.zip"
     if dest is None or len(dest) == 0:
         dest = os.path.abspath("images")
         if not os.path.exists(dest):
-            logger.info("Create folder '{0}'".format(  # pylint: disable=W1202
-                dest))
+            fLOG("Create folder '{0}'".format(dest))  # pylint: disable=W1202
             os.mkdir(dest)
 
     if not os.path.exists(dest):
         raise FileNotFoundError("Unable to find folder '{0}'".format(dest))
 
     # Downloads and unzips images.
-    logger.info("Downloads images '{0}'".format(  # pylint: disable=W1202
-        url_images))
-    logger.info("Destination '{0}'".format(dest))  # pylint: disable=W1202
+    fLOG("Downloads images '{0}'".format(url_images))  # pylint: disable=W1202
+    fLOG("Destination '{0}'".format(dest))  # pylint: disable=W1202
     if '/' in url_images:
         spl = url_images.split('/')
         zipname = spl[-1]
         website = '/'.join(spl[:-1])
-        logger.info("zipname '{0}'".format(zipname))  # pylint: disable=W1202
+        fLOG("zipname '{0}'".format(zipname))  # pylint: disable=W1202
         download_data(zipname, whereTo=dest, website=website + "/")
     else:
         download_data(url_images, whereTo=dest)
@@ -97,12 +97,10 @@ def _search_images_dogcat_keras(app=None, url_images=None, dest=None):
         os.mkdir(cl)
         for img in imgs:
             shutil.move(os.path.join(dest, img), cl)
-        logger.info("Moving all images to '{0}'".format(  # pylint: disable=W1202
-            cl))
+        fLOG("Moving all images to '{0}'".format(cl))  # pylint: disable=W1202
         classes = ['oneclass']
 
-    logger.info("Discovering images in '{0}'".format(  # pylint: disable=W1202
-        dest))
+    fLOG("Discovering images in '{0}'".format(dest))  # pylint: disable=W1202
 
     # Iterator on images
     from keras.preprocessing.image import ImageDataGenerator
@@ -111,15 +109,16 @@ def _search_images_dogcat_keras(app=None, url_images=None, dest=None):
         iterimf = augmenting_datagen.flow_from_directory(dest, batch_size=1, target_size=(224, 224),
                                                          classes=classes, shuffle=False)
     except Exception as e:
-        logger.info("ERROR '{0}'".format(str(e)))  # pylint: disable=W1202
+        fLOG("ERROR '{0}'".format(str(e)))  # pylint: disable=W1202
         raise e
 
     # Deep learning model.
-    logger.info("Loading model '{0}'".format(  # pylint: disable=W1202
-        'MobileNet'))
+    fLOG("Loading model '{0}'".format('MobileNet'))  # pylint: disable=W1202
+
     from keras.applications.mobilenet import MobileNet
-    model = MobileNet(input_shape=None, alpha=1.0, depth_multiplier=1, dropout=1e-3, include_top=True,
-                      weights='imagenet', input_tensor=None, pooling=None, classes=1000)
+    model = MobileNet(input_shape=None, alpha=1.0, depth_multiplier=1, dropout=1e-3,
+                      include_top=True, weights='imagenet', input_tensor=None,
+                      pooling=None, classes=1000)
 
     # Sets up the application.
     def predict_load():
@@ -127,7 +126,7 @@ def _search_images_dogcat_keras(app=None, url_images=None, dest=None):
         se = SearchEnginePredictionImages(model, fct_params=dict(layer=len(model.layers) - 2),
                                           n_neighbors=5)
         # fit
-        logger.info("Creating the neighbors")
+        fLOG("Creating the neighbors")
         se.fit(iterimf)
         return se
 
@@ -145,13 +144,12 @@ def _search_images_dogcat_keras(app=None, url_images=None, dest=None):
             X = image2array(X.convert('RGB').resize((224, 224)))
             iterim = gen.flow(X[numpy.newaxis, :, :, :], batch_size=1)
             score, ind, meta = se.kneighbors(iterim)
-            res = list(zip(map(float, score),
-                           map(int, ind),
-                           meta.to_dict('records')))
+            res = list(zip(map(float, score), map(
+                int, ind), meta.to_dict('records')))
             return res
 
     # Creates the application.
-    logger.info("Setting the application")
+    fLOG("Setting the application")
     from lightmlrestapi.mlapp import MachineLearningPost
     if app is None:
         app = falcon.API()
@@ -160,26 +158,21 @@ def _search_images_dogcat_keras(app=None, url_images=None, dest=None):
     return app
 
 
-def _search_images_dogcat_torch(app=None, url_images=None, dest=None):
-    logger = logging.getLogger('search_images_dogcat')
-    logger.setLevel(logging.INFO)
-
+def _search_images_dogcat_torch(app=None, url_images=None, dest=None, fLOG=None):
     if url_images is None or len(url_images) == 0:
         url_images = "dog-cat-pixabay.zip"
     if dest is None or len(dest) == 0:
         dest = os.path.abspath("images")
         if not os.path.exists(dest):
-            logger.info("Create folder '{0}'".format(  # pylint: disable=W1202
-                dest))
+            fLOG("Create folder '{0}'".format(dest))  # pylint: disable=W1202
             os.mkdir(dest)
 
     if not os.path.exists(dest):
         raise FileNotFoundError("Unable to find folder '{0}'".format(dest))
 
     # Downloads and unzips images.
-    logger.info("Downloads images '{0}'".format(  # pylint: disable=W1202
-        url_images))
-    logger.info("Destination '{0}'".format(dest))  # pylint: disable=W1202
+    fLOG("Downloads images '{0}'".format(url_images))  # pylint: disable=W1202
+    fLOG("Destination '{0}'".format(dest))  # pylint: disable=W1202
     if '/' in url_images:
         spl = url_images.split('/')
         zipname = spl[-1]
@@ -197,12 +190,10 @@ def _search_images_dogcat_torch(app=None, url_images=None, dest=None):
         os.mkdir(cl)
         for img in imgs:
             shutil.move(os.path.join(dest, img), cl)
-        logger.info("Moving all images to '{0}'".format(  # pylint: disable=W1202
-            cl))
+        fLOG("Moving all images to '{0}'".format(cl))  # pylint: disable=W1202
         classes = ['oneclass']
 
-    logger.info("Discovering images in '{0}'".format(  # pylint: disable=W1202
-        dest))
+    fLOG("Discovering images in '{0}'".format(dest))  # pylint: disable=W1202
 
     # fit a model
     from torchvision import datasets, transforms
@@ -220,7 +211,7 @@ def _search_images_dogcat_torch(app=None, url_images=None, dest=None):
         se = SearchEnginePredictionImages(
             model, fct_params=dict(), n_neighbors=5)
         # fit
-        logger.info("Creating the neighbors")
+        fLOG("Creating the neighbors")
         se.fit(iterim)
         return se
 
@@ -246,16 +237,15 @@ def _search_images_dogcat_torch(app=None, url_images=None, dest=None):
                 # traceback.print_exc()
                 raise e
             try:
-                res = list(zip(map(float, score),
-                               map(int, ind),
-                               meta.to_dict('records')))
+                res = list(zip(map(float, score), map(
+                    int, ind), meta.to_dict('records')))
             except Exception as e:
-                print("**", e)
+                fLOG("ERROR: {}".format(e))
                 raise e
             return res
 
     # Creates the application.
-    logger.info("Setting the application")
+    fLOG("Setting the application")
     from lightmlrestapi.mlapp import MachineLearningPost
     if app is None:
         app = falcon.API()
