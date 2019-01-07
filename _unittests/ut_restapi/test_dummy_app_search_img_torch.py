@@ -94,7 +94,8 @@ class TestDummyAppSearchImgTorch(testing.TestCase):
         val = d['Y'][0][2]['name'].replace('\\', '/')
         val = "/".join(val.split("/")[-2:])
         self.assertIn(val, ('oneclass/shotlanskogo-2934720__480.jpg',
-                            'oneclass/dog-2684073__480.jpg'))
+                            'oneclass/dog-2684073__480.jpg',
+                            'oneclass/fun-2213606__480.jpg'))
 
     def test_dummy_error_img(self):
         fLOG(
