@@ -38,8 +38,12 @@ def get_seattle_streets(filename=None, folder="."):
         if not os.path.exists(filename):
             from pyquickhelper.loghelper import BufferedPrint
             buf = BufferedPrint()
-            download_data("WGS84_seattle_street.zip", whereTo=folder, fLOG=buf.fprint)            
-            raise FileNotFoundError("Unable to download data 'WGS84_seattle_street.zip' to '{0}', log={1}.".format(filename, buf))
+            print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            download_data("WGS84_seattle_street.zip", whereTo=folder, fLOG=buf.fprint)
+            print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            download_data("WGS84_seattle_street.zip", whereTo=folder, fLOG=print)
+            print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            raise FileNotFoundError("Unable to download data 'WGS84_seattle_street.zip' to '{0}', log={1}.".format(filename, str(buf)))
     elif not os.path.exists(filename):
         raise FileNotFoundError(filename)
     return filename
