@@ -83,6 +83,7 @@ def _search_images_dogcat_keras(app=None, url_images=None, dest=None):
         spl = url_images.split('/')
         zipname = spl[-1]
         website = '/'.join(spl[:-1])
+        logger.info("zipname '{0}'".format(zipname))  # pylint: disable=W1202
         download_data(zipname, whereTo=dest, website=website + "/")
     else:
         download_data(url_images, whereTo=dest)

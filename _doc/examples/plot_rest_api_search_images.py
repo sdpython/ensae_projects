@@ -22,6 +22,7 @@ code = """
 def process_server_images(host, port):
     # Enable the section to intercept logged information.
     import logging
+    logging.basicConfig(level=logging.DEBUG)
     logger = logging.getLogger('search_images_dogcat')
     logger.setLevel(logging.INFO)
     hdlr = logging.FileHandler('search_images_dogcat.log')
