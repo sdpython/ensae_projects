@@ -56,10 +56,10 @@ def search_images_dogcat(app=None, url_images=None, dest=None, module="torch"):
     logger.setLevel(logging.INFO)
     if module == "keras":
         return _search_images_dogcat_keras(
-            app=app, url_images=url_images, dest=dest, fLOG=print) # logger.info)
+            app=app, url_images=url_images, dest=dest, fLOG=print)  # logger.info)
     elif module == "torch":
         return _search_images_dogcat_torch(
-            app=app, url_images=url_images, dest=dest, fLOG=print) # logger.info)
+            app=app, url_images=url_images, dest=dest, fLOG=print)  # logger.info)
     else:
         raise ValueError("Unexpected module '{0}'.".format(module))
 

@@ -12,7 +12,7 @@ by a deep learning model.
 ####################
 # Settings.
 host = '127.0.0.1'
-port = 8085
+port = 8086
 
 ########################
 # Creates the search engine and starts a server in a different process.
@@ -119,27 +119,28 @@ except Exception as e:
     print("unable to request", 'http://127.0.0.1:%d' % port)
     print(e)
     print("We are using dummy data.")
-    r = {'Y': [[[0.0, 1, {'name': 'oneclass/cat-1192026__480.jpg'}],
-                [0.0185132341, 11, {'name': 'oneclass/cat-2946028__480.jpg'}],
-                [0.0745846851, 2, {'name': 'oneclass/cat-1508613__480.jpg'}],
-                [0.0940817104, 28, {
-                    'name': 'oneclass/shotlanskogo-2934720__480.jpg'}],
-                [0.2563886613, 5, {'name': 'oneclass/cat-2603300__480.jpg'}]]]}
+    r = {'Y': [[0.0, 1, {'name': 'oneclass/cat-1192026__480.jpg'}],
+               [0.0185132341, 11, {'name': 'oneclass/cat-2946028__480.jpg'}],
+               [0.0745846851, 2, {'name': 'oneclass/cat-1508613__480.jpg'}],
+               [0.0940817104, 28, {
+                   'name': 'oneclass/shotlanskogo-2934720__480.jpg'}],
+               [0.2563886613, 5, {'name': 'oneclass/cat-2603300__480.jpg'}]]}
 
 if r is not None:
     js = r if isinstance(r, dict) else r.json()
     if 'description' in js:
         # This is an error.
-        print(js['description'])
+        print("ERROR:", js['description'])
         res = None
     else:
-        print(js)
+        print("JSON:", js)
         res = []
-        for ans in js['Y']:
-            print("Number of neighbors:", len(ans))
-            for n in ans:
-                print("score, id, name", n)
-                res.append((n[0], n[2]['name']))
+        ans = js['Y']
+        print("Number of neighbors:", len(ans))
+        for n in ans:
+            print("score, id, name", n)
+            shortname = n[2]['name'].replace("\\", "/").split('/')
+            res.append((n[0], "/".join(shortname[-2:])))
 
     if len(res) == 0:
         raise ValueError("No results found in\n{0}".format(js))

@@ -23,7 +23,7 @@ pyecharts
 pyecharts-javascripthon
 pyensae>=1.2.788
 pymyinstall
-pyquickhelper>=1.8
+pyquickhelper>1.8.2912
 pyshp
 qgrid
 shapely
