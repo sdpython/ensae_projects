@@ -20,7 +20,8 @@ script:
   - { CMD: "$PYINT -u setup.py unittests -e \".*dummy_app[a-z_]+?keras.*\"", NAME: "UT_DUMMY_APP_KERAS" }
   - { CMD: "$PYINT -u setup.py unittests -e \".*dummy_app[a-z_]+?torch.*\"", NAME: "UT_DUMMY_APP_TORCH" }
   - { CMD: "$PYINT -u setup.py unittests_LONG", NAME: "UT_LONG", TIMEOUT: 5000 }
-  - { CMD: "$PYINT -u setup.py unittests_SKIP", NAME: "UT_SKIP" }
+  - { CMD: "$PYINT -u setup.py unittests -e \".*SKIP.*\" -g \".*rest_api.*\"", NAME: "UT_SKIP" }
+  - { CMD: "$PYINT -u setup.py unittests -e \".*rest_api.*\"", NAME: "UT_SKIP_REST_API" }
 
 after_script:
   - $PYINT -u setup.py bdist_wheel

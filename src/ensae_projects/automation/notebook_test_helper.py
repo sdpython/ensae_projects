@@ -11,7 +11,7 @@ import pyensae
 
 def ls_notebooks(subfolder):
     """
-    list the notebooks in a particular subfolder
+    Lists the notebooks in a particular subfolder.
 
     @param      subfolder   subfolder (related to this module)
     @return                 list of files
@@ -42,8 +42,8 @@ def ls_notebooks(subfolder):
 
 def get_additional_paths():
     """
-    returns a list of paths to add before running the notebooks,
-    paths to pyquickhelper, pyensae, pymmails
+    Returns a list of paths to add before running the notebooks,
+    paths to :epkg:`pyquickhelper`, :epkg:`pyensae`.
 
     @return             list of paths
     """
@@ -60,7 +60,7 @@ def get_additional_paths():
 
 def clean_function_notebook(code):
     """
-    function which clean cells when unittesting notebooks 1A
+    Cleans cells when unittesting notebooks.
 
     @param      code        cell content
     @return                 modified code
@@ -113,7 +113,7 @@ def execute_notebooks(folder, notebooks, filter,  # pylint: disable= W0622
                       deepfLOG=noLOG,
                       valid_cell=None):
     """
-    execute a list of notebooks
+    Executes a list of notebooks.
 
     @param      folder          folder
     @param      notebooks       list of notebooks
@@ -127,7 +127,6 @@ def execute_notebooks(folder, notebooks, filter,  # pylint: disable= W0622
     The signature of function ``filter`` is::
 
         def filter( i, filename) : return True or False
-
     """
 
     def _valid_cell(cell):
