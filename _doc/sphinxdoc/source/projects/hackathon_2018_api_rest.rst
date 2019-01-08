@@ -6,8 +6,9 @@ Uploader vos résultats
 
 Les outils développés s'appuie sur le module
 :epkg:`lightmlrestapi` et reprennent une partie
-des éléments décrits dans ce tutorial :
-`API REST <http://www.xavierdupre.fr/app/lightmlrestapi/helpsphinx/tutorial/store_rest_api.html>`_.
+des éléments décrits dans ce tutoriel :
+`API REST <http://www.xavierdupre.fr/app/lightmlrestapi/helpsphinx/tutorial/store_rest_api.html>`_
+ou ce notebook :ref:`restapisearchimagesrst`.
 Il vous sera distribué un login et un mot de passe au début
 de l'événement.
 

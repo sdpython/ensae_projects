@@ -53,18 +53,18 @@ def search_images_dogcat(app=None, url_images=None, dest=None, module="torch"):
         {'Y': [[[41, 4.8754486973, {'name': 'wiki.png', description='something'}]]]}
     """
     logger = logging.getLogger('search_images_dogcat')
-    logger.setLevel(logging.INFO)
     if module == "keras":
         return _search_images_dogcat_keras(
-            app=app, url_images=url_images, dest=dest, fLOG=print)  # logger.info)
+            app=app, url_images=url_images, dest=dest, fLOG=logger.info)
     elif module == "torch":
         return _search_images_dogcat_torch(
-            app=app, url_images=url_images, dest=dest, fLOG=print)  # logger.info)
+            app=app, url_images=url_images, dest=dest, fLOG=logger.info)
     else:
         raise ValueError("Unexpected module '{0}'.".format(module))
 
 
 def _search_images_dogcat_keras(app=None, url_images=None, dest=None, fLOG=None):
+    fLOG("Use keras")
     if url_images is None or len(url_images) == 0:
         url_images = "dog-cat-pixabay.zip"
     if dest is None or len(dest) == 0:
@@ -159,6 +159,7 @@ def _search_images_dogcat_keras(app=None, url_images=None, dest=None, fLOG=None)
 
 
 def _search_images_dogcat_torch(app=None, url_images=None, dest=None, fLOG=None):
+    fLOG("Use torch")
     if url_images is None or len(url_images) == 0:
         url_images = "dog-cat-pixabay.zip"
     if dest is None or len(dest) == 0:
@@ -213,6 +214,7 @@ def _search_images_dogcat_torch(app=None, url_images=None, dest=None, fLOG=None)
         # fit
         fLOG("Creating the neighbors")
         se.fit(iterim)
+        fLOG("Creating the neighbors - end")
         return se
 
     # prediction function
