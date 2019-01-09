@@ -16,7 +16,7 @@ print(res)
 #################################
 # Let's take the first ten images.
 
-imgs = [_ for _ in os.listdir("images") if "jpg" in _][:10]
+imgs = res[:10]
 
 #################################
 # And the gallery.
