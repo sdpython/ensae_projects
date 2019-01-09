@@ -1,6 +1,3 @@
-
-.. _l-challenges-city-tour:
-
 Nearest Neighours and k-d tree
 ==============================
 

@@ -56,6 +56,7 @@ epkg_dictionary.update({
     "PIL": "https://pillow.readthedocs.io/en/5.3.x/",
     'PIL.Image': "https://pillow.readthedocs.io/en/5.1.x/reference/Image.html",
     'plot_gallery_images': 'http://www.xavierdupre.fr/app/mlinsights/helpsphinx/mlinsights/plotting/gallery.html#mlinsights.plotting.gallery.plot_gallery_images',
+    'pyensae': 'http://www.xavierdupre.fr/app/pyensae/helpsphinx/',
     'pytorch': 'https://pytorch.org/',
     'radius_neighbors': 'https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors.radius_neighbors',
     'reservoir sampling': 'https://en.wikipedia.org/wiki/Reservoir_sampling',
