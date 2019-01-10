@@ -197,13 +197,13 @@ def _search_images_dogcat_torch(app=None, url_images=None, dest=None, fLOG=None)
     fLOG("Discovering images in '{0}'".format(dest))  # pylint: disable=W1202
 
     # fit a model
-    from torchvision import datasets, transforms
+    from torchvision import datasets, transforms  # pylint: disable=E0401
     trans = transforms.Compose([transforms.Resize((224, 224)),
                                 transforms.CenterCrop(224),
                                 transforms.ToTensor()])
     iterim = datasets.ImageFolder(dest, trans)
 
-    from torchvision.models import squeezenet1_1
+    from torchvision.models import squeezenet1_1  # pylint: disable=E0401
     model = squeezenet1_1(True)
 
     # Sets up the application.
