@@ -64,23 +64,23 @@
     les cinq coussins glonflables qui ont servi de matelas à
     aux participants ainsi qu'à moi-même.
 
-    14h, je suis à :epkg:`Numa`. Je n'arrive pas à me concentrer pendant 10
+    **14h** Je suis à :epkg:`Numa`. Je n'arrive pas à me concentrer pendant 10
     minutes et c'est pourtant ce dont j'ai besoin pour écrire de foutu
     code. Je n'ai pas préparer de slides pour les sujets que j'ai
     épurés à l'extrême pour une compréhension rapide.
 
-    14h30 : le premier mentor est là. Jean-Baptiste. Il a organisé
+    **14h30** Le premier mentor est là. Jean-Baptiste. Il a organisé
     le hackathon l'année dernière. Je vais un peu mieux.
     Il démarre les machines virtuelles sur Azure. Pas facile.
     Nous luttons contre les limitations, un seul GPU est possible,
     nous utilisons toutes les adresses mails à notre connaissance.
     Une lâchera à 4h du matin...
 
-    14h35 : les élèves choisissent quelques tables pour poser leurs
+    **14h35** Les élèves choisissent quelques tables pour poser leurs
     affaires au premier étage, quelques salles de réunion sont très
     accueillante.
 
-    14h45 : j'abandonne mon clavier. Je modifie une dernière fois
+    **14h45** J'abandonne mon clavier. Je modifie une dernière fois
     la page web de l'événement et je lance sa mise à jour.
     J'adore la disposition à la Chéreau. Les speechs commencent bientôt.
     Je n'ai pas encore fini d'implémenter tout ce que je voulais,
@@ -100,7 +100,7 @@
     deux ou trois petites choses mais je préfère opter pour la
     simplicité. Le reste se noierait dans l'effervescence.
 
-    16h00 : les chaises vibrent, un premier détour vers le goûter et
+    **16h** Les chaises vibrent, un premier détour vers le goûter et
     c'est parti. Je termine la copie des données un peu stressé car cela
     prend un temps fou, j'aurais préféré faire ça hier. Je fais un tour
     pour m'assurer que tout va bien, les premières questions commencent,
@@ -108,29 +108,29 @@
     posé, la première question : *au fait, comment suivre la performance
     sur le sujet de machine learning ?* La réponse évoluera au fil du temps,
 
-    16h30 : Je me pose enfin. Jean-Baptiste se bat avec Azure pour démarrer les VM.
+    **16h30** Je me pose enfin. Jean-Baptiste se bat avec Azure pour démarrer les VM.
     Un compte, une VM. Au-delà, nous atteignons un quota qu'il faut débloquer
     en envoyant un mail, aucune hotline n'a jamais répondu en cinq minutes.
     Autant dire que nous n'essayons même pas. Les adresses mail s'échangent,
     la même carte bleue circule. Espérons que cela suffise.
 
-    17h : Jean-Baptiste termine la liste des :epkg:`VM`, je n'arrive pas à me poser pour
+    **17h** Jean-Baptiste termine la liste des :epkg:`VM`, je n'arrive pas à me poser pour
     écrire le script évaluant la prédiction des séries temporelles. Au lieu de ça,
     je passe au démarrage des serveurs d'API REST. Quelques tournées encore.
     Plein de questions.
 
-    18h : Rebelotte. Les groupes discutent stratégie. Qui fait quoi, la direction
+    **18h** Rebelotte. Les groupes discutent stratégie. Qui fait quoi, la direction
     à prendre, les idées à explorer. J'accueille quelques mentors la tête
     dans le guidon. Je dois paraître un peu malpoli. "Faites ce qu'il vous plaît",
     c'est en substance ce que je leur dis.
 
-    19h : Les VM sont prêtes et distribuées, je continue à tourner,
+    **19h** Les VM sont prêtes et distribuées, je continue à tourner,
     quelques clés USB s'échangent. Les premiers mentors arrivent.
     J'explique les challenges. Ils se débrouillent pour la suite.
     Je prends un verre de vin puis je retourne à mon clavier, la tête
     courbée sur l'écran.
 
-    20h : Cohue autour du repas. Quelques verres cassés. Les derniers mentors
+    **20h** Cohue autour du repas. Quelques verres cassés. Les derniers mentors
     arrivent. Une demi-heure plus tard, les élèves reviennent à leurs écrans.
     Un mentor me dit que mon API REST où j'exécute le modèle des élèves pour
     calculer leur performance va probablement planter car je m'appuie sur :epkg:`pickle`
@@ -140,7 +140,7 @@
     Cela dit mes premiers essais de soumissions n'arriverons que vers 23h.
     C'est compliqué de trouver une demi-heure sans interruption.
 
-    21h : Les questions dures arrivent. J'improvise quelques explications sur
+    **21h** Les questions dures arrivent. J'improvise quelques explications sur
     les séries temporelles. Je partage le fichier des 183 observations
     attendues : Jour, campagne, ratio. J'explique les séries décalées.
     Je debugge des installations de Tensorflow sous mac. Non ça ne marche
@@ -148,14 +148,14 @@
     Pas sûr qu'elle soit mise à jour. Je n'ai pas le temps de vérifier s'il
     y a plusieurs versions installées.
 
-    22h : Les questions vraiment dures : Installer fastai sous Mac. La plus
+    **22h** Les questions vraiment dures : Installer fastai sous Mac. La plus
     dure arrivera vers minuit pour faire tourner un module récupérer sur
     internet et faisant de la détection de texte. Je n'y arriverai pas...
     Je déplie quelques coussins gonflables qui se révèleront très pratiques.
     Antoine me dit qu'il ne restera pas très longtemps, le second aussi
     mais il me l'a répété quasiment jusqu'à la fin.
 
-    23h : Je n'ai pas vraiment le temps de me poser. Je passe de table en table.
+    **23h** Je n'ai pas vraiment le temps de me poser. Je passe de table en table.
     Ils n'ont pas de questions et puis un peu à la manière de Colombo, au moment
     où je tourne les talons, Monsieur je n'arrive pas à faire cela, je suis
     bloqué depuis des heures. Quelques chuchotements me parviennent,
@@ -169,14 +169,14 @@
     choses que les élèves me disent une fois le cours passé, je réponds vite
     aux mails, plus vite que la plupart des professeurs.
 
-    00h : Je ne sais plus trop où j'en suis. Je n'ai toujours pas écrit le
+    **00h** Je ne sais plus trop où j'en suis. Je n'ai toujours pas écrit le
     code pour évaluer les soumissions, les premiers groupes essayent. Je me
     suis dit que je m'y mettrai lorsque la première soumission arrivera, ce qui
     fut le cas une heure plus tard. Antoine me dit qu'il va rentrer.
     Le premier est déjà parti. Jean-Baptiste est accaparé comme moi par
     tout un tas de problème liés au deep learning.
 
-    1h : Première tentative de soumission et première requête d'évaluation
+    **1h** Première tentative de soumission et première requête d'évaluation
     à laquelle je réponds que j'ai besoin d'une heure pour évaluer la
     performance. J'écris le code pendant que Jean-Baptiste et Antoine
     tentent de débugger un Tensorflow récalcitrant. L'espace est petit mais
@@ -190,7 +190,7 @@
     ils ont une idée de la performance sur les campagnes ayant démarré depuis
     longtemps et sur celle qui viennent de la faire.
 
-    2h : Première soumission évaluée. 100 vont suivre jusque 15h. Pause détente.
+    **2h** Première soumission évaluée. 100 vont suivre jusque 15h. Pause détente.
     Je repasse parmi les groupes. Enfin, je ne me souviens plus de ce j'ai
     vraiment fait mais c'est probablement ce que j'ai dû faire.
     J'ai un moment de fatigue, j'hésite à dormir maintenant. Deux autres
@@ -199,10 +199,10 @@
     Je refais un tour pour prévenir que je fais un petit somme,
     ça prendra deux heures.
 
-    3h 4h : Je repasse au deep Learning. Le petit coup de fatigue est
+    **3h 4h** Je repasse au deep Learning. Le petit coup de fatigue est
     passé. Je grignote un peu. Les questions continuent.
 
-    4h : Je m'octroie finalement une petite pause. J'ai reçu la première
+    **4h** Je m'octroie finalement une petite pause. J'ai reçu la première
     soumission de deep Learning mais rien ne marche comme prévu. Je choisis
     de somnoler une heure allongé comme je peux recouvert par un sac de couchage.
     J'attends les gens qui mangent parlent sortent, le premier étage a lui
@@ -212,14 +212,14 @@
     me dit qu'une VM est morte. Il se bat contre Azure pour en démarrer une
     autre. Quand on est fatigué, tout est plus dur.
 
-    5h : Je me relève. J'ai froid, signe que mon corps s'est quelque peu reposé.
+    **5h** Je me relève. J'ai froid, signe que mon corps s'est quelque peu reposé.
     Les mentors n'ont toujours pas dormi. Antoine me dit qu'il ne sait pas
     s'il va rester. Un élève raconte les musées fermés de Barcelone.
     Hilarant. Je ne suis pas le seul à rire. Mais il faut l'avoir écouté
     raconter son voyage... Je termine de coder ce bout de code. Les deux
     soumissions fonctionnent, du moins sur le principe.
 
-    6h : Je passe à l'étage. Ca dort et ça se réveille. Au rez-de-chaussée,
+    **6h** Je passe à l'étage. Ca dort et ça se réveille. Au rez-de-chaussée,
     les coussins gonflables ont du succès. Les soumissions recommencent.
     Je crois que des étudiants reviennent mais les bugs sont revenus me hanter.
     Je suis un peu aveugles à tout ce qui se passe. Je vois un groupe étendu
@@ -227,7 +227,7 @@
     gonflé pour un matelas dégonflé. Ils ont gagné au change, je ne me voyais
     pas agité les deux mains pour remplir d'air ce gouffre rebondissant.
 
-    7h : Un étudiant me pose une question sur les campagnes commencées après
+    **7h** Un étudiant me pose une question sur les campagnes commencées après
     le début de la période de test. Il souhaite avoir plus d'info. Je lui
     donne la composition des campagnes, la liste des collecteurs, car c'est
     quelque chose de connu au moment de faire la prédiction. Je le partage avec
@@ -241,7 +241,7 @@
     semaines plus tard qui me donnait quelques échos... Les participants ont
     beaucoup aimé cette édition qui a été passionnante jusqu'au bout.
 
-    8h : Café. Il est le bienvenu. 5 minutes après, c'est le déluge.
+    **8h** Café. Il est le bienvenu. 5 minutes après, c'est le déluge.
     Tensorflow fait des siennes. Les trois mentors sont autour de la table.
     On ne peut plus bouger. Nous sommes assaillis. Il faut comprendre
     pourquoi Tensorflow plante, récupérer les exceptions. Je passe mon
@@ -251,7 +251,7 @@
     régler un deep problème. Elle est au rez-de-chaussée avec trois
     mentors qui jouent des parties d'échecs en parallèle. C'est fou.
 
-    9h : Je ne vois plus le temps passer. Je suis assis sur la même chaise
+    **9h** Je ne vois plus le temps passer. Je suis assis sur la même chaise
     depuis des heures. La première soumission deep est passée. Les groupes
     de machine learning se font la course poursuite sur le leaderboard.
     Le premier a remis un petit cran. Côté deep, Tensorflow fait vraiment
@@ -262,7 +262,7 @@
     mis une issue sur github. Il va falloir que je lance pas mal de
     trucs à la main. Merde.
 
-    10h : Ca continue. Ca continue. Ca continue. Je ne sais plus ce qu'il
+    **10h** Ca continue. Ca continue. Ca continue. Je ne sais plus ce qu'il
     se passe. J'entends qu'il y a plus de monde mais ma vue se résume
     aux écrans posés devant moi. Le deep fait chier, vraiment chier.
     Pourquoi tout le monde prend Tensorflow ? Ca marche bien sur les machines
@@ -271,7 +271,7 @@
     a quoi dans Tensorflow pour que cela soit aussi instable en plus d'être
     très verbeux ? Merde !
 
-    11h :  Je suis toujours assis sur mon tabouret. EY est là je crois,
+    **11h** Je suis toujours assis sur mon tabouret. EY est là je crois,
     Latitudes aussi, je ne suis pas sûr. Les soumissions s'enchaînent et
     je dois mettre à jour le leaderboard manuellement. Le reste du temps
     consiste à debugger les soumissions deep Learning qui retournent des
@@ -283,7 +283,7 @@
     a soumis et a posé la barre assez haut. Je reprends du café et un
     grand verre d'eau.
 
-    12h : Je ne m'en sors pas côté deep. Trois groupes se plaignent de ne pas
+    **12h** Je ne m'en sors pas côté deep. Trois groupes se plaignent de ne pas
     pouvoir soumettre côté machine Learning. Je prends la décision de leur
     donner les images a 13h30. Ils auront une heure pour m'envoyer leur
     prédiction et moi 30 minutes pour calculer toutes leurs scores. Je passe
@@ -296,7 +296,7 @@
     je sais que je sais le faire. Ecrire cinquante lignes en une heure,
     c'est un sport que j'aime.
 
-    Je m'aperçois en écrivant ces lignes que je n'ai pas beaucoup de souvenirs
+    **Aparté** Je m'aperçois en écrivant ces lignes que je n'ai pas beaucoup de souvenirs
     de ce qui se passait autour de moi. Je me souviens d'une discussion avec
     un groupe où j'ai finalement pris la décision de lâcher les images de
     tests à 13h30, d'un autre qui cherchait son général, d'étudiants assis et
@@ -312,12 +312,12 @@
     accolades sur le clavier azerty. Je ne comprends pas qu'Apple n'ait pas
     sorti quelque chose de plus élégant depuis.
 
-    13h : Trois groupes font encore la course pour la première place du machine
+    **13h** Trois groupes font encore la course pour la première place du machine
     learning. Ils soumettent beaucoup. Je me prépare à  calculer le score du deep.
     Je prépare le jeu de test que je zippe et met sur le slack de l'événement.
     Je passe ensuite voir tous les groupes pour m'assurer qu'ils l'ont bien reçu.
 
-    14h : Je calcule la perf des groupes de machine Learning qui n'ont pas réussi
+    **14h** Je calcule la perf des groupes de machine Learning qui n'ont pas réussi
     à soumettre. Il faudra que je simplifie cette partie la prochaine fois. Je partage
     mon script car certaines soumissions retournent des résultats nuls.
     Pandas a quelques côtés cachés parfois subtils surtout en fin de hackathon.
@@ -327,7 +327,7 @@
     première place depuis ce matin. J'explique que le taux de 60% de classification
     correspond à une réponse constante.
 
-    15h : Tout est bouclé. J'exhorte le ou les derniers à soumettre maintenant si
+    **15h** Tout est bouclé. J'exhorte le ou les derniers à soumettre maintenant si
     cela n'a pas été fait. Le leaderboard est figé même si je comprends que certains
     ont encore la volonté de le faire bouger. Je propose de commencer les présentations
     à 15h30. Antoine a craqué vers 14h dans un fatboy. Plus de son ni d'image.
@@ -339,14 +339,14 @@
     pendant tous les speech. Je redescends pour chercher les derniers retardataires,
     je passe dans les rangs tel un chauffeur de salle tout autant pour me chauffer moi.
 
-    16h : Je prends des notes. Les speech défilent. Les orateurs sont brillants cette
+    **16h** Je prends des notes. Les speech défilent. Les orateurs sont brillants cette
     année. Je me régale sur la phrase : "mon intelligence n'est pas artificielle"
     prononcée par une élève. Il y aura d'autres perles et impertinences, quelques
     commentaires un peu négatifs sur le fait que j'ai coupé les machine virtuelle
     trop tôt. Pour une fois, ils se sont lâchés et c'était bien. J'adore ces
     petites piques.
 
-    17h : Le jury... Il faut décider des prix. J'ai quelques idées mais je ne prends
+    **17h** Le jury... Il faut décider des prix. J'ai quelques idées mais je ne prends
     pas trop part. Je n'aime pas trop décider des vainqueurs. Je donne deux ou trois
     arguments donne mon approbation. Pour le moment, je savoure. J'ai eu peur tout
     du long, des participants qui arrivent en retard, de ceux qui partent dans la
@@ -359,7 +359,7 @@
     celles qu'on voit à la fin sur des slides, ce sont celles qu'on voit naître
     en pleine nuit. Le jury a fini. Les élèves remontent.
 
-    18h : Dernier pot à numa. Champagne. L'ambiance est détendue. Les élèves
+    **18h** Dernier pot à *Numa*. Champagne. L'ambiance est détendue. Les élèves
     partent assez vite sans doute parce que la plupart habitent maintenant
     Saclay et qu'il reste facilement 1h30 jusqu'à destination. Il faudra
     terminer 1h plus tôt l'année prochaine si on veut étendre ce moment de
@@ -369,7 +369,7 @@
     les derniers élèves dans un bar pas loin. Je sais que je n'ai que deux heures
     devant moi avant de m'écrouler.
 
-    19h : Direction un bar... Je m'en veux, j'aurais dû faire monter
+    **19h** Direction un bar... Je m'en veux, j'aurais dû faire monter
     les mentors sur scène. Antoine et Jean-Baptiste ont été incroyables.
     Ca n'aurait pas été pareil sans eux. Je me demande pourquoi nous sommes
     tous là, pour défendre une certaine idée de l'école qui nous a diplômés ?
