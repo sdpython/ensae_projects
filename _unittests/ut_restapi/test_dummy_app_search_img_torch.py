@@ -52,7 +52,7 @@ class TestDummyAppSearchImgTorch(testing.TestCase):
 
         with redirect_stderr(StringIO()):
             try:
-                from torchvision.models import squeezenet1_1
+                from torchvision.models import squeezenet1_1  # pylint: disable=E0401
                 assert squeezenet1_1 is not None
                 self._run_test = True
             except SyntaxError as e:
