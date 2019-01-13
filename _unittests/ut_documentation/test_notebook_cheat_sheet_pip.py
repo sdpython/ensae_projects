@@ -8,7 +8,7 @@ import os
 import unittest
 import shutil
 from pyquickhelper.loghelper import fLOG
-from pyquickhelper.pycode import get_temp_folder
+from pyquickhelper.pycode import get_temp_folder, skipif_appveyor
 from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
 from pyquickhelper.ipythonhelper import execute_notebook_list_finalize_ut
 
@@ -33,6 +33,7 @@ import src.ensae_projects
 
 class TestNotebookCheatSheetFilesPip(unittest.TestCase):
 
+    @skipif_appveyor("PermissionError")
     def test_notebook_cheatsheet_files_pip(self):
         fLOG(
             __file__,
