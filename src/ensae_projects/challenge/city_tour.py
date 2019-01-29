@@ -483,7 +483,8 @@ def matching_vertices(distances, algo="blossom"):
                     "Unreasonable case: {0} == {1}, v={2}".format(i, j, v))
             cost[mapping[i], mapping[j]] = v
 
-        row_ind, col_ind = linear_sum_assignment(cost)
+        row_ind, col_ind = linear_sum_assignment(   # pylint: disable=W0632
+            cost)   # pylint: disable=W0632
         pairs = [(rev[i], rev[j]) for i, j in zip(row_ind, col_ind)]
         for a, b in pairs:
             if a == b:

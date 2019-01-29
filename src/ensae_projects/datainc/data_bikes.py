@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 @file
 @brief Data related to a challenge, streets in Seattle
@@ -58,7 +57,7 @@ def df_crossjoin(df1, df2, **kwargs):
 def add_missing_time(df, column, values, delay=10):
     """
     After aggregation, it usually happens that the series is sparse.
-    This function add rows for missing time.
+    This function adds rows for missing time.
 
     @param      df      dataframe to extend
     @param      column  column with time
@@ -73,8 +72,9 @@ def add_missing_time(df, column, values, delay=10):
     all_times = [time(i // 60, i % 60, 0) for i in range(0, 24 * 60, delay)]
     keys = [_ for _ in df.columns if _ not in values and _ != column]
     dfti = pandas.DataFrame({column: all_times})
-    only = df[keys + [column]
-              ].groupby(keys, as_index=False).count().drop(column, axis=1)
+    allkeys = keys + [column]
+    only = df[allkeys].groupby(
+        keys, as_index=False).count().drop(column, axis=1)
     dfti = df_crossjoin(only, dfti)
     dfj = df.merge(dfti, on=keys + [column], how="right")
     for i in range(dfj.shape[1]):
@@ -113,9 +113,11 @@ def folium_html_stations_map(stations, html_width=None, html_height=None, radius
                 map_osm = folium.Map(kwargs["location"], **kwargs)
         if isinstance(value, tuple):
             name, value = value
-            map_osm.add_child(folium.CircleMarker(
-                [x, y], popup=name, radius=radius, fill_color=value, color=value))
+            marker = folium.CircleMarker([x, y], popup=name, radius=radius,
+                                         fill_color=value, color=value)
+            map_osm.add_child(marker)
         else:
-            map_osm.add_child(folium.CircleMarker(
-                [x, y], radius=radius, fill_color=value, color=value))
+            marker = folium.CircleMarker([x, y], radius=radius,
+                                         fill_color=value, color=value)
+            map_osm.add_child(marker)
     return folium_html_map(map_osm, width=html_width, height=html_height)
