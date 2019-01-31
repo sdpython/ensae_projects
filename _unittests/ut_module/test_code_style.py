@@ -59,6 +59,7 @@ class TestCodeStyle(ExtTestCase):
                          "blossom.py:690: W0612",
                          "blossom.py:693: W0612",
                          "Instance of 'X86Info' has no 'supports_avx2'",
+                         "data_bikes.py:1: F0002",
                          ])
 
     def test_style_test(self):
