@@ -61,6 +61,7 @@ class TestCodeStyle(ExtTestCase):
                          "Instance of 'X86Info' has no 'supports_avx2'",
                          "data_bikes.py:1: F0002",
                          'maximum recursion depth exceeded',
+                         "R1720",
                          ])
 
     def test_style_test(self):
@@ -88,6 +89,7 @@ class TestCodeStyle(ExtTestCase):
                          "Module 'ujson' has no 'dumps'",
                          "Instance of 'X86Info' has no 'supports_avx2'",
                          "maximum recursion depth exceeded",
+                         "R1720",
                          ])
 
 

@@ -53,7 +53,7 @@ def distance_solution(edges_index, edges, distances, solution, exc=True):
     indices = set(edges_index)
     solset = set(solution)
     if len(indices) != len(solset):
-        if exc:  # pylint: disable=R1720,E0012
+        if exc:
             raise SolutionException("Different number of distinct edges:\nexpected={0} got={1}\n"
                                     "Did you cover all the edges?".format(len(indices), len(solset)))
         else:
@@ -69,7 +69,7 @@ def distance_solution(edges_index, edges, distances, solution, exc=True):
         if a > b:
             a, b = b, a
         if (a, b) in doubles:
-            if exc:  # pylint: disable=R1720,E0012
+            if exc:
                 raise SolutionException(
                     "Edge {0} is duplicated in edges.".format((a, b)))
             else:
@@ -91,7 +91,7 @@ def distance_solution(edges_index, edges, distances, solution, exc=True):
             odd += 1
 
     if odd > 2:
-        if exc:  # pylint: disable=R1720,E0012
+        if exc:
             red = list(sorted([(k, v)
                                for k, v in degrees.items() if v % 2 != 0]))
             if len(red) > 10:
@@ -308,7 +308,7 @@ def _explore_path(edges_from, begin):
                         "Algorithm issue {0}".format(len(path)))
 
         if len(edges_from[to]) == 1:
-            if begin != to:  # pylint: disable=R1720,E0012
+            if begin != to:
                 raise NotImplementedError("Wrong algorithm.")
             else:
                 stay = False

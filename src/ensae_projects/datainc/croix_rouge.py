@@ -33,7 +33,7 @@ def get_password_from_keyring_or_env(pwd):
             import keyring
         pwd = keyring.get_password("HACKATHON2015", "PWDCROIXROUGE")
         if pwd is None:
-            if "PWDCROIXROUGE" not in os.environ:  # pylint: disable=R1720,E0012
+            if "PWDCROIXROUGE" not in os.environ:
                 raise PasswordException(
                     "password not found in environment variables: PWDCROIXROUGE is not set")
             else:
