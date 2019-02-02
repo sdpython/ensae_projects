@@ -23,7 +23,7 @@ except ImportError:
 
 
 def _run_cmd_filter(name):
-    return True
+    return "data_bikes.py" not in name
 
 
 class TestCodeStyle(ExtTestCase):
