@@ -60,6 +60,7 @@ class TestCodeStyle(ExtTestCase):
                          "blossom.py:693: W0612",
                          "Instance of 'X86Info' has no 'supports_avx2'",
                          "data_bikes.py:1: F0002",
+                         'maximum recursion depth exceeded',
                          ])
 
     def test_style_test(self):
@@ -86,6 +87,7 @@ class TestCodeStyle(ExtTestCase):
                          "Redefining name 'path' from outer scope",
                          "Module 'ujson' has no 'dumps'",
                          "Instance of 'X86Info' has no 'supports_avx2'",
+                         "maximum recursion depth exceeded",
                          ])
 
 
