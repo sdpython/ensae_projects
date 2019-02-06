@@ -36,8 +36,7 @@ def get_password_from_keyring_or_env(pwd):
             if "PWDCROIXROUGE" not in os.environ:
                 raise PasswordException(
                     "password not found in environment variables: PWDCROIXROUGE is not set")
-            else:
-                pwd = os.environ["PWDCROIXROUGE"]
+            pwd = os.environ["PWDCROIXROUGE"]
         return bytes(pwd, encoding="ascii")
     elif not isinstance(pwd, bytes):
         return bytes(pwd, encoding="ascii")

@@ -56,8 +56,7 @@ def distance_solution(edges_index, edges, distances, solution, exc=True):
         if exc:
             raise SolutionException("Different number of distinct edges:\nexpected={0} got={1}\n"
                                     "Did you cover all the edges?".format(len(indices), len(solset)))
-        else:
-            return None
+        return None
 
     for s in solution:
         if s not in indices:
@@ -72,8 +71,7 @@ def distance_solution(edges_index, edges, distances, solution, exc=True):
             if exc:
                 raise SolutionException(
                     "Edge {0} is duplicated in edges.".format((a, b)))
-            else:
-                return None
+            return None
         doubles[a, b] = 1
 
     corres = {e: i for i, e in enumerate(edges_index)}
@@ -98,8 +96,7 @@ def distance_solution(edges_index, edges, distances, solution, exc=True):
                 red = red[:10] + ["..."]
             raise SolutionException(
                 "Are you sure? The path is inconsistent. Some help:\n" + str(red))
-        else:
-            return None
+        return None
     else:
         return sum(distances[corres[s]] for s in solution)
 
@@ -310,8 +307,7 @@ def _explore_path(edges_from, begin):
         if len(edges_from[to]) == 1:
             if begin != to:
                 raise NotImplementedError("Wrong algorithm.")
-            else:
-                stay = False
+            stay = False
 
         keep = _delete_edge(edges_from, n, to)
         path.append((to, keep))
