@@ -1,9 +1,4 @@
 
-.. _l-README:
-
-README
-======
-
 .. image:: https://travis-ci.org/sdpython/ensae_projects.svg?branch=master
     :target: https://travis-ci.org/sdpython/ensae_projects
     :alt: Build status
@@ -37,27 +32,24 @@ README
     :target: http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/all_notebooks_coverage.html
     :alt: Notebook Coverage
 
-**Links:**
+.. _l-README:
 
-* `GitHub/ensae_projects <https://github.com/sdpython/ensae_projects/>`_
-* `documentation <http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/index.html>`_
-* `Blog <http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/blog/main_0000.html#ap-main-0>`_
+ensae_projects
+==============
 
-Description
------------
+Outils pour des projets d'étudiants, des hackathons, anti-sèches.
 
-Outils pour des projets d'étudiants, des hackathons.
+*Helpers, tools for teachings, events, hackathons, cheat sheets.*
 
-*Helpers, tools for teachings, events, hackathons.*
-
-Installation
-------------
+**Installation**
 
 ::
 
     pip install ensae_projects
 
-Contributions
--------------
+**Links**
 
-Started in 2015/11.
+* `GitHub/ensae_projects <https://github.com/sdpython/ensae_projects/>`_
+* `documentation <http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/index.html>`_
+* `Blog <http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/blog/main_0000.html#ap-main-0>`_
+
