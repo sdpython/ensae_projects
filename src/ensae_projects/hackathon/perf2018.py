@@ -228,7 +228,8 @@ class MLStoragePerf2018Image(MLStoragePerf2018):
             # break
 
         final = pandas.DataFrame(rows)
-        if 'score' in final.columns:
+        columns = list(final.columns)
+        if 'score' in columns:
             final["score"] = final["score"].fillna(0)
             final["predicted_label"] = final["predicted_label"].fillna(-1)
             final["correct"] = final["predicted_label"] == final["label"]
