@@ -7,24 +7,9 @@ import sys
 import os
 import unittest
 from pyquickhelper.loghelper import fLOG
-
-
-try:
-    import src
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import src
-
-from src.ensae_projects.datainc.data_geo_streets import get_seattle_streets, shapely_records
-from src.ensae_projects.datainc.data_geo_streets import seattle_streets_set_level2
-from src.ensae_projects.challenge.city_tour import best_euler_path
+from ensae_projects.datainc.data_geo_streets import get_seattle_streets, shapely_records
+from ensae_projects.datainc.data_geo_streets import seattle_streets_set_level2
+from ensae_projects.challenge.city_tour import best_euler_path
 
 
 class TestLONGCityTour(unittest.TestCase):

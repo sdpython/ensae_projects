@@ -7,25 +7,9 @@ import sys
 import os
 import unittest
 from pyquickhelper.loghelper import fLOG
-
-
-try:
-    import src
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import src
-
-
-from src.ensae_projects.challenge.city_tour import distance_solution, SolutionException, haversine_distance, euler_path
-from src.ensae_projects.challenge.city_tour import distance_vertices, bellman_distances, compute_degrees, dijkstra_path
-from src.ensae_projects.challenge.city_tour import matching_vertices, best_euler_path
+from ensae_projects.challenge.city_tour import distance_solution, SolutionException, haversine_distance, euler_path
+from ensae_projects.challenge.city_tour import distance_vertices, bellman_distances, compute_degrees, dijkstra_path
+from ensae_projects.challenge.city_tour import matching_vertices, best_euler_path
 
 
 class TestCityTour(unittest.TestCase):

@@ -9,24 +9,8 @@ import unittest
 import pandas
 from pyquickhelper.pycode import get_temp_folder
 from pyquickhelper.loghelper import fLOG, str2datetime
-
-
-try:
-    import src
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import src
-
-
-from src.ensae_projects.challenge.velib_trajectories import get_data, enumerate_events, appariement
-from src.ensae_projects.challenge.velib_trajectories import ParemetreCoutTrajet, distance_path
+from ensae_projects.challenge.velib_trajectories import get_data, enumerate_events, appariement
+from ensae_projects.challenge.velib_trajectories import ParemetreCoutTrajet, distance_path
 
 
 class TestVelibTrajectories(unittest.TestCase):

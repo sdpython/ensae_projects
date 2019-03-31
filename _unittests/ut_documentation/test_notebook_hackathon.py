@@ -10,24 +10,8 @@ from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder, is_travis_or_appveyor
 from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
 from pyquickhelper.ipythonhelper import execute_notebook_list_finalize_ut
-
-
-try:
-    import src
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import src
-
-
-from src.ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook
-import src.ensae_projects
+from ensae_projects.automation.notebook_test_helper import ls_notebooks, execute_notebooks, clean_function_notebook
+import ensae_projects
 
 
 class TestNotebookHackathon(unittest.TestCase):
@@ -59,7 +43,7 @@ class TestNotebookHackathon(unittest.TestCase):
         res = execute_notebooks(temp, keepnote, filter=lambda i, n: True, valid_cell=valid_cell,
                                 fLOG=fLOG, clean_function=clean_function_notebook)
         execute_notebook_list_finalize_ut(
-            res, fLOG=fLOG, dump=src.ensae_projects)
+            res, fLOG=fLOG, dump=ensae_projects)
 
 
 if __name__ == "__main__":

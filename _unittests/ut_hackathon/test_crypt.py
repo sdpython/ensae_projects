@@ -6,23 +6,7 @@ import sys
 import os
 import warnings
 import unittest
-
-
-try:
-    import src
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import src
-
-
-from src.ensae_projects.hackathon.crypt_helper import set_password, get_password
+from ensae_projects.hackathon.crypt_helper import set_password, get_password
 
 
 class TestCrypt(unittest.TestCase):

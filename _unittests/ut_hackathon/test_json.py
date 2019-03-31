@@ -7,35 +7,13 @@ import os
 import unittest
 import json
 import pandas
-from pyquickhelper.loghelper import fLOG
-
-
-try:
-    import src
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import src
-
-
-from src.ensae_projects.hackathon import enumerate_json_items
-from src.ensae_projects.hackathon.json_helper import extract_images_from_json_2017
+from ensae_projects.hackathon import enumerate_json_items
+from ensae_projects.hackathon.json_helper import extract_images_from_json_2017
 
 
 class TestJson(unittest.TestCase):
 
     def test_json_iter(self):
-        fLOG(
-            __file__,
-            self._testMethodName,
-            OutputPrint=__name__ == "__main__")
-
         this = os.path.abspath(os.path.dirname(__file__))
         data = os.path.join(this, "data", "example_json.json")
         records = list(enumerate_json_items(data))
@@ -46,11 +24,6 @@ class TestJson(unittest.TestCase):
         self.assertEqual(js, js2)
 
     def test_product_sample(self):
-        fLOG(
-            __file__,
-            self._testMethodName,
-            OutputPrint=__name__ == "__main__")
-
         this = os.path.abspath(os.path.dirname(__file__))
         data = os.path.join(this, "data", "product_sample.json")
         imgs = list(extract_images_from_json_2017(data))

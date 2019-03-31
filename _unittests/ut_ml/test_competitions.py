@@ -8,23 +8,8 @@ import unittest
 import shutil
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder
-
-
-try:
-    import src
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import src
-
-from src.ensae_projects.ml.competitions import AUC, AUC_multi, AUC_multi_multi
-from src.ensae_projects.ml.competitions import private_codalab_wrapper_binary_classification, private_codalab_wrapper_multi_classification
+from ensae_projects.ml.competitions import AUC, AUC_multi, AUC_multi_multi
+from ensae_projects.ml.competitions import private_codalab_wrapper_binary_classification, private_codalab_wrapper_multi_classification
 
 
 class TestCompetitions(unittest.TestCase):

@@ -8,27 +8,12 @@ import unittest
 import numpy
 from PIL import Image
 from pyquickhelper.pycode import get_temp_folder, ExtTestCase
-
-
-try:
-    import src
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import src
-
-from src.ensae_projects.hackathon.image_helper import resize_image, read_image, enumerate_image_class, histogram_image_size, img2gray
-from src.ensae_projects.hackathon.image_helper import stream_apply_image_transform, image_zoom, stream_image2features
-from src.ensae_projects.hackathon.image_helper import load_batch_features, stream_download_images, stream_copy_images, stream_random_sample
-from src.ensae_projects.hackathon.image_helper import last_element, plot_gallery_random_images
-from src.ensae_projects.hackathon.image_helper import folder_split_train_test
-from src.ensae_projects.hackathon.image_knn import ImageNearestNeighbors
+from ensae_projects.hackathon.image_helper import resize_image, read_image, enumerate_image_class, histogram_image_size, img2gray
+from ensae_projects.hackathon.image_helper import stream_apply_image_transform, image_zoom, stream_image2features
+from ensae_projects.hackathon.image_helper import load_batch_features, stream_download_images, stream_copy_images, stream_random_sample
+from ensae_projects.hackathon.image_helper import last_element, plot_gallery_random_images
+from ensae_projects.hackathon.image_helper import folder_split_train_test
+from ensae_projects.hackathon.image_knn import ImageNearestNeighbors
 
 
 class TestImage(ExtTestCase):

@@ -29,5 +29,6 @@ install:
   - conda install -c scitools/label/archive cartopy
   - pip install -r requirements.txt
   - pip install tf-nightly
+  - export PYTHONPATH=src
 script:
   - python setup.py unittests

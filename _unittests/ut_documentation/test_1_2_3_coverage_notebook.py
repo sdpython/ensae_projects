@@ -10,20 +10,7 @@ from pyquickhelper.loghelper import fLOG
 from pyquickhelper.filehelper import synchronize_folder
 from pyquickhelper.pycode import get_temp_folder, add_missing_development_version
 from pyquickhelper.ipythonhelper import execute_notebook_list, execute_notebook_list_finalize_ut, get_additional_paths
-
-
-try:
-    import src.ensae_projects as thismodule
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import src.ensae_projects as thismodule
+import ensae_projects
 
 
 class TestNotebook123Coverage(unittest.TestCase):
@@ -52,10 +39,10 @@ class TestNotebook123Coverage(unittest.TestCase):
         import jyquickhelper
         import pyensae
         add_path = get_additional_paths(
-            [jyquickhelper, pyquickhelper, pyensae, thismodule])
+            [jyquickhelper, pyquickhelper, pyensae, ensae_projects])
         res = execute_notebook_list(
             temp, keepnote, additional_path=add_path, valid=valid)
-        execute_notebook_list_finalize_ut(res, fLOG=fLOG, dump=thismodule)
+        execute_notebook_list_finalize_ut(res, fLOG=fLOG, dump=ensae_projects)
 
     def test_notebook_process_clean_files(self):
         fLOG(

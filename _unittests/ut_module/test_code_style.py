@@ -2,24 +2,10 @@
 @brief      test log(time=1000s)
 """
 
-import sys
 import os
 import unittest
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import check_pep8, ExtTestCase
-
-try:
-    import src
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import src
 
 
 def _run_cmd_filter(name):
@@ -28,10 +14,6 @@ def _run_cmd_filter(name):
 
 class TestCodeStyle(ExtTestCase):
     """Test style."""
-
-    def test_src(self):
-        """Remove one pylint warning."""
-        self.assertFalse(src is None)
 
     def test_style_src(self):
         """Checks style of source files."""
@@ -76,13 +58,11 @@ class TestCodeStyle(ExtTestCase):
                    run_cmd_filter=_run_cmd_filter,
                    pylint_ignore=('C0103', 'C1801', 'R0201', 'R1705', 'W0108', 'W0613',
                                   'C0111', 'C0414', 'W0107', 'W0611'),
-                   skip=["src' imported but unused",
-                         "skip_' imported but unused",
+                   skip=["skip_' imported but unused",
                          "skip__' imported but unused",
                          "skip___' imported but unused",
                          "Unused variable 'skip_'",
                          "imported as skip_",
-                         "Unused import src",
                          "Module 'ujson' has no 'loads'",
                          "Redefining built-in 'iter'",
                          "Redefining name 'path' from outer scope",

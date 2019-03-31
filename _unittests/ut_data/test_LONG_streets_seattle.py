@@ -9,25 +9,9 @@ import unittest
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder, ExtTestCase
 from pyquickhelper.pycode import fix_tkinter_issues_virtualenv
-
-
-try:
-    import src
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import src
-
-
-from src.ensae_projects.datainc.data_geo_streets import get_seattle_streets, shapely_records, folium_html_street_map, get_fields_description
-from src.ensae_projects.datainc.data_geo_streets import build_streets_vertices, plot_streets_network, plot_streets_network_projection
-from src.ensae_projects.datainc.data_geo_streets import seattle_streets_set_level2, seattle_streets_set_small
+from ensae_projects.datainc.data_geo_streets import get_seattle_streets, shapely_records, folium_html_street_map, get_fields_description
+from ensae_projects.datainc.data_geo_streets import build_streets_vertices, plot_streets_network, plot_streets_network_projection
+from ensae_projects.datainc.data_geo_streets import seattle_streets_set_level2, seattle_streets_set_small
 
 
 class TestStreetsSeattle(ExtTestCase):

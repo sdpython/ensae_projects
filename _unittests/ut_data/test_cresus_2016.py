@@ -12,23 +12,7 @@ from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder, is_travis_or_appveyor
 from pyquickhelper.filehelper.encryption import decrypt_stream
 from pyquickhelper.filehelper.compression_helper import unzip_files
-
-
-try:
-    import src
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import src
-
-
-from src.ensae_projects.datainc.data_cresus import process_cresus_whole_process, cresus_dummy_file
+from ensae_projects.datainc.data_cresus import process_cresus_whole_process, cresus_dummy_file
 
 
 class TestCresus2016(unittest.TestCase):

@@ -11,24 +11,10 @@ from io import StringIO
 from contextlib import redirect_stderr
 import falcon
 import falcon.testing as testing
-import x86cpu
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder, add_missing_development_version
 from pyquickhelper.pycode import skipif_travis
 import ujson
-
-try:
-    import src
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import src
 
 
 def has_torch():
@@ -47,7 +33,7 @@ class TestDummyAppSearchImgTorch(testing.TestCase):
                                         __file__, hide=True)
         super().setUp()
 
-        from src.ensae_projects.restapi import search_images_dogcat
+        from ensae_projects.restapi import search_images_dogcat
         temp = get_temp_folder(__file__, 'temp_search_images_dogcat_torch')
 
         with redirect_stderr(StringIO()):

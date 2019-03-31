@@ -17,10 +17,6 @@
     :alt: GitHub Issues
     :target: https://github.com/sdpython/ensae_projects/issues
 
-.. image:: https://badge.waffle.io/sdpython/ensae_projects.png?label=ready&title=Ready
-    :alt: Waffle
-    :target: https://waffle.io/sdpython/ensae_projects
-
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
     :alt: MIT License
     :target: http://opensource.org/licenses/MIT
@@ -52,4 +48,3 @@ Outils pour des projets d'étudiants, des hackathons, anti-sèches.
 * `GitHub/ensae_projects <https://github.com/sdpython/ensae_projects/>`_
 * `documentation <http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/index.html>`_
 * `Blog <http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/blog/main_0000.html#ap-main-0>`_
-

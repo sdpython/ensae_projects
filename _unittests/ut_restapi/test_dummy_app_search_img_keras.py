@@ -17,19 +17,6 @@ from pyquickhelper.pycode import get_temp_folder, add_missing_development_versio
 from pyquickhelper.pycode import skipif_travis
 import ujson
 
-try:
-    import src
-except ImportError:
-    path = os.path.normpath(
-        os.path.abspath(
-            os.path.join(
-                os.path.split(__file__)[0],
-                "..",
-                "..")))
-    if path not in sys.path:
-        sys.path.append(path)
-    import src
-
 
 def has_tf():
     try:
@@ -47,7 +34,7 @@ class TestDummyAppSearchImgKeras(testing.TestCase):
                                         __file__, hide=True)
         super().setUp()
 
-        from src.ensae_projects.restapi import search_images_dogcat
+        from ensae_projects.restapi import search_images_dogcat
         temp = get_temp_folder(__file__, 'temp_search_images_dogcat_keras')
 
         with redirect_stderr(StringIO()):
