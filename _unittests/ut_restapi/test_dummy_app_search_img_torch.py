@@ -79,7 +79,8 @@ class TestDummyAppSearchImgTorch(testing.TestCase):
         self.assertIn('name', d['Y'][0][2])
         val = d['Y'][0][2]['name'].replace('\\', '/')
         val = "/".join(val.split("/")[-2:])
-        self.assertIn(val, ('oneclass/shotlanskogo-2934720__480.jpg',
+        self.assertIn(val, ('oneclass/cat-188088__480.jpg',
+                            'oneclass/shotlanskogo-2934720__480.jpg',
                             'oneclass/dog-2684073__480.jpg',
                             'oneclass/fun-2213606__480.jpg',
                             'oneclass/dog-2863719__480.jpg',
