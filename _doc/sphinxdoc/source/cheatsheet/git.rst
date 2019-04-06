@@ -166,3 +166,14 @@ Example::
 
 Option ``--recursive`` can be added to fetch
 submodules inside submodules.
+
+Fix submodules
+++++++++++++++
+
+::
+
+    git submodule sync
+
+Example::
+
+    git submodule sync
