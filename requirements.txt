@@ -27,7 +27,7 @@ pyquickhelper>=1.9
 pyshp
 qgrid
 shapely
-sphinx_modern_theme_modified
+sphinx-bootstrap-theme
 shapely
 waitress
 wheel

@@ -1,19 +1,31 @@
 # -*- coding: utf-8 -*-
 import sys
 import os
-import sphinx_modern_theme_modified
+import sphinx_bootstrap_theme
 from pyquickhelper.helpgen.default_conf import set_sphinx_variables, get_default_stylesheet
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.split(__file__)[0])))
 
 set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2019,
-                     "sphinx_modern_theme_modified", sphinx_modern_theme_modified.get_html_theme_path(),
+                     "bootstrap", sphinx_bootstrap_theme.get_html_theme_path(),
                      locals(),
                      extlinks=dict(issue=('https://github.com/sdpython/ensae_projects/issues/%s', 'issue')))
 
-# html_theme = 'alabaster'  # 'sphinx_py3doc_enhanced_theme'
-# html_theme_path = [sphinx_py3doc_enhanced_theme.get_html_theme_path()]
-# html_theme_path = [alabaster.get_path()]
+html_theme_options = {
+    'navbar_title': ".",
+    'navbar_site_name': "Site",
+    'navbar_links': [
+        ("XD", "http://www.xavierdupre.fr", True),
+        ("blog", "blog/main_0000.html", True),
+        ("index", "genindex"),
+    ],
+    'navbar_sidebarrel': True,
+    'navbar_pagenav': True,
+    'navbar_pagenav_name': "Page",
+    'bootswatch_theme': "readable",
+    'bootstrap_version': "3",
+    'source_link_position': "footer",
+}
 
 blog_root = "http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/"
 blog_background = False
