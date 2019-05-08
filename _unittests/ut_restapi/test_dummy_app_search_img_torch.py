@@ -28,6 +28,7 @@ def has_torch():
 class TestDummyAppSearchImgTorch(testing.TestCase):
 
     def setUp(self):
+        super(TestDummyAppSearchImgTorch, self).setUp()
         add_missing_development_version(["pymyinstall", "pyensae", "jyquickhelper",
                                          "pandas_streaming", "mlinsights", "lightmlrestapi"],
                                         __file__, hide=True)
@@ -47,7 +48,7 @@ class TestDummyAppSearchImgTorch(testing.TestCase):
                 self._run_test = False
                 return
 
-        search_images_dogcat(self.api, dest=temp, module="torch")
+        self.app = search_images_dogcat(self.app, dest=temp, module="torch")
 
     def test_dummy_search_app_search_img(self):
         fLOG(

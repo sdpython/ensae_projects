@@ -29,6 +29,7 @@ def has_tf():
 class TestDummyAppSearchImgKeras(testing.TestCase):
 
     def setUp(self):
+        super(TestDummyAppSearchImgKeras, self).setUp()
         add_missing_development_version(["pymyinstall", "pyensae", "jyquickhelper",
                                          "pandas_streaming", "mlinsights", "lightmlrestapi"],
                                         __file__, hide=True)
@@ -48,7 +49,7 @@ class TestDummyAppSearchImgKeras(testing.TestCase):
                 self._run_test = False
                 return
 
-        search_images_dogcat(self.api, dest=temp, module="keras")
+        self.app = search_images_dogcat(self.app, dest=temp, module="keras")
 
     @unittest.skipIf(not has_tf(), reason="tensor not installed")
     @skipif_travis('tensorflow/python/lib/core/bfloat16.cc:664] Check failed: PyBfloat16_Type.tp_base != nullptr')

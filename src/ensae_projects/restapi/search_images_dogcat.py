@@ -64,7 +64,7 @@ def search_images_dogcat(app=None, url_images=None, dest=None, module="torch"):
 
 
 def _search_images_dogcat_keras(app=None, url_images=None, dest=None, fLOG=None):
-    fLOG("Use keras")
+    fLOG("[_search_images_dogcat_keras] Use keras")
     if url_images is None or len(url_images) == 0:
         url_images = "dog-cat-pixabay.zip"
     if dest is None or len(dest) == 0:
@@ -149,7 +149,7 @@ def _search_images_dogcat_keras(app=None, url_images=None, dest=None, fLOG=None)
             return res
 
     # Creates the application.
-    fLOG("Setting the application")
+    fLOG("[_search_images_dogcat_keras] Setting the application")
     from lightmlrestapi.mlapp import MachineLearningPost
     if app is None:
         app = falcon.API()
@@ -159,7 +159,7 @@ def _search_images_dogcat_keras(app=None, url_images=None, dest=None, fLOG=None)
 
 
 def _search_images_dogcat_torch(app=None, url_images=None, dest=None, fLOG=None):
-    fLOG("Use torch")
+    fLOG("[_search_images_dogcat_torch] Use torch")
     if url_images is None or len(url_images) == 0:
         url_images = "dog-cat-pixabay.zip"
     if dest is None or len(dest) == 0:
@@ -247,7 +247,7 @@ def _search_images_dogcat_torch(app=None, url_images=None, dest=None, fLOG=None)
             return res
 
     # Creates the application.
-    fLOG("Setting the application")
+    fLOG("[_search_images_dogcat_torch] Setting the application")
     from lightmlrestapi.mlapp import MachineLearningPost
     if app is None:
         app = falcon.API()
