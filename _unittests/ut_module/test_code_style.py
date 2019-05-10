@@ -58,18 +58,14 @@ class TestCodeStyle(ExtTestCase):
                    run_cmd_filter=_run_cmd_filter,
                    pylint_ignore=('C0103', 'C1801', 'R0201', 'R1705', 'W0108', 'W0613',
                                   'C0111', 'C0414', 'W0107', 'W0611'),
-                   skip=["skip_' imported but unused",
-                         "skip__' imported but unused",
-                         "skip___' imported but unused",
-                         "Unused variable 'skip_'",
-                         "imported as skip_",
-                         "Module 'ujson' has no 'loads'",
+                   skip=["Module 'ujson' has no 'loads'",
                          "Redefining built-in 'iter'",
                          "Redefining name 'path' from outer scope",
                          "Module 'ujson' has no 'dumps'",
                          "Instance of 'X86Info' has no 'supports_avx2'",
                          "maximum recursion depth exceeded",
                          "R1720",
+                         "Module 'falcon' has no 'HTTP_",
                          ])
 
 
