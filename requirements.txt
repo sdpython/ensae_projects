@@ -9,9 +9,9 @@ jyquickhelper
 keras_applications
 keyring
 keyrings.alt
-lightmlrestapi
+lightmlrestapi>=0.2
 manydataapi
-mlinsights>=0.1.125
+mlinsights>=0.2
 mnist
 mpld3
 opencv-python
