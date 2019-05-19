@@ -177,3 +177,13 @@ Fix submodules
 Example::
 
     git submodule sync
+
+Move multiple files
++++++++++++++++++++
+
+Assuming the reposity has no ongoing modification
+You can move files and then type right away:
+
+::
+
+    git add -A
