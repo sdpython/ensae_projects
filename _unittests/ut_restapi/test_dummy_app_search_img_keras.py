@@ -22,7 +22,8 @@ def has_tf():
     try:
         import tensorflow
         return tensorflow is not None
-    except ImportError:
+    except ImportError as e:
+        print(e)
         return False
 
 
@@ -83,7 +84,8 @@ class TestDummyAppSearchImgKeras(testing.TestCase):
         self.assertIn('name', d['Y'][0][2])
         val = d['Y'][0][2]['name'].replace('\\', '/')
         self.assertIn(val, ('oneclass/cat-2922832__480.jpg',
-                            'oneclass/wolf-2865653__480.jpg'))
+                            'oneclass/wolf-2865653__480.jpg',
+                            'oneclass/cat-1192026__480.jpg'))
 
     @unittest.skipIf(not has_tf(), reason="tensor not installed")
     @skipif_travis('tensorflow/python/lib/core/bfloat16.cc:664] Check failed: PyBfloat16_Type.tp_base != nullptr')
