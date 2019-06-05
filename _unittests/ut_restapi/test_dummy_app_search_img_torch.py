@@ -68,9 +68,9 @@ class TestDummyAppSearchImgTorch(testing.TestCase):
             return
 
         result = self.simulate_request(path='/', method="POST", body=bodyin)
-        if result.status != falcon.HTTP_201:
+        if result.status != falcon.HTTP_201:  # pylint: disable=E1101
             raise Exception("Failure\n{0}".format(result.status))
-        self.assertEqual(result.status, falcon.HTTP_201)
+        self.assertEqual(result.status, falcon.HTTP_201)  # pylint: disable=E1101
         d = ujson.loads(result.content)  # pylint: disable=E1101
         self.assertTrue('Y' in d)
         self.assertIsInstance(d['Y'], list)
@@ -85,7 +85,8 @@ class TestDummyAppSearchImgTorch(testing.TestCase):
                             'oneclass/dog-2684073__480.jpg',
                             'oneclass/fun-2213606__480.jpg',
                             'oneclass/dog-2863719__480.jpg',
-                            'oneclass/wolf-2865653__480.jpg'))
+                            'oneclass/wolf-2865653__480.jpg',
+                            'oneclass/dog-2687502__480.jpg'))
 
     def test_dummy_error_img(self):
         fLOG(
@@ -106,7 +107,7 @@ class TestDummyAppSearchImgTorch(testing.TestCase):
             return
 
         result = self.simulate_request(path='/', method="POST", body=bodyin)
-        self.assertEqual(result.status, falcon.HTTP_400)
+        self.assertEqual(result.status, falcon.HTTP_400)  # pylint: disable=E1101
         d = ujson.loads(result.content)  # pylint: disable=E1101
         self.assertIn('Unable to predict', d['title'])
         self.assertIn("object has no attribute", d['description'])
