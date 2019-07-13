@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       # pyproj does not work on Python 3.7 on linux
-      - image: circleci/python:3.6.5
+      - image: circleci/python:3.7.3
     
     working_directory: ~/repo
     
