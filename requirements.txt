@@ -4,7 +4,7 @@ coverage
 ensae_teaching_cs
 falcon>=2.0
 folium
-ijson
+ijson>=2.5
 jyquickhelper
 keras_applications
 keyring
