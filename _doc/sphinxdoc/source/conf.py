@@ -12,7 +12,7 @@ set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2019,
                      extlinks=dict(issue=('https://github.com/sdpython/ensae_projects/issues/%s', 'issue')))
 
 html_theme_options = {
-    'navbar_title': ".",
+    'navbar_title': "BASE",
     'navbar_site_name': "Site",
     'navbar_links': [
         ("XD", "http://www.xavierdupre.fr", True),
