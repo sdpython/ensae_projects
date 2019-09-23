@@ -4,7 +4,7 @@
 @brief Helpers for the hackathon 2017 (Label Emmaüs).
 """
 import os
-from io import StringIO, BytesIO
+from io import BytesIO
 import ijson
 from pyquickhelper.loghelper import noLOG
 
@@ -91,11 +91,7 @@ def enumerate_json_items(filename, encoding=None, fLOG=noLOG):
                 for el in enumerate_json_items(f, encoding=encoding, fLOG=fLOG):
                     yield el
         elif isinstance(filename, str):
-            st = StringIO(filename)
-            for el in enumerate_json_items(st, encoding=encoding, fLOG=fLOG):
-                yield el
-        elif isinstance(filename, bytes):
-            st = BytesIO(filename)
+            st = BytesIO(filename.encode('utf-8'))
             for el in enumerate_json_items(st, encoding=encoding, fLOG=fLOG):
                 yield el
         else:
