@@ -4,7 +4,7 @@
 @brief Helpers for the hackathon 2017 (Label Emmaüs).
 """
 import os
-from io import StringIO
+from io import StringIO, BytesIO
 import ijson
 from pyquickhelper.loghelper import noLOG
 
@@ -87,13 +87,19 @@ def enumerate_json_items(filename, encoding=None, fLOG=noLOG):
     """
     if isinstance(filename, str):
         if "{" not in filename and os.path.exists(filename):
-            with open(filename, "r", encoding=encoding) as f:
+            with open(filename, "rb", encoding=encoding) as f:
                 for el in enumerate_json_items(f, encoding=encoding, fLOG=fLOG):
                     yield el
-        else:
+        elif isinstance(filename, str):
             st = StringIO(filename)
             for el in enumerate_json_items(st, encoding=encoding, fLOG=fLOG):
                 yield el
+        elif isinstance(filename, bytes):
+            st = BytesIO(filename)
+            for el in enumerate_json_items(st, encoding=encoding, fLOG=fLOG):
+                yield el
+        else:
+            raise TypeError("Unable to process type '{}'.".format(type(filename)))
     else:
         parser = ijson.parse(filename)
         current = None
