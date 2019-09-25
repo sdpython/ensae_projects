@@ -5,8 +5,8 @@
 """
 import os
 import numpy
-from sklearn.neighbors import NearestNeighbors
 from PIL.Image import Image
+from sklearn.neighbors import NearestNeighbors
 from .image_helper import img2gray, enumerate_image_class, read_image, image_zoom
 
 

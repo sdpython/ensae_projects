@@ -25,7 +25,7 @@ class TestLONGNotebookChallengeCityTour(unittest.TestCase):
         temp = get_temp_folder(__file__, "temp_challenge_city_tour")
         keepnote = ls_notebooks(os.path.join("challenges", "city_tour"))
         self.assertTrue(len(keepnote) > 0)
-        keepnote = [_ for _ in keepnote]
+        keepnote = list(_ for _ in keepnote)
         res = execute_notebooks(temp, keepnote,
                                 lambda i, n: "tour" in n,
                                 fLOG=fLOG,

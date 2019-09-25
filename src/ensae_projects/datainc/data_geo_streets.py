@@ -380,7 +380,7 @@ def _complete_subset_streets(edges, shapes):
             if s != i:
                 con = connect_streets(shapes[s].points, shapes[i].points)
                 if con is not None:
-                    add.extend([_[1] for _ in con])
+                    add.extend([_[1] for _ in con])  # pylint: disable=E1133
         if len(set(add)) == 2:
             extension.append(i)
     return extension

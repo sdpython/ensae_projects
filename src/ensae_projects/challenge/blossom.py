@@ -656,7 +656,7 @@ class Vertex(Blossom):
     def outgoing_edges(self):
         return [(e, e.traverse_from(self)) for e in self.edges]
 
-    @property
+    @cached_property
     def members(self):
         return {self}
 

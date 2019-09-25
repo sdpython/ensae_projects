@@ -225,9 +225,8 @@ def enumerate_text_lines(filename, sep="\t", encoding="utf-8", quotes_as_str=Fal
                 if len(spl) == 1:
                     # probably the last line
                     continue
-                else:
-                    raise FileFormatException("different number of columns: schema {0} != {1} for line {2}".format(
-                        len(schema), len(spl), i + 1))
+                raise FileFormatException("different number of columns: schema {0} != {1} for line {2}".format(
+                    len(schema), len(spl), i + 1))
             val = {k: convert(clean_quotes(v, quotes_as_str), convert_float)
                    for k, v in zip(schema, spl)}
             val = clean_dates(val, option)

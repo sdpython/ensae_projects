@@ -13,8 +13,8 @@ import shutil
 import numpy
 from numpy.random import RandomState
 import pandas
-from sklearn.model_selection import train_test_split
 from PIL import Image
+from sklearn.model_selection import train_test_split
 
 
 def resize_image(filename_or_bytes, maxdim=512, dest=None, format=None):  # pylint: disable=W0622

@@ -95,7 +95,8 @@ def enumerate_json_items(filename, encoding=None, fLOG=noLOG):
             for el in enumerate_json_items(st, encoding=encoding, fLOG=fLOG):
                 yield el
         else:
-            raise TypeError("Unable to process type '{}'.".format(type(filename)))
+            raise TypeError(
+                "Unable to process type '{}'.".format(type(filename)))
     else:
         parser = ijson.parse(filename)
         current = None

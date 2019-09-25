@@ -92,7 +92,7 @@ def _search_images_dogcat_keras(app=None, url_images=None, dest=None, fLOG=None)
         dest) if os.path.isdir(os.path.join(dest, _))]
     if len(classes) == 0:
         # We move all images in a folder.
-        imgs = [_ for _ in os.listdir(dest)]
+        imgs = os.listdir(dest)
         cl = os.path.join(dest, "oneclass")
         os.mkdir(cl)
         for img in imgs:
@@ -186,7 +186,7 @@ def _search_images_dogcat_torch(app=None, url_images=None, dest=None, fLOG=None)
         dest) if os.path.isdir(os.path.join(dest, _))]
     if len(classes) == 0:
         # We move all images in a folder.
-        imgs = [_ for _ in os.listdir(dest)]
+        imgs = os.listdir(dest)
         cl = os.path.join(dest, "oneclass")
         os.mkdir(cl)
         for img in imgs:
