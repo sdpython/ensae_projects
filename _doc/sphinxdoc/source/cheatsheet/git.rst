@@ -187,3 +187,11 @@ You can move files and then type right away:
 ::
 
     git add -A
+
+Rebase a branch to upsteam branch
++++++++++++++++++++++++++++++++++
+
+::
+
+    git pull --rebase upstream master
+    git push --force origin
