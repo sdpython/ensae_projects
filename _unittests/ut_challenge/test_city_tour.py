@@ -191,7 +191,8 @@ class TestCityTour(unittest.TestCase):
             for vb in odd:
                 if va != vb:
                     dij = dijkstra_path(edges, distances, va, vb)
-                    jid = dijkstra_path(edges, distances, vb, va)  # pylint: disable=W1114
+                    jid = dijkstra_path(
+                        edges, distances, vb, va)  # pylint: disable=W1114
                     jid2 = list(reversed(jid))
                     self.assertEqual(dij, jid2)
                     d1 = sum(distances[i] for i in dij)
