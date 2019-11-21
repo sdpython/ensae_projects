@@ -19,6 +19,7 @@ pandas_streaming
 papierstat
 psutil
 pycryptodomex
+pydicom
 pyecharts
 pyecharts-javascripthon
 pyensae>=1.2.788

@@ -25,6 +25,7 @@ du moment.
     hackathon
     defis
     antiseche
+    i_cmd
     faqts
     blog/main_0000
     license

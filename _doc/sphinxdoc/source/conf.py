@@ -30,6 +30,7 @@ html_theme_options = {
 blog_root = "http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/"
 blog_background = False
 pygments_style = 'default'
+html_logo = "phdoc_static/project_ico_small.png"
 
 html_context = {
     'css_files': get_default_stylesheet() + ['_static/my-styles.css'],
@@ -41,9 +42,11 @@ epkg_dictionary.update({
     'Bing Image': 'https://www.bing.com/images/',
     'BRGM': "http://www.brgm.fr/",
     'cartopy': "https://scitools.org.uk/cartopy/docs/latest/",
+    'Cancer Imaging Archive': 'https://wiki.cancerimagingarchive.net/',
     'Cresus': "http://www.cresus-france.org/",
     'data leakage': "https://www.kaggle.com/wiki/Leakage",
     "dataframe": "https://pandas.pydata.org/pandas-docs/stable/dsintro.html",
+    'dcm': 'https://en.wikipedia.org/wiki/DICOM',
     'ensae_projects': 'https://pypi.org/project/ensae_projects/',
     'ENSAE': "http://www.ensae.fr/",
     'ESUS': "https://www.service-public.fr/professionnels-entreprises/vosdroits/F32275",
@@ -69,6 +72,8 @@ epkg_dictionary.update({
     "PIL": "https://pillow.readthedocs.io/en/5.3.x/",
     'PIL.Image': "https://pillow.readthedocs.io/en/5.1.x/reference/Image.html",
     'plot_gallery_images': 'http://www.xavierdupre.fr/app/mlinsights/helpsphinx/mlinsights/plotting/gallery.html#mlinsights.plotting.gallery.plot_gallery_images',
+    'png': 'https://en.wikipedia.org/wiki/Portable_Network_Graphics',
+    'pydicom': 'https://pydicom.github.io/pydicom/stable/getting_started.html',
     'pyensae': 'http://www.xavierdupre.fr/app/pyensae/helpsphinx/',
     'pytorch': 'https://pytorch.org/',
     'radius_neighbors': 'https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors.radius_neighbors',
