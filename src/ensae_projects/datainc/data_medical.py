@@ -19,7 +19,7 @@ def _recurse_fill(obs, dataset, parent=""):
             for i, ds in enumerate(data_element.value):
                 _recurse_fill(obs, ds,
                               parent="{parent}.{name}[{i}]".format(
-                                parent=parent, name=name, i=i))
+                                  parent=parent, name=name, i=i))
         else:
             text = str(data_element.value)
             name = str(data_element.name)
