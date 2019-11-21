@@ -25,11 +25,10 @@ class TestLONGdcm(ExtTestCase):
             __file__,
             self._testMethodName,
             OutputPrint=__name__ == "__main__")
-        
+
         temp = get_temp_folder(__file__, "temp_convert_dcm2png")
         df = convert_dcm2png(TestLONGdcm.images, temp, fLOG=fLOG)
         self.assertEqual(df.shape[0], 6)
-        
 
 
 if __name__ == "__main__":
