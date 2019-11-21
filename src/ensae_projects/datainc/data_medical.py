@@ -4,22 +4,21 @@
 :epkg:`Cancer Imaging Archive`.
 """
 import os
-from pyquickhelper.filehelper.synchelper import explore_folder_iterfile
-import pandas
-import cv2
 import pydicom
+import cv2
+import pandas
+from pyquickhelper.filehelper.synchelper import explore_folder_iterfile
 
 
 def _recurse_fill(obs, dataset, parent=""):
     for data_element in dataset:
         if isinstance(data_element.value, bytes):
             continue
-        node_id = parent + "." + hex(id(data_element))
         if data_element.VR == "SQ":   # a sequence
             name = data_element.name
             for i, ds in enumerate(data_element.value):
-                recurse_tree(obs, ds,
-                             parent="{parent}.{name}[{i}]".format(
+                _recurse_fill(obs, ds,
+                              parent="{parent}.{name}[{i}]".format(
                                 parent=parent, name=name, i=i))
         else:
             text = str(data_element.value)
@@ -32,7 +31,7 @@ def convert_dcm2png(folder, dest, fLOG=None):
     """
     Converts all medical images in a folder from format
     :epkg:`dcm` to :epkg:`png`.
-    
+
     @param      folder      source folder
     @param      dest        destination folder
     @param      fLOG        logging function
@@ -50,7 +49,8 @@ def convert_dcm2png(folder, dest, fLOG=None):
     for name in explore_folder_iterfile(folder, ".*[.]dcm$"):
         relname = os.path.relpath(name, folder)
         if fLOG is not None:
-            fLOG("[convert_dcm2png] read {}: '{}'.".format(len(rows)+1, relname))            
+            fLOG("[convert_dcm2png] read {}: '{}'.".format(
+                len(rows) + 1, relname))
         f1 = relname.replace("\\", "/").split("/")[0]
         name_ = "img_%06d.png" % len(done)
         if "_" in f1:
@@ -78,8 +78,8 @@ def convert_dcm2png(folder, dest, fLOG=None):
             done[name] = full_name
             continue
 
-        pixel_array_numpy = ds.pixel_array        
-        cv2.imwrite(full_name, pixel_array_numpy)
+        pixel_array_numpy = ds.pixel_array
+        cv2.imwrite(full_name, pixel_array_numpy)  # pylint: disable=E1101
         done[name] = full_name
 
     final = os.path.join(dest, "_summary.csv")

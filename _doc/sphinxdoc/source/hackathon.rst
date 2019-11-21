@@ -3,8 +3,10 @@ Hackathon de l'ENSAE
 ====================
 
 Le premier hackathon de l'ENSAE eut lieu en 2015
-et fut sponsorisé par :epkg:`Microsoft`. Il a désormais
-lieu chaque année et est sponrisé par :epkg:`EY`.
+et fut sponsorisé par :epkg:`Microsoft`. Il a
+lieu chaque année. Il a été sponrisé par :epkg:`EY`
+de 2016 à 2018. L'édition de 2019 est sponsorisée
+par :epkg:`Cap Gemini`.
 Il réunit les étudiants de l'ENSAE et des associations
 caritatives ou entreprises sociales et solidaires (ESS)
 qui mettent à disposition le temps de l'événement des
@@ -23,3 +25,4 @@ des données peut apporter à leur activité.
     projects/hackathon_2016
     projects/hackathon_2017
     projects/hackathon_2018
+    projects/hackathon_2019

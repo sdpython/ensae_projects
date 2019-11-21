@@ -4,7 +4,7 @@
 Hackathon ENSAE / BRGM / Microdon / Latitudes / Genius / Ernst & Young - 2018
 =============================================================================
 
-.. index:: Ernst & Young, ENSAE, Hackathon, Genius, Microdon, BRGM, 2017
+.. index:: Ernst & Young, ENSAE, Hackathon, Genius, Microdon, BRGM, 2018
 
 Le hackathon est proposé et organisé par
 `Ernst & Young <http://www.ey.com/fr/fr/home>`_ (sponsor),
