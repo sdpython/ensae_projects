@@ -1,13 +1,21 @@
 
+
 .. _l-HISTORY:
 
 =======
 History
 =======
 
-current - 2018-10-14 - 0.00Mb
+current - 2019-11-21 - 0.00Mb
 =============================
 
+* `7`: move CI to python 3.7 (2019-07-13)
+* `12`: Remove waffle (deprecated) (2019-07-13)
+
+0.1.478 - 2018-11-16 - 0.26Mb
+=============================
+
+* `11`: implements knn to find close images (2018-11-11)
 * `10`: add code about bicycle trajectories knowning their location when they are stopped (2018-10-14)
 
 0.1.427 - 2018-08-12 - 0.12Mb
@@ -30,3 +38,4 @@ current - 2018-10-14 - 0.00Mb
 
 0.1.337 - 2017-12-07 - 0.12Mb
 =============================
+
