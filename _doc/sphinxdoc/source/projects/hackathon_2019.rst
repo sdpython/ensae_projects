@@ -40,8 +40,7 @@ Eléments de code
 
 .. toctree::
 
-    hackathon_2018_api_rest
-    hackathon_2018_code_deep
+    hackathon_2019_api_rest
 
 Après la compétition
 --------------------
