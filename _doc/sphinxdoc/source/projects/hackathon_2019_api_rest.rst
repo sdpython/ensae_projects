@@ -20,19 +20,17 @@ Préparer son modèle
 -------------------
 
 Une fois le modèle appris
-et stocké dans un ou plusieurs fichiers, il faut pouvoir créer un 
+et stocké dans un ou plusieurs fichiers, il faut pouvoir créer un
 programme python qui permet au jury d'appeler votre modèle.
 
-:: 
+::
 
     import pickle
     import os
 
-
     def restapi_version():
         "Declare an id for the REST API."
         return "0.1.1234"
-
 
     def restapi_load(files={"model": "model_iris.pkl"}):
         """Loads the model.
@@ -49,7 +47,6 @@ programme python qui permet au jury d'appeler votre modèle.
             loaded_model = pickle.load(f)
         return loaded_model
 
-
     def restapi_predict(model, X):
         """
         Computes the prediction for model *clf*.
@@ -58,12 +55,12 @@ programme python qui permet au jury d'appeler votre modèle.
 
 Voir `Iris
 <http://www.xavierdupre.fr/app/lightmlrestapi/helpsphinx/tutorial/
-store_rest_api.html#train-a-model-on-iris>`_. 
+store_rest_api.html#train-a-model-on-iris>`_.
 
 Uploader son modèle
 -------------------
 
-Il faut installer les modules :epkg:`lightmlrestapi` et 
+Il faut installer les modules :epkg:`lightmlrestapi` et
 :epkg:`pyquickhelper` puis lancer la ligne de commande suivante :
 
 ::
@@ -153,3 +150,112 @@ Version des modules utilisées pour tester votre modèle
     x86cpu==0.4
     xarray==0.14.0
     xgboost==0.90
+
+Un pas de plus vers l'automatisation
+------------------------------------
+
+Ce script récupère tous les modèles et calcule les préditions
+pour ceux nouvellement reçus. Plus pour la prochaine que de garder
+un script mémorable.
+
+::
+
+    import os
+    from datetime import datetime
+    import numpy
+    import numpy as np
+    from pandas import DataFrame, read_csv
+    from sklearn.metrics import f1_score, log_loss, accuracy_score, roc_auc_score
+    from lightmlrestapi.mlapp.mlstorage import MLStorage
+    
+    root = "/var/lib/jenkins/workspace/_hackathon/"
+
+    dashboard = root + "dashboard.csv"
+    if os.path.exists(dashboard):
+        df = read_csv(dashboard, encoding="utf-8")
+        rows = df.to_dict(orient='records')
+        done = set(df["name"])
+    else:
+        rows = []
+        done = set()
+
+    X1 = read_csv(root + "dataset_traumabase_hackathon_test1.csv", encoding="utf-8")
+    y1 = X1['pneumonie_precoce']
+    X1 = X1.drop("pneumonie_precoce", axis=1).copy()
+    X2 = read_csv(root + "dataset_traumabase_hackathon_test2.csv", encoding="utf-8")
+    y2 = X2['pneumonie_precoce']
+    X2 = X2.drop("pneumonie_precoce", axis=1).copy()
+
+
+
+    def f1_score_(y_exp, y_pred):
+        y2 = y_pred >= 0.5
+        return f1_score(y_exp, y2)
+
+
+    def acc(y_exp, y_pred):
+        y2 = y_pred >= 0.5
+        return accuracy_score(y_exp, y2)
+
+
+    def nb1(y_exp, y_pred):
+        y2 = y_pred >= 0.5
+        return 1. * sum(y2) / len(y2)
+
+
+    datasets = {
+        'test1': (X1, y1, {'f1': f1_score_,
+            'log_loss': log_loss, 'accuracy': acc, "nb1": nb1,
+            'auc': roc_auc_score}),
+        }
+    datasets['test2'] = (X2, y2, datasets['test1'][-1])
+
+    temp = os.path.abspath("..../webrest/stor")
+    stor = MLStorage(temp, cache_size=3)
+    names = list(stor.enumerate_names())
+    modif = 0
+
+    for name in names:
+        if name in done: # and name != 'jb/test14':
+            continue
+        done.add(name)
+        ds = [datasets['test1'], datasets['test2']]
+        modif += 1
+
+        obs = dict(name=name, dt=datetime.now(), error="")
+        for i, (X, y, metrics) in enumerate(ds):
+            X = X.copy()
+            y = y.copy()
+            try:
+                pred = stor.call_predict(name, X)
+            except Exception as e:
+                obs['error'] += '**' + str(type(e)) + ':' + str(e)
+                print("[eval] '{}' - {}".format(name, str(e)))
+                rows.append(obs)
+                continue
+            if pred is None:
+                obs['error'] += '**restapi_predict retourne None'
+                break
+            if len(pred.shape) == 2 and pred.shape[1] == 2:
+                pred = pred[:, 1]
+            if len(pred.shape) == 2:
+                obs['error'] += "**predict doit retourner une seule proba"
+                break
+            for m, metric in metrics.items():
+                try:
+                    scor = metric(y, pred)
+                except Exception as e:
+                    obs["error"] += "**[%s] %s:%s" % (m, str(type(e)), str(e))
+                    rows.append(obs)
+                    print("[eval] '{}' - {}-->{}".format(name, m, str(e)))
+                    continue
+                obs["%s_%d" % (m, i)] = scor
+                print("[eval] '{}' - {}_{}={}".format(name, m, i, scor))
+        rows.append(obs)
+
+    if modif >= 0:
+        df = DataFrame(rows)
+        df = df.sort_values('auc_0', ascending=False).reset_index(drop=True)
+        df.to_csv(root + "dashboard.csv", index=False, encoding="utf-8")
+        df.to_html(root + "dashboard.html")
+        print(df)
