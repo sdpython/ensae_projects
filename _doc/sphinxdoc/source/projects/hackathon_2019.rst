@@ -50,7 +50,8 @@ concernant le cancer du sein. C'est un sujet quelque peu exploratoire
 où un des sujets consiste à identifier les auteurs des tweats,
 patient, médecins ou autre puis dans le cas de patients,
 à identifier les différents stages de la maladie, les médicaments
-utilisés pour le traitement.
+utilisés pour le traitement. Le challenge était proposé
+par l'`Institut Curie <https://curie.fr/page/cancers-du-sein>`_.
 
 Eléments de code
 ----------------
@@ -61,6 +62,11 @@ Eléments de code
 
 Après la compétition
 --------------------
+
+La majorité des mentors représentant les porteurs de projets
+étaient médecins, ils étaient venus en grand nombre et sont restés
+une bonne partie du temps. Leur présence ininterrompue a
+été très appréciée.
 
 *Quelques photos...*
 
@@ -87,3 +93,5 @@ Lieu : :epkg:`Cap Gemini`
 * 15h30 - Présentation des résultats
 * 17h00 - Délibération du jury
 * 17h30 - fin du hackathon
+
+
