@@ -78,6 +78,12 @@ d'une grande imagination et ont réussi à surprendre les membres
 du jurys. Certaines de leurs idées, déduites de façon statistique
 de la base, n'étaient pas dénuées d'intérêt médicalement.
 
+La nuit a toujours été autant animée, les questions n'ont cessé de fuser,
+la nuit, à 4h du matin, heure à laquelle je me suis écroulé deux heures,
+jusqu'à midi le lendemain, avec toujours en fil continu mon petit
+hackathon à moi qui consistait à implémenter un leaderboard
+en ligne ce que j'ai plus ou moins réussi à faire.
+
 *Quelques photos...*
 
 .. image:: 2019/hk2019_1.jpg
