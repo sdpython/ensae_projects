@@ -68,6 +68,16 @@ La majorité des mentors représentant les porteurs de projets
 une bonne partie du temps. Leur présence ininterrompue a
 été très appréciée.
 
+J'ai beaucoup aimé un discours de clôture prononcé par un médecin
+sur les nuits blanches et combien elles pouvaient être créatrices.
+Le monde appartient aux audacieux noctambules. Et comme c'est un médecin
+qui le dit, c'est probablement sans danger.
+
+Malgré la difficulté des sujets, les étudiants ont fait montre
+d'une grande imagination et ont réussi à surprendre les membres
+du jurys. Certaines de leurs idées, déduites de façon statistique
+de la base, n'étaient pas dénuées d'intérêt médicalement.
+
 *Quelques photos...*
 
 .. image:: 2019/hk2019_1.jpg
