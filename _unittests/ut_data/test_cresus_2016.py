@@ -29,11 +29,7 @@ class TestCresus2016(unittest.TestCase):
         with warnings.catch_warnings():
             warnings.simplefilter('ignore', DeprecationWarning)
             import keyring
-        if sys.platform.startswith("win"):
-            pwd = keyring.get_password(
-                "cresus", os.environ["COMPUTERNAME"] + "ensae")
-        else:
-            pwd = keyring.get_password("cresus", "ensae_projects,ensae")
+        pwd = keyring.get_password("cresus", "ensae_projects,ensae")
         assert pwd is not None
         name = cresus_dummy_file()
         if not os.path.exists(name):
