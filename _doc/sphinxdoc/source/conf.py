@@ -6,7 +6,7 @@ from pyquickhelper.helpgen.default_conf import set_sphinx_variables, get_default
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.split(__file__)[0])))
 
-set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2019,
+set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2020,
                      "bootstrap", sphinx_bootstrap_theme.get_html_theme_path(),
                      locals(),
                      extlinks=dict(issue=('https://github.com/sdpython/ensae_projects/issues/%s', 'issue')))
