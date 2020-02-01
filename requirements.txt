@@ -30,6 +30,7 @@ qgrid
 shapely
 sphinx-bootstrap-theme
 shapely
+tensorflow>=2.1
 waitress
 wheel
 x86cpu
