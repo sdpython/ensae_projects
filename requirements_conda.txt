@@ -8,7 +8,7 @@ networkx
 numba
 numpy>=1.11.0
 pandas>=0.20.0
-pillow==6.2.2
+Pillow<7.0.0
 pyproj
 scikit-learn
 scipy
