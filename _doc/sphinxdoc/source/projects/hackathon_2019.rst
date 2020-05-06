@@ -109,5 +109,3 @@ Lieu : :epkg:`Cap Gemini`
 * 15h30 - Présentation des résultats
 * 17h00 - Délibération du jury
 * 17h30 - fin du hackathon
-
-

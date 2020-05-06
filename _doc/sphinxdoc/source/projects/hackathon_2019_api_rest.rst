@@ -167,7 +167,7 @@ un script mémorable.
     from pandas import DataFrame, read_csv
     from sklearn.metrics import f1_score, log_loss, accuracy_score, roc_auc_score
     from lightmlrestapi.mlapp.mlstorage import MLStorage
-    
+
     root = "/var/lib/jenkins/workspace/_hackathon/"
 
     dashboard = root + "dashboard.csv"
@@ -186,22 +186,17 @@ un script mémorable.
     y2 = X2['pneumonie_precoce']
     X2 = X2.drop("pneumonie_precoce", axis=1).copy()
 
-
-
     def f1_score_(y_exp, y_pred):
         y2 = y_pred >= 0.5
         return f1_score(y_exp, y2)
-
 
     def acc(y_exp, y_pred):
         y2 = y_pred >= 0.5
         return accuracy_score(y_exp, y2)
 
-
     def nb1(y_exp, y_pred):
         y2 = y_pred >= 0.5
         return 1. * sum(y2) / len(y2)
-
 
     datasets = {
         'test1': (X1, y1, {'f1': f1_score_,
