@@ -24,7 +24,8 @@ def get_fields_description():
 def get_seattle_streets(filename=None, folder="."):
     """
     Retrieves processed data from
-    `Seattle Streets <https://data.seattle.gov/dataset/Street-Network-Database/afip-2mzr/data)>`_.
+    `Seattle Streets <https://data.seattle.gov/dataset/Street-Network-Database/
+    afip-2mzr/data)>`_.
 
     @param      filename        local filename
     @param      folder          temporary folder where to download files
@@ -208,7 +209,7 @@ def plot_streets_network_projection(central_longitude=0.0, min_latitude=-80.0,
     Returns the default projection for @see fn plot_streets_network.
     See `projection <https://scitools.org.uk/cartopy/docs/v0.15/crs/projections.html>`_.
     """
-    import cartopy.crs as ccrs
+    import cartopy.crs as ccrs  # pylint: disable=E0401
     return ccrs.PlateCarree()
 
 
@@ -249,7 +250,7 @@ def plot_streets_network(edges_index, edges, vertices, shapes, order=None,
     The default projection is given by @see fn plot_streets_network_projection.
     https://scitools.org.uk/cartopy/docs/v0.15/examples/hurricane_katrina.html
     """
-    import cartopy.feature as cfeature
+    import cartopy.feature as cfeature  # pylint: disable=E0401
     import matplotlib.pyplot as plt
     from matplotlib.lines import Line2D
     import numpy
