@@ -7,7 +7,7 @@ import os
 import pydicom
 import pandas
 import cv2
-from pyquickhelper.filehelper.synchelper import explore_folder_iterfile
+from pyquickhelper.filehelper.synchelper import explore_folder_iterfile  # pylint: disable=C0411
 
 
 def _recurse_fill(obs, dataset, parent=""):
