@@ -5,8 +5,8 @@
 """
 import os
 import pydicom
-import cv2
 import pandas
+import cv2
 from pyquickhelper.filehelper.synchelper import explore_folder_iterfile
 
 
