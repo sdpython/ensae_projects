@@ -103,7 +103,7 @@ class TestCompetitions(unittest.TestCase):
 
         with open(truth, "r") as f:
             lines = [_.strip("\r\n ").split("\t") for _ in f.readlines()]
-        lines = [[l[0], l[1], "1.0", "1.0"] for l in lines]
+        lines = [[el[0], el[1], "1.0", "1.0"] for el in lines]
         f3 = "answer.txt"
         with open(os.path.join(t3, f3), "w") as f:
             f.write("\n".join("\t".join(_) for _ in lines))
