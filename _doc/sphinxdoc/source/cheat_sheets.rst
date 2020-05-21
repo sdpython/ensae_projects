@@ -12,6 +12,7 @@ Coding
     :maxdepth: 2
 
     ../cheatsheet/git
+    ../cheatsheet/linux
 
 Data Science
 ++++++++++++
