@@ -69,7 +69,6 @@ Analysis:
 
 Existing partitions:
 
-
 ::
 
     sfdisk -l
