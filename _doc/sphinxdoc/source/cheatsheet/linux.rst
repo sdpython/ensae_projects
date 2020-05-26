@@ -114,3 +114,12 @@ List of processes memory:
 ::
 
     ps -eo size,pid,user,command --sort -size
+
+Others
+++++++
+
+Retrieve the path of an executable:
+
+::
+
+    type -p python3.7

@@ -10,6 +10,12 @@ Cheat Sheet on Jenkins
 Installation
 ++++++++++++
 
+Install Java:
+
+::
+
+    apt-get install openjdk-11-jdk
+
 Install Jenkins:
 
 ::
@@ -41,9 +47,29 @@ Change Jenkins user:
 
     /etc/init.d/jenkins restart
 
+Plugins
++++++++
+
+* `Build timeout plugin <https://plugins.jenkins.io/build-timeout/>`_
+* `Console column plugin <https://plugins.jenkins.io/console-column-plugin/>`_
+* `Next executions <https://wiki.jenkins.io/display/JENKINS/Next+Executions>`_
+* `Collapsing Console Sections Plugin <https://wiki.jenkins.io/display/JENKINS/Collapsing+Console+Sections+Plugin>`_
+* `Exclusive Execution <https://plugins.jenkins.io/exclusive-execution/>`_
+
 Start, Restart
 ++++++++++++++
 
 ::
 
     /etc/init.d/jenkins start
+
+Reset passwords
++++++++++++++++
+
+* Edit file ``/var/lib/jenkins/config.xml``.
+* Search for ``<useSecurity>true</useSecurity>``,
+  change ``true`` to ``false``.
+* Restarts the service ``/etc/init.d/jenkins restart``.
+* Change the security settings.
+* Restart again.
+
