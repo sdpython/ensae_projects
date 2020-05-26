@@ -108,3 +108,9 @@ Kill a process:
 ::
 
     kill <pid>
+
+List of processes memory:
+
+::
+
+    ps -eo size,pid,user,command --sort -size
