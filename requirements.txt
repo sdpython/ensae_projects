@@ -11,6 +11,7 @@ keyring
 keyrings.alt
 lightmlrestapi>=0.2
 manydataapi
+matplotlib
 mlinsights>=0.2
 mnist
 mpld3
@@ -18,16 +19,19 @@ opencv-python
 pandas_streaming
 papierstat
 psutil
+pycodestyle
 pycryptodomex
 pydicom
 pyecharts
 pyecharts-javascripthon
 pyensae>=1.2.788
+pylint
 pymyinstall
 pyquickhelper>=1.9
 pyshp
 qgrid
 shapely
+sphinxcontrib.imagesvg
 sphinx-bootstrap-theme
 shapely
 tensorflow>=2.1
