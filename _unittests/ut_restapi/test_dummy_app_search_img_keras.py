@@ -66,7 +66,7 @@ class TestDummyAppSearchImgKeras(testing.TestCase):
         img2 = os.path.join(os.path.dirname(__file__),
                             "data", "wiki_modified.png")
         b64 = image2base64(img2)[1]
-        bodyin = ujson.dumps({'X': b64})  # pylint: disable=E1101
+        bodyin = ujson.dumps({'X': b64}, reject_bytes=False)  # pylint: disable=E1101
 
         if not self._run_test:
             return
@@ -104,7 +104,7 @@ class TestDummyAppSearchImgKeras(testing.TestCase):
         ext_b64 = image2base64(img2)
         img2 = base642image(ext_b64[1]).convert('RGB')
         arr = image2array(img2)
-        bodyin = ujson.dumps({'X': arr.tolist()})  # pylint: disable=E1101
+        bodyin = ujson.dumps({'X': arr.tolist()}, reject_bytes=False)  # pylint: disable=E1101
 
         if not self._run_test:
             return
