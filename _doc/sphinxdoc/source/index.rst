@@ -73,3 +73,7 @@ du moment.
 .. image:: nbcov.png
     :target: http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/all_notebooks_coverage.html
     :alt: Notebook Coverage
+
+.. image:: https://img.shields.io/github/repo-size/sdpython/ensae_projects
+    :target: https://github.com/sdpython/ensae_projects/
+    :alt: size
