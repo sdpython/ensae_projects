@@ -25,7 +25,7 @@ class TestCodeStyle(ExtTestCase):
         src_ = os.path.normpath(os.path.join(thi, "..", "..", "src"))
         check_pep8(src_, fLOG=fLOG, verbose=False, run_cmd_filter=_run_cmd_filter,
                    pylint_ignore=('C0103', 'C1801', 'R0201', 'R1705', 'W0108', 'W0613',
-                                  'C0111', 'W0212', 'W0107', 'C0415'),
+                                  'C0111', 'W0212', 'W0107', 'C0415', 'R1725'),
                    skip=["Use % formatting in logging functions and pass the % parameters",
                          "Redefining built-in 'next'",
                          "Redefining name 'fLOG' from outer scope ",
@@ -57,7 +57,7 @@ class TestCodeStyle(ExtTestCase):
         check_pep8(test, fLOG=fLOG, neg_pattern="temp_.*", verbose=False,
                    run_cmd_filter=_run_cmd_filter,
                    pylint_ignore=('C0103', 'C1801', 'R0201', 'R1705', 'W0108', 'W0613',
-                                  'C0111', 'C0414', 'W0107', 'W0611', 'C0415'),
+                                  'C0111', 'C0414', 'W0107', 'W0611', 'C0415', 'R1725'),
                    skip=["Module 'ujson' has no 'loads'",
                          "Redefining built-in 'iter'",
                          "Redefining name 'path' from outer scope",
