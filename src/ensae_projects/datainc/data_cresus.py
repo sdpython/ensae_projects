@@ -109,7 +109,7 @@ def process_cresus_sql(infile, out_clean_sql=None, outdb=None, fLOG=fLOG):  # py
         try:
             exp = str(e).split('"')[1]
         except Exception:
-            raise e
+            raise e  # pylint: disable=W0707
         lines = content.split("\n")
         lines = ["{0}/{2}:{1}".format(i, _, len(lines))
                  for i, _ in enumerate(lines) if exp in _]
