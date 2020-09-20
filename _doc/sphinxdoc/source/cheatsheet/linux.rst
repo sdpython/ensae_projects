@@ -50,7 +50,6 @@ Error with a package
 
     rm /var/lib/dpkg/info/the-package-causing-error
 
-
 Clean temporary files
 +++++++++++++++++++++
 

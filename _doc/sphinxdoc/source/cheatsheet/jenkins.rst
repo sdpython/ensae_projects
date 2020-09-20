@@ -72,4 +72,3 @@ Reset passwords
 * Restarts the service ``/etc/init.d/jenkins restart``.
 * Change the security settings.
 * Restart again.
-
