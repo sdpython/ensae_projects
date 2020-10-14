@@ -7,7 +7,7 @@
 import os
 import random
 import pandas
-from pyensae import download_data
+from pyensae.datasource import download_data
 from manydataapi.velib import DataCollectJCDecaux as DataVelibCollect
 from pyquickhelper.loghelper import str2datetime
 
@@ -291,7 +291,7 @@ def distance_path(dfp):
     return mean_, std_ ** 0.5
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
 
     def main_velib():
         dest = "codpart1"

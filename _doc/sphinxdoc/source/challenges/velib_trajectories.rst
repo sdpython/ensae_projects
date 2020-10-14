@@ -86,7 +86,7 @@ On fournit le code de la `distance de Haversine <http://en.wikipedia.org/wiki/Ha
 
 Pour récupérer les données ::
 
-    from pyensae import download_data
+    from pyensae.datasource import download_data
     download_data('velib_synthetique.zip', website = 'xdtd', whereTo = whereto)
     download_data('besancon.df.txt.zip', website = 'xdtd', whereTo = whereto)
 

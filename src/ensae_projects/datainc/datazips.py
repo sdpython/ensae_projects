@@ -27,8 +27,8 @@ def anyzip(filename, local=True, cache_folder=".", fLOG=noLOG, **kwargs):
         if cache_folder is not None:
             res = [os.path.join(cache_folder, _) for _ in res]
     else:
-        import pyensae
-        this = pyensae.download_data(
+        import pyensae.datasource
+        this = pyensae.datasource.download_data(
             filename, whereTo=cache_folder, fLOG=fLOG, **kwargs)
         if cache_folder is not None:
             res = [os.path.join(cache_folder, _) for _ in this]
