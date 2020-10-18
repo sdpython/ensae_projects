@@ -6,11 +6,15 @@ import sys
 import os
 import warnings
 import unittest
+from pyquickhelper.pycode import skipif_travis, skipif_appveyor, skipif_circleci
 from ensae_projects.hackathon.crypt_helper import set_password, get_password
 
 
 class TestCrypt(unittest.TestCase):
 
+    @skipif_travis('requires password')
+    @skipif_appveyor('requires password')
+    @skipif_circleci('requires password')
     def test_json_iter(self):
         try:
             set_password('ppwwdd', 'ep_ex')
