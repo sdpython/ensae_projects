@@ -1,34 +1,22 @@
-dist: xenial
+dist: focal
 sudo: true
 language: python
 python:
-  - "3.7"
-addons:
--  apt:
--    packages:
-      - ffmpeg
-      - libgeos-dev
+  - "3.8"
+
+before_install:
+  - sudo apt-get install libgeos-dev libproj-dev proj-data graphviz libblas-dev liblapack-dev
+  - wget https://apt.llvm.org/llvm.sh
+  - chmod +x llvm.sh
+  - sudo ./llvm.sh 10
+  - ls /usr/bin/llvm*
+  - export LLVM_CONFIG=/usr/bin/llvm-config
+  # - sudo ln -s /usr/bin/llvm-config-10 /usr/bin/llvm-config
+
 install:
-  # We do this conditionally because it saves us some downloading if the
-  # version is the same.
-  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$PATH"
-  - hash -r
-  - conda config --set always_yes yes --set changeps1 no
-  - conda update -q conda
-  - conda install conda-build
-  # Useful for debugging any issues with conda
-  - conda info -a
-  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION numpy mkl scipy nose cython scikit-learn
-  - source activate test-environment
-  # - make all
-  #- conda build build_tools/conda-recipe --quiet
-  - conda install pytorch-cpu torchvision-cpu -c pytorch
-  - conda install -q --file=requirements_conda.txt
-  - conda install -c scitools/label/archive cartopy
   - pip install -r requirements.txt
-  - pip install tf-nightly
-  - export PYTHONPATH=src
+  - pip uninstall -y shapely
+  - pip install --no-binary shapely shapely
+
 script:
-  - python setup.py unittests
+  - python ./setup.py unittests

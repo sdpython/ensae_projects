@@ -10,19 +10,12 @@ init:
 
 install:
   - "%PYTHON%\\python -m pip install --upgrade pip"
-  - "%PYTHON%\\Scripts\\pip install pymyinstall"
-  #- "%PYTHON%\\Scripts\\pymy_install3 --set=pyensae"
-  #- "%PYTHON%\\Scripts\\pymy_install3 xgboost"
-  #- "%PYTHON%\\Scripts\\pymy_install3 h5py"
-  #- "%PYTHON%\\Scripts\\pymy_install3 PyYAML x86cpu"
-  #- "%PYTHON%\\Scripts\\pymy_install3 pillow psutil protobuf tensorflow torch"
-  - "%PYTHON%\\Scripts\\pip install torch==1.5.0+cpu torchvision==0.6.0+cpu -f https://download.pytorch.org/whl/torch_stable.html"
-  - "%PYTHON%\\Scripts\\pymy_install3 pyproj shapely cartopy"
-  - "%PYTHON%\\Scripts\\pymy_install3 opencv_python"
-  - "%PYTHON%\\Scripts\\pip install -r requirements_conda.txt"
-  - "%PYTHON%\\Scripts\\pip install -r requirements.txt"
-  - set PYTHONPATH=src
-
+  # for many packages
+  - "%PYTHON%\\Scripts\\pip install -r requirements-win.txt"
+  # install precompiled versions not available on pypi
+  - "%PYTHON%\\Scripts\\pymy_install3 cartopy pyproj shapely llvmlite numba"
+  # other dependencies
+  - "%PYTHON%\\Scripts\\pip install -r requirements.txt --no-deps"
 build: off
 
 test_script:
