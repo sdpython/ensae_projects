@@ -33,6 +33,7 @@ PyYAML
 scikit-learn
 statsmodels
 threadpoolctl
+ujson
 xlrd
 xlsxwriter
 werkzeug

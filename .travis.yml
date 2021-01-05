@@ -11,6 +11,7 @@ before_install:
   - sudo ./llvm.sh 10
   - ls /usr/bin/llvm*
   - export LLVM_CONFIG=/usr/bin/llvm-config
+  - pip install torch==1.7.1+cpu torchvision==0.8.2+cpu torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
   # - sudo ln -s /usr/bin/llvm-config-10 /usr/bin/llvm-config
 
 install:
