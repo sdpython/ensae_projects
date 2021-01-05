@@ -11,11 +11,11 @@ init:
 install:
   - "%PYTHON%\\python -m pip install --upgrade pip"
   # for many packages
-  - "%PYTHON%\\Scripts\\pip install pymyinstall"
+  - "%PYTHON%\\Scripts\\pip install pymyinstall wheel"
   # install precompiled versions not available on pypi
   - "%PYTHON%\\Scripts\\pymy_install3 cartopy pyproj shapely fiona gdal llvmlite numba"
   # other dependencies
-  - "%PYTHON%\\Scripts\\pip install -r requirements.txt --no-deps"
+  - "%PYTHON%\\Scripts\\pip install -r requirements.txt"
 build: off
 
 test_script:
