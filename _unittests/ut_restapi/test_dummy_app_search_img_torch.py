@@ -88,7 +88,8 @@ class TestDummyAppSearchImgTorch(testing.TestCase):
                             'oneclass/fun-2213606__480.jpg',
                             'oneclass/dog-2863719__480.jpg',
                             'oneclass/wolf-2865653__480.jpg',
-                            'oneclass/dog-2687502__480.jpg'))
+                            'oneclass/dog-2687502__480.jpg',
+                            'oneclass/cat-2922832__480.jpg'))
 
     def test_dummy_error_img(self):
         fLOG(
