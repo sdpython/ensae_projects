@@ -55,6 +55,7 @@ pyquickhelper>=1.10
 pyshp
 qgrid
 shapely
+simplejson
 sphinxcontrib.imagesvg
 sphinx-bootstrap-theme
 shapely

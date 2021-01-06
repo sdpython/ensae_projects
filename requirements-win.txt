@@ -31,6 +31,7 @@ pyshp
 python-jenkins
 PyYAML
 scikit-learn
+simplejson
 statsmodels
 threadpoolctl
 typing_extensions
