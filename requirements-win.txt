@@ -19,6 +19,7 @@ nbformat
 numpy
 openpyxl
 pandas
+prettytable
 psutil
 pybind11
 pycodestyle

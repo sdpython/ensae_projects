@@ -42,6 +42,7 @@ mpld3
 opencv-python
 pandas_streaming
 papierstat
+prettytable
 psutil
 pycodestyle
 pycryptodomex
