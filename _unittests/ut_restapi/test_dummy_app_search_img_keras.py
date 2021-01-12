@@ -11,7 +11,6 @@ from io import StringIO
 from contextlib import redirect_stderr
 import falcon
 import falcon.testing as testing
-import x86cpu
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder, add_missing_development_version
 from pyquickhelper.pycode import skipif_travis
@@ -91,7 +90,6 @@ class TestDummyAppSearchImgKeras(testing.TestCase):
 
     @unittest.skipIf(not has_tf(), reason="tensor not installed")
     @skipif_travis('tensorflow/python/lib/core/bfloat16.cc:664] Check failed: PyBfloat16_Type.tp_base != nullptr')
-    @unittest.skipIf(not x86cpu.info.supports_avx2, "tensorflow requires instructions AVX2 on CPU")
     def test_dummy_error_img(self):
         fLOG(
             __file__,

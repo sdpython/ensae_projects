@@ -64,7 +64,6 @@ typing_extensions
 ujson
 waitress
 wheel
-x86cpu
 xgboost
 xlrd
 

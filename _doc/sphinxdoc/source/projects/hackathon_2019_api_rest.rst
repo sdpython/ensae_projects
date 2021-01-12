@@ -147,7 +147,6 @@ Version des modules utilisées pour tester votre modèle
     torchvision==0.4.2+cpu
     ujson==1.35
     virtualenv==16.7.7
-    x86cpu==0.4
     xarray==0.14.0
     xgboost==0.90
 
