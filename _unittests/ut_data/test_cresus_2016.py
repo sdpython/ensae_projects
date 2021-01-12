@@ -9,13 +9,16 @@ import unittest
 import warnings
 import pandas
 from pyquickhelper.loghelper import fLOG
-from pyquickhelper.pycode import get_temp_folder, is_travis_or_appveyor
+from pyquickhelper.pycode import (
+    ExtTestCase, get_temp_folder, is_travis_or_appveyor)
 from pyquickhelper.filehelper.encryption import decrypt_stream
 from pyquickhelper.filehelper.compression_helper import unzip_files
-from ensae_projects.datainc.data_cresus import process_cresus_whole_process, cresus_dummy_file
+from pyquickhelper.loghelper import get_password
+from ensae_projects.datainc.data_cresus import (
+    process_cresus_whole_process, cresus_dummy_file)
 
 
-class TestCresus2016(unittest.TestCase):
+class TestCresus2016(ExtTestCase):
 
     def test_process_data(self):
         fLOG(
@@ -26,14 +29,10 @@ class TestCresus2016(unittest.TestCase):
             warnings.warn("disabled on appveyor and travis")
             return
         temp = get_temp_folder(__file__, "temp_process_data_cresus_2016")
-        with warnings.catch_warnings():
-            warnings.simplefilter('ignore', DeprecationWarning)
-            import keyring
-        pwd = keyring.get_password("cresus", "ensae_projects,ensae")
-        assert pwd is not None
+        pwd = get_password("cresus", "ensae_projects,ensae", ask=False)
+        self.assertNotEmpty(pwd)
         name = cresus_dummy_file()
-        if not os.path.exists(name):
-            raise FileNotFoundError(name)
+        self.assertExists(name)
         zipname = os.path.join(temp, "bdd.zip")
         pwd = pwd.encode("ascii")
         decrypt_stream(pwd, name, zipname)

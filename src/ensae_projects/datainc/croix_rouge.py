@@ -9,6 +9,7 @@ import warnings
 import pandas
 from pyquickhelper.filehelper import encrypt_stream, decrypt_stream
 from pyquickhelper.pandashelper import df2rst, df2html
+from pyquickhelper.loghelper import get_password
 from .data_exception import ProjectDataException, PasswordException
 
 
@@ -28,20 +29,17 @@ def get_password_from_keyring_or_env(pwd):
         keyring.set_password("HACKATHON2015", "PWDCROIXROUGE", "value")
     """
     if pwd is None:
-        with warnings.catch_warnings():
-            warnings.simplefilter('ignore', DeprecationWarning)
-            import keyring
-        pwd = keyring.get_password("HACKATHON2015", "PWDCROIXROUGE")
+        pwd = get_password("HACKATHON2015", "PWDCROIXROUGE", ask=False)
         if pwd is None:
             if "PWDCROIXROUGE" not in os.environ:
                 raise PasswordException(
-                    "password not found in environment variables: PWDCROIXROUGE is not set")
+                    "password not found in environment variables: "
+                    "PWDCROIXROUGE is not set")
             pwd = os.environ["PWDCROIXROUGE"]
         return bytes(pwd, encoding="ascii")
-    elif not isinstance(pwd, bytes):
+    if not isinstance(pwd, bytes):
         return bytes(pwd, encoding="ascii")
-    else:
-        return pwd
+    return pwd
 
 
 def encrypt_file(infile, outfile, password=None):
@@ -94,7 +92,7 @@ def get_meaning(table="invoice", password=None):
             df[c] = df[c].apply(lambda s: s.strip())
         df.columns = ["Zone"] + list(df.columns[1:])
         return df
-    elif table in {"ITMMASTER", "SINVOICE", "SINVOICE_V", "stojou"}:
+    if table in {"ITMMASTER", "SINVOICE", "SINVOICE_V", "stojou"}:
         name = os.path.join(
             fold, "hackathon_2015_croix_rouge", "%s.schema.enc" % table)
         df = decrypt_dataframe(name, password=password,
@@ -106,9 +104,8 @@ def get_meaning(table="invoice", password=None):
         # we remove column always null
         df = df.dropna(axis=1, how='all')
         return df
-    else:
-        raise ProjectDataException(
-            "unable to find information about table {0}".format(table))
+    raise ProjectDataException(
+        "unable to find information about table {0}".format(table))
 
 
 def merge_schema(tables=None, password=None):
@@ -172,7 +169,6 @@ def df2rsthtml(df, format="html", fillna=""):  # pylint: disable=W0622
     df = df.fillna(fillna)
     if format == "html":
         return df2html(df)
-    elif format == "rst":
+    if format == "rst":
         return df2rst(df)
-    else:
-        raise ValueError("Unknown format '{0}'".format(format))
+    raise ValueError("Unknown format '{0}'".format(format))

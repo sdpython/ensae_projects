@@ -18,12 +18,14 @@ class TestCrypt(unittest.TestCase):
     def test_json_iter(self):
         try:
             set_password('ppwwdd', 'ep_ex')
-        except RuntimeError as e:
+        except (RuntimeError, ModuleNotFoundError) as e:
             if "keyrings.alt" in str(e):
                 warnings.warn("No recommended backend was available.")
                 return
-            else:
-                raise e
+            if "No module named 'Crypto'" in str(e):
+                warnings.warn("Missing module %r." % e)
+                return
+            raise e
         pwd = get_password('ep_ex')
         self.assertEqual('ppwwdd', pwd)
 

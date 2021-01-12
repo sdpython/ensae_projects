@@ -4,7 +4,7 @@
 @brief Encrypting, decrypting.
 """
 import os
-import keyring
+import pyquickhelper.loghelper as pl
 
 
 def _default_name():
@@ -51,7 +51,7 @@ def get_password(key, username=None):
     """
     if username is None:
         username = _default_name()
-    return keyring.get_password(key, username)
+    return pl.get_password(key, username, ask=False)
 
 
 def set_password(pwd, key, username=None):
@@ -66,4 +66,4 @@ def set_password(pwd, key, username=None):
     """
     if username is None:
         username = _default_name()
-    keyring.set_password(key, username, pwd)
+    pl.set_password(key, username, pwd, ask=False)

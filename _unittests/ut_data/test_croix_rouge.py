@@ -8,12 +8,14 @@ import os
 import unittest
 import warnings
 from pyquickhelper.loghelper import fLOG
-from pyquickhelper.pycode import get_temp_folder, is_travis_or_appveyor
+from pyquickhelper.pycode import (
+    ExtTestCase, get_temp_folder, is_travis_or_appveyor)
+from pyquickhelper.loghelper import get_password
 from ensae_projects.datainc.croix_rouge import get_meaning, merge_schema, df2rsthtml
 from ensae_projects.datainc import PasswordException
 
 
-class TestNotebookHackathon(unittest.TestCase):
+class TestNotebookHackathon(ExtTestCase):
 
     def test_meaning_table(self):
         fLOG(
