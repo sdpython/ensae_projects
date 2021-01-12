@@ -166,7 +166,7 @@ class MLStoragePerf2018Image(MLStoragePerf2018):
         particular model.
         """
         from keras import backend as K
-        K.clear_session()
+        K.clear_session()  # pylint: disable=E1101
         folder = self._examples
 
         try:
