@@ -5,7 +5,6 @@
 """
 import os
 import io
-import warnings
 import pandas
 from pyquickhelper.filehelper import encrypt_stream, decrypt_stream
 from pyquickhelper.pandashelper import df2rst, df2html
@@ -29,7 +28,7 @@ def get_password_from_keyring_or_env(pwd):
         keyring.set_password("HACKATHON2015", "PWDCROIXROUGE", "value")
     """
     if pwd is None:
-        pwd = get_password("HACKATHON2015", "PWDCROIXROUGE", ask=False)
+        pwd = get_password("HACKATHON2015", "PWDCROIXROUGE", ask=False)  # pylint: disable=E1123
         if pwd is None:
             if "PWDCROIXROUGE" not in os.environ:
                 raise PasswordException(

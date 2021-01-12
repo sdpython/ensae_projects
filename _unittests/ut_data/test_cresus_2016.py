@@ -29,7 +29,7 @@ class TestCresus2016(ExtTestCase):
             warnings.warn("disabled on appveyor and travis")
             return
         temp = get_temp_folder(__file__, "temp_process_data_cresus_2016")
-        pwd = get_password("cresus", "ensae_projects,ensae", ask=False)
+        pwd = get_password("cresus", "ensae_projects,ensae", ask=False)  # pylint: disable=E1123
         self.assertNotEmpty(pwd)
         name = cresus_dummy_file()
         self.assertExists(name)

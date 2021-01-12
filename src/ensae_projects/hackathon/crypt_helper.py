@@ -51,7 +51,7 @@ def get_password(key, username=None):
     """
     if username is None:
         username = _default_name()
-    return pl.get_password(key, username, ask=False)
+    return pl.get_password(key, username, ask=False)  # pylint: disable=E1123
 
 
 def set_password(pwd, key, username=None):
@@ -66,4 +66,4 @@ def set_password(pwd, key, username=None):
     """
     if username is None:
         username = _default_name()
-    pl.set_password(key, username, pwd, ask=False)
+    pl.set_password(key, username, pwd, ask=False)  # pylint: disable=E1123
