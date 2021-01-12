@@ -60,7 +60,6 @@ simplejson
 sphinxcontrib.imagesvg
 sphinx-bootstrap-theme
 shapely
-tf-nightly
 typing_extensions
 ujson
 waitress
