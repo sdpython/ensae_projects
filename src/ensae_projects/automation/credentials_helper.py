@@ -2,7 +2,6 @@
 @file
 @brief Helpers around credentials.
 """
-import warnings
 from pyquickhelper.loghelper import get_password as _getp
 from pyquickhelper.loghelper import set_password as _setp
 
@@ -47,7 +46,6 @@ def set_password(k1, k2, value):
         raise TypeError("value must be a string.")
     if len(value.strip()) == 0:
         raise ValueError("value is empty")
-    from pyquickhelper.loghelper import set_password as setp
     _setp(k1, k2, value)
 
 
