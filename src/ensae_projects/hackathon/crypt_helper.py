@@ -37,16 +37,16 @@ def get_password(key, username=None):
         .. runpython::
             :showcode:
 
-            import keyring
-            keyring.set_password("system", "username", "password")
+            from pyquickhelper.loghelper import set_password
+            set_password("system", "username", "password")
 
         And to retrieve it:
 
         .. runpython::
             :showcode:
 
-            import keyring
-            pwd = keyring.get_password("system", "username")
+            from pyquickhelper.loghelper import get_password
+            pwd = get_password("system", "username")
             print(pwd)
     """
     if username is None:

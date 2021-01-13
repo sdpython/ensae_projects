@@ -11,18 +11,18 @@ Pour stocker un mot de passe de façon permanente :
 
 ::
 
-    import keyring
-    keyring.get_password("hackathon", "labelemmaus", "motdepasse")
+    from pyquickhelper.loghelper import get_password
+    get_password("hackathon", "labelemmaus", "motdepasse")
 
 Pour décoder tous les fichiers dont l'extension est ``.enc`` :
 
 ::
 
     from pyquickhelper.filehelper import decrypt_stream
-    import keyring
+    from pyquickhelper.loghelper import get_password
     import os
 
-    password = keyring.get_password("hackathon", "labelemmaus")
+    password = get_password("hackathon", "labelemmaus")
 
     encs = [f for f in os.listdir(".") if os.path.splitext(f)[-1] == '.enc']
     for enc in encs:

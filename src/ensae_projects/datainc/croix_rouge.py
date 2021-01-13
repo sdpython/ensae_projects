@@ -14,21 +14,26 @@ from .data_exception import ProjectDataException, PasswordException
 
 def get_password_from_keyring_or_env(pwd):
     """
-    Gets the password from `keyring <https://pypi.python.org/pypi/keyring>`_ first,
+    Gets the password from `keyring
+    <https://pypi.python.org/pypi/keyring>`_ first,
     then from the environment variables.
 
     @param      pwd     password to use or None to get it as ``os.environ["PWDCROIXROUGE"]``
-                        or from `keyring <https://pypi.python.org/pypi/keyring>`_.
+                        or from `keyring
+                        <https://pypi.python.org/pypi/keyring>`_.
     @return             password
 
-    To set the password for `keyring <https://pypi.python.org/pypi/keyring>`_:
+    To set the password for `keyring
+    <https://pypi.python.org/pypi/keyring>`_:
 
     ::
 
-        keyring.set_password("HACKATHON2015", "PWDCROIXROUGE", "value")
+        from pyquickhelper.loghelper import set_password
+        set_password("HACKATHON2015", "PWDCROIXROUGE", "value")
     """
     if pwd is None:
-        pwd = get_password("HACKATHON2015", "PWDCROIXROUGE", ask=False)  # pylint: disable=E1123
+        pwd = get_password("HACKATHON2015", "PWDCROIXROUGE",
+                           ask=False)  # pylint: disable=E1123
         if pwd is None:
             if "PWDCROIXROUGE" not in os.environ:
                 raise PasswordException(
