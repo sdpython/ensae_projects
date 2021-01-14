@@ -15,13 +15,14 @@ install:
   - $PYINT -m pip freeze
 
 script:
-  - { CMD: "$PYINT -u setup.py unittests -g \".*((code_style)|(LONG)|(SKIP)|(dummy_app)).*\"", NAME: "UT" }
+  - { CMD: "$PYINT -u setup.py unittests -g \".*((code_style)|(LONG)|(SKIP)|(dummy_app)|(cartopy)).*\"", NAME: "UT" }
   - { CMD: "$PYINT -u setup.py unittests -e \".*code_style.*\"", NAME: "UT_STYLE" }
   - { CMD: "$PYINT -u setup.py unittests -e \".*dummy_app[a-z_]+?keras.*\"", NAME: "UT_DUMMY_APP_KERAS" }
   - { CMD: "$PYINT -u setup.py unittests -e \".*dummy_app[a-z_]+?torch.*\"", NAME: "UT_DUMMY_APP_TORCH" }
-  - { CMD: "$PYINT -u setup.py unittests_LONG", NAME: "UT_LONG", TIMEOUT: 5000 }
+  - { CMD: "$PYINT -u setup.py unittests -e \".*LONG.*\" -g \".*cartopy.*\"", NAME: "UT_LONG", TIMEOUT: 5000 }
   - { CMD: "$PYINT -u setup.py unittests -e \".*SKIP.*\" -g \".*rest_api.*\"", NAME: "UT_SKIP" }
   - { CMD: "$PYINT -u setup.py unittests -e \".*rest_api.*\"", NAME: "UT_SKIP_REST_API" }
+  - { CMD: "$PYINT -u setup.py unittests -e \".*cartopy.*\"", NAME: "UT_MAP" }
 
 after_script:
   - $PYINT -u setup.py bdist_wheel
