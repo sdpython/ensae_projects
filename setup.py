@@ -132,7 +132,7 @@ if is_local():
                                "pyensae", "pyrsslocal", "pymyinstall", "papierstat",
                                "lightmlrestapi", "mlinsights", "pandas_streaming"],
         copy_add_ext=["enc", 'jpg'], fLOG=logging_function, layout=['html'],
-        covtoken=("ad448134-a962-480b-85c6-a899999575d5", "'_UT_37_std' in outfile"))
+        covtoken=("ad448134-a962-480b-85c6-a899999575d5", "'_UT_39_std' in outfile"))
     if not r and not ({"bdist_msi", "sdist",
                        "bdist_wheel", "publish", "publish_doc", "register",
                        "upload_docs", "bdist_wininst", "build_ext"} & set(sys.argv)):
