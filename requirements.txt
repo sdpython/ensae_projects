@@ -46,6 +46,7 @@ prettytable
 psutil
 pycodestyle
 pycryptodomex
+pydata_sphinx_theme
 pydicom
 pyecharts
 pyecharts-javascripthon
