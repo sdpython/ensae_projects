@@ -195,3 +195,14 @@ Rebase a branch to upsteam branch
 
     git pull --rebase upstream master
     git push --force origin
+
+or 
+
+::
+
+    git pull --rebase upstream main
+    git push --force origin
+
+As it may seem that github renamed the default branch from
+*master* to *main (see `Renaming the default branch from master
+<https://github.com/github/renaming>`_).
