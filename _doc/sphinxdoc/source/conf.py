@@ -33,7 +33,7 @@ pygments_style = 'default'
 html_logo = "phdoc_static/project_ico_small.png"
 
 html_context = {
-    'css_files': get_default_stylesheet() + ['_static/my-styles.css'],
+    'css_files': get_default_stylesheet(['_static/my-styles.css']),
 }
 
 epkg_dictionary.update({
