@@ -53,8 +53,8 @@ class ImageNearestNeighbors(NearestNeighbors):
         stack = []
         for i, (name, sub) in enumerate(enumerate_image_class(folder, abspath=False)):
             if fLOG is not None and i % 1000 == 0:
-                fLOG(
-                    "[ImageNearestNeighbors] processing image {0}: '{1}' - class '{2}'".format(i, name, sub))
+                fLOG("[ImageNearestNeighbors] processing image {0}: "
+                     "'{1}' - class '{2}'".format(i, name, sub))
             imgs.append(name.replace("\\", "/"))
             subs.append(sub)
             img = read_image(os.path.join(folder, name))
@@ -77,8 +77,8 @@ class ImageNearestNeighbors(NearestNeighbors):
             else:
                 sub = None
             if fLOG is not None and i % 1000 == 0:
-                fLOG(
-                    "[ImageNearestNeighbors] processing image {0}: '{1}' - class '{2}'".format(i, img, sub))
+                fLOG("[ImageNearestNeighbors] processing image {0}: "
+                     "'{1}' - class '{2}'".format(i, img, sub))
             if isinstance(name, Image):
                 imgs.append(None)
                 img = name
@@ -180,7 +180,8 @@ class ImageNearestNeighbors(NearestNeighbors):
         Parameter *X* can be a file, the image is then loaded and converted
         with the same transform. *X* can also be an *Image* from :epkg:`PIL`.
         """
-        return self._private_kn("kneighbors", X=X, n_neighbors=n_neighbors, return_distance=return_distance, fLOG=fLOG)
+        return self._private_kn("kneighbors", X=X, n_neighbors=n_neighbors,
+                                return_distance=return_distance, fLOG=fLOG)
 
     def kneighbors_graph(self, X=None, n_neighbors=None, mode='connectivity', fLOG=None):  # pylint: disable=W0221
         """
@@ -196,7 +197,8 @@ class ImageNearestNeighbors(NearestNeighbors):
         Parameter *X* can be a file, the image is then loaded and converted
         with the same transform. *X* can also be an *Image* from :epkg:`PIL`.
         """
-        return self._private_kn("radius_neighbors", X=X, radius=radius, return_distance=return_distance, fLOG=fLOG)
+        return self._private_kn("radius_neighbors", X=X, radius=radius,
+                                return_distance=return_distance, fLOG=fLOG)
 
     def get_image_names(self, indices):
         """
@@ -230,16 +232,16 @@ class ImageNearestNeighbors(NearestNeighbors):
         Calls :epkg:`plot_gallery_images`
         with information on the neighbors.
 
-        @param      neighbors           matrix of indices
-        @param      distances           distances to display
-        @param      obs                 original image, if not None, will be placed
-                                        on the first row
-        @param      return_figure       returns ``fig, ax`` instead of ``ax``
-        @param      format_distance     used to format distances
-        @param      folder_or_images    image paths may be relative to some folder,
-                                        in that case, they should be relative to
-                                        this folder, it can also be a list of images
-        @return                         *ax* or *fix, ax* if *return_figure* is True
+        :param neighbors: matrix of indices
+        :param distances: distances to display
+        :param obs: original image, if not None, will be placed
+            on the first row
+        :param return_figure: returns ``fig, ax`` instead of ``ax``
+        :param format_distance: used to format distances
+        :param folder_or_images: image paths may be relative
+            to some folder, in that case, they should be relative
+            to this folder, it can also be a list of images
+        :return: *ax* or *fix, ax* if *return_figure* is True
         """
         from mlinsights.plotting import plot_gallery_images
         names = self.get_image_names(neighbors)
