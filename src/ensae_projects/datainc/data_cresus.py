@@ -180,7 +180,7 @@ def prepare_cresus_data(dbfile, outfold=None, fLOG=fLOG):  # pylint: disable=W06
         if "orientation" in cols:
             cols = [_ for _ in cols if _ not in ("orientation", "nature")]
             cols += ["orientation", "nature"]
-            df["nature"] = df.nature.apply(
+            df["nature"] = df.nature.apply(  # pylint: disable=E1101
                 lambda x: new_mapping.get(x, x).replace("Ã©", "e").lower())
             fLOG(set(df["nature"]))
         df = df[cols]
