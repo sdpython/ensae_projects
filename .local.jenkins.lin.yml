@@ -16,7 +16,7 @@ install:
 
 script:
   - { CMD: "$PYINT -u setup.py unittests -g \".*((code_style)|(LONG)|(SKIP)|(dummy_app)|(cartopy)).*\"", NAME: "UT", TIMEOUT: 3600 }
-  - { CMD: "$PYINT -u setup.py unittests -e \".*code_style.*\"", NAME: "UT_STYLE", SCHEDULER: "H H(1-2) 23 * *" }
+  - { CMD: "$PYINT -u setup.py unittests -e \".*code_style.*\"", NAME: "UT_STYLE", SCHEDULER: "H H(1-2) 23 * *", TIMEOUT: 2400 }
   - { CMD: "$PYINT -u setup.py unittests -e \".*dummy_app[a-z_]+?keras.*\"", NAME: "UT_DUMMY_APP_KERAS", SCHEDULER: "H H(1-2) 23 * *" }
   - { CMD: "$PYINT -u setup.py unittests -e \".*dummy_app[a-z_]+?torch.*\"", NAME: "UT_DUMMY_APP_TORCH", SCHEDULER: "H H(1-2) 23 * *" }
   - { CMD: "$PYINT -u setup.py unittests -e \".*LONG.*\" -g \".*cartopy.*\"", NAME: "UT_LONG", TIMEOUT: 5000, SCHEDULER: "H H(1-2) 23 * *" }
