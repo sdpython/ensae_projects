@@ -182,7 +182,7 @@ Cheat Sheets
     ../notebooks/chsh_dates
     ../notebooks/chsh_pip_install
 
-`Rappel de ce que vous savez déjà mais avez peut-être oublié <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx3/notebooks/td2_eco_rappels_1a.html>`_
+`Rappel de ce que vous savez déjà mais avez peut-être oublié <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx/notebooks/td2_eco_rappels_1a.html>`_
 
 Après la compétition
 ++++++++++++++++++++

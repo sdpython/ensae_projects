@@ -388,7 +388,7 @@ Des anti-sèches plus spécifiques au deep learning :
 
 d'autres références sur le deep learning (cours à l'ENSAE) :
 
-* `Réseaux de neurones et Deep Learning <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx3/td_2a_mlplus.html#reseaux-de-neurones-et-deep-learning>`_
+* `Réseaux de neurones et Deep Learning <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx/td_2a_mlplus.html#reseaux-de-neurones-et-deep-learning>`_
 * `Transfer Learning and Fine Tuning a pre-trained Deep CNN on a GPU <https://github.com/sdpython/2017_deeplearning_demo/blob/master/Fine_Tuning_Deep_CNNs_with_GPU_rendered.ipynb>`_
 
 N'importe quelle requête sur un moteur de recherche
@@ -404,7 +404,7 @@ précédents :
     ../notebooks/chsh_dates
     ../notebooks/chsh_pip_install
 
-`Rappel de ce que vous savez déjà mais avez peut-être oublié <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx3/notebooks/td2_eco_rappels_1a.html>`_
+`Rappel de ce que vous savez déjà mais avez peut-être oublié <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx/notebooks/td2_eco_rappels_1a.html>`_
 
 Télécharger un gros fichier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

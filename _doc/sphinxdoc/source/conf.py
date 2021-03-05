@@ -89,6 +89,6 @@ epkg_dictionary.update({
     "vélib": "https://www.velib-metropole.fr/",
     'VM': 'https://fr.wikipedia.org/wiki/Machine_virtuelle',
     'waitress': "https://docs.pylonsproject.org/projects/waitress/en/latest/",
-    'webhtml': 'http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx3/ensae_teaching_cs/faq/faq_web.html#ensae_teaching_cs.faq.faq_web.webhtml',
+    'webhtml': 'http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx/ensae_teaching_cs/faq/faq_web.html#ensae_teaching_cs.faq.faq_web.webhtml',
     'WSGI': "https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface",
 })

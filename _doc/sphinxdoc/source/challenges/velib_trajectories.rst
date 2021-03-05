@@ -145,4 +145,4 @@ vous pouvez reproduire la solution de l'appariement dans ce notebook :
 Suite possible
 --------------
 
-Voir :ref:`Prédire l'occupation des vélib <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx3/blog/2015/2015-05-19_velib.html>`.
+Voir :ref:`Prédire l'occupation des vélib <http://www.xavierdupre.fr/app/ensae_teaching_cs/helpsphinx/blog/2015/2015-05-19_velib.html>`.
