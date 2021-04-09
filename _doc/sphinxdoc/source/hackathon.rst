@@ -26,3 +26,4 @@ des données peut apporter à leur activité.
     projects/hackathon_2017
     projects/hackathon_2018
     projects/hackathon_2019
+    projects/hackathon_2020
