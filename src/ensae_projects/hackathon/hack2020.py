@@ -3,9 +3,9 @@
 @file
 @brief Code for :ref:`l-hackathon-2020`.
 """
-import os
-import numpy
-import pandas
+import os  # pylint: disable=W0611
+import numpy  # pylint: disable=W0611
+import pandas  # pylint: disable=W0611
 from sklearn.metrics import accuracy_score, log_loss
 
 
