@@ -1,6 +1,7 @@
 """
 Measures the performances of the models.
 """
+import os
 from io import StringIO
 import json
 import pprint

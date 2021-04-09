@@ -36,6 +36,39 @@ Challenge Deep Learning
 
 Proposé par `Sea Cleaner <https://www.theseacleaners.org/fr/accueil/>`_.
 
+Soumettre
+---------
+
+Via l'interface graphique. Suivre les instructions :
+
+.. image:: 2020/fa1.png
+
+.. image:: 2020/fa2.png
+
+.. image:: 2020/fa3.png
+
+Pour construire le texte à soumette :
+
+::
+
+    st = StringIO()
+    df.to_csv(st, index=False, line_terminator="\n")
+
+    data = {
+        "name": "xavier",
+        "format": "df",
+        "team": "prof",
+        "project": "test",
+        "password": "password",
+        "content": st.getvalue(),
+    }
+    print(json.dumps(data))
+
+Il suffit de recopier le résultat. L'url et le mot de passe vous seront fournis.
+Ensuite, on vérifie que la soumission a été enregistrée.
+
+.. image:: 2020/fa4.png
+
 Quelques scripts utiles
 -----------------------
 
