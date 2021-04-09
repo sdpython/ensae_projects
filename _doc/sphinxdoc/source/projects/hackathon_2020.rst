@@ -31,6 +31,14 @@ Challenge machine learning
 
 Proposé par `Too Good To Go <https://toogoodtogo.fr/fr>`_.
 
+Challenge Deep Learning
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Proposé par `Sea Cleaner <https://www.theseacleaners.org/fr/accueil/>`_.
+
+Quelques scripts utiles
+-----------------------
+
 Quelques bouts de scripts utiles pour regarder les premiers éléments
 sans charger l'intégralité du fichier qui est conséquent (1M de ligne, > 30 colonnes).
 
@@ -53,10 +61,10 @@ Pour stocker la base dans un fichier :epkg:`sqlite`.
 
     import sqlite3
     from pandas_streaming.df import StreamingDataFrame
-    
+
     sdf = StreamingDataFrame.read_csv("df_target.csv", dtype={'Département': str})
     con = sqlite3.connect("tdtd2.db3")
-    for i, df in enumerate(sdf):        
+    for i, df in enumerate(sdf):
         print(i)
         df.to_sql(con=con, if_exists="append", name="tgtd")
 
@@ -67,39 +75,89 @@ Script utilisés pour séparer train/test :
 ::
 
     from pandas_streaming.df import StreamingDataFrame
-    
+
     def train_test_iterator(train=True):
         sdf = StreamingDataFrame.read_csv("df_target.csv", dtype={'Département': str})
-        
+
         for df in sdf:
-            col = df['date'].apply(lambda s: s[:7]) 
+            col = df['date'].apply(lambda s: s[:7])
             sel = col < "2020-05"
             if train:
                 yield df[sel]
             else:
                 yield df[~sel].copy().drop('target', axis=1)
-    
+
     print("test")
     sdf_test = StreamingDataFrame(lambda: train_test_iterator(False))
     sdf_test.to_csv("test.csv", index=False, encoding='utf-8', line_terminator='\n')
-    
+
     print("train")
     sdf_train = StreamingDataFrame(train_test_iterator)
     sdf_train.to_csv("train.csv", index=False, encoding='utf-8', line_terminator='\n')
 
-Challenge Deep Learning
-^^^^^^^^^^^^^^^^^^^^^^^
+Example de soumission :
 
-Proposé par `Sea Cleaner <https://www.theseacleaners.org/fr/accueil/>`_.
+::
 
+    from io import StringIO
+    import json
+    import pprint
+    import requests
+    from ensae_projects.hackathon.random_answers import random_answers_2020_images
 
+    def submit_random(url, password, version):
+        df = random_answers_2020_images()[:5]
+        st = StringIO()
+        df.to_csv(st, index=False, line_terminator="\n")
+
+        data = {
+          "name": "xavier",
+          "format": "df",
+          "team": "prof",
+          "project": "test",
+          "version": version,
+          "content": st.getvalue(),
+          "password": password
+        }
+
+        response = requests.post(url, json=data, verify=False)
+        return response
+
+    url = "https://quelquechose:8798/"
+    password = "???"
+
+    response = submit_random(url + "submit/", password, "8")
+    pprint.pprint(response.json())
+
+Vérifie que la soumission est bien passée :
+
+::
+
+    from io import StringIO
+    import json
+    import pprint
+    import requests
+    from ensae_projects.hackathon.random_answers import random_answers_2020_images
+
+    def query(url, password, name):
+        data = {
+          "name": name,
+          "password": password
+        }
+
+        response = requests.post(url, json=data, verify=False)
+        return response
+
+    url = "https://quelquechose:8798/"
+    password = "???"
+
+    response = query(url + "query/", password, "xavier")
+    pprint.pprint(response.json())
 
 Après la compétition
 --------------------
 
-
 *Quelques photos...*
-
 
 Agenda
 ^^^^^^

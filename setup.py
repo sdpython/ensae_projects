@@ -39,7 +39,7 @@ package_data = {
     project_var_name + ".datainc.search_images": ["*.jpg"],
     project_var_name + ".datainc.seattle_streets": ["*.xlsx"],
     project_var_name + ".datainc.zips": ["*.zip"],
-    project_var_name + ".hackathon": ["*.jpg"],
+    project_var_name + ".hackathon": ["*.jpg", "*.csv"],
 }
 
 ############
