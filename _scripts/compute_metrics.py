@@ -60,7 +60,7 @@ def retrieve_missing_metrics(name):
                 except Exception as e:
                     ERRORMSG = str(e)
             if ERRORMSG is not None:
-                ERRORMSG = ERRORMSG.replace("'", "''")
+                ERRORMSG = ERRORMSG.replace("'", "")
                 db.submit_data(idfile, comment=ERRORMSG, value=3.40282e+038,
                                name="logloss%s" % proj)
                 continue
