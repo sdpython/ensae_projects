@@ -47,9 +47,19 @@ Via l'interface graphique. Suivre les instructions :
 
 .. image:: 2020/fa3.png
 
-Pour construire le texte à soumette :
+Le texte à soumettre inclut les champs suivant :
+
+* nom : ce que vous voulez
+* format : `"df"` (pour dataframe)
+* team : nom de l'équipe
+* project : `"tgtg"` ou `"sea"`
+* password : celui donné dans Discord
+* content : le contenu du DataFrame
 
 ::
+
+    import json
+    from io import StringIO
 
     st = StringIO()
     df.to_csv(st, index=False, line_terminator="\n")
@@ -107,6 +117,7 @@ Script utilisés pour séparer train/test :
 
 ::
 
+    import pandas
     from pandas_streaming.df import StreamingDataFrame
 
     def train_test_iterator(train=True):
@@ -118,11 +129,15 @@ Script utilisés pour séparer train/test :
             if train:
                 yield df[sel]
             else:
-                yield df[~sel].copy().drop('target', axis=1)
+                yield df[~sel]
 
     print("test")
     sdf_test = StreamingDataFrame(lambda: train_test_iterator(False))
     sdf_test.to_csv("test.csv", index=False, encoding='utf-8', line_terminator='\n')
+
+    dft = pandas.read_csv("test.csv").reset_index(drop=False)
+    dft.drop("target", axis=1).to_csv("test_features.csv", encoding='utf-8', line_terminator='\n')
+    dft[["index", "target"]].to_csv("test_target.csv", encoding='utf-8', line_terminator='\n')
 
     print("train")
     sdf_train = StreamingDataFrame(train_test_iterator)

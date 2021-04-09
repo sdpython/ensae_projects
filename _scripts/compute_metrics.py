@@ -12,6 +12,8 @@ from pyquickhelper.server.filestore_sqlite import SqlLite3FileStore
 from ensae_projects.hackathon.random_answers import random_answers_2020_images
 from ensae_projects.hackathon.hack2020 import score_images
 
+dbname = os.environ.get("DBNAME", "?")
+
 expected = {
     'test': 'random',
     'tgtg': os.environ.get('TGTG_EXPECTED', '?'),
@@ -59,12 +61,14 @@ def retrieve_missing_metrics(name):
                     ERRORMSG = str(e)
             if ERRORMSG is not None:
                 ERRORMSG = ERRORMSG.replace("'", "''")
-                db.submit_data(idfile, ERRORMSG, 3.40282e+038)
+                db.submit_data(idfile, comment=ERRORMSG, value=3.40282e+038,
+                               name="logloss%s" % proj)
                 continue
-            if metrics is None:
-                db.submit_data(idfile, "ACC=%f LL=%f" % (
-                    metrics['accuracy'], metrics['logloss']), metrics['logloss'])
+            if metrics is not None:
+                db.submit_data(idfile, comment="ACC=%f LL=%f" % (
+                    metrics['accuracy'], metrics['logloss']),
+                    value=metrics['logloss'], name="logloss%s" % proj)
 
 
 load()
-retrieve_missing_metrics(name)
+retrieve_missing_metrics(dbname)

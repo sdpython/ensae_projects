@@ -8,7 +8,7 @@ Compilation of materials for presentations.
 import sys
 import os
 
-__version__ = "0.3.647"
+__version__ = "0.3.650"
 __author__ = "Xavier Dupré"
 __github__ = "https://github.com/sdpython/ensae_projects"
 __url__ = "http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/index.html"

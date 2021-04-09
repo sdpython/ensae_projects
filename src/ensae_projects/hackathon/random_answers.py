@@ -18,3 +18,15 @@ def random_answers_2020_images():
     df['label'] = numpy.random.randint(low=0, high=2, size=(df.shape[0], ))
     df['score'] = numpy.random.random((df.shape[0], ))
     return df
+
+
+def random_answers_2020_ml():
+    """
+    Generates random answers the machine learning challenge of
+    hackathons :ref:`l-hackathon-2020`.
+    """
+    name = os.path.join(os.path.split(__file__)[0], "labels2_2020_random.csv")
+    df = pandas.DataFrame({"index": numpy.arange(473333)})
+    df['label'] = numpy.random.randint(low=0, high=2, size=(df.shape[0], ))
+    df['score'] = numpy.random.random((df.shape[0], ))
+    return df
