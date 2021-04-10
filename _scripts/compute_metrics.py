@@ -6,6 +6,8 @@ from io import StringIO
 import numpy
 import json
 import pprint
+import time
+from datetime import datetime
 import pandas
 import requests
 from pyquickhelper.server.filestore_sqlite import SqlLite3FileStore
@@ -71,4 +73,8 @@ def retrieve_missing_metrics(name):
 
 
 load()
-retrieve_missing_metrics(dbname)
+
+while True:
+    print('now', datetime.now())
+    retrieve_missing_metrics(dbname)
+    time.sleep(120)
