@@ -54,6 +54,10 @@ def retrieve_missing_metrics(name):
             if proj not in expected_dfs:
                 ERRORMSG = "Project %r must be in list %s." % (
                     proj, list(expected_dfs))
+            elif len(content.split('\n')) < 10:
+                ERRORMSG = (
+                    "End of line of submission is wrong, project=%r "
+                    "content=%r..." % (proj, content[:200]))
             else:
                 df_expected = expected_dfs[proj]
                 df = pandas.read_csv(StringIO(content))
