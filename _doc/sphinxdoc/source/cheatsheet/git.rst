@@ -191,6 +191,8 @@ You can move files and then type right away:
 Rebase a branch to upsteam branch
 +++++++++++++++++++++++++++++++++
 
+This instruction retains some part of the logs.
+
 ::
 
     git pull --rebase upstream master
@@ -206,3 +208,28 @@ or
 As it may seem that github renamed the default branch from
 *master* to *main (see `Renaming the default branch from master
 <https://github.com/github/renaming>`_).
+
+Rebase a branch to upsteam branch and erase history
++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+::
+
+    git rebase upstream/master
+    git push -f origin master
+
+or
+
+::
+
+    git rebase upstream/main
+    git push -f origin main
+
+If there are some commit of your own, they will be moved
+to the top of history. The following command deletes the last
+commit in the history.
+
+::
+
+    git reset --hard HEAD~1
+
+The remote repository needs to be updated.
