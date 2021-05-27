@@ -6,13 +6,7 @@ python:
 
 before_install:
   - sudo apt-get install libgeos-dev libproj-dev proj-data graphviz libblas-dev liblapack-dev
-  - wget https://apt.llvm.org/llvm.sh
-  - chmod +x llvm.sh
-  - sudo ./llvm.sh 10
-  - ls /usr/bin/llvm*
-  - export LLVM_CONFIG=/usr/bin/llvm-config
-  - pip install torch==1.7.1+cpu torchvision==0.8.2+cpu torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
-  # - sudo ln -s /usr/bin/llvm-config-10 /usr/bin/llvm-config
+  - pip install torch==1.8.1+cpu torchvision==0.9.1+cpu torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
 
 install:
   - pip install -r requirements.txt
