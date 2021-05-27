@@ -6,7 +6,7 @@ Hackathons, anti-sèches, défis
 `github <https://github.com/sdpython/ensae_projects/>`_,
 `documentation <http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/index.html>`_,
 `wheel <http://www.xavierdupre.fr/site2013/index_code.html#ensae_projects>`_,
-`travis <https://travis-ci.org/sdpython/ensae-projects>`_,
+`travis <https://travis-ci.com/sdpython/ensae-projects>`_,
 :ref:`l-README`,
 :ref:`blog <ap-main-0>`
 
@@ -45,8 +45,8 @@ du moment.
 | :ref:`genindex`      |  :ref:`l-FAQ2`      | :ref:`l-notebooks`  | :ref:`l-NB2`       | :ref:`l-statcode`      | `Unit Test Coverage <coverage/index.html>`_    |
 +----------------------+---------------------+---------------------+--------------------+------------------------+------------------------------------------------+
 
-.. image:: https://travis-ci.org/sdpython/ensae_projects.svg?branch=master
-    :target: https://travis-ci.org/sdpython/ensae_projects
+.. image:: https://travis-ci.com/sdpython/ensae_projects.svg?branch=master
+    :target: https://travis-ci.com/sdpython/ensae_projects
     :alt: Build status
 
 .. image:: https://ci.appveyor.com/api/projects/status/5qbwt4kaxpc8w415?svg=true

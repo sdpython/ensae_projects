@@ -1,6 +1,6 @@
 
-.. image:: https://travis-ci.org/sdpython/ensae_projects.svg?branch=master
-    :target: https://travis-ci.org/sdpython/ensae_projects
+.. image:: https://travis-ci.com/sdpython/ensae_projects.svg?branch=master
+    :target: https://travis-ci.com/sdpython/ensae_projects
     :alt: Build status
 
 .. image:: https://ci.appveyor.com/api/projects/status/5qbwt4kaxpc8w415?svg=true
