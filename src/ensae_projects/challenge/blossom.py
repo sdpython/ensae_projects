@@ -725,7 +725,7 @@ if __name__ == "__main__":
     def main_blossom():
 
         if len(sys.argv) > 1:
-            input_file = open(sys.argv[1])
+            input_file = open(sys.argv[1])  # pylint: disable=R1732
         else:
             input_file = sys.stdin
         vertices = read_input(input_file)

@@ -42,7 +42,7 @@ def score_images(df_expected, df_prediction):
     ly = label + "_y"
     merged[ly] = merged[ly].fillna(0)
     mini = merged['score'][~numpy.isnan(merged['score'])].min()
-    if mini > 0:
+    if mini > 0:  # pylint: disable=R1730
         mini = 0
     merged['score'] = merged['score'].fillna(mini)
     acc = accuracy_score(merged[lx], merged[ly])
