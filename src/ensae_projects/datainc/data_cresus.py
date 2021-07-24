@@ -233,12 +233,12 @@ def split_train_test_cresus_data(tables, outfold, ratio=0.20, fLOG=fLOG):  # pyl
                 else:
                     raise Exception("unexpected: {0}".format(k))
                 try:
-                    spl = data[key].apply(lambda x, ens=select: x in ens)
+                    spl = data[key].apply(lambda x, ens=select: x in ens)  # pylint: disable=E1136
                 except KeyError as e:
                     raise Exception("issue for table '{0}' and columns={1}".format(
-                        k, data.columns)) from e
-                train_tables[k] = data[spl].copy()
-                test_tables[k] = data[~spl].copy()
+                        k, data.columns)) from e  # pylint: disable=E1101
+                train_tables[k] = data[spl].copy()  # pylint: disable=E1136
+                test_tables[k] = data[~spl].copy()  # pylint: disable=E1136
             fLOG("[split_train_test_cresus_data] split for", k,
                  train_tables[k].shape, test_tables[k].shape)
 

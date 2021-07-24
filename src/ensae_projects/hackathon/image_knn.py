@@ -191,7 +191,7 @@ class ImageNearestNeighbors(NearestNeighbors):
         """
         return self._private_kn("kneighbors_graph", X=X, n_neighbors=n_neighbors, mode=mode, fLOG=fLOG)
 
-    def radius_neighbors(self, X=None, radius=None, return_distance=True, fLOG=None):  # pylint: disable=W0221
+    def radius_neighbors(self, X=None, radius=None, return_distance=True, fLOG=None):  # pylint: disable=W0221,W0237
         """
         See :epkg:`NearestNeighbors`, method :epkg:`radius_neighbors`.
         Parameter *X* can be a file, the image is then loaded and converted

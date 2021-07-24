@@ -93,7 +93,7 @@ def get_meaning(table="invoice", password=None):
         df = decrypt_dataframe(name, password=password)
         df.columns = [_.strip() for _ in df.columns]
         for c in df.columns:
-            df[c] = df[c].apply(lambda s: s.strip())
+            df[c] = df[c].apply(lambda s: s.strip())  # pylint: disable=E1101,E1137
         df.columns = ["Zone"] + list(df.columns[1:])
         return df
     if table in {"ITMMASTER", "SINVOICE", "SINVOICE_V", "stojou"}:
@@ -103,10 +103,10 @@ def get_meaning(table="invoice", password=None):
                                sep="," if "stojou" in table else "\t")
         if table in "ITMMASTER":
             df["Zone"] = df.index + 1
-            df["Zone"] = df.Zone.apply(lambda x: "ITM_%03d" % x)
+            df["Zone"] = df.Zone.apply(lambda x: "ITM_%03d" % x)  # pylint: disable=E1101,E1137
         df.columns = [_.strip() for _ in df.columns]
         # we remove column always null
-        df = df.dropna(axis=1, how='all')
+        df = df.dropna(axis=1, how='all')  # pylint: disable=E1101
         return df
     raise ProjectDataException(
         "unable to find information about table {0}".format(table))
