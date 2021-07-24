@@ -10,7 +10,7 @@ import warnings
 from io import StringIO
 from contextlib import redirect_stderr
 import falcon
-import falcon.testing as testing
+from falcon import testing
 from pyquickhelper.loghelper import fLOG
 from pyquickhelper.pycode import get_temp_folder, add_missing_development_version
 from pyquickhelper.pycode import skipif_travis

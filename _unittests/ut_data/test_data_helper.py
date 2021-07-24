@@ -51,8 +51,8 @@ class TestNotebookHackathon(unittest.TestCase):
         df = pandas.read_csv(out, sep=";")
         fLOG(df.shape)
         fLOG(df)
-        self.assertEqual(df.iloc[2, 1], "5;6")
-        self.assertEqual(df.iloc[2, 2], 7)
+        self.assertEqual(df.iloc[2, 1], "5;6")  # pylint: disable=E1101
+        self.assertEqual(df.iloc[2, 2], 7)  # pylint: disable=E1101
 
 
 if __name__ == "__main__":
