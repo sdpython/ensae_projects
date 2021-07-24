@@ -93,7 +93,7 @@ def get_meaning(table="invoice", password=None):
         df = decrypt_dataframe(name, password=password)
         df.columns = [_.strip() for _ in df.columns]
         for c in df.columns:
-            df[c] = df[c].apply(lambda s: s.strip())  # pylint: disable=E1101,E1137
+            df[c] = df[c].apply(lambda s: s.strip())  # pylint: disable=E1101,E1137,E1136
         df.columns = ["Zone"] + list(df.columns[1:])
         return df
     if table in {"ITMMASTER", "SINVOICE", "SINVOICE_V", "stojou"}:
