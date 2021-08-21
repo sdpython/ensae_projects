@@ -210,7 +210,7 @@ def _search_images_dogcat_torch(app=None, url_images=None, dest=None, fLOG=None)
     def predict_load():
         from mlinsights.search_rank import SearchEnginePredictionImages
         se = SearchEnginePredictionImages(
-            model, fct_params=dict(), n_neighbors=5)
+            model, fct_params={}, n_neighbors=5)
         # fit
         fLOG("Creating the neighbors")
         se.fit(iterim)

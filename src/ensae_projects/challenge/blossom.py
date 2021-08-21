@@ -339,7 +339,7 @@ class Blossom:
         assert other.level == LEVEL_EVEN
         # Find the closest common ancestor and the chains of parents
         # leading to them.
-        ancestors, parent_chain1, parent_chain2 = dict(), [], []
+        ancestors, parent_chain1, parent_chain2 = {}, [], []
         blossom = self
         while blossom is not None:
             ancestors[blossom] = len(parent_chain1)
@@ -693,7 +693,7 @@ def read_input(input_file):
     N, M = [int(x) for x in next(input_file).split()]
     if N is None or M is None:
         raise ValueError("Unable to process '{0}'".format(input_file))
-    vertices = dict()
+    vertices = {}
 
     for line in input_file:
         u, v, w = [int(x) for x in line.split()]

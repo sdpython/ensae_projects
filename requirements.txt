@@ -51,7 +51,7 @@ pydicom
 pyecharts
 pyecharts-javascripthon
 pyensae
-pylint
+pylint>=2.10.0
 pymyinstall
 pyquickhelper>=1.10
 pyshp
