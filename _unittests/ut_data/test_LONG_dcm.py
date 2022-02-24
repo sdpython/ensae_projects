@@ -19,6 +19,7 @@ class TestLONGdcm(ExtTestCase):
         temp = get_temp_folder(__file__, "temp_data_dcm")
         download_data("CBIS-DDSM.zip", whereTo=temp)
         cls.images = os.path.join(temp, "CBIS-DDSM")
+        ExtTestCase.setUpClass(cls)
 
     def test_convert_dcm2png(self):
         fLOG(

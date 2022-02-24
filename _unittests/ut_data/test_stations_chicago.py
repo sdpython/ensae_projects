@@ -9,12 +9,12 @@ import unittest
 import random
 from datetime import time
 import pandas
-from pyquickhelper.loghelper import fLOG
-from pyquickhelper.pycode import get_temp_folder
-from ensae_projects.datainc.data_bikes import get_chicago_stations, folium_html_stations_map, add_missing_time
+from pyquickhelper.pycode import get_temp_folder, ExtTestCase
+from ensae_projects.datainc.data_bikes import (
+    get_chicago_stations, folium_html_stations_map, add_missing_time)
 
 
-class TestStationsChicago(unittest.TestCase):
+class TestStationsChicago(ExtTestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -27,13 +27,9 @@ class TestStationsChicago(unittest.TestCase):
             raise Exception("empty dataframe")
         cls._stations = df_stations
         cls._trips = df_trips
+        ExtTestCase.setUpClass()
 
     def test_folium_html_station_map(self):
-        fLOG(
-            __file__,
-            self._testMethodName,
-            OutputPrint=__name__ == "__main__")
-
         df_stations = self._stations
         colors = ["red", "blue"]
         draw = []
@@ -47,11 +43,6 @@ class TestStationsChicago(unittest.TestCase):
         assert map_osm
 
     def test_add_missing_time(self):
-        fLOG(
-            __file__,
-            self._testMethodName,
-            OutputPrint=__name__ == "__main__")
-
         df = pandas.DataFrame(dict(A=["un", "deux"], B=[1, 2],
                                    C=[time(12, 0, 0), time(12, 10, 0)]))
         fLOG(df)
