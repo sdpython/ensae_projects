@@ -25,6 +25,7 @@ class TestStreetsSeattle(ExtTestCase):
         cls._shapes = shapes
         cls._records = records
         cls._fields = fields
+        ExtTestCase.setUpClass(cls)
 
     def test_seattle_shapes_records(self):
         fLOG(
