@@ -18,7 +18,6 @@ class TestStationsChicago(ExtTestCase):
 
     @classmethod
     def setUpClass(cls):
-        fLOG("download and load the shapes")
         temp = get_temp_folder(__file__, "temp_stations_chicago")
         df_stations, df_trips = get_chicago_stations(folder=temp, as_df=True)
         if len(df_stations) == 0:
@@ -33,7 +32,8 @@ class TestStationsChicago(ExtTestCase):
         df_stations = self._stations
         colors = ["red", "blue"]
         draw = []
-        for iter in df_stations.apply(lambda row: (row["latitude"], row["longitude"]), axis=1):  # pylint: disable=W0622
+        for iter in df_stations.apply(  # pylint: disable=W0622
+                lambda row: (row["latitude"], row["longitude"]), axis=1):  # pylint: disable=W0622
             x, y = iter
             h = random.randint(0, 1)
             draw.append(((x, y), colors[h]))
@@ -45,9 +45,7 @@ class TestStationsChicago(ExtTestCase):
     def test_add_missing_time(self):
         df = pandas.DataFrame(dict(A=["un", "deux"], B=[1, 2],
                                    C=[time(12, 0, 0), time(12, 10, 0)]))
-        fLOG(df)
         dfj = add_missing_time(df, "C", values="B")
-        # fLOG(dfj[dfj.B != 0])
         self.assertEqual(dfj.shape, (2 * 24 * 6, 3))
         g = dfj.B.dropna()
         self.assertEqual(len(g), 2 * 24 * 6)
