@@ -15,7 +15,7 @@ readme = 'README.rst'
 history = "HISTORY.rst"
 requirements = None
 
-KEYWORDS = project_var_name + ', ENSAE, hackathon'
+KEYWORDS = [project_var_name, 'hackathon', 'teachings', 'Xavier Dupré']
 DESCRIPTION = """Helpers for projects, teachings, events."""
 CLASSIFIERS = [
     'Programming Language :: Python :: %d' % sys.version_info[0],
