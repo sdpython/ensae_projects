@@ -202,20 +202,3 @@ Vérifie que la soumission est bien passée :
     response = query(url + "query/", password, "xavier")
     pprint.pprint(response.json())
 
-Après la compétition
---------------------
-
-*Quelques photos...*
-
-Agenda
-^^^^^^
-
-Lieu : :epkg:`Cap Gemini`
-
-*Vendredi 9 Avril*
-
-* 14h00
-
-*Samedi 10 Avril*
-
-* 15h30 - Présentation des résultats

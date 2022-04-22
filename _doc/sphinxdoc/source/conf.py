@@ -44,6 +44,7 @@ epkg_dictionary.update({
     'data leakage': "https://www.kaggle.com/wiki/Leakage",
     "dataframe": "https://pandas.pydata.org/pandas-docs/stable/dsintro.html",
     'dcm': 'https://en.wikipedia.org/wiki/DICOM',
+    'Eleven Strategy': 'https://eleven-strategy.com/',
     'ensae_projects': 'https://pypi.org/project/ensae_projects/',
     'ENSAE': "http://www.ensae.fr/",
     'ESUS': "https://www.service-public.fr/professionnels-entreprises/vosdroits/F32275",
