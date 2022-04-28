@@ -26,7 +26,11 @@ Toujours centré sur le machine Learning.
 Challenge machine learning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
+Il fallait prédire en fonction de plusieurs variables
+si un film passait le test de
+`Bechdel <https://fr.wikipedia.org/wiki/Test_de_Bechdel>`_
+mesurant l'équilibre entre les acteurs masculins et féminins.
+Les films d'actions sont plutôt misogynes.
 
 Challenge Deep Learning
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -43,7 +47,8 @@ L'utilisation de :epkg:`pytorch` est recommandée. Autres modules :
 
 *Articles*
 
-* `Who spoke when! How to Build your own Speaker Diarization Module <https://medium.com/saarthi-ai/who-spoke-when-build-your-own-speaker-diarization-module-from-scratch-e7d725ee279>`_
+* `Who spoke when! How to Build your own Speaker Diarization Module
+  <https://medium.com/saarthi-ai/who-spoke-when-build-your-own-speaker-diarization-module-from-scratch-e7d725ee279>`_
   (code `Resemblyzer <https://github.com/resemble-ai/Resemblyzer>`_)
 * `Voice, speech and gender: male-female acoustic differences and cross-language variation in English and French speakers
   <https://halshs.archives-ouvertes.fr/halshs-00764811/document>`_
@@ -103,7 +108,51 @@ Voir aussi :ref:`traitementdusonrst`.
 Après la compétition
 --------------------
 
+J'ai bien essayé de me lancer pour isoler les interlocuteurs sur une bande
+son à partir de ce que je pouvais trouver sur Internet.
+Et j'ai passé trois heures à faire marcher quelque chose
+car tous les exemples utilisent la librairies `librosa
+<https://librosa.org/doc/latest/index.html>`_ et que celle-ci
+créé des fichiers temporaires là où elle est installée.
+Si par malheur, celle-ci est installée dans un endroit où il faut avoir
+les droits administrateurs et que celui-ci qui l'utilise ne les a pas,
+c'est l'assurance de faire face à un message d'erreur bizarre
+ou une sensation de programme interminable. Bref, j'ai abandonné avant
+les participants.
+
+Je regrette de ne pas avoir pris une photo du repas dans le hall
+de l'école. Le seul repas fait maison, cuisiné quelque part
+dans une résidence. Incontestablement le meilleur repas que j'ai
+jamais eu lors d'un hackathon.
+
+Le retour à vélo le lendemain après avoir dormi à peine une heure
+ne fut pas si difficile que cela. Après autant d'aller retour Paris
+Saclay, les yeux fermés.
+
 *Quelques photos...*
 
-Agenda
-^^^^^^
+Dans la fournaise...
+
+.. image:: 2022/20220426_141114.jpg
+    :height: 300
+
+Le sponsor
+
+.. image:: 2022/photo_equipe_eleven_2.jpg
+    :height: 300
+
+Cherchez bien, je suis quelque part, caché dans l'une des rares filles
+de ce hackathon.
+
+.. image:: 2022/20220426_144738.jpg
+    :height: 300
+
+A 4h du mat...
+
+.. image:: 2022/20220423_034341.jpg
+    :height: 300
+
+Photo finale.
+
+.. image:: 2022/20220423_142246.jpg
+    :height: 300
