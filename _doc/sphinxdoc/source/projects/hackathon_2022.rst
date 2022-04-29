@@ -152,7 +152,10 @@ A 4h du mat...
 .. image:: 2022/20220423_034341.jpg
     :height: 300
 
-Photo finale.
+Photos finales.
 
 .. image:: 2022/20220423_142246.jpg
+    :height: 300
+
+.. image:: 2022/20220423_142247.jpg
     :height: 300
