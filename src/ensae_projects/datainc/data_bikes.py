@@ -19,7 +19,7 @@ def get_chicago_stations(folder=".", as_df=False):
     @return                     filename or 2 dataframes (`as_df=True`)
     """
     file = download_data("Divvy_Trips_2016_Q3Q4.zip",
-                         url="https://s3.amazonaws.com/divvy-data/tripdata/",
+                         # url="https://s3.amazonaws.com/divvy-data/tripdata/",
                          whereTo=folder)
     if as_df:
         df1 = pandas.read_csv(os.path.join(
