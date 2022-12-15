@@ -7,7 +7,7 @@ import os
 import unittest
 import numpy
 from PIL import Image
-from pyquickhelper.pycode import get_temp_folder, ExtTestCase
+from pyquickhelper.pycode import get_temp_folder, ExtTestCase, ignore_warnings
 from ensae_projects.hackathon.image_helper import resize_image, read_image, enumerate_image_class, histogram_image_size, img2gray
 from ensae_projects.hackathon.image_helper import stream_apply_image_transform, image_zoom, stream_image2features
 from ensae_projects.hackathon.image_helper import load_batch_features, stream_download_images, stream_copy_images, stream_random_sample
@@ -18,6 +18,7 @@ from ensae_projects.hackathon.image_knn import ImageNearestNeighbors
 
 class TestImage(ExtTestCase):
 
+    @ignore_warnings(ResourceWarning)
     def test_image_resize(self):
         this = os.path.abspath(os.path.dirname(__file__))
         data = os.path.join(this, "data", "white.png")
@@ -345,4 +346,4 @@ class TestImage(ExtTestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)

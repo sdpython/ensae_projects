@@ -14,16 +14,15 @@ class ImageNearestNeighbors(NearestNeighbors):
     """
     Builds a model on the top of :epkg:`NearestNeighbors`
     in order to find close images.
+
+    :param transform: function which transform every image
+    :param image_size: every image is zoomed to keep the same dimension
+    :param kwargs: see :epkg:`NearestNeighbors`
     """
 
-    def __init__(self, transform='gray', size=(10, 10), **kwargs):
-        """
-        @param      transform           function which transform every image
-        @param      size                every image is zoomed to keep the same dimension
-        @param      kwargs              see :epkg:`NearestNeighbors`
-        """
+    def __init__(self, transform='gray', image_size=(10, 10), **kwargs):
         NearestNeighbors.__init__(self, **kwargs)
-        self.image_size = size
+        self.image_size = image_size
         self.transform = transform
         self._get_transform()
 
