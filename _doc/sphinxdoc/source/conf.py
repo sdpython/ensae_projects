@@ -8,7 +8,9 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.split(__file__)[0])))
 
 set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2021,
                      "pydata_sphinx_theme", ['_static'], locals(),
-                     extlinks=dict(issue=('https://github.com/sdpython/ensae_projects/issues/%s', 'issue')))
+                     extlinks=dict(issue=(
+                         'https://github.com/sdpython/ensae_projects/issues/%s',
+                         'issue %s')))
 
 html_theme_options = {
     'navbar_title': "BASE",
