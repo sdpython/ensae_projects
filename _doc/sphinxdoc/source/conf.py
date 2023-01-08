@@ -6,27 +6,11 @@ from pyquickhelper.helpgen.default_conf import set_sphinx_variables
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.split(__file__)[0])))
 
-set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2021,
+set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2023,
                      "pydata_sphinx_theme", ['_static'], locals(),
                      extlinks=dict(issue=(
                          'https://github.com/sdpython/ensae_projects/issues/%s',
                          'issue %s')))
-
-html_theme_options = {
-    'navbar_title': "BASE",
-    'navbar_site_name': "Site",
-    'navbar_links': [
-        ("XD", "http://www.xavierdupre.fr", True),
-        ("blog", "blog/main_0000.html", True),
-        ("index", "genindex"),
-    ],
-    'navbar_sidebarrel': True,
-    'navbar_pagenav': True,
-    'navbar_pagenav_name': "Page",
-    'bootswatch_theme': "readable",
-    'bootstrap_version': "3",
-    'source_link_position': "footer",
-}
 
 blog_root = "http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/"
 blog_background = False
@@ -44,6 +28,7 @@ epkg_dictionary.update({
     'Cap Gemini': 'https://www.capgemini.com/fr-fr/?georedirect_none=true',
     'Cresus': "http://www.cresus-france.org/",
     'data leakage': "https://www.kaggle.com/wiki/Leakage",
+    'DataForGood': 'https://dataforgood.fr/',
     "dataframe": "https://pandas.pydata.org/pandas-docs/stable/dsintro.html",
     'dcm': 'https://en.wikipedia.org/wiki/DICOM',
     'Eleven Strategy': 'https://eleven-strategy.com/',
