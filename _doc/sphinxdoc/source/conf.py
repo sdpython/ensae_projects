@@ -15,7 +15,7 @@ set_sphinx_variables(__file__, "ensae_projects", "ENSAE", 2023,
 blog_root = "http://www.xavierdupre.fr/app/ensae_projects/helpsphinx/"
 blog_background = False
 pygments_style = 'default'
-html_logo = "phdoc_static/project_ico_small.png"
+html_logo = "_static/project_ico_small.png"
 html_css_files = ['my-styles.css']
 
 epkg_dictionary.update({
