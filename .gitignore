@@ -249,7 +249,7 @@ _doc/sphinxdoc/source/blog/*.rst
 _doc/sphinxdoc/source/blog/rss.xml
 _doc/sphinxdoc/source/phdoc_templates/*.html
 _doc/sphinxdoc/source/blog/feed-icon*.png
-_doc/sphinxdoc/source/phdoc_static/reveal.js/*
+_doc/sphinxdoc/source/_static/reveal.js/*
 _doc/notebooks/.ipynb_checkpoints/*
 _doc/notebooks/*/.ipynb_checkpoints/*
 _doc/notebooks/*/demo_mlifetable*.*
@@ -284,7 +284,7 @@ _doc/notebooks/mlexamples/day.csv
 _doc/notebooks/mlexamples/hour.csv
 _doc/notebooks/challenges/city_tour/Street_Network_Database/*
 .ipynb_checkpoints
-_doc/sphinxdoc/source/phdoc_static/require.js
+_doc/sphinxdoc/source/_static/require.js
 _doc/notebooks/challenges/city_tour/WGS84_seattle_street.zip
 _doc/notebooks/challenges/city_tour/Street_Network_Database.shx
 _doc/notebooks/challenges/city_tour/Street_Network_Database.dbf
@@ -299,7 +299,7 @@ _unittests/ut_challenge/*.shp
 _unittests/ut_challenge/*.shx
 _unittests/ut_challenge/*.dbf
 _unittests/ut_challenge/*.zip
-_doc/sphinxdoc/source/phdoc_static/style_notebook_snippet.css
+_doc/sphinxdoc/source/_static/style_notebook_snippet.css
 _doc/notebooks/challenges/bike_data/2016*
 _doc/notebooks/challenges/bike_data/divvy*
 _doc/notebooks/challenges/bike_data/*.zip
